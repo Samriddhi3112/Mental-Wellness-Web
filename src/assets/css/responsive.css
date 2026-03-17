@@ -1,0 +1,135 @@
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .feature-card {
+        padding: 20px;
+    }
+    
+    .otp-input {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .otp-input {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+
+        :root {
+            --primary-orange: #FF5722;
+            --dark-navy: #1a1f36;
+            --sidebar-navy: #0f1419;
+            --text-gray: #8b93a7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f5f6fa;
+        }
+
+         @media (max-width: 992px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .logo-text,
+            .sidebar .search-box,
+            .sidebar .recent-chats {
+                display: none;
+            }
+            
+            .main-content,
+            .header {
+                margin-left: 70px;
+                left: 70px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .main-content,
+            .header {
+                margin-left: 0;
+                left: 0;
+            }
+            
+            .connection-options {
+                grid-template-columns: 1fr;
+            }
+        }
+  
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .logo-text,
+            .sidebar .nav-item span,
+            .sidebar .companion-card {
+                display: none;
+            }
+            
+            .sidebar .nav-item {
+                justify-content: center;
+            }
+            
+            .main-content {
+                margin-left: 70px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .kai-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .kai-card-left {
+                flex-direction: column;
+            }
+            
+            .activities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+        }

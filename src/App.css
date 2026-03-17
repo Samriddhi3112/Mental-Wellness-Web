@@ -1,0 +1,50 @@
+@import url('../src/assets/css/responsive.css');
+@import url('../src/assets/css/style.css');
+.form-control {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+.custom-modal {
+  max-width: 300px;  
+  width: 90%;
+}
+.form-control.active-focus {
+  border: 2px solid #ff7a00 !important;
+  background-color: #fff3e8 !important;
+  color: #ff7a00;
+}
+.language-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 40px;
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+::placeholder {
+  font-size: 14px;
+  color: #999;
+}
+
+::-webkit-input-placeholder {
+  font-size: 14px;
+}
+
+:-ms-input-placeholder {
+  font-size: 14px;
+}
+.setting-item,
+.setting-item:hover,
+.setting-item:focus,
+.setting-item:active {
+  text-decoration: none;
+  color: inherit;
+}
