@@ -31,32 +31,27 @@ const Step3 = () => {
     });
   };
 
+  const handleSubmit = async () => {
+    if (!consent.privacy_policy || !consent.ai_consent) {
+      toast.error("Please accept Privacy Policy and AI Consent to continue");
+      return;
+    }
 
-const handleSubmit = async () => {
-   if (!consent.privacy_policy || !consent.ai_consent) {
-    toast.error("Please accept Privacy Policy and AI Consent to continue");
-    return;
-  }
+    try {
+      await dispatch(updateUserProfile()).unwrap();
 
-  try {
+      toast.success("Profile updated successfully");
+      navigate("/screen1");
+    } catch (error) {
+      const message = error?.message || "";
 
-    await dispatch(updateUserProfile()).unwrap();
+      const errors = message.split(",");
 
-    toast.success("Profile updated successfully");
-    navigate("/screen1");
-
-  } catch (error) {
-
-    const message = error?.message || "";
-
-    const errors = message.split(",");
-
-    errors.forEach((err) => {
-      toast.error(err.trim());
-    });
-
-  }
-};
+      errors.forEach((err) => {
+        toast.error(err.trim());
+      });
+    }
+  };
 
   return (
     <div className="container-fluid">
@@ -192,7 +187,9 @@ const handleSubmit = async () => {
                   type="button"
                   className="btn-primary-orange"
                   onClick={handleSubmit}
-                   disabled={loading || !consent.privacy_policy || !consent.ai_consent}
+                  disabled={
+                    loading
+                  }
                 >
                   {loading ? "Submitting..." : "Agree & Continue"}
                 </button>

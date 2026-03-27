@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import { GoogleLogin } from "@react-oauth/google";
 import logo from "../../assets/images/logo.svg";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-one.png";
@@ -16,6 +16,14 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [emailOrPhone, setEmailOrPhone] = useState("");
+
+  const parseJwt = (token) => {
+    try {
+      return JSON.parse(atob(token.split(".")[1]));
+    } catch (e) {
+      return null;
+    }
+  };
 
   const handleGuest = (e) => {
     localStorage.removeItem("token");
@@ -86,6 +94,60 @@ const Login = () => {
     }
   };
 
+  // const handleGoogleLogin = useGoogleLogin({
+  //   onSuccess: async (tokenResponse) => {
+  //     try {
+  //       // 🔥 Google se idToken lena
+  //       const userInfoRes = await fetch(
+  //         `https://www.googleapis.com/oauth2/v3/userinfo`,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${tokenResponse.access_token}`,
+  //           },
+  //         },
+  //       );
+
+  //       const user = await userInfoRes.json();
+
+  //       const payload = {
+  //         idToken: tokenResponse.access_token, // backend config pe depend karta hai
+  //         provider: "google",
+  //         email: user.email,
+  //         phone: "",
+  //         deviceToken: "",
+  //         fcmToken: "",
+  //         apnToken: "",
+  //       };
+
+  //       // 👉 API call
+  //       const res = await fetch("/api/v1/user/social-login", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(payload),
+  //       });
+
+  //       const data = await res.json();
+
+  //       if (res.ok) {
+  //         localStorage.setItem("token", data?.token);
+  //         toast.success("Login successful");
+
+  //         navigate("/home"); // ya dashboard
+  //       } else {
+  //         toast.error(data?.message || "Login failed");
+  //       }
+  //     } catch (err) {
+  //       console.error(err);
+  //       toast.error("Google login failed");
+  //     }
+  //   },
+  //   onError: () => {
+  //     toast.error("Google Login Failed");
+  //   },
+  // });
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -151,10 +213,73 @@ const Login = () => {
             </div>
 
             <div className="d-grid gap-3">
-              <a href="#" className="social-btn">
+              <GoogleLogin
+                onSuccess={async (credentialResponse) => {
+                  try {
+                    const idToken = credentialResponse.credential;
+
+                    const decoded = parseJwt(idToken);
+
+                    const payload = {
+                      idToken,
+                      provider: "google",
+                      email: decoded?.email || "",
+                      // phone: "",
+                      deviceToken: "",
+                      fcmToken: "",
+                      apnToken: "",
+                    };
+
+                    const res = await fetch(
+                      "http://15.206.16.230:7374/api/v1/user/social-login",
+                      {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(payload),
+                      },
+                    );
+
+                    const data = await res.json();
+
+                    if (res.ok) {
+                      localStorage.setItem("token", data?.data?.token);
+                      localStorage.setItem("userId", data?.data?.user?._id); // 🔥 ADD THIS
+                      localStorage.setItem(
+                        "userData",
+                        JSON.stringify(data?.data?.user),
+                      );
+                      console.log("userId:", localStorage.getItem("userId"));
+
+                      const user = data?.data?.user;
+
+                      toast.success(data?.message || "Login successful");
+
+                      if (user?.isConsultationFormFilled) {
+                        navigate("/home", { replace: true });
+                      } else {
+                        navigate("/onboarding1", { replace: true });
+                      }
+                    } else {
+                      toast.error(data?.message);
+                    }
+                  } catch (err) {
+                    console.error(err);
+                    toast.error("Google login failed");
+                  }
+                }}
+                onError={() => {
+                  toast.error("Google Login Failed");
+                }}
+              />
+              {/* <button
+                onClick={() => handleGoogleLogin()}
+                className="social-btn"
+              >
                 <img src={google} alt="google" />
                 Continue with Google
-              </a>
+              </button> */}
 
               <a href="#" className="social-btn">
                 <img src={apple} alt="apple" />

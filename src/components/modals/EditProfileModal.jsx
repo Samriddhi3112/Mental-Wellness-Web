@@ -115,10 +115,16 @@ const EditProfileModal = ({ show, onClose, user }) => {
   };
 
   const handleFocusSelect = (value) => {
-    setFormData((prev) => ({
-      ...prev,
-      mainFocus: value,
-    }));
+    setFormData((prev) => {
+      const exists = prev.mainFocus.includes(value);
+
+      return {
+        ...prev,
+        mainFocus: exists
+          ? prev.mainFocus.filter((item) => item !== value)
+          : [...prev.mainFocus, value],
+      };
+    });
   };
 
   return (
@@ -170,22 +176,22 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   <div className="form-group">
                     <label className="form-label">Sex/Gender</label>
                     <div className="custom-select-wrapper">
-                    <select
-                      className="form-control custom-select"
-                      name="gender"
-                      value={formData.gender}
-                      onChange={handleChange}
-                    >
-                      <option value="">Select</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                    </select>
+                      <select
+                        className="form-control custom-select"
+                        name="gender"
+                        value={formData.gender}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
                     </div>
                   </div>
 
                   <div className="row mb-3">
                     <div className="col-6">
-                      <label className="form-label">Body Weight</label>
+                      <label className="form-label">Body Weight (kg)</label>
                       <input
                         type="text"
                         className="form-control"
@@ -196,7 +202,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                     </div>
 
                     <div className="col-6">
-                      <label className="form-label">Height</label>
+                      <label className="form-label">Height (cm)</label>
                       <input
                         type="text"
                         className="form-control"
@@ -210,20 +216,20 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   <div className="form-group">
                     <label className="form-label">Education Level</label>
                     <div className="custom-select-wrapper">
-                    <select
-                      className="form-control custom-select"
-                      name="educationLevel"
-                      value={formData.educationLevel}
-                      onChange={handleChange}
-                    >
-                      <option value="">Select</option>
-                      <option value="high_school">High School</option>
-                      <option value="diploma">Diploma</option>
-                      <option value="bachelors">Bachelors</option>
-                      <option value="masters">Masters</option>
-                      <option value="phd">PhD</option>
-                      <option value="other">Other</option>
-                    </select>
+                      <select
+                        className="form-control custom-select"
+                        name="educationLevel"
+                        value={formData.educationLevel}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select</option>
+                        <option value="high_school">High School</option>
+                        <option value="diploma">Diploma</option>
+                        <option value="bachelors">Bachelors</option>
+                        <option value="masters">Masters</option>
+                        <option value="phd">PhD</option>
+                        <option value="other">Other</option>
+                      </select>
                     </div>
                   </div>
 
@@ -276,21 +282,21 @@ const EditProfileModal = ({ show, onClose, user }) => {
                     <div className="col-6">
                       <label className="form-label">Marital Status</label>
                       <div className="custom-select-wrapper">
-                      <select
-                        className="form-control custom-select"
-                        name="maritalStatus"
-                        value={formData.maritalStatus}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select</option>
-                        <option value="single">Single</option>
-                        <option value="married">Married</option>
-                        <option value="divorced">Divorced</option>
-                        <option value="widowed">Widowed</option>
-                        <option value="prefer_not_to_say">
-                          Prefer Not To Say
-                        </option>
-                      </select>
+                        <select
+                          className="form-control custom-select"
+                          name="maritalStatus"
+                          value={formData.maritalStatus}
+                          onChange={handleChange}
+                        >
+                          <option value="">Select</option>
+                          <option value="single">Single</option>
+                          <option value="married">Married</option>
+                          <option value="divorced">Divorced</option>
+                          <option value="widowed">Widowed</option>
+                          <option value="prefer_not_to_say">
+                            Prefer Not To Say
+                          </option>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -298,56 +304,56 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   <div className="form-group">
                     <label className="form-label">Family Type</label>
                     <div className="custom-select-wrapper">
-                    <select
-                      className="form-control custom-select"
-                      name="familyType"
-                      value={formData.familyType}
-                      onChange={handleChange}
-                    >
-                      <option value="">Select</option>
-                      <option value="nuclear">Nuclear</option>
-                      <option value="joint">Joint</option>
-                      <option value="extended">Extended</option>
-                      <option value="other">Other</option>
-                    </select>
+                      <select
+                        className="form-control custom-select"
+                        name="familyType"
+                        value={formData.familyType}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select</option>
+                        <option value="nuclear">Nuclear</option>
+                        <option value="joint">Joint</option>
+                        <option value="extended">Extended</option>
+                        <option value="other">Other</option>
+                      </select>
                     </div>
                   </div>
 
                   <div className="form-group">
                     <label className="form-label">Living Arrangement</label>
                     <div className="custom-select-wrapper">
-                    <select
-                      className="form-control custom-select"
-                      name="livingArrangement"
-                      value={formData.livingArrangement}
-                      onChange={handleChange}
-                    >
-                      <option value="">Select</option>
-                      <option value="with_family">With Family</option>
-                      <option value="alone">Alone</option>
-                      <option value="with_partner">With Partner</option>
-                      <option value="with_roommates">With Roommates</option>
-                      <option value="other">Other</option>
-                    </select>
+                      <select
+                        className="form-control custom-select"
+                        name="livingArrangement"
+                        value={formData.livingArrangement}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select</option>
+                        <option value="with_family">With Family</option>
+                        <option value="alone">Alone</option>
+                        <option value="with_partner">With Partner</option>
+                        <option value="with_roommates">With Roommates</option>
+                        <option value="other">Other</option>
+                      </select>
                     </div>
                   </div>
 
                   <div className="form-group">
                     <label className="form-label">Language</label>
                     <div className="custom-select-wrapper">
-                    <select
-                      className="form-control custom-select"
-                      name="language"
-                      value={formData.language}
-                      onChange={handleChange}
-                    >
-                      <option value="">Select</option>
-                      <option value="english">English</option>
-                      <option value="hindi">Hindi</option>
-                      <option value="arabic">Arabic</option>
-                      <option value="spanish">Spanish</option>
-                      <option value="french">French</option>
-                    </select>
+                      <select
+                        className="form-control custom-select"
+                        name="language"
+                        value={formData.language}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select</option>
+                        <option value="english">English</option>
+                        <option value="hindi">Hindi</option>
+                        <option value="arabic">Arabic</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="french">French</option>
+                      </select>
                     </div>
                   </div>
 
@@ -359,7 +365,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                     <div className="row">
                       <div className="col-6">
                         <div
-                          className={`form-control ${formData.mainFocus === "sleep" ? "active-focus" : ""}`}
+                          className={`form-control ${formData.mainFocus.includes("sleep") ? "active-focus" : ""}`}
                           onClick={() => handleFocusSelect("sleep")}
                         >
                           🌙 Sleep
@@ -368,7 +374,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
 
                       <div className="col-6">
                         <div
-                          className={`form-control ${formData.mainFocus === "anxiety" ? "active-focus" : ""}`}
+                          className={`form-control ${formData.mainFocus.includes("anxiety") ? "active-focus" : ""}`}
                           onClick={() => handleFocusSelect("anxiety")}
                         >
                           😰 Anxiety
@@ -379,7 +385,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                     <div className="row mt-2">
                       <div className="col-6">
                         <div
-                          className={`form-control ${formData.mainFocus === "stress" ? "active-focus" : ""}`}
+                          className={`form-control ${formData.mainFocus.includes("stress") ? "active-focus" : ""}`}
                           onClick={() => handleFocusSelect("stress")}
                         >
                           ⚡ Stress
@@ -388,7 +394,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
 
                       <div className="col-6">
                         <div
-                          className={`form-control ${formData.mainFocus === "not_sure" ? "active-focus" : ""}`}
+                          className={`form-control ${formData.mainFocus.includes("not_sure") ? "active-focus" : ""}`}
                           onClick={() => handleFocusSelect("not_sure")}
                         >
                           🤔 Not Sure

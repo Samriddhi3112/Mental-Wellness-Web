@@ -24,15 +24,15 @@ const OTPVerify = () => {
   const [timer, setTimer] = useState(30);
 
   useEffect(() => {
-  // For testing, you can either fetch it from location.state or use a mock
-  // Example: if OTP comes from backend in location.state
-  if (location.state?.otp) {
-    setApiOtp(location.state.otp);
-  } else {
-    // fallback testing OTP
-    setApiOtp("123456");
-  }
-}, []);
+    // For testing, you can either fetch it from location.state or use a mock
+    // Example: if OTP comes from backend in location.state
+    if (location.state?.otp) {
+      setApiOtp(location.state.otp);
+    } else {
+      // fallback testing OTP
+      setApiOtp("123456");
+    }
+  }, []);
 
   const handleOtpChange = (value, index) => {
     if (!/^\d?$/.test(value)) return;
@@ -51,6 +51,7 @@ const OTPVerify = () => {
       document.getElementById(`otp-${index - 1}`).focus();
     }
   };
+  
   const handleVerifyOtp = async () => {
     const otpValue = otp.join("");
 
@@ -86,9 +87,25 @@ const OTPVerify = () => {
       }
 
       // Scenario 2: User already logged in → root
-      if (res?.message === "User already logged in") {
+      if (
+        res?.message === "User already logged in" &&
+        res?.data?.token &&
+        res?.data?.user
+      ) {
+        const { token, user } = res.data;
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("userData", JSON.stringify(user));
+        localStorage.removeItem("isGuest");
+
         toast.success(res?.message);
-        navigate("/");
+
+        if (user.isConsultationFormFilled === false) {
+          navigate("/onboarding1");
+        } else {
+          navigate("/home");
+        }
+
         return;
       }
 

@@ -28,8 +28,8 @@ const FaqPage = () => {
                   <FaQuestionCircle size={24} color="#FF511A" />
                 </div>
                 <div className="setting-info">
-                  <h4>{faq.question}</h4>
-                  <p>{faq.answer}</p>
+                  <h4>{faq.question||"N/A"}</h4>
+                  <p>{faq.answer||"N/A"}</p>
                 </div>
               </div>
 

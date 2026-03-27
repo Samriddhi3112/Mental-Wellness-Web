@@ -102,7 +102,12 @@ const profileSlice = createSlice({
 
       .addCase(updateUserProfile.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload?.data;
+
+        // 🔥 Merge karo instead of replace
+        state.user = {
+          ...state.user,
+          ...action.payload?.data,
+        };
       })
 
       .addCase(updateUserProfile.rejected, (state, action) => {

@@ -9,31 +9,54 @@ const LogoutModal = ({ show, onClose }) => {
   const navigate = useNavigate();
 
   const handleConfirmLogout = async () => {
-    try {
-      const token = localStorage.getItem("token");
+  try {
+    const userId = localStorage.getItem("userId");
 
-      let userId = null;
+    await dispatch(logoutUser(userId)).unwrap();
 
-      if (token) {
-        const decoded = jwtDecode(token);
-        userId = decoded.userId;
-      }
+  } catch (error) {
+    console.log("Logout Error", error);
+  } finally {
+    localStorage.clear();
+    sessionStorage.clear();
 
-      const res = await dispatch(
-        logoutUser({ userId })
-      ).unwrap();
+    navigate("/", { replace: true });
+  }
+};
 
-      if (res?.success) {
-        localStorage.removeItem("token");
-        localStorage.removeItem("isGuest");
-        localStorage.removeItem("userData");
+//   const handleConfirmLogout = async () => {
+//   try {
+//     const token = localStorage.getItem("token");
 
-        navigate("/");
-      }
-    } catch (error) {
-      console.log("Logout Error", error);
-    }
-  };
+//     let userId = null;
+
+//     // ✅ Safe decode
+//     if (token && token.split(".").length === 3) {
+//       try {
+//         // const decoded = jwtDecode(token);
+//         userId = decoded?.userId;
+//       } catch (err) {
+//         console.warn("Token decode failed");
+//       }
+//     }
+
+//     // 👉 API call only if userId mila
+//     if (userId) {
+//       await dispatch(logoutUser({ userId })).unwrap();
+//     } else {
+//       console.warn("UserId not found, skipping API call");
+//     }
+
+//   } catch (error) {
+//     console.log("Logout Error", error);
+//   } finally {
+//     // 🔥 Always clear (important)
+//     localStorage.clear();
+//     sessionStorage.clear();
+
+//     navigate("/", { replace: true });
+//   }
+// };
 
   if (!show) return null;
 

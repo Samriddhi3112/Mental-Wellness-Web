@@ -19,6 +19,12 @@ import GuestSettingOptions from "../pages/Settings/GuestSettingOptions";
 import LoginPrivacy from "../pages/Conditions/LoginPrivacy";
 import LoginTermsOfServices from "../pages/Conditions/LoginTermsOfServices";
 import Language from "../pages/Profile/language";
+import GetMindfulGames from "../pages/Home/Mindful Games/GetMindfulGames";
+import MoviesHome from "../pages/Home/Movies/MoviesHome";
+import MoviesDetail from "../pages/Home/Movies/MoviesDetail"
+import CalmMusicListing from "../pages/Home/Calm Music/CalmMusicListing";
+import WiseYogiListing from "../pages/Home/Wise Yogi/WiseYogiListing";
+import WiseYogiDetail from "../pages/Home/Wise Yogi/WiseYogiDetail";
 
 const AppRoutes = () => {
   const { jwtToken } = useSelector((state) => state.auth);
@@ -35,10 +41,11 @@ const AppRoutes = () => {
       <Route path="/onboarding3" element={<Step3 />} />
       <Route path="/screen1" element={<Screen1 />} />
       <Route path="/guest-settings/loginPrivacy" element={<LoginPrivacy />} />
-      <Route path="/guest-settings/loginTermsOfServices" element={<LoginTermsOfServices />} />
+      <Route
+        path="/guest-settings/loginTermsOfServices"
+        element={<LoginTermsOfServices />}
+      />
       <Route path="/guest-settings" element={<GuestSettingOptions />} />
-
-      
 
       <Route element={<ProtectedRoutes />}>
         <Route element={<AppLayout />}>
@@ -62,7 +69,13 @@ const AppRoutes = () => {
             path="/settingOption/profileDetail"
             element={<ProfileDetail />}
           />
-                <Route path="/settingOption/language" element={<Language />} />
+          <Route path="/settingOption/language" element={<Language />} />
+          <Route path="/home/mindfulGames" element={<GetMindfulGames />} />
+          <Route path="/home/moviesHome" element={<MoviesHome />} />
+          <Route path="/home/musicHome" element={<CalmMusicListing />} />
+          <Route path="/home/wiseYogi" element={<WiseYogiListing />} />
+          <Route path="/home/moviesHome/moviesDetail" element={<MoviesDetail />} />
+          <Route path="/home/wiseyogiHome/wiseyogiDetail" element={<WiseYogiDetail />} />
         </Route>
       </Route>
 

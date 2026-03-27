@@ -4,8 +4,6 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
-
 .custom-modal {
   max-width: 300px;  
   width: 90%;

@@ -19,7 +19,8 @@ const Step2 = () => {
     familyType: step2Data?.familyType || "",
     livingArrangement: step2Data?.livingArrangement || "",
     motherTongue: step2Data?.motherTongue || "",
-    mainFocus: step2Data?.mainFocus || "",
+    mainFocus: Array.isArray(step2Data?.mainFocus) ? step2Data.mainFocus : [],
+    // mainFocus: step2Data?.mainFocus || [],
   });
 
   const handleChange = (e) => {
@@ -32,29 +33,56 @@ const Step2 = () => {
   };
 
   const handleContinue = () => {
-    const { placeOfResidence, maritalStatus, familyType, livingArrangement, motherTongue, mainFocus} = form;
+    const {
+      placeOfResidence,
+      maritalStatus,
+      familyType,
+      livingArrangement,
+      motherTongue,
+      mainFocus,
+    } = form;
 
-  if (
-    !placeOfResidence ||
-    !maritalStatus ||
-    !familyType ||
-    !livingArrangement ||
-    !motherTongue ||
-    !mainFocus 
-  ) {
-    toast.error("All fields are required");
-    return;
-  }
+    if (
+      !placeOfResidence ||
+      !maritalStatus ||
+      !familyType ||
+      !livingArrangement ||
+      !motherTongue ||
+      !mainFocus
+    ) {
+      toast.error("All fields are required");
+      return;
+    }
     dispatch(saveStep2(form));
     navigate("/onboarding3");
   };
 
+  // const handleFocusSelect = (value) => {
+  //   setForm((prev) => ({
+  //     ...prev,
+  //     mainFocus: value,
+  //   }));
+  // };
+
   const handleFocusSelect = (value) => {
-  setForm((prev) => ({
-    ...prev,
-    mainFocus: value,
-  }));
-};
+    setForm((prev) => {
+      const alreadySelected = prev.mainFocus.includes(value);
+
+      if (alreadySelected) {
+        // remove
+        return {
+          ...prev,
+          mainFocus: prev.mainFocus.filter((item) => item !== value),
+        };
+      } else {
+        // add
+        return {
+          ...prev,
+          mainFocus: [...prev.mainFocus, value],
+        };
+      }
+    });
+  };
 
   return (
     <div className="container-fluid">
@@ -126,21 +154,21 @@ const Step2 = () => {
                   <div className="col-6">
                     <label className="form-label">Marital Status</label>
                     <div className="custom-select-wrapper">
-                    <select
-                      name="maritalStatus"
-                      value={form.maritalStatus}
-                      onChange={handleChange}
-                      className="form-control custom-select"
-                    >
-                      <option value="">Select</option>
-                      <option value="single">Single</option>
-                      <option value="married">Married</option>
-                      <option value="divorced">Divorced</option>
-                      <option value="widowed">Widowed</option>
-                      <option value="prefer_not_to_say">
-                        Prefer Not To Say
-                      </option>
-                    </select>
+                      <select
+                        name="maritalStatus"
+                        value={form.maritalStatus}
+                        onChange={handleChange}
+                        className="form-control custom-select"
+                      >
+                        <option value="">Select</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                        <option value="prefer_not_to_say">
+                          Prefer Not To Say
+                        </option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -150,18 +178,18 @@ const Step2 = () => {
                 <div className="form-group">
                   <label className="form-label">Family Type</label>
                   <div className="custom-select-wrapper">
-                  <select
-                    name="familyType"
-                    value={form.familyType}
-                    onChange={handleChange}
-                    className="form-control custom-select"
-                  >
-                    <option value="">Select</option>
-                    <option value="nuclear">Nuclear</option>
-                    <option value="joint">Joint</option>
-                    <option value="extended">Extended</option>
-                    <option value="other">Other</option>
-                  </select>
+                    <select
+                      name="familyType"
+                      value={form.familyType}
+                      onChange={handleChange}
+                      className="form-control custom-select"
+                    >
+                      <option value="">Select</option>
+                      <option value="nuclear">Nuclear</option>
+                      <option value="joint">Joint</option>
+                      <option value="extended">Extended</option>
+                      <option value="other">Other</option>
+                    </select>
                   </div>
                 </div>
 
@@ -170,19 +198,19 @@ const Step2 = () => {
                 <div className="form-group">
                   <label className="form-label">Living Arrangement</label>
                   <div className="custom-select-wrapper">
-                  <select
-                    name="livingArrangement"
-                    value={form.livingArrangement}
-                    onChange={handleChange}
-                    className="form-control custom-select"
-                  >
-                    <option value="">Select</option>
-                    <option value="with_family">With Family</option>
-                    <option value="alone">Alone</option>
-                    <option value="with_partner">With Partner</option>
-                    <option value="with_roommates">With Roommates</option>
-                    <option value="other">Other</option>
-                  </select>
+                    <select
+                      name="livingArrangement"
+                      value={form.livingArrangement}
+                      onChange={handleChange}
+                      className="form-control custom-select"
+                    >
+                      <option value="">Select</option>
+                      <option value="with_family">With Family</option>
+                      <option value="alone">Alone</option>
+                      <option value="with_partner">With Partner</option>
+                      <option value="with_roommates">With Roommates</option>
+                      <option value="other">Other</option>
+                    </select>
                   </div>
                 </div>
 
@@ -193,19 +221,19 @@ const Step2 = () => {
                     Language Spoken / Mother Tongue
                   </label>
                   <div className="custom-select-wrapper">
-                  <select
-                    name="motherTongue"
-                    value={form.motherTongue}
-                    onChange={handleChange}
-                    className="form-control custom-select"
-                  >
-                    <option value="">Select</option>
-                    <option value="english">English</option>
-                    <option value="hindi">Hindi</option>
-                    <option value="arabic">Arabic</option>
-                    <option value="spanish">Spanish</option>
-                    <option value="french">French</option>
-                  </select>
+                    <select
+                      name="motherTongue"
+                      value={form.motherTongue}
+                      onChange={handleChange}
+                      className="form-control custom-select"
+                    >
+                      <option value="">Select</option>
+                      <option value="english">English</option>
+                      <option value="hindi">Hindi</option>
+                      <option value="arabic">Arabic</option>
+                      <option value="spanish">Spanish</option>
+                      <option value="french">French</option>
+                    </select>
                   </div>
                 </div>
 
@@ -217,7 +245,7 @@ const Step2 = () => {
                   <div className="row">
                     <div className="col-6">
                       <div
-                        className={`form-control ${form.mainFocus === "sleep" ? "active-focus" : ""}`}
+                        className={`form-control ${form.mainFocus.includes("sleep") ? "active-focus" : ""}`}
                         onClick={() => handleFocusSelect("sleep")}
                       >
                         🌙 Sleep
@@ -226,7 +254,7 @@ const Step2 = () => {
 
                     <div className="col-6">
                       <div
-                        className={`form-control ${form.mainFocus === "anxiety" ? "active-focus" : ""}`}
+                        className={`form-control ${form.mainFocus.includes("anxiety") ? "active-focus" : ""}`}
                         onClick={() => handleFocusSelect("anxiety")}
                       >
                         😰 Anxiety
@@ -237,7 +265,7 @@ const Step2 = () => {
                   <div className="row mt-2">
                     <div className="col-6">
                       <div
-                        className={`form-control ${form.mainFocus === "stress" ? "active-focus" : ""}`}
+                        className={`form-control ${form.mainFocus.includes("stress") ? "active-focus" : ""}`}
                         onClick={() => handleFocusSelect("stress")}
                       >
                         ⚡ Stress
@@ -246,7 +274,7 @@ const Step2 = () => {
 
                     <div className="col-6">
                       <div
-                        className={`form-control ${form.mainFocus === "not_sure" ? "active-focus" : ""}`}
+                        className={`form-control ${form.mainFocus.includes("not_sure") ? "active-focus" : ""}`}
                         onClick={() => handleFocusSelect("not_sure")}
                       >
                         🤔 Not Sure

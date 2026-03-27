@@ -1,8 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Sidenav from "./Sidenav";
 import Header from "./Header";
+import useOnboardingGuard from "../custom hooks/useOnboardingGuard";
 
 const AppLayout = () => {
+  useOnboardingGuard();
   
   return (
     <div className="AppLayout">

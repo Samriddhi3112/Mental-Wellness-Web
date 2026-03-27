@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/logo.svg";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-two.png";
@@ -27,11 +27,35 @@ const Step1 = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    if (value === "") {
+      setForm({
+        ...form,
+        [name]: value,
+      });
+      return;
+    }
+
+    if (["age", "bodyWeight", "height"].includes(name)) {
+      if (Number(value) < 0) return;
+    }
+
     setForm({
       ...form,
       [name]: value,
     });
   };
+
+  //   useEffect(() => {
+  //   const handleBack = () => {
+  //     window.location.replace("/"); // 👈 force redirect (no history)
+  //   };
+
+  //   window.addEventListener("popstate", handleBack);
+
+  //   return () => {
+  //     window.removeEventListener("popstate", handleBack);
+  //   };
+  // }, []);
 
   const handleContinue = () => {
     const {
@@ -136,6 +160,7 @@ const Step1 = () => {
                   <input
                     type="number"
                     name="age"
+                    min="0"
                     value={form.age}
                     onChange={handleChange}
                     className="form-control"
@@ -169,6 +194,7 @@ const Step1 = () => {
                     <input
                       type="number"
                       name="bodyWeight"
+                      min="0"
                       value={form.bodyWeight}
                       onChange={handleChange}
                       className="form-control"
@@ -182,6 +208,7 @@ const Step1 = () => {
                     <input
                       type="number"
                       name="height"
+                      min="0"
                       value={form.height}
                       onChange={handleChange}
                       className="form-control"

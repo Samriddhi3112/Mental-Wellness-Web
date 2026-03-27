@@ -40,87 +40,92 @@ const Screen1 = () => {
   }, [dispatch]);
 
   const handleNext = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!answer.trim()) {
-    toast.error("Please enter your answer before continuing");
-    return;
-  }
+    if (!answer.trim()) {
+      toast.error("Please enter your answer before continuing");
+      return;
+    }
 
-  if (!question?._id) return;
+    if (!question?._id) return;
 
-  // Update or add the response
-  const updatedResponses = [...responses];
-  const existingIndex = updatedResponses.findIndex(
-    (r) => r.questionId === question._id
-  );
+    // Update or add the response
+    const updatedResponses = [...responses];
+    const existingIndex = updatedResponses.findIndex(
+      (r) => r.questionId === question._id,
+    );
 
-  if (existingIndex !== -1) {
-    updatedResponses[existingIndex] = { questionId: question._id, answer };
-  } else {
-    updatedResponses.push({ questionId: question._id, answer });
-  }
+    if (existingIndex !== -1) {
+      updatedResponses[existingIndex] = { questionId: question._id, answer };
+    } else {
+      updatedResponses.push({ questionId: question._id, answer });
+    }
 
-  setResponses(updatedResponses);
+    setResponses(updatedResponses);
 
-  try {
-    if (currentQuestionIndex === questions.length - 1) {
-      const res = await dispatch(submitAnswers(updatedResponses)).unwrap();
+    try {
+      if (currentQuestionIndex === questions.length - 1) {
+        const res = await dispatch(submitAnswers(updatedResponses)).unwrap();
 
-      if (res?.success) {
-        toast.success(res?.message || "Answers submitted successfully");
-        navigate("/home");
+        if (res?.success) {
+          localStorage.setItem("onboarding_last_shown", Date.now());
+          toast.success(res?.message || "Answers submitted successfully");
+          navigate("/home");
+        }
+      } else {
+        dispatch(nextQuestion());
+        setAnswer("");
       }
+    } catch (error) {
+      const message =
+        typeof error === "string"
+          ? error
+          : error?.message || "Something went wrong";
+
+      // Split by comma and clean each error
+      const errors = message.split(",").map((err) => {
+        const parts = err.split(":");
+        return parts[1]?.trim() || parts[0]?.trim();
+      });
+
+      errors.forEach((err) => toast.error(err));
+    }
+  };
+
+  const handleSkip = (e) => {
+    e.preventDefault();
+
+    if (!question?._id) return;
+
+    // Update or add skipped response
+    const updatedResponses = [...responses];
+    const existingIndex = updatedResponses.findIndex(
+      (r) => r.questionId === question._id,
+    );
+
+    if (existingIndex !== -1) {
+      updatedResponses[existingIndex] = {
+        questionId: question._id,
+        answer: "",
+      };
+    } else {
+      updatedResponses.push({ questionId: question._id, answer: "" });
+    }
+
+    setResponses(updatedResponses);
+
+    if (currentQuestionIndex === questions.length - 1) {
+      dispatch(submitAnswers(updatedResponses)).then((res) => {
+        if (res.payload?.success) {
+          localStorage.setItem("onboarding_last_shown", Date.now());
+          navigate("/home");
+        }
+      });
     } else {
       dispatch(nextQuestion());
       setAnswer("");
     }
-  } catch (error) {
-    const message =
-      typeof error === "string"
-        ? error
-        : error?.message || "Something went wrong";
-
-    // Split by comma and clean each error
-    const errors = message.split(",").map((err) => {
-      const parts = err.split(":");
-      return parts[1]?.trim() || parts[0]?.trim();
-    });
-
-    errors.forEach((err) => toast.error(err));
-  }
-};
-
-const handleSkip = (e) => {
-  e.preventDefault();
-
-  if (!question?._id) return;
-
-  // Update or add skipped response
-  const updatedResponses = [...responses];
-  const existingIndex = updatedResponses.findIndex(
-    (r) => r.questionId === question._id
-  );
-
-  if (existingIndex !== -1) {
-    updatedResponses[existingIndex] = { questionId: question._id, answer: "" };
-  } else {
-    updatedResponses.push({ questionId: question._id, answer: "" });
-  }
-
-  setResponses(updatedResponses);
-
-  if (currentQuestionIndex === questions.length - 1) {
-    dispatch(submitAnswers(updatedResponses)).then((res) => {
-      if (res.payload?.success) {
-        navigate("/home");
-      }
-    });
-  } else {
-    dispatch(nextQuestion());
-    setAnswer("");
-  }
-};
+  };
 
   // const handleNext = (e) => {
   //   e.preventDefault();
@@ -230,9 +235,9 @@ const handleSkip = (e) => {
             </div>
           </div>
 
-          <h2 className="mb-3 title">{question?.title}</h2>
+          <h2 className="mb-3 title">{question?.title || "N/A"}</h2>
 
-          <p>{question?.questionText}</p>
+          <p>{question?.questionText || "N/A"}</p>
 
           <form style={{ margin: "0 auto" }}>
             <div className="mb-4">

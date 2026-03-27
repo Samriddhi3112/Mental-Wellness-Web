@@ -10,12 +10,13 @@ import health from "../../assets/images/health-is-wealth.png";
 import offcanvasImg1 from "../../assets/images/offcanvas-image-one.svg";
 import offcanvasImg2 from "../../assets/images/offcanvas-image-two.svg";
 import playIcon from "../../assets/images/play-icon.png";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="main-content">
-
         {/* Talk to Kai Card */}
         <div className="kai-card">
           <div className="kai-card-left">
@@ -25,7 +26,9 @@ const Home = () => {
               <p>Your personal companion is here to listen, judgment-free.</p>
             </div>
           </div>
-          <a className="btn" href="#">Start Conversation</a>
+          <a className="btn" href="#">
+            Start Conversation
+          </a>
         </div>
 
         {/* Recommended Activities */}
@@ -35,8 +38,10 @@ const Home = () => {
         </div>
 
         <div className="activities-grid">
-
-          <div className="activity-card">
+          <div
+            className="activity-card"
+            onClick={() => navigate("/home/mindfulGames")}
+          >
             <div className="activity-icon icon-puzzle">
               <img src={mindful} alt="" />
             </div>
@@ -44,7 +49,9 @@ const Home = () => {
             <p>Play, Relax, Focus</p>
           </div>
 
-          <div className="activity-card">
+          <div
+            className="activity-card"
+          >
             <div className="activity-icon icon-edit">
               <img src={journal} alt="" />
             </div>
@@ -52,24 +59,27 @@ const Home = () => {
             <p>Write Without Judgment</p>
           </div>
 
-          <div className="activity-card">
-            <div className="activity-icon icon-movie">
+          <div className="activity-card" onClick={() => navigate("/home/moviesHome")}>
+            <div
+              className="activity-icon icon-movie"
+              onClick={() => navigate("/home/moviesHome")}
+            >
               <img src={movie} alt="" />
             </div>
             <h4>Movies</h4>
             <p>Watch And Unwind</p>
           </div>
 
-          <div className="activity-card">
-            <div className="activity-icon icon-music">
+          <div className="activity-card" onClick={() => navigate("/home/musicHome")}>
+            <div className="activity-icon icon-music" onClick={() => navigate("/home/moviesHome")}>
               <img src={calmMusic} alt="" />
             </div>
             <h4>Calm Music</h4>
             <p>Relax Through Sound</p>
           </div>
 
-          <div className="activity-card">
-            <div className="activity-icon icon-yoga">
+          <div className="activity-card" onClick={()=> navigate("/home/wiseYogi")}>
+            <div className="activity-icon icon-yoga" onClick={()=> navigate("/home/wiseYogi")}>
               <img src={wiseYogi} alt="" />
             </div>
             <h4>Wise Yogi</h4>
@@ -83,15 +93,17 @@ const Home = () => {
             <h4>Health is Wealth</h4>
             <p>Care For Health</p>
           </div>
-
         </div>
       </div>
 
       {/* OFFCANVAS 1 */}
 
-      <div className="offcanvas offcanvas-end" tabIndex={-1} id="offcanvasRight">
+      <div
+        className="offcanvas offcanvas-end"
+        tabIndex={-1}
+        id="offcanvasRight"
+      >
         <div className="offcanvas-body">
-
           <div className="text-center mb-4">
             <h2 className="title">Meet Kai, your guide</h2>
             <p className="sub-title">
@@ -100,16 +112,17 @@ const Home = () => {
 
             <img src={offcanvasImg1} alt="" />
           </div>
-
         </div>
       </div>
 
       {/* OFFCANVAS 2 */}
 
-      <div className="offcanvas offcanvas-end" tabIndex={-1} id="offcanvasRightSecond">
-
+      <div
+        className="offcanvas offcanvas-end"
+        tabIndex={-1}
+        id="offcanvasRightSecond"
+      >
         <div className="offcanvas-body">
-
           <div className="text-center mb-4 mt-4">
             <img src={offcanvasImg2} alt="" />
             <h2 className="title">Meet Kai, your guide</h2>
@@ -122,11 +135,8 @@ const Home = () => {
               <img src={playIcon} alt="" />
             </button>
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 };

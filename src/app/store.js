@@ -6,6 +6,9 @@ import questionsReducer from "../features/onboardingQuestions/questionsSlice"
 import faqReducer from "../features/setting/faqSlice";
 import profileReducer from "../features/setting/profileSlice";
 import serviceReducer from "../features/services/serviceSlice";
+import moviesReducer from "../features/home/movies/moviesSlice";
+import musicReducer from "../features/home/music/musicSlice";
+import wiseYogiReducer from "../features/home/wise yogi/wiseYogiSlice"
 
 const store = configureStore({
   reducer: {
@@ -16,6 +19,9 @@ const store = configureStore({
     faq: faqReducer,
     profile: profileReducer,
     services: serviceReducer,
+     movies: moviesReducer,
+     music: musicReducer,
+     wiseYogi: wiseYogiReducer,
   },
 });
 

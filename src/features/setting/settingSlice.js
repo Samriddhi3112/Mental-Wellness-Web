@@ -13,7 +13,6 @@ export const deleteAccount = createAsyncThunk(
   "auth/deleteAccount",
   async (_, { rejectWithValue }) => {
     try {
-
       const token = localStorage.getItem("token");
 
       const response = await axios.delete(
@@ -22,15 +21,14 @@ export const deleteAccount = createAsyncThunk(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       return response.data;
-
     } catch (error) {
       return rejectWithValue(error.response?.data);
     }
-  }
+  },
 );
 
 const pagesSlice = createSlice({

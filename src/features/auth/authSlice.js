@@ -141,12 +141,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     loginSuccess: (state, action) => {
-    state.user = action.payload.user;
-    state.jwtToken = action.payload.token;
+      state.user = action.payload?.data?.user;
+      state.jwtToken = action.payload.token;
 
-    localStorage.setItem("token", action.payload.token);
-    localStorage.setItem("userData", JSON.stringify(action.payload.user));
-  },
+      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("userData", action.payload.user);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -161,9 +161,15 @@ const authSlice = createSlice({
         if (action.payload?.userData?._id) {
           localStorage.setItem("userId", action.payload.userData._id);
         }
-        if (action.payload?.userData?.name) {
-          localStorage.setItem("userName", action.payload.userData.name);
+        if (action.payload?.data?.user?.name) {
+          localStorage.setItem("userName", action.payload.data.user.name);
         }
+
+        // 👇 IMPORTANT (header fix)
+        localStorage.setItem(
+          "userData",
+          JSON.stringify(action.payload.data.user),
+        );
       })
       // .addCase(verifyOTP.fulfilled, (state, action) => {
       //   state.jwtToken = action.payload.token;
@@ -192,15 +198,15 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
 
-        state.user = action.payload?.userData;
-        state.jwtToken = action.payload?.token;
+        state.user = action.payload?.data?.user;
+        state.jwtToken = action.payload?.data?.token;
 
-        if (action.payload?.token) {
-          localStorage.setItem("token", action.payload.token);
+        if (action.payload?.data?.token) {
+          localStorage.setItem("token", action.payload.data.token);
         }
 
-        if (action.payload?.userData?._id) {
-          localStorage.setItem("userId", action.payload.userData._id);
+        if (action.payload?.data?.user?._id) {
+          localStorage.setItem("userId", action.payload.data.user._id);
         }
       })
 

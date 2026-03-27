@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserProfile } from "../../features/setting/profileSlice";
+import {
+  fetchUserProfile,
+  updateUserProfile,
+} from "../../features/setting/profileSlice";
 // import profilePlaceholder from "../../assets/images/profile-image.svg";
 import image from "../../assets/images/admin.png";
-import sleepIcon from "../../assets/images/sleep-img.svg";
 import EditProfileModal from "../../components/modals/EditProfileModal";
+import { credAndUrl } from "../../utils/config";
+import axios from "axios";
 
 const ProfileDetail = () => {
   const dispatch = useDispatch();
   const [showEditModal, setShowEditModal] = useState(false);
   const { user, loading, error } = useSelector((state) => state.profile);
+  const [profilePic, setProfilePic] = useState("");
   console.log(user);
 
   useEffect(() => {
@@ -76,9 +81,53 @@ const ProfileDetail = () => {
     return valueMaps[type]?.[value] || value;
   };
 
+  useEffect(() => {
+    if (user?.profileImage) {
+      setProfilePic(user.profileImage);
+    }
+  }, [user]);
+
+  const handleProfileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+      const token = localStorage.getItem("token");
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const uploadRes = await axios.post(
+        `${credAndUrl.BASE_URL}/common/upload-optimized`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      const imageUrl = uploadRes.data?.data?.fileUrl;
+      console.log("img", imageUrl);
+
+      setProfilePic(imageUrl);
+
+      dispatch(updateUserProfile({ profilePic: imageUrl }));
+    } catch (err) {
+      console.error("Image upload failed", err);
+    }
+  };
+
   if (loading) return <p className="text-center mt-4">Loading profile...</p>;
   if (error) return <p className="text-center mt-4 text-red-500">{error}</p>;
   if (!user) return null;
+
+  const focusEmoji = {
+    sleep: "🌙",
+    anxiety: "😰",
+    stress: "⚡",
+    not_sure: "🤔",
+  };
 
   return (
     <div className="main-content">
@@ -89,11 +138,27 @@ const ProfileDetail = () => {
             <div className="col-md-3">
               <div className="profile-left">
                 <div className="profile-avatar-section">
-                  <img
-                    src={user.profileImage || image}
-                    alt={user.name || "Profile"}
-                    className="profile-avatar"
-                  />
+                  <label style={{ cursor: "pointer" }}>
+                    <img
+                      src={user.profilePic || user.profileImage || image}
+                      alt={user.name || "Profile"}
+                      className="profile-avatar"
+                      style={{
+                        width: "120px",
+                        height: "120px",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                      }}
+                    />
+
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleProfileChange}
+                      style={{ display: "none" }}
+                    />
+                  </label>
+
                   <div className="profile-change">Change Profile</div>
                   <div className="profile-name">{user.name}</div>
                   <div className="profile-phone">{user.phone}</div>
@@ -120,7 +185,9 @@ const ProfileDetail = () => {
 
                     <div className="info-item">
                       <div className="info-label">Sex/Gender</div>
-                      <div className="info-value">{formatValue("gender", user.gender)}</div>
+                      <div className="info-value">
+                        {formatValue("gender", user.gender)}
+                      </div>
                     </div>
 
                     <div className="info-item">
@@ -151,19 +218,26 @@ const ProfileDetail = () => {
 
                     <div className="info-item">
                       <div className="info-label">Family Type</div>
-                      <div className="info-value">{formatValue("familyType", user.familyType)}</div>
+                      <div className="info-value">
+                        {formatValue("familyType", user.familyType)}
+                      </div>
                     </div>
 
                     <div className="info-item">
                       <div className="info-label">Living Arrangement</div>
                       <div className="info-value">
-                        {formatValue("livingArrangement", user.livingArrangement)}
+                        {formatValue(
+                          "livingArrangement",
+                          user.livingArrangement,
+                        )}
                       </div>
                     </div>
 
                     <div className="info-item">
                       <div className="info-label">Language</div>
-                      <div className="info-value">{formatValue("language", user.language)}</div>
+                      <div className="info-value">
+                        {formatValue("language", user.language)}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -178,24 +252,33 @@ const ProfileDetail = () => {
                   <div className="info-grid">
                     <div className="info-item">
                       <div className="info-label">Body Weight</div>
-                      <div className="info-value">{user.bodyWeight || "-"}</div>
+                      <div className="info-value">
+                        {user.bodyWeight || "-"} kg
+                      </div>
                     </div>
 
                     <div className="info-item">
                       <div className="info-label">Height</div>
-                      <div className="info-value">{user.height || "-"}</div>
+                      <div className="info-value">{user.height || "-"} cm</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="info-section">
                   <div className="section-title">Main Focus</div>
-                  {user.mainFocus ? (
-                    <div className="focus-badge">
-                      <span className="focus-icon">
-                        <img src={sleepIcon} alt={user.mainFocus} />
-                      </span>
-                      <span><span>{formatValue("mainFocus", user.mainFocus)}</span></span>
+
+                  {Array.isArray(user.mainFocus) &&
+                  user.mainFocus.length > 0 ? (
+                    <div className="d-flex flex-wrap gap-2">
+                      {user.mainFocus.map((focus, index) => (
+                        <div className="focus-badge" key={index}>
+                          <span className="focus-icon">
+                            {focusEmoji[focus]}
+                          </span>
+
+                          <span>{formatValue("mainFocus", focus)}</span>
+                        </div>
+                      ))}
                     </div>
                   ) : (
                     <p>-</p>
