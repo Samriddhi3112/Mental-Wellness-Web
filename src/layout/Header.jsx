@@ -2,7 +2,7 @@ import React from "react";
 // import user from "../assets/images/profile-image.svg";
 import leftBack from "../assets/images/left-back-icon.png";
 import notification from "../assets/images/notification-bing.svg";
-import user from "../assets/images/admin.png";
+import userImg from "../assets/images/admin.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -15,7 +15,7 @@ const Header = () => {
 
   const user = reduxUser || localUser;
 
-  const userName = user?.name || "N/A";
+  const userName = user?.name || "User";
   console.log(userData);
 
   return (
@@ -24,7 +24,7 @@ const Header = () => {
         {/* <NavLink to="/" className="back-btn">
           <img src={leftBack} alt="Left Back" />
         </NavLink> */}
-        <h3>Good Morning, {userName} </h3>
+        <h3>Good Morning, {userName}</h3>
       </div>
       <div className="d-flex align-items-center gap-3">
         <div
@@ -39,7 +39,7 @@ const Header = () => {
           <img src={notification} alt="notification" />
         </div>
         <img
-          src={user?.profilePic || user?.profileImage || user}
+          src={user?.profilePic || user?.profileImage || userImg}
           alt="User"
           className="user-avatar"
           style={{
