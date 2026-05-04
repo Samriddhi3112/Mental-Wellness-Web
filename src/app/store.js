@@ -8,7 +8,9 @@ import profileReducer from "../features/setting/profileSlice";
 import serviceReducer from "../features/services/serviceSlice";
 import moviesReducer from "../features/home/movies/moviesSlice";
 import musicReducer from "../features/home/music/musicSlice";
-import wiseYogiReducer from "../features/home/wise yogi/wiseYogiSlice"
+import wiseYogiReducer from "../features/home/wise yogi/wiseYogiSlice";
+import chatReducer from "../features/chat/chatSlice";
+import gamesReducer from "../features/home/games/gamesSlice"
 
 const store = configureStore({
   reducer: {
@@ -22,6 +24,8 @@ const store = configureStore({
      movies: moviesReducer,
      music: musicReducer,
      wiseYogi: wiseYogiReducer,
+     chat: chatReducer,
+     games: gamesReducer,
   },
 });
 

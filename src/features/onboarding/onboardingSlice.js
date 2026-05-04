@@ -8,13 +8,17 @@ export const updateUserProfile = createAsyncThunk(
     try {
       const { step1, step2, consent } = getState().onboarding;
 
+      const language = localStorage.getItem("lang") || "en"; // 👈 added
+
       const payload = {
         ...step1,
         ...step2,
         ...consent,
+        language, // 👈 yaha add kar diya
       };
 
       const token = localStorage.getItem("token");
+
       const response = await axios.post(
         `${credAndUrl.BASE_URL}/user/update-profile`,
         payload,
@@ -28,9 +32,30 @@ export const updateUserProfile = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data || "Something went wrong",
+      return rejectWithValue(error.response?.data || "Something went wrong");
+    }
+  },
+);
+
+export const analyzeOnboarding = createAsyncThunk(
+  "questions/analyzeOnboarding",
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await axios.get(
+        `${credAndUrl.BASE_URL}/gemini/analyze-onboarding`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
+
+      // ✅ yaha fix
+      return res.data?.data?.analysis; // ye sahi hai
+    } catch (err) {
+      return rejectWithValue(err.response.data);
     }
   },
 );
@@ -61,6 +86,7 @@ const initialState = {
   },
 
   loading: false,
+  analysisData: null,
   error: null,
   success: false,
 };
@@ -102,6 +128,18 @@ const onboardingSlice = createSlice({
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+
+      .addCase(analyzeOnboarding.pending, (state) => {
+        state.loading = true;
+      });
+    builder
+      .addCase(analyzeOnboarding.fulfilled, (state, action) => {
+        state.loading = false;
+        state.analysisData = action.payload;
+      })
+      .addCase(analyzeOnboarding.rejected, (state) => {
+        state.loading = false;
       });
   },
 });

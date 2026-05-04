@@ -3,28 +3,58 @@ import React from "react";
 import leftBack from "../assets/images/left-back-icon.png";
 import notification from "../assets/images/notification-bing.svg";
 import userImg from "../assets/images/admin.png";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { clearChat } from "../features/chat/chatSlice";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const location = useLocation();
   const userData = JSON.parse(localStorage.getItem("userData")) || {};
   const reduxUser = useSelector((state) => state.profile.user);
 
   const localUser = JSON.parse(localStorage.getItem("userData")) || {};
+  const user = reduxUser && reduxUser.name ? reduxUser : localUser;
+  // const user = reduxUser || localUser;
 
-  const user = reduxUser || localUser;
-
-  const userName = user?.name || "User";
+  const userName = user?.name;
   console.log(userData);
+
+  const handleBack = () => {
+    if (
+      location.pathname.startsWith("/chat-text") ||
+      location.pathname.startsWith("/chat-voice")
+    ) {
+      dispatch(clearChat());
+    }
+
+    navigate(-1);
+  };
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+
+    if (hour < 12) return t("goodMorning");
+    if (hour < 18) return t("goodAfternoon");
+    return t("goodEvening");
+  };
 
   return (
     <div className="header">
-      <div className="header-left">
-        {/* <NavLink to="/" className="back-btn">
-          <img src={leftBack} alt="Left Back" />
-        </NavLink> */}
-        <h3>Good Morning, {userName}</h3>
+      <div className="d-flex align-items-center gap-2">
+        <img
+          src={leftBack}
+          alt="back"
+          style={{ cursor: "pointer", width: "20px" }}
+          onClick={handleBack}
+        />
+        <h3 style={{ margin: 0, color: "white" }}>
+          {getGreeting()} {userName}
+        </h3>
       </div>
       <div className="d-flex align-items-center gap-3">
         <div

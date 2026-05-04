@@ -31,27 +31,27 @@ const Step3 = () => {
     });
   };
 
-  const handleSubmit = async () => {
-    if (!consent.privacy_policy || !consent.ai_consent) {
-      toast.error("Please accept Privacy Policy and AI Consent to continue");
-      return;
-    }
+  // const handleSubmit = async () => {
+  //   if (!consent.privacy_policy || !consent.ai_consent) {
+  //     toast.error("Please accept Privacy Policy and AI Consent to continue");
+  //     return;
+  //   }
 
-    try {
-      await dispatch(updateUserProfile()).unwrap();
+  //   try {
+  //     await dispatch(updateUserProfile()).unwrap();
 
-      toast.success("Profile updated successfully");
-      navigate("/screen1");
-    } catch (error) {
-      const message = error?.message || "";
+  //     toast.success("Profile updated successfully");
+  //     navigate("/screen1");
+  //   } catch (error) {
+  //     const message = error?.message || "";
 
-      const errors = message.split(",");
+  //     const errors = message.split(",");
 
-      errors.forEach((err) => {
-        toast.error(err.trim());
-      });
-    }
-  };
+  //     errors.forEach((err) => {
+  //       toast.error(err.trim());
+  //     });
+  //   }
+  // };
 
   return (
     <div className="container-fluid">
@@ -186,12 +186,12 @@ const Step3 = () => {
                 <button
                   type="button"
                   className="btn-primary-orange"
-                  onClick={handleSubmit}
+                  onClick={()=> navigate('/step-language')}
                   disabled={
                     loading
                   }
                 >
-                  {loading ? "Submitting..." : "Agree & Continue"}
+                  {loading ? "Submitting..." : "Continue"}
                 </button>
 
                 <p className="text-center mt-3 footer-text">

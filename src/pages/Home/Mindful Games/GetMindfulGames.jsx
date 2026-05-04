@@ -1,53 +1,41 @@
 import React from "react";
-import mindfulOne from "../../../assets/images/mindful-one.png";
-import mindfulTwo from "../../../assets/images/mindful-two.png";
-import mindfulThree from "../../../assets/images/mindful-three.png";
-import mindfulFour from "../../../assets/images/mindful-four.png";
-import mindfulFive from "../../../assets/images/mindful-five.png";
+import { useDispatch, useSelector } from "react-redux";
+import { openGame } from "../../../features/home/games/gamesSlice";
+import img1 from "../../../assets/images/mindful-one.png";
+import img2 from "../../../assets/images/mindful-two.png";
+import img3 from "../../../assets/images/mindful-three.png";
+import img4 from "../../../assets/images/mindful-four.png";
+import img5 from "../../../assets/images/mindful-five.png";
 
 const GetMindfulGames = () => {
+  const dispatch = useDispatch();
+  const { games } = useSelector((state) => state.games);
+
+  const imageMap = {
+  1: img1,
+  2: img2,
+  3: img3,
+  4: img4,
+  5: img5,
+};
+
   return (
     <div className="main-content">
       <div className="activities-grid">
-        <div className="activity-card">
-          <div className="activity-icon icon-puzzle">
-            <img src={mindfulOne} alt="2048" />
+        {games.map((game) => (
+          <div
+            key={game.id}
+            className="activity-card"
+            onClick={() => dispatch(openGame(game.endpoint))}
+            style={{ cursor: "pointer" }}
+          >
+            <div className="activity-icon">
+              <img src={imageMap[game.id]} alt={game.title} />
+            </div>
+            <h4>{game.title}</h4>
+            <p>{game.desc}</p>
           </div>
-          <h4>2048</h4>
-          <p>Classic Puzzle Game</p>
-        </div>
-
-        <div className="activity-card">
-          <div className="activity-icon icon-edit">
-            <img src={mindfulTwo} alt="Memory Match" />
-          </div>
-          <h4>Memory Match</h4>
-          <p>Pairs Game</p>
-        </div>
-
-        <div className="activity-card">
-          <div className="activity-icon icon-movie">
-            <img src={mindfulThree} alt="Breathing" />
-          </div>
-          <h4>Breathing</h4>
-          <p>Relaxation Game</p>
-        </div>
-
-        <div className="activity-card">
-          <div className="activity-icon icon-music">
-            <img src={mindfulFour} alt="Simple Zen" />
-          </div>
-          <h4>Simple Zen</h4>
-          <p>Drawing Game</p>
-        </div>
-
-        <div className="activity-card">
-          <div className="activity-icon icon-yoga">
-            <img src={mindfulFive} alt="Block Puzzle" />
-          </div>
-          <h4>Block Puzzle</h4>
-          <p>Puzzle Game</p>
-        </div>
+        ))}
       </div>
     </div>
   );

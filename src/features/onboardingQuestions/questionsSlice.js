@@ -4,6 +4,7 @@ import { credAndUrl } from "../../utils/config";
 
 const initialState = {
   questions: [],
+  data:null,
   currentQuestionIndex: 0,
   loading: false,
 };
@@ -15,7 +16,7 @@ export const getOnboardingQuestions = createAsyncThunk(
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        `${credAndUrl.BASE_URL}/admin/onboarding-questions`,
+        `${credAndUrl.BASE_URL}/user/onboarding-questions`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -45,14 +46,14 @@ export const submitAnswers = createAsyncThunk(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response?.data);
     }
-  }
+  },
 );
 
 const questionsSlice = createSlice({
@@ -64,16 +65,19 @@ const questionsSlice = createSlice({
       state.currentQuestionIndex = 0;
     },
     nextQuestion: (state) => {
-      if (state.currentQuestionIndex < state.questions.length - 1) {
-        state.currentQuestionIndex += 1;
-      }
-    },
+  if (
+    state.currentQuestionIndex <
+    (state.data?.questions?.length || 0) - 1
+  ) {
+    state.currentQuestionIndex += 1;
+  }
+},
 
-    prevQuestion: (state) => {
-      if (state.currentQuestionIndex > 0) {
-        state.currentQuestionIndex -= 1;
-      }
-    },
+prevQuestion: (state) => {
+  if (state.currentQuestionIndex > 0) {
+    state.currentQuestionIndex -= 1;
+  }
+},
   },
 
   extraReducers: (builder) => {
@@ -84,15 +88,25 @@ const questionsSlice = createSlice({
 
       .addCase(getOnboardingQuestions.fulfilled, (state, action) => {
         state.loading = false;
-        state.questions = action.payload.data;
+        state.data = action.payload.data;
       })
 
       .addCase(getOnboardingQuestions.rejected, (state) => {
+        state.loading = false;
+      })
+      .addCase(submitAnswers.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(submitAnswers.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(submitAnswers.rejected, (state) => {
         state.loading = false;
       });
   },
 });
 
-export const { nextQuestion, prevQuestion, resetQuestionIndex  } = questionsSlice.actions;
+export const { nextQuestion, prevQuestion, resetQuestionIndex } =
+  questionsSlice.actions;
 
 export default questionsSlice.reducer;

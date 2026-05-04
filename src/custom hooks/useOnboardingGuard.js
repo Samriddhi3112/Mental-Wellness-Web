@@ -12,8 +12,8 @@ const useOnboardingGuard = () => {
     const lastShown = localStorage.getItem("onboarding_last_shown");
 
     const now = Date.now();
-    // const DAY_24 = 24 * 60 * 60 * 1000; //24hrs
-    const DAY_24 = 60 * 1000; // 1 min
+    const DAY_24 = 24 * 60 * 60 * 1000; //24hrs
+    // const DAY_24 = 60 * 1000; // 1 min
 
     const neverDone = !lastShown;
     const expired = lastShown && now - lastShown > DAY_24;

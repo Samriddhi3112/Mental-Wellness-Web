@@ -21,10 +21,19 @@ import LoginTermsOfServices from "../pages/Conditions/LoginTermsOfServices";
 import Language from "../pages/Profile/language";
 import GetMindfulGames from "../pages/Home/Mindful Games/GetMindfulGames";
 import MoviesHome from "../pages/Home/Movies/MoviesHome";
-import MoviesDetail from "../pages/Home/Movies/MoviesDetail"
+import MoviesDetail from "../pages/Home/Movies/MoviesDetail";
 import CalmMusicListing from "../pages/Home/Calm Music/CalmMusicListing";
 import WiseYogiListing from "../pages/Home/Wise Yogi/WiseYogiListing";
 import WiseYogiDetail from "../pages/Home/Wise Yogi/WiseYogiDetail";
+import Step4ThanksForSharing from "../pages/OnboardingSteps/Step4ThanksForSharing";
+import ChatSidebar from "../pages/Home/Chat/ChatSidebar";
+import ChatHomeScreen from "../pages/Home/Chat/ChatHomeScreen";
+import ChatToText from "../pages/Home/Chat/ChatToText";
+import Step5Language from "../pages/OnboardingSteps/Step5Language";
+import ChatToVoice from "../pages/Home/Chat/ChatToVoice";
+import ChatHistory from "../pages/Home/Chat/ChatHistory";
+// import MemoryGame from "../pages/Home/Mindful Games/MemoryGame";
+// import BreathingGame from "../pages/Home/Mindful Games/BreathingGames";
 
 const AppRoutes = () => {
   const { jwtToken } = useSelector((state) => state.auth);
@@ -40,12 +49,15 @@ const AppRoutes = () => {
       <Route path="/onboarding2" element={<Step2 />} />
       <Route path="/onboarding3" element={<Step3 />} />
       <Route path="/screen1" element={<Screen1 />} />
+      <Route path="/step-4" element={<Step4ThanksForSharing />} />
+      <Route path="/step-language" element={<Step5Language />} />
       <Route path="/guest-settings/loginPrivacy" element={<LoginPrivacy />} />
       <Route
         path="/guest-settings/loginTermsOfServices"
         element={<LoginTermsOfServices />}
       />
       <Route path="/guest-settings" element={<GuestSettingOptions />} />
+      <Route path="/here-to-help" element={<HereToHelp />} />
 
       <Route element={<ProtectedRoutes />}>
         <Route element={<AppLayout />}>
@@ -74,8 +86,23 @@ const AppRoutes = () => {
           <Route path="/home/moviesHome" element={<MoviesHome />} />
           <Route path="/home/musicHome" element={<CalmMusicListing />} />
           <Route path="/home/wiseYogi" element={<WiseYogiListing />} />
-          <Route path="/home/moviesHome/moviesDetail" element={<MoviesDetail />} />
-          <Route path="/home/wiseyogiHome/wiseyogiDetail" element={<WiseYogiDetail />} />
+          <Route
+            path="/home/moviesHome/moviesDetail"
+            element={<MoviesDetail />}
+          />
+          <Route
+            path="/home/wiseyogiHome/wiseyogiDetail"
+            element={<WiseYogiDetail />}
+          />
+          {/* <Route path="/chat-home" element={<ChatHomeScreen />} /> */}
+          {/* <Route path="/chat-text" element={<ChatToText />} /> */}
+          <Route path="/chat-sidebar" element={<ChatSidebar />} />
+          <Route path="/chat" element={<ChatHomeScreen />} />
+        <Route path="/chat-text/:chatId" element={<ChatToText />} />
+        <Route path="/chat-voice/:chatId" element={<ChatToVoice />} />
+        <Route path="/chat-history/:chatId" element={<ChatHistory />} />
+          {/* <Route path="/home/memory-game" element={<MemoryGame />} />
+          <Route path="/home/breathing-game" element={<BreathingGame />} /> */}
         </Route>
       </Route>
 

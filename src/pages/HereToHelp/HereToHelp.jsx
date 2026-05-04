@@ -15,17 +15,20 @@ import emergencyTop from "../../assets/images/emergency-logo-top.svg";
 import EmergencyModal from "../../components/modals/EmergencyModal";
 import TalkToAiModal from "../../components/modals/TalkToAiModal";
 import TalkToAiSettingsModal from "../../components/modals/TalkToAiSettingsModal";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useDisableNavigation from "../../custom hooks/useDisableNavigation";
+import { useTranslation } from "react-i18next";
 
 const HereToHelp = () => {
-
+  useDisableNavigation();
   const [showEmergency, setShowEmergency] = useState(false);
   const [showTalkAi, setShowTalkAi] = useState(false);
   const [showTalkAiSettings, setShowTalkAiSettings] = useState(false);
+  const { t } = useTranslation();
 
-//   useEffect(() => {
-//     setShowEmergencyModal(true);
-//   }, []);
+  //   useEffect(() => {
+  //     setShowEmergencyModal(true);
+  //   }, []);
 
   return (
     <div>
@@ -38,26 +41,24 @@ const HereToHelp = () => {
                   <img src={logo} alt="Logo" />
                 </div>
               </div>
-              <NavLink to="/" className="back-btn">
+              {/* <NavLink to="/" className="back-btn">
                 <img src={backIcon} alt="back-icon" />
                 Back
-              </NavLink>
+              </NavLink> */}
               <div className="text-center">
                 <div className="meditation-illustration">
                   <img src={meditation} alt="meditation" />
                 </div>
                 <div>
-                  <p className="copyright">
-                    © 2026 Serene Wellness App. All rights reserved.
-                  </p>
+                  <p className="copyright">{t("copyright")}</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-lg-6 d-flex align-items-center justify-content-center">
             <div className="login-right">
-              <h2 className="welcome-title">Here to help</h2>
-              <p className="welcome-description">Take a moment for yourself.</p>
+              <h2 className="welcome-title">{t("hereToHelp")}</h2>
+              <p className="welcome-description">{t("takeMoment")}</p>
               <div className="feature-main-box">
                 <div className="row g-3 mb-4">
                   <div className="col-6">
@@ -68,10 +69,8 @@ const HereToHelp = () => {
                       <div className="feature-icon">
                         <img src={talktoai} alt />
                       </div>
-                      <div className="feature-title">Talk to AI</div>
-                      <div className="feature-subtitle">
-                        A safe space to talk
-                      </div>
+                      <div className="feature-title">{t("talkToAI")}</div>
+                      <div className="feature-subtitle">{t("safeSpace")}</div>
                     </div>
                   </div>
                   <div className="col-6">
@@ -79,8 +78,10 @@ const HereToHelp = () => {
                       <div className="feature-icon">
                         <img src={calmmusic} alt />
                       </div>
-                      <div className="feature-title">Calm Music</div>
-                      <div className="feature-subtitle">Relaxing sounds</div>
+                      <div className="feature-title">{t("calmMusic")}</div>
+                      <div className="feature-subtitle">
+                        {t("relaxingSounds")}
+                      </div>
                     </div>
                   </div>
                   <div className="col-6">
@@ -88,8 +89,12 @@ const HereToHelp = () => {
                       <div className="feature-icon">
                         <img src={guidedmeditation} alt />
                       </div>
-                      <div className="feature-title">Guided Meditation</div>
-                      <div className="feature-subtitle">Find your calm</div>
+                      <div className="feature-title">
+                        {t("guidedMeditation")}
+                      </div>
+                      <div className="feature-subtitle">
+                        {t("findYourCalm")}
+                      </div>
                     </div>
                   </div>
                   <div className="col-6">
@@ -97,10 +102,10 @@ const HereToHelp = () => {
                       <div className="feature-icon">
                         <img src={exercise} alt />
                       </div>
-                      <div className="feature-title">Breathing Exercise</div>
-                      <div className="feature-subtitle">
-                        A safe space to talk
+                      <div className="feature-title">
+                        {t("breathingExercise")}
                       </div>
+                      <div className="feature-subtitle">{t("safeSpace")}</div>
                     </div>
                   </div>
                   <div className="col-6">
@@ -131,7 +136,7 @@ const HereToHelp = () => {
                   <div className="d-flex align-items-center gap-3">
                     <img src={emergency} alt />
                     <div className="text-start">
-                      <div>Emergency Help</div>
+                      <div>{t("emergencyHelp")}</div>
                       <small
                         style={{
                           fontSize: 13,
@@ -139,41 +144,41 @@ const HereToHelp = () => {
                           opacity: "0.9",
                         }}
                       >
-                        Get immediate support
+                        {t("getImmediateSupport")}
                       </small>
                     </div>
                   </div>
                   <img src={emergencyarrow} alt />
                 </button>
-                {/* <p className="text-center mt-4 footer-text">
-                  <a href="#" className="text-link">
-                    Login to save your progress
-                  </a>
-                </p> */}
+                <p className="text-center mt-4 footer-text">
+                  <Link to="/home" className="text-link">
+                    {t("goToHome")}
+                  </Link>
+                </p>
               </div>
-              <p className="text-center english">English (US)</p>
+              <p className="text-center english">{t("currentLanguageLabel")}</p>
             </div>
           </div>
         </div>
       </div>
       <EmergencyModal
-  show={showEmergency}
-  onClose={() => setShowEmergency(false)}
-/>
+        show={showEmergency}
+        onClose={() => setShowEmergency(false)}
+      />
 
-<TalkToAiModal
-  show={showTalkAi}
-  onClose={() => setShowTalkAi(false)}
-  onContinue={() => {
-    setShowTalkAi(false);
-    setShowTalkAiSettings(true);
-  }}
-/>
+      <TalkToAiModal
+        show={showTalkAi}
+        onClose={() => setShowTalkAi(false)}
+        onContinue={() => {
+          setShowTalkAi(false);
+          setShowTalkAiSettings(true);
+        }}
+      />
 
-<TalkToAiSettingsModal
-  show={showTalkAiSettings}
-  onClose={() => setShowTalkAiSettings(false)}
-/>
+      <TalkToAiSettingsModal
+        show={showTalkAiSettings}
+        onClose={() => setShowTalkAiSettings(false)}
+      />
     </div>
   );
 };

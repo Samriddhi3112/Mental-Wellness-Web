@@ -7,6 +7,7 @@ import "./assets/css/style.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './i18n.js'
 
 import { Provider } from "react-redux";
 import  store from "./app/store.js";

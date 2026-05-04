@@ -8,10 +8,133 @@
   max-width: 300px;  
   width: 90%;
 }
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .form-control.active-focus {
   border: 2px solid #ff7a00 !important;
   background-color: #fff3e8 !important;
   color: #ff7a00;
+}
+
+.voice-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 30, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.voice-modal {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 25px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* 🎤 Mic Animation */
+.mic-wrapper {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin: auto;
+}
+
+.mic-core {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #4cafef, #6a5cff);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: #fff;
+  z-index: 2;
+  position: relative;
+}
+
+/* Rings Animation */
+.ring {
+  position: absolute;
+  border: 2px solid #4cafef;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  animation: ripple 2s infinite;
+  opacity: 0.6;
+}
+
+.ring1 {
+  animation-delay: 0s;
+}
+.ring2 {
+  animation-delay: 0.5s;
+}
+.ring3 {
+  animation-delay: 1s;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.voice-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999; /* 🔥 VERY IMPORTANT */
+}
+
+.voice-modal {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 300px;
+  z-index: 1000000;
+  position: relative;
 }
 .language-select {
   appearance: none;

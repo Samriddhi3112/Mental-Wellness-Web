@@ -16,16 +16,13 @@ const MoviesHome = () => {
 
   // Filter movies by category
   const filteredMovies =
-    activeFilter === "All Videos"
-      ? movies
-      : movies.filter((movie) => movie.category === activeFilter);
+  activeFilter === "All Videos"
+    ? movies
+    : movies.filter((movie) => movie.category === activeFilter);
 
   const filters = [
     "All Videos",
-    "Relaxation",
-    "Meditation",
-    "Sleep",
-    "Mindfulness",
+    ...new Set(movies.map((movie) => movie.category)),
   ];
 
   return (

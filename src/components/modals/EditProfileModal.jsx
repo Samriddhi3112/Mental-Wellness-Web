@@ -6,10 +6,12 @@ import {
   fetchUserProfile,
 } from "../../features/setting/profileSlice";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const EditProfileModal = ({ show, onClose, user }) => {
   const dispatch = useDispatch();
   const [step, setStep] = useState(1);
+  const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -142,7 +144,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
               {step === 1 && (
                 <>
                   <div className="mb-3">
-                    <label className="form-label">Step 1 of 2</label>
+                    {/* <label className="form-label">Step 1 of 2</label> */}
+                    <label className="form-label">{t("step1")}</label>
                     <div className="progress">
                       <div
                         className="progress-bar"
@@ -152,7 +155,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Name or Nickname</label>
+                    <label className="form-label">{t("nameNickname")}</label>
+                    {/* <label className="form-label">Name or Nickname</label> */}
                     <input
                       type="text"
                       className="form-control"
@@ -163,7 +167,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Age</label>
+                    <label className="form-label">{t("age")}</label>
+                    {/* <label className="form-label">Age</label> */}
                     <input
                       type="number"
                       className="form-control"
@@ -174,7 +179,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Sex/Gender</label>
+                    <label className="form-label">{t("gender")}</label>
+                    {/* <label className="form-label">Sex/Gender</label> */}
                     <div className="custom-select-wrapper">
                       <select
                         className="form-control custom-select"
@@ -182,8 +188,11 @@ const EditProfileModal = ({ show, onClose, user }) => {
                         value={formData.gender}
                         onChange={handleChange}
                       >
-                        <option value="">Select</option>
-                        <option value="male">Male</option>
+                        <option value="">{t("select")}</option>
+                        <option value="">Select</option> 
+                         <option value="male">Male</option>
+                        {/* <option value="male">{t("male")}</option>
+                        <option value="female">{t("female")}</option> */}
                         <option value="female">Female</option>
                       </select>
                     </div>
@@ -191,7 +200,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
 
                   <div className="row mb-3">
                     <div className="col-6">
-                      <label className="form-label">Body Weight (kg)</label>
+                      <label className="form-label">{t("bodyWeight")}</label>
+                      {/* <label className="form-label">Body Weight (kg)</label> */}
                       <input
                         type="text"
                         className="form-control"
@@ -202,7 +212,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
                     </div>
 
                     <div className="col-6">
-                      <label className="form-label">Height (cm)</label>
+                      <label className="form-label">{t("height")}</label>
+                      {/* <label className="form-label">Height (cm)</label> */}
                       <input
                         type="text"
                         className="form-control"
@@ -214,7 +225,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Education Level</label>
+                    <label className="form-label">{t("educationLevel")}</label>
+                    {/* <label className="form-label">Education Level</label> */}
                     <div className="custom-select-wrapper">
                       <select
                         className="form-control custom-select"
@@ -223,6 +235,13 @@ const EditProfileModal = ({ show, onClose, user }) => {
                         onChange={handleChange}
                       >
                         <option value="">Select</option>
+                        {/* <option value="">{t("select")}</option>
+                        <option value="high_school">{t("highSchool")}</option>
+                        <option value="diploma">{t("diploma")}</option>
+                        <option value="bachelors">{t("bachelors")}</option>
+                        <option value="masters">{t("masters")}</option>
+                        <option value="phd">{t("phd")}</option>
+                        <option value="other">{t("other")}</option> */}
                         <option value="high_school">High School</option>
                         <option value="diploma">Diploma</option>
                         <option value="bachelors">Bachelors</option>
@@ -234,7 +253,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Occupation</label>
+                    <label className="form-label">{t("occupation")}</label>
+                    {/* <label className="form-label">Occupation</label> */}
                     <input
                       type="text"
                       className="form-control"
@@ -248,7 +268,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                     className="btn-primary-orange"
                     onClick={() => setStep(2)}
                   >
-                    Continue <img src={rightArrow} alt="" />
+                    {t("continue")} <img src={rightArrow} alt="" />
                   </button>
                 </>
               )}
@@ -258,7 +278,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
               {step === 2 && (
                 <>
                   <div className="mb-3">
-                    <label className="form-label">Step 2 of 2</label>
+                    {/* <label className="form-label">Step 2 of 2</label> */}
+                    <label className="form-label">{t("step2")}</label>
                     <div className="progress">
                       <div
                         className="progress-bar"
@@ -269,7 +290,10 @@ const EditProfileModal = ({ show, onClose, user }) => {
 
                   <div className="row mb-3">
                     <div className="col-6">
-                      <label className="form-label">Place of Residence</label>
+                      <label className="form-label">
+                        {t("placeOfResidence")}
+                      </label>
+                      {/* <label className="form-label">Place of Residence</label> */}
                       <input
                         type="text"
                         className="form-control"
@@ -280,7 +304,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
                     </div>
 
                     <div className="col-6">
-                      <label className="form-label">Marital Status</label>
+                      <label className="form-label">{t("maritalStatus")}</label>
+                      {/* <label className="form-label">Marital Status</label> */}
                       <div className="custom-select-wrapper">
                         <select
                           className="form-control custom-select"
@@ -289,6 +314,14 @@ const EditProfileModal = ({ show, onClose, user }) => {
                           onChange={handleChange}
                         >
                           <option value="">Select</option>
+                          {/* <option value="">{t("select")}</option>
+                          <option value="single">{t("single")}</option>
+                          <option value="married">{t("married")}</option>
+                          <option value="divorced">{t("divorced")}</option>
+                          <option value="widowed">{t("widowed")}</option>
+                          <option value="prefer_not_to_say">
+                            {t("preferNotSay")}
+                          </option> */}
                           <option value="single">Single</option>
                           <option value="married">Married</option>
                           <option value="divorced">Divorced</option>
@@ -302,7 +335,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Family Type</label>
+                    <label className="form-label">{t("familyType")}</label>
+                    {/* <label className="form-label">Family Type</label> */}
                     <div className="custom-select-wrapper">
                       <select
                         className="form-control custom-select"
@@ -311,6 +345,11 @@ const EditProfileModal = ({ show, onClose, user }) => {
                         onChange={handleChange}
                       >
                         <option value="">Select</option>
+                        {/* <option value="">{t("select")}</option>
+                        <option value="nuclear">{t("nuclear")}</option>
+                        <option value="joint">{t("joint")}</option>
+                        <option value="extended">{t("extended")}</option>
+                        <option value="other">{t("other")}</option> */}
                         <option value="nuclear">Nuclear</option>
                         <option value="joint">Joint</option>
                         <option value="extended">Extended</option>
@@ -320,7 +359,10 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Living Arrangement</label>
+                    <label className="form-label">
+                      {t("livingArrangement")}
+                    </label>
+                    {/* <label className="form-label">Living Arrangement</label> */}
                     <div className="custom-select-wrapper">
                       <select
                         className="form-control custom-select"
@@ -328,6 +370,15 @@ const EditProfileModal = ({ show, onClose, user }) => {
                         value={formData.livingArrangement}
                         onChange={handleChange}
                       >
+                        {/* <option value="">{t("select")}</option>
+                        <option value="">{t("select")}</option>
+                        <option value="with_family">{t("withFamily")}</option>
+                        <option value="alone">{t("alone")}</option>
+                        <option value="with_partner">{t("withPartner")}</option>
+                        <option value="with_roommates">
+                          {t("withRoommates")}
+                        </option>
+                        <option value="other">{t("other")}</option> */}
                         <option value="">Select</option>
                         <option value="with_family">With Family</option>
                         <option value="alone">Alone</option>
@@ -339,7 +390,8 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Language</label>
+                    <label className="form-label">{t("language")}</label>
+                    {/* <label className="form-label">Language</label> */}
                     <div className="custom-select-wrapper">
                       <select
                         className="form-control custom-select"
@@ -348,6 +400,12 @@ const EditProfileModal = ({ show, onClose, user }) => {
                         onChange={handleChange}
                       >
                         <option value="">Select</option>
+                        {/* <option value="">{t("select")}</option>
+                        <option value="english">{t("english")}</option>
+                        <option value="hindi">{t("hindi")}</option>
+                        <option value="arabic">{t("arabic")}</option>
+                        <option value="spanish">{t("spanish")}</option>
+                        <option value="french">{t("french")}</option> */}
                         <option value="english">English</option>
                         <option value="hindi">Hindi</option>
                         <option value="arabic">Arabic</option>
@@ -359,7 +417,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
 
                   <div className="form-group">
                     <label className="form-label">
-                      What is your main focus?
+                     {t("mainFocusQuestion")}
                     </label>
 
                     <div className="row">
@@ -409,7 +467,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                       className="btn border w-50"
                       onClick={() => setStep(1)}
                     >
-                      Back
+                      {t("back")}
                     </button>
 
                     <button
@@ -417,7 +475,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                       className="btn-primary-orange w-50"
                       onClick={handleSave}
                     >
-                      Save <img src={rightArrow} alt="" />
+                      {t("save")} <img src={rightArrow} alt="" />
                     </button>
                   </div>
                 </>

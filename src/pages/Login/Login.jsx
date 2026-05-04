@@ -11,8 +11,10 @@ import apple from "../../assets/images/apple.svg";
 import facebook from "../../assets/images/facebook.svg";
 
 import { checkUserExists } from "../../features/auth/authSlice";
+import useDisableNavigation from "../../custom hooks/useDisableNavigation";
 
 const Login = () => {
+  useDisableNavigation()
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -213,7 +215,7 @@ const Login = () => {
             </div>
 
             <div className="d-grid gap-3">
-              <GoogleLogin
+              {/* <GoogleLogin
                 onSuccess={async (credentialResponse) => {
                   try {
                     const idToken = credentialResponse.credential;
@@ -272,7 +274,65 @@ const Login = () => {
                 onError={() => {
                   toast.error("Google Login Failed");
                 }}
-              />
+              /> */}
+              <GoogleLogin
+  onSuccess={async (credentialResponse) => {
+    try {
+      const idToken = credentialResponse.credential;
+      const decoded = parseJwt(idToken);
+
+      const payload = {
+        idToken,
+        provider: "google",
+        email: decoded?.email || "",
+        deviceToken: "",
+        fcmToken: "",
+        apnToken: "",
+      };
+
+      const res = await fetch(
+        "http://15.206.16.230:7374/api/v1/user/social-login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const data = await res.json();
+
+      if (res.ok) {
+        const user = data?.data?.user;
+
+        // ✅ localStorage
+        localStorage.setItem("token", data?.data?.token);
+        localStorage.setItem("userId", user?._id);
+        localStorage.setItem("userData", JSON.stringify(user));
+
+        // ✅ REDUX UPDATE (MOST IMPORTANT)
+        dispatch(setUser(user));
+
+        toast.success(data?.message || "Login successful");
+
+        if (user?.isConsultationFormFilled) {
+          navigate("/home", { replace: true });
+        } else {
+          navigate("/onboarding1", { replace: true });
+        }
+      } else {
+        toast.error(data?.message);
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Google login failed");
+    }
+  }}
+  onError={() => {
+    toast.error("Google Login Failed");
+  }}
+/>
               {/* <button
                 onClick={() => handleGoogleLogin()}
                 className="social-btn"

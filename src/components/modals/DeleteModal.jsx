@@ -4,48 +4,56 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { deleteAccount } from "../../features/setting/settingSlice";
 import { clearProfile } from "../../features/setting/profileSlice";
+import { useTranslation } from "react-i18next";
 
 const DeleteModal = ({ show, onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
   const handleDelete = async () => {
-  setLoading(true);
-  try {
-    await dispatch(deleteAccount()).unwrap();
+    setLoading(true);
+    try {
+      await dispatch(deleteAccount()).unwrap();
 
-    toast.success(
-      "Your account has been deleted successfully. Contact support to reactivate."
-    );
+      toast.success(t("deleteSuccess"));
 
-    localStorage.clear();
-    sessionStorage.clear();
-    dispatch(clearProfile());
-    onClose();
-    navigate("/login", { replace: true });
-  } catch (err) {
-    console.error("Delete failed:", err);
-    toast.error(err?.message || "Failed to delete account");
-  } finally {
-    setLoading(false);
-  }
-};
+      localStorage.clear();
+      sessionStorage.clear();
+      dispatch(clearProfile());
+      onClose();
+      navigate("/login", { replace: true });
+    } catch (err) {
+      console.error("Delete failed:", err);
+      toast.error(err?.message || t("deleteFailed"));
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (!show) return null;
 
   return (
     <div className="modal-backdropD">
       <div className="modal-content delete-modal">
-        <h3>Delete Account</h3>
-        <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+        <h3>{t("deleteAccountTitle")}</h3>
+        <p>{t("deleteAccountDesc")}</p>
 
         <div className="modal-actions">
-          <button className="logout-cancel" onClick={onClose} disabled={loading}>
-            Cancel
+          <button
+            className="logout-cancel"
+            onClick={onClose}
+            disabled={loading}
+          >
+            {t("cancel")}
           </button>
-          <button className="logout-confirm" onClick={handleDelete} disabled={loading}>
-            {loading ? "Deleting..." : "Delete"}
+          <button
+            className="logout-confirm"
+            onClick={handleDelete}
+            disabled={loading}
+          >
+            {loading ? t("deleting") : t("delete")}
           </button>
         </div>
       </div>
