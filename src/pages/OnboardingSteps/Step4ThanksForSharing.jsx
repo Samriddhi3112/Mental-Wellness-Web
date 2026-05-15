@@ -3,12 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { analyzeOnboarding } from "../../features/onboarding/onboardingSlice";
 
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo-dark.svg";
 import meditationImg from "../../assets/images/meditation-two.png";
 import thanksIcon from "../../assets/images/thnks-for-sharing-icon.svg";
 import rightArrow from "../../assets/images/right-arrow-icon.png";
 
-// fallback icons (cycle ho jayenge)
 import icon1 from "../../assets/images/thnks-for-sharing-one.svg";
 import icon2 from "../../assets/images/thnks-for-sharing-two.svg";
 import icon3 from "../../assets/images/thnks-for-sharing-three.svg";

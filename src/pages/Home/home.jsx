@@ -56,7 +56,7 @@ const Home = () => {
             <p>Play, Relax, Focus</p> */}
           </div>
 
-          <div className="activity-card">
+          <div className="activity-card" onClick={() => navigate("/home/secret-journal")}>
             <div className="activity-icon icon-edit">
               <img src={journal} alt="" />
             </div>

@@ -79,6 +79,8 @@ const resources = {
       bodyWeight: "Body Weight",
       height: "Height",
       mainFocus: "Main Focus",
+      
+ConsulationBooking:"Consulation Booking",
 
       male: "Male",
       female: "Female",

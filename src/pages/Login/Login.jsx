@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { GoogleLogin } from "@react-oauth/google";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo-dark.svg";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-one.png";
 import google from "../../assets/images/google.svg";
@@ -14,7 +14,7 @@ import { checkUserExists } from "../../features/auth/authSlice";
 import useDisableNavigation from "../../custom hooks/useDisableNavigation";
 
 const Login = () => {
-  useDisableNavigation()
+  useDisableNavigation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -276,63 +276,63 @@ const Login = () => {
                 }}
               /> */}
               <GoogleLogin
-  onSuccess={async (credentialResponse) => {
-    try {
-      const idToken = credentialResponse.credential;
-      const decoded = parseJwt(idToken);
+                onSuccess={async (credentialResponse) => {
+                  try {
+                    const idToken = credentialResponse.credential;
+                    const decoded = parseJwt(idToken);
 
-      const payload = {
-        idToken,
-        provider: "google",
-        email: decoded?.email || "",
-        deviceToken: "",
-        fcmToken: "",
-        apnToken: "",
-      };
+                    const payload = {
+                      idToken,
+                      provider: "google",
+                      email: decoded?.email || "",
+                      deviceToken: "",
+                      fcmToken: "",
+                      apnToken: "",
+                    };
 
-      const res = await fetch(
-        "http://15.206.16.230:7374/api/v1/user/social-login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+                    const res = await fetch(
+                      "http://15.206.16.230:7374/api/v1/user/social-login",
+                      {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(payload),
+                      },
+                    );
 
-      const data = await res.json();
+                    const data = await res.json();
 
-      if (res.ok) {
-        const user = data?.data?.user;
+                    if (res.ok) {
+                      const user = data?.data?.user;
 
-        // ✅ localStorage
-        localStorage.setItem("token", data?.data?.token);
-        localStorage.setItem("userId", user?._id);
-        localStorage.setItem("userData", JSON.stringify(user));
+                      // ✅ localStorage
+                      localStorage.setItem("token", data?.data?.token);
+                      localStorage.setItem("userId", user?._id);
+                      localStorage.setItem("userData", JSON.stringify(user));
 
-        // ✅ REDUX UPDATE (MOST IMPORTANT)
-        dispatch(setUser(user));
+                      // ✅ REDUX UPDATE (MOST IMPORTANT)
+                      dispatch(setUser(user));
 
-        toast.success(data?.message || "Login successful");
+                      toast.success(data?.message || "Login successful");
 
-        if (user?.isConsultationFormFilled) {
-          navigate("/home", { replace: true });
-        } else {
-          navigate("/onboarding1", { replace: true });
-        }
-      } else {
-        toast.error(data?.message);
-      }
-    } catch (err) {
-      console.error(err);
-      toast.error("Google login failed");
-    }
-  }}
-  onError={() => {
-    toast.error("Google Login Failed");
-  }}
-/>
+                      if (user?.isConsultationFormFilled) {
+                        navigate("/home", { replace: true });
+                      } else {
+                        navigate("/onboarding1", { replace: true });
+                      }
+                    } else {
+                      toast.error(data?.message);
+                    }
+                  } catch (err) {
+                    console.error(err);
+                    toast.error("Google login failed");
+                  }
+                }}
+                onError={() => {
+                  toast.error("Google Login Failed");
+                }}
+              />
               {/* <button
                 onClick={() => handleGoogleLogin()}
                 className="social-btn"

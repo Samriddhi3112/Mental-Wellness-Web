@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo-dark.svg";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-two.png";
 import rightarrowicon from "../../assets/images/right-arrow-icon.png";
@@ -71,13 +71,9 @@ const Step1 = () => {
     if (
       !name ||
       !age ||
-      !gender ||
-      !bodyWeight ||
-      !height ||
-      !educationLevel ||
-      !occupation
+      !gender 
     ) {
-      toast.error("All fields are required");
+      toast.error("Name , Age and Gender are required");
       return;
     }
     const payload = {
@@ -141,7 +137,7 @@ const Step1 = () => {
               <form>
                 {/* Name */}
                 <div className="form-group">
-                  <label className="form-label">Name or Nickname</label>
+                  <label className="form-label">Name or Nickname <span style={{ color: "red" }}>*</span></label>
 
                   <input
                     type="text"
@@ -155,7 +151,7 @@ const Step1 = () => {
 
                 {/* Age */}
                 <div className="form-group">
-                  <label className="form-label">Age</label>
+                  <label className="form-label">Age <span style={{ color: "red" }}>*</span></label>
 
                   <input
                     type="number"
@@ -170,7 +166,7 @@ const Step1 = () => {
 
                 {/* Gender */}
                 <div className="form-group">
-                  <label className="form-label">Sex/Gender</label>
+                  <label className="form-label">Sex/Gender <span style={{ color: "red" }}>*</span></label>
                   <div className="custom-select-wrapper">
                     <select
                       name="gender"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo-dark.svg";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-two.png";
 import privacy from "../../assets/images/privacy-poilicy-icon.svg";
@@ -16,6 +16,7 @@ const Step3 = () => {
   const navigate = useNavigate();
 
   const { loading, success } = useSelector((state) => state.onboarding);
+  const [errors, setErrors] = useState({});
 
   const [consent, setConsent] = useState({
     privacy_policy: false,
@@ -29,6 +30,32 @@ const Step3 = () => {
       ...consent,
       [name]: checked,
     });
+
+    // remove error when user fixes it
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
+  };
+
+  const handleSubmit = () => {
+    const newErrors = {};
+
+    if (!consent.privacy_policy) {
+      newErrors.privacy_policy = "You must accept the Privacy Policy";
+    }
+
+    if (!consent.ai_consent) {
+      newErrors.ai_consent = "AI consent is required to continue";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+    navigate("/step-language");
   };
 
   // const handleSubmit = async () => {
@@ -102,7 +129,13 @@ const Step3 = () => {
               <form>
                 {/* Privacy Policy */}
 
-                <div className="mb-4 p-3 border rounded-3">
+                <div
+                  className="mb-4 p-3 border rounded-3"
+                  style={{
+                    border: errors.privacy_policy ? "1px solid #ff4d4f" : "",
+                    background: errors.privacy_policy ? "#fff5f5" : "",
+                  }}
+                >
                   <div className="form-check">
                     <input
                       className="form-check-input"
@@ -122,16 +155,36 @@ const Step3 = () => {
                         personal data.
                       </p>
 
-                      <a href="#" className="privacy-text-link">
+                      <NavLink
+                        to="/guest-settings/loginPrivacy"
+                        className="privacy-text-link"
+                      >
                         Read the full Privacy Policy
-                      </a>
+                      </NavLink>
                     </label>
+                    {errors.privacy_policy && (
+                      <p
+                        style={{
+                          color: "#ff4d4f",
+                          fontSize: "12px",
+                          marginTop: "6px",
+                        }}
+                      >
+                        {errors.privacy_policy}
+                      </p>
+                    )}
                   </div>
                 </div>
 
                 {/* AI Consent */}
 
-                <div className="mb-4 p-3 border rounded-3">
+                <div
+                  className="mb-4 p-3 border rounded-3"
+                  style={{
+                    border: errors.ai_consent ? "1px solid #ff4d4f" : "",
+                    background: errors.ai_consent ? "#fff5f5" : "",
+                  }}
+                >
                   <div className="form-check">
                     <input
                       className="form-check-input"
@@ -151,10 +204,24 @@ const Step3 = () => {
                         inputs.
                       </p>
 
-                      <a href="#" className="privacy-text-link">
+                      <NavLink
+                        to="/guest-settings/loginTermsOfServices"
+                        className="privacy-text-link"
+                      >
                         Learn more about AI Safety
-                      </a>
+                      </NavLink>
                     </label>
+                    {errors.ai_consent && (
+                      <p
+                        style={{
+                          color: "#ff4d4f",
+                          fontSize: "12px",
+                          marginTop: "6px",
+                        }}
+                      >
+                        {errors.ai_consent}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -186,10 +253,9 @@ const Step3 = () => {
                 <button
                   type="button"
                   className="btn-primary-orange"
-                  onClick={()=> navigate('/step-language')}
-                  disabled={
-                    loading
-                  }
+                  // onClick={()=> navigate('/step-language')}
+                  onClick={handleSubmit}
+                  disabled={loading}
                 >
                   {loading ? "Submitting..." : "Continue"}
                 </button>

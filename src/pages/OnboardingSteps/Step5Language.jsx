@@ -7,7 +7,7 @@ import {
 } from "../../features/onboarding/onboardingSlice";
 import { toast } from "react-toastify";
 
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo-dark.svg";
 import meditationImg from "../../assets/images/meditation-two.png";
 import thanksIcon from "../../assets/images/thnks-for-sharing-icon.svg";
 import rightArrow from "../../assets/images/right-arrow-icon.png";
@@ -24,22 +24,56 @@ import i18n from "../../i18n";
 
 const Step5Language = () => {
   const dispatch = useDispatch();
+
+  const [currentLang, setCurrentLang] = useState("english");
   const navigate = useNavigate();
 
   const { analysisData, loading } = useSelector(
     (state) => state.onboarding || {},
   );
 
+  useEffect(() => {
+  let savedLang = localStorage.getItem("lang");
+
+  if (!savedLang) {
+    savedLang = "english"; // ✅ default fix
+    localStorage.setItem("lang", savedLang);
+  }
+
+  setCurrentLang(savedLang); // ✅ sync state
+
+  const i18nLang = langMap[savedLang] || "en";
+  i18n.changeLanguage(i18nLang);
+}, []);
+
+//   useEffect(() => {
+//   const savedLang = localStorage.getItem("lang");
+
+//   if (savedLang) {
+//     const i18nLang = langMap[savedLang] || "en";
+//     i18n.changeLanguage(i18nLang);
+//   }
+// }, []);
+
+  const langMap = {
+  english: "en",
+  hindi: "hi",
+  bengali: "bn",
+  odiya: "or",
+  assamese: "as",
+  malayalam: "ml",
+  tamil: "ta",
+};
   const hasCalled = useRef(false);
-// const languages = [
-//   { name: "English", code: "enlish", flag: flag1 },
-//   { name: "Hindi", code: "hindi", flag: flag2 },
-//   { name: "Bengali", code: "bengali", flag: flag3 },
-//   { name: "Odiya", code: "or", flag: flag4 },
-//   { name: "Assamese", code: "as", flag: flag5 },
-//   { name: "Malayalam", code: "ml", flag: flag6 },
-//   { name: "Tamil", code: "ta", flag: flag7 },
-// ];
+  // const languages = [
+  //   { name: "English", code: "enlish", flag: flag1 },
+  //   { name: "Hindi", code: "hindi", flag: flag2 },
+  //   { name: "Bengali", code: "bengali", flag: flag3 },
+  //   { name: "Odiya", code: "or", flag: flag4 },
+  //   { name: "Assamese", code: "as", flag: flag5 },
+  //   { name: "Malayalam", code: "ml", flag: flag6 },
+  //   { name: "Tamil", code: "ta", flag: flag7 },
+  // ];
   const languages = [
     { name: "English", code: "english", flag: flag1 },
     { name: "Hindi", code: "hindi", flag: flag2 },
@@ -53,9 +87,9 @@ const Step5Language = () => {
   // const [currentLang, setCurrentLang] = useState(
   //   localStorage.getItem("lang") || "english",
   // );
-  const [currentLang, setCurrentLang] = useState(
-  localStorage.getItem("lang") || "en"
-);
+  // const [currentLang, setCurrentLang] = useState(
+  //   localStorage.getItem("lang") || "english",
+  // );
 
   // useEffect(() => {
   //   if (!hasCalled.current && (!analysisData || analysisData.length === 0)) {
@@ -64,30 +98,54 @@ const Step5Language = () => {
   //   }
   // }, [dispatch, analysisData]);
 
+  // const handleLanguageChange = (langCode) => {
+  //   setCurrentLang(langCode);
+  //   localStorage.setItem("lang", langCode);
+  //   i18n.changeLanguage(langCode);
+  // };
+
   const handleLanguageChange = (langCode) => {
-    setCurrentLang(langCode);
-    localStorage.setItem("lang", langCode);
-    i18n.changeLanguage(langCode);
-  };
+  setCurrentLang(langCode);
+  localStorage.setItem("lang", langCode);
 
-  const handleSubmit = async () => {
-    try {
-      await dispatch(updateUserProfile()).unwrap();
+  const i18nLang = langMap[langCode] || "en";
+  i18n.changeLanguage(i18nLang);
+};
 
-      toast.success("Profile updated successfully");
-      navigate("/screen1");
-    } catch (error) {
-      const message = error?.message || "";
-      const errors = message.split(",");
+const handleSubmit = async () => {
+  try {
+    await dispatch(
+      updateUserProfile({ language: currentLang }) // ✅ send "english"
+    ).unwrap();
 
-      errors.forEach((err) => {
-        toast.error(err.trim());
-      });
-    }
-  };
+    toast.success("Profile updated successfully");
+    navigate("/screen1");
+  } catch (error) {
+    const message = error?.message || "";
+    const errors = message.split(",");
+    errors.forEach((err) => toast.error(err.trim()));
+  }
+};
+
+  // const handleSubmit = async () => {
+  //   try {
+  //     await dispatch(updateUserProfile({ language: currentLang })).unwrap();
+  //     // await dispatch(updateUserProfile()).unwrap();
+
+  //     toast.success("Profile updated successfully");
+  //     navigate("/screen1");
+  //   } catch (error) {
+  //     const message = error?.message || "";
+  //     const errors = message.split(",");
+
+  //     errors.forEach((err) => {
+  //       toast.error(err.trim());
+  //     });
+  //   }
+  // };
   const selectedLang =
-  languages.find((lang) => lang.code === currentLang) ||
-  languages.find((lang) => lang.code === "english");
+    languages.find((lang) => lang.code === currentLang) ||
+    languages.find((lang) => lang.code === "english");
 
   return (
     <div className="container-fluid">
@@ -128,16 +186,20 @@ const Step5Language = () => {
               <div className="language-container">
                 {/* Current Language */}
                 <div className="language-section mb-3">
-  <div className="section-header">Current Language</div>
+                  <div className="section-header">Current Language</div>
 
-  <div className="language-item selected border-radius d-flex align-items-center justify-content-between p-2">
-    <div className="d-flex align-items-center gap-2">
-      <img src={selectedLang.flag} alt={selectedLang.name} width={24} />
-      <span>{selectedLang.name}</span>
-    </div>
-    <span>✓</span>
-  </div>
-</div>
+                  <div className="language-item selected border-radius d-flex align-items-center justify-content-between p-2">
+                    <div className="d-flex align-items-center gap-2">
+                      <img
+                        src={selectedLang.flag}
+                        alt={selectedLang.name}
+                        width={24}
+                      />
+                      <span>{selectedLang.name}</span>
+                    </div>
+                    <span>✓</span>
+                  </div>
+                </div>
 
                 {/* Available Languages */}
                 <div className="language-section">

@@ -32,6 +32,12 @@ import ChatToText from "../pages/Home/Chat/ChatToText";
 import Step5Language from "../pages/OnboardingSteps/Step5Language";
 import ChatToVoice from "../pages/Home/Chat/ChatToVoice";
 import ChatHistory from "../pages/Home/Chat/ChatHistory";
+import TherapySessionUI from "../pages/Consultation Booking/SereneApp";
+import SereneApp from "../pages/Consultation Booking/SereneApp";
+import SelectSlot from "../pages/Consultation Booking/SelectSlot";
+import MyConsultations from "../pages/Consultation Booking/MyConsultations";
+import BookingDetails from "../pages/Consultation Booking/BookingDetails";
+import SecretJournal from "../pages/Home/Secret Journal/SecretJournal";
 // import MemoryGame from "../pages/Home/Mindful Games/MemoryGame";
 // import BreathingGame from "../pages/Home/Mindful Games/BreathingGames";
 
@@ -58,6 +64,10 @@ const AppRoutes = () => {
       />
       <Route path="/guest-settings" element={<GuestSettingOptions />} />
       <Route path="/here-to-help" element={<HereToHelp />} />
+      <Route path="/therapy-session" element={<SereneApp />} />
+          <Route path="/select-slot" element={<SelectSlot />} />
+          <Route path="/my-consultation" element={<MyConsultations />} />
+          <Route path="/booking-details" element={<BookingDetails />} />
 
       <Route element={<ProtectedRoutes />}>
         <Route element={<AppLayout />}>
@@ -98,9 +108,14 @@ const AppRoutes = () => {
           {/* <Route path="/chat-text" element={<ChatToText />} /> */}
           <Route path="/chat-sidebar" element={<ChatSidebar />} />
           <Route path="/chat" element={<ChatHomeScreen />} />
-        <Route path="/chat-text/:chatId" element={<ChatToText />} />
-        <Route path="/chat-voice/:chatId" element={<ChatToVoice />} />
-        <Route path="/chat-history/:chatId" element={<ChatHistory />} />
+          <Route path="/chat-text/:chatId" element={<ChatToText />} />
+          <Route path="/chat-voice/:chatId" element={<ChatToVoice />} />
+          <Route path="/chat-history/:chatId" element={<ChatHistory />} />
+          {/* <Route path="/therapy-session" element={<SereneApp />} />
+          <Route path="/select-slot" element={<SelectSlot />} />
+          <Route path="/my-consultation" element={<MyConsultations />} />
+          <Route path="/booking-details" element={<BookingDetails />} /> */}
+          <Route path="/home/secret-journal" element={<SecretJournal />} />
           {/* <Route path="/home/memory-game" element={<MemoryGame />} />
           <Route path="/home/breathing-game" element={<BreathingGame />} /> */}
         </Route>

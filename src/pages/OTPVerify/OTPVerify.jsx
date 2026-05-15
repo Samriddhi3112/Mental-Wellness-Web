@@ -7,7 +7,7 @@ import {
   loginUser,
 } from "../../features/auth/authSlice";
 import { toast } from "react-toastify";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo-dark.svg";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-two.png";
 import otpIcon from "../../assets/images/otp-icon.svg";

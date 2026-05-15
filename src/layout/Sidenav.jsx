@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/images/logo-2.svg";
+import logo from "../assets/images/Swastii.svg";
 import homeIcon from "../assets/images/home-icon.svg";
 import SettingIcon from "../assets/images/setting-icon.svg";
 import SidenavImage from "../assets/images/side-nav-bottom-image.png";
@@ -38,6 +38,15 @@ const Sidenav = () => {
         </span>
         <span>{t("home")}</span>
       </NavLink>
+      {/* <NavLink
+        to="/therapy-session"
+        className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
+      >
+        <span>
+          <img src={homeIcon} alt="Home Icon" />
+        </span>
+        <span>{t("ConsulationBooking")}</span>
+      </NavLink> */}
 
       <NavLink
         to={isGuest ? "/guest-settings" : "/settingOption"}

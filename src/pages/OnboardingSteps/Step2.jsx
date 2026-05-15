@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo-dark.svg";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-two.png";
 import rightarrowicon from "../../assets/images/right-arrow-icon.png";
@@ -42,17 +42,17 @@ const Step2 = () => {
       mainFocus,
     } = form;
 
-    if (
-      !placeOfResidence ||
-      !maritalStatus ||
-      !familyType ||
-      !livingArrangement ||
-      !motherTongue ||
-      !mainFocus
-    ) {
-      toast.error("All fields are required");
-      return;
-    }
+    // if (
+    //   !placeOfResidence ||
+    //   !maritalStatus ||
+    //   !familyType ||
+    //   !livingArrangement ||
+    //   !motherTongue ||
+    //   !mainFocus
+    // ) {
+    //   toast.error("All fields are required");
+    //   return;
+    // }
     dispatch(saveStep2(form));
     navigate("/onboarding3");
   };

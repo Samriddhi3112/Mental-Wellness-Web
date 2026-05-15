@@ -10,11 +10,14 @@ import {
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo-dark.svg";
 import playAgain from "../../assets/images/play-again-image.svg";
 import phoneIcon from "../../assets/images/phone-icon.svg";
 import rightArrow from "../../assets/images/right-arrow-icon.png";
 import ImmediateSupportModal from "../../components/modals/ImmediateSupportModal";
+import EmergencyModal from "../../components/modals/EmergencyModal";
+import helpButton from "../../assets/images/button.svg";
+import { FaMicrophone } from "react-icons/fa6";
 
 const Screen1 = () => {
   const navigate = useNavigate();
@@ -73,13 +76,13 @@ const Screen1 = () => {
   // } = useSelector((state) => state.questions || {});
 
   const {
-  data,
-  currentQuestionIndex = 0,
-  loading,
-} = useSelector((state) => state.questions || {});
+    data,
+    currentQuestionIndex = 0,
+    loading,
+  } = useSelector((state) => state.questions || {});
 
-const questions = data?.questions || [];
-const question = questions[currentQuestionIndex];
+  const questions = data?.questions || [];
+  const question = questions[currentQuestionIndex];
 
   // const question = questions?.[currentQuestionIndex];
 
@@ -155,6 +158,7 @@ const question = questions[currentQuestionIndex];
         );
 
         const res = await dispatch(submitAnswers(filteredResponses)).unwrap();
+        console.log("FULL RES:", res);
 
         if (res?.success) {
           localStorage.setItem("onboarding_last_shown", Date.now());
@@ -162,11 +166,25 @@ const question = questions[currentQuestionIndex];
           toast.success(res?.message || "Answers submitted successfully");
 
           // ✅ IMPORTANT: immediateHelp handling
-          if (res?.immediateHelp) {
-            setShowModal(true); // 👈 modal open (state already bana lo)
-          } else {
+          if (res?.success) {
+            localStorage.setItem("onboarding_last_shown", Date.now());
+
+            // const immediateHelp = res?.data?.analysisData?.immediateHelp;
+            const immediateHelp = res?.data?.analysis?.immediateHelp;
+            console.log("Immediate Help:", immediateHelp);
+
+            if (immediateHelp) {
+              setShowModal(true);
+              return;
+            }
+
             navigate("/step-4");
           }
+          // if (res?.immediateHelp) {
+          //   setShowModal(true); // 👈 modal open (state already bana lo)
+          // } else {
+          //   navigate("/step-4");
+          // }
         }
       } else {
         // ✅ Next Question
@@ -532,50 +550,136 @@ const question = questions[currentQuestionIndex];
                   />
                 </div>
 
-                <div className="d-flex justify-content-center gap-3 mb-3 mt-4">
-                  <button
-                    type="button"
-                    onClick={handleVoiceInput}
-                    className="btn border d-flex align-items-center gap-2 w-50 justify-content-center"
+                <div
+                  className="bottom-action-wrapper"
+                  style={{
+                    width: "100%",
+                    display: "grid",
+                    gridTemplateColumns: "auto auto 1fr 1fr 1fr",
+                    alignItems: "center",
+                    gap: "12px",
+                    marginTop: "20px",
+                  }}
+                >
+                  {/* Voice + Help Section */}
+                  <div
+                    className="voice-help-section"
+                    style={{ display: "contents" }}
                   >
-                    <img src={phoneIcon} alt="" />
-                    <span className="talk-to-expert">
-                      {isListening ? "Listening..." : "Speak Answer"}
-                    </span>
-                  </button>
+                    <button
+                      type="button"
+                      onClick={handleVoiceInput}
+                      className={`${isListening ? "listening" : ""}`}
+                      style={{
+                        width: "46px",
+                        height: "46px",
+                        borderRadius: "50%",
+                        border: "none",
+                        background: "#ff5a1f",
+                        color: "#fff",
+                        fontSize: "18px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        boxShadow: "0 4px 12px rgba(255, 90, 31, 0.25)",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <FaMicrophone />
+                    </button>
 
+                    <button
+                      type="button"
+                      className="help-btn-custom"
+                      style={{
+                        border: "none",
+                        background: "transparent",
+                        padding: 0,
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                      onClick={()=> navigate('/therapy-session')}
+                    >
+                      <img
+                        src={helpButton}
+                        alt="Help"
+                        style={{
+                          height: "46px",
+                          width: "auto",
+                          display: "block",
+                        }}
+                      />
+                    </button>
+                  </div>
+
+                  {/* Back */}
                   <button
                     type="button"
-                    className="btn border w-50"
+                    className="custom-action-btn light-btn"
                     onClick={handleBack}
                     disabled={currentQuestionIndex === 0}
+                    style={{
+                      height: "46px",
+                      borderRadius: "10px",
+                      border: "1px solid #d9dde3",
+                      background: "#f1f2f4",
+                      color: "#5f6b84",
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      width: "100%",
+                    }}
                   >
                     Back
                   </button>
 
+                  {/* Skip */}
                   <button
                     type="button"
-                    className="btn-secondary skip-btn w-50"
+                    className="custom-action-btn light-btn"
                     onClick={handleSkip}
+                    style={{
+                      height: "46px",
+                      borderRadius: "10px",
+                      border: "1px solid #d9dde3",
+                      background: "#f1f2f4",
+                      color: "#5f6b84",
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      width: "100%",
+                    }}
                   >
                     Skip for Now
                   </button>
 
+                  {/* Next */}
                   <button
                     type="button"
-                    className="btn-primary-orange next-btn w-50"
+                    className="custom-action-btn next-main-btn"
                     onClick={handleNext}
                     disabled={loading}
+                    style={{
+                      height: "46px",
+                      borderRadius: "10px",
+                      border: "none",
+                      background: "#ff5a1f",
+                      color: "#fff",
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      width: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "8px",
+                    }}
                   >
                     {loading ? (
                       "Submitting..."
                     ) : (
                       <>
-                        Next &nbsp;
+                        Next
                         <img src={rightArrow} alt="" />
                       </>
                     )}
-                    {/* <img src={rightArrow} alt="" /> */}
                   </button>
                 </div>
               </form>
@@ -594,7 +698,7 @@ const question = questions[currentQuestionIndex];
             </div>
           </div>
 
-          <ImmediateSupportModal
+          <EmergencyModal
             show={showModal}
             onClose={() => {
               setShowModal(false);

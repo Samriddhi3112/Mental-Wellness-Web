@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 const Language = () => {
   const { t } = useTranslation();
   const languageMap = {
-    english: "en",
+    english: "enlish",
     hindi: "hi",
     bengali: "bn",
     odiya: "or",

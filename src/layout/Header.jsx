@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { clearChat } from "../features/chat/chatSlice";
 import { useTranslation } from "react-i18next";
+import buttonIcon from "../assets/images/button.svg";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -57,6 +58,16 @@ const Header = () => {
         </h3>
       </div>
       <div className="d-flex align-items-center gap-3">
+        <img
+          src={buttonIcon}
+          alt="button"
+          style={{
+            width: "60px",
+            height: "45px",
+            cursor: "pointer",
+          }}
+          onClick={() => navigate("/therapy-session")}
+        />
         <div
           className="notification-bell"
           id="notificationBell"
@@ -80,7 +91,17 @@ const Header = () => {
             width: "45px",
             cursor: "pointer",
           }}
-          onClick={() => navigate("/settingOption/profileDetail")}
+          onClick={() => {
+            const token = localStorage.getItem("token");
+
+            if (!token) {
+              console.log("Guest user - navigation blocked");
+              return; // ❌ navigate mat karo
+            }
+
+            navigate("/settingOption/profileDetail");
+          }}
+          // onClick={() => navigate("/settingOption/profileDetail")}
         />
       </div>
     </div>

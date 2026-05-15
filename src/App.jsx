@@ -3,6 +3,7 @@ import AppRoutes from "./routes/AppRoutes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import i18n from "./i18n";
+import FloatingMusicPlayer from "./pages/Home/Calm Music/FloatingMusicPlayer";
 
 const App = () => {
   useEffect(() => {
@@ -24,6 +25,7 @@ const App = () => {
   return (
     <>
       <AppRoutes />
+      <FloatingMusicPlayer />
       <ToastContainer position="top-right" reverseOrder={false} />
     </>
   );
