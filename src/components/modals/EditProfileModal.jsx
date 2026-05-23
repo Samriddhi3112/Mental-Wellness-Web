@@ -63,16 +63,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
       "name",
       "age",
       "gender",
-      "bodyWeight",
-      "height",
-      "educationLevel",
-      "occupation",
-      "placeOfResidence",
-      "maritalStatus",
-      "familyType",
-      "livingArrangement",
-      "language",
-      "mainFocus",
+      
     ];
 
     for (const field of requiredFields) {

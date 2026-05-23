@@ -65,9 +65,9 @@ const AppRoutes = () => {
       <Route path="/guest-settings" element={<GuestSettingOptions />} />
       <Route path="/here-to-help" element={<HereToHelp />} />
       <Route path="/therapy-session" element={<SereneApp />} />
-          <Route path="/select-slot" element={<SelectSlot />} />
-          <Route path="/my-consultation" element={<MyConsultations />} />
-          <Route path="/booking-details" element={<BookingDetails />} />
+      <Route path="/select-slot" element={<SelectSlot />} />
+      <Route path="/my-consultation" element={<MyConsultations />} />
+      <Route path="/booking-details" element={<BookingDetails />} />
 
       <Route element={<ProtectedRoutes />}>
         <Route element={<AppLayout />}>

@@ -22,10 +22,10 @@
 //         ) : (
 //           (wiseYogi || []).map((item) => (
 //             <div className="col-md-2" key={item._id}>
-              
+
 //               <a
 //                 onClick={(e) => {
-//                   e.preventDefault(); 
+//                   e.preventDefault();
 //                   navigate("/home/wiseyogiHome/wiseyogiDetail", {
 //                     state: { data: item },
 //                   });
@@ -57,6 +57,7 @@
 // };
 
 // export default WiseYogiListing;
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -82,21 +83,61 @@ const formatDate = (iso) =>
 /* ── yoga pose icons ───────────────────────────────────────────────── */
 const YogaIcon = ({ index, done }) => {
   const icons = [
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" key="0">
-      <circle cx="24" cy="10" r="5" fill="currentColor" opacity="0.9"/>
-      <path d="M24 15 L24 28 M16 20 L32 20 M24 28 L16 40 M24 28 L32 40" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      key="0"
+    >
+      <circle cx="24" cy="10" r="5" fill="currentColor" opacity="0.9" />
+      <path
+        d="M24 15 L24 28 M16 20 L32 20 M24 28 L16 40 M24 28 L32 40"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
     </svg>,
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" key="1">
-      <circle cx="24" cy="10" r="5" fill="currentColor" opacity="0.9"/>
-      <path d="M24 15 L24 26 M16 19 L32 19 M24 26 Q20 34 12 38 M24 26 Q28 34 36 38 M12 38 L36 38" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      key="1"
+    >
+      <circle cx="24" cy="10" r="5" fill="currentColor" opacity="0.9" />
+      <path
+        d="M24 15 L24 26 M16 19 L32 19 M24 26 Q20 34 12 38 M24 26 Q28 34 36 38 M12 38 L36 38"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
     </svg>,
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" key="2">
-      <circle cx="24" cy="10" r="5" fill="currentColor" opacity="0.9"/>
-      <path d="M24 15 L24 28 M24 28 Q14 24 10 32 M24 28 Q34 24 38 32 M10 32 Q16 36 24 34 Q32 36 38 32" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      key="2"
+    >
+      <circle cx="24" cy="10" r="5" fill="currentColor" opacity="0.9" />
+      <path
+        d="M24 15 L24 28 M24 28 Q14 24 10 32 M24 28 Q34 24 38 32 M10 32 Q16 36 24 34 Q32 36 38 32"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
     </svg>,
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" key="3">
-      <circle cx="24" cy="9" r="5" fill="currentColor" opacity="0.9"/>
-      <path d="M24 14 L24 27 M14 18 L34 18 M24 27 L16 40 M24 27 L32 40" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      key="3"
+    >
+      <circle cx="24" cy="9" r="5" fill="currentColor" opacity="0.9" />
+      <path
+        d="M24 14 L24 27 M14 18 L34 18 M24 27 L16 40 M24 27 L32 40"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
     </svg>,
   ];
   return icons[index % icons.length];
@@ -108,10 +149,10 @@ export default function WiseYogiListing() {
 
   // ── slice state (matches your actual slice) ──
   const { recommendations, loading, error, doneLoading } = useSelector(
-    (s) => s.wiseYogi
+    (s) => s.wiseYogi,
   );
 
-  const [expandedId, setExpandedId] = useState(null);
+  // const [expandedId, setExpandedId] = useState(null);
   const [completingId, setCompletingId] = useState(null);
 
   useEffect(() => {
@@ -124,24 +165,81 @@ export default function WiseYogiListing() {
   const totalDone = exercises.filter((e) => e.done).length;
   const totalCount = exercises.length;
   const allDone = totalCount > 0 && totalDone === totalCount;
-  const progressPct = totalCount ? Math.round((totalDone / totalCount) * 100) : 0;
+  const progressPct = totalCount
+    ? Math.round((totalDone / totalCount) * 100)
+    : 0;
 
-  const handleComplete = (exerciseId) => {
-    if (!recommendation?._id || doneLoading) return;
+  const handleComplete = async (exerciseId) => {
+    if (!recommendation?._id || completingId) return;
+
     setCompletingId(exerciseId);
-    dispatch(
-      markExerciseDone({
-        recommendationId: recommendation._id,
-        exerciseId,
-        done: true,
-      })
-    ).finally(() => setCompletingId(null));
+
+    try {
+      await dispatch(
+        markExerciseDone({
+          recommendationId: recommendation._id,
+          exerciseId,
+          done: true,
+        }),
+      );
+    } finally {
+      setCompletingId(null);
+    }
   };
+
+  // const handleComplete = (exerciseId) => {
+  //   if (!recommendation?._id || doneLoading) return;
+  //   setCompletingId(exerciseId);
+  //   dispatch(
+  //     markExerciseDone({
+  //       recommendationId: recommendation._id,
+  //       exerciseId,
+  //       done: true,
+  //     })
+  //   ).finally(() => setCompletingId(null));
+  // };
 
   /* ── CSS ─────────────────────────────────────────────────────────── */
   const css = `
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap');
+.wy-card-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0.55rem;
+}
 
+.wy-card-description {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #697089;
+  margin-top: 0.55rem;
+  max-width: 92%;
+}
+
+.wy-card-sanskrit {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f26522;
+  line-height: 1.2;
+  margin-bottom: 0.1rem;
+}
+
+.wy-card-name {
+  font-size: 1.18rem;
+  font-weight: 650;
+  color: #1f2437;
+  margin: 0;
+  line-height: 1.3;
+}
+  .wy-intro-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6b7694;
+  line-height: 1.7;
+  margin: 0 0 1.4rem;
+  padding: 0 0.2rem;
+}
     .wy-wrap {
       // font-family: 'DM Sans', sans-serif;
       padding: 2rem 2.5rem;
@@ -257,6 +355,8 @@ export default function WiseYogiListing() {
       transition: border-color .25s, box-shadow .25s, transform .2s, opacity .3s;
       overflow: hidden;
       position: relative;
+      border: 1px solid #f2e7df;
+background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
     }
     .wy-card:not(.wy-card--done):hover {
       border-color: #f2652244;
@@ -282,9 +382,11 @@ export default function WiseYogiListing() {
     }
 
     .wy-card-inner {
-      padding: 1.3rem 1.4rem 1.2rem;
-      display: flex; gap: 1.1rem; align-items: flex-start;
-    }
+  padding: 1.35rem 1.5rem 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
 
     .wy-card-icon {
       width: 52px; height: 52px; flex-shrink: 0;
@@ -347,7 +449,12 @@ export default function WiseYogiListing() {
     }
     .wy-card--done .wy-step-num { color: #66bb6a; }
 
-    .wy-card-actions { padding: 0 1.4rem 1.2rem; display: flex; justify-content: flex-end; }
+    .wy-card-actions {
+  padding: 0 1.5rem 1.4rem;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.2rem;
+}
     .btn-complete {
       display: flex; align-items: center; gap: 0.5rem;
       background: #f26522; color: #fff; border: none;
@@ -409,6 +516,7 @@ export default function WiseYogiListing() {
       margin-bottom: 1rem;
       animation: wyCelebrate 0.5s ease;
     }
+      
     @keyframes wyCelebrate {
       0% { opacity: 0; transform: translateY(12px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -433,24 +541,32 @@ export default function WiseYogiListing() {
       <style>{css}</style>
       <div className="main-content">
         <div className="wy-wrap">
-
           {/* Page Header */}
           <div className="wy-page-header">
             <div>
               <h2 className="wy-page-title">Wise Yogi</h2>
-              <p className="wy-page-sub">Balance your mind & body with today's personalised practice.</p>
+              <p className="wy-page-sub">
+                Balance your mind & body with today's personalised practice.
+              </p>
             </div>
-            {recommendation?.generatedAt && (
+            {/* {recommendation?.generatedAt && (
               <div className="wy-date-badge">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="3" y="4" width="18" height="18" rx="2"/>
-                  <line x1="16" y1="2" x2="16" y2="6"/>
-                  <line x1="8" y1="2" x2="8" y2="6"/>
-                  <line x1="3" y1="10" x2="21" y2="10"/>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
                 {formatDate(recommendation.generatedAt)}
               </div>
-            )}
+            )} */}
           </div>
 
           {/* Loading state */}
@@ -466,8 +582,16 @@ export default function WiseYogiListing() {
             <div className="wy-error">
               <div className="wy-error-icon">🧘</div>
               <h3>Could not load exercises</h3>
-              <p>{typeof error === "string" ? error : error?.message || "Please check your connection and try again."}</p>
-              <button className="btn-retry" onClick={() => dispatch(getWiseYogiRecommendations())}>
+              <p>
+                {typeof error === "string"
+                  ? error
+                  : error?.message ||
+                    "Please check your connection and try again."}
+              </p>
+              <button
+                className="btn-retry"
+                onClick={() => dispatch(getWiseYogiRecommendations())}
+              >
                 Try Again
               </button>
             </div>
@@ -478,7 +602,9 @@ export default function WiseYogiListing() {
             <div className="wy-empty">
               <div className="wy-empty-icon">🧘</div>
               <h3>No practice found</h3>
-              <p>Your personalised yoga plan will appear here once generated.</p>
+              <p>
+                Your personalised yoga plan will appear here once generated.
+              </p>
             </div>
           )}
 
@@ -486,24 +612,49 @@ export default function WiseYogiListing() {
           {!loading && !error && recommendation && (
             <>
               {/* Progress Card */}
-              <div className="wy-progress-card" style={{ '--pct': progressPct }}>
+              <div
+                className="wy-progress-card"
+                style={{ "--pct": progressPct }}
+              >
                 <div className="wy-progress-ring-wrap">
                   <svg width="64" height="64" className="wy-progress-ring">
-                    <circle className="wy-progress-ring-bg" cx="32" cy="32" r="26"/>
-                    <circle className="wy-progress-ring-fill" cx="32" cy="32" r="26"/>
+                    <circle
+                      className="wy-progress-ring-bg"
+                      cx="32"
+                      cy="32"
+                      r="26"
+                    />
+                    <circle
+                      className="wy-progress-ring-fill"
+                      cx="32"
+                      cy="32"
+                      r="26"
+                    />
                   </svg>
                   <div className="wy-ring-label">{progressPct}%</div>
                 </div>
                 <div className="wy-progress-text">
                   <h3>Today's Practice</h3>
-                  <p>{totalDone} of {totalCount} exercises completed</p>
+                  <p>
+                    {totalDone} of {totalCount} exercises completed
+                  </p>
                   <div className="wy-prog-bar-track">
-                    <div className="wy-prog-bar-fill" style={{ '--pct': progressPct }} />
+                    <div
+                      className="wy-prog-bar-fill"
+                      style={{ "--pct": progressPct }}
+                    />
                   </div>
                   {allDone && (
                     <div className="wy-all-done-badge">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <polyline points="20 6 9 17 4 12"/>
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
                       </svg>
                       Session Complete!
                     </div>
@@ -516,14 +667,22 @@ export default function WiseYogiListing() {
                 <div className="wy-celebration">
                   <span className="wy-celebration-emoji">🎉</span>
                   <h3>Wonderful practice today!</h3>
-                  <p>You've completed all your yoga exercises. Your body and mind thank you.</p>
+                  <p>
+                    You've completed all your yoga exercises. Your body and mind
+                    thank you.
+                  </p>
                 </div>
               )}
+
+              <h4 className="wy-intro-text">
+                From the Astanga Sutra, these are the 3 most suitable small
+                practices for you right now:
+              </h4>
 
               {/* Exercise List */}
               <div className="wy-list">
                 {exercises.map((ex, idx) => {
-                  const isOpen = expandedId === ex.exerciseId;
+                  // const isOpen = expandedId === ex.exerciseId;
                   const isCompleting = completingId === ex.exerciseId;
 
                   return (
@@ -533,12 +692,21 @@ export default function WiseYogiListing() {
                         "wy-card",
                         ex.done ? "wy-card--done" : "",
                         isCompleting ? "wy-card--completing" : "",
-                      ].filter(Boolean).join(" ")}
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
                     >
                       {ex.done && (
                         <div className="wy-done-ribbon">
-                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                            <polyline points="20 6 9 17 4 12"/>
+                          <svg
+                            width="10"
+                            height="10"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                          >
+                            <polyline points="20 6 9 17 4 12" />
                           </svg>
                           DONE
                         </div>
@@ -552,20 +720,48 @@ export default function WiseYogiListing() {
 
                         {/* Content */}
                         <div className="wy-card-content">
-                          <h3 className="wy-card-name">{ex.name}</h3>
+                          <div className="wy-card-title-wrap">
+                            {ex.sanskrit_name?.length > 0 && (
+                              <div className="wy-card-sanskrit">
+                                {ex.sanskrit_name.join(", ")}
+                              </div>
+                            )}
+
+                            <h3 className="wy-card-name">{ex.name}</h3>
+                            {ex.description && (
+                              <p className="wy-card-description">
+                                {ex.description}
+                              </p>
+                            )}
+                          </div>
+                          {/* <h3 className="wy-card-name">{ex.name}</h3> */}
 
                           <div className="wy-card-meta">
                             <span className="wy-pill">
-                              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
+                              <svg
+                                width="11"
+                                height="11"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                              >
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
                               </svg>
                               {fmtDuration(ex.durationMinutes)}
                             </span>
                             <span className="wy-pill">
-                              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14 2 14 8 20 8"/>
+                              <svg
+                                width="11"
+                                height="11"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                              >
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
                               </svg>
                               {ex.steps?.length ?? 0} steps
                             </span>
@@ -573,26 +769,23 @@ export default function WiseYogiListing() {
 
                           {/* Steps toggle */}
                           {ex.steps?.length > 0 && (
-                            <button
-                              className="wy-steps-toggle"
-                              onClick={() => setExpandedId(isOpen ? null : ex.exerciseId)}
-                            >
-                              {isOpen ? (
-                                <>
-                                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-                                  Hide steps
-                                </>
-                              ) : (
-                                <>
-                                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                                  View steps
-                                </>
-                              )}
-                            </button>
+                            <div className="wy-steps-toggle">
+                              {/* <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+    >
+      <polyline points="6 9 12 15 18 9" />
+    </svg> */}
+                              Do this Now
+                            </div>
                           )}
 
                           {/* Steps accordion */}
-                          <div className={`wy-steps${isOpen ? " wy-steps--open" : ""}`}>
+                          <div className="wy-steps wy-steps--open">
                             <div className="wy-steps-inner">
                               {ex.steps?.map((step, si) => (
                                 <div key={si} className="wy-step">
@@ -609,9 +802,16 @@ export default function WiseYogiListing() {
                       <div className="wy-card-actions">
                         {ex.done ? (
                           <div className="wy-done-label">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                              <polyline points="22 4 12 14.01 9 11.01"/>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                            >
+                              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                              <polyline points="22 4 12 14.01 9 11.01" />
                             </svg>
                             Completed
                           </div>
@@ -619,10 +819,18 @@ export default function WiseYogiListing() {
                           <button
                             className="btn-complete"
                             onClick={() => handleComplete(ex.exerciseId)}
-                            disabled={isCompleting || doneLoading}
+                            disabled={isCompleting}
+                            // disabled={isCompleting || doneLoading}
                           >
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                              <polyline points="20 6 9 17 4 12"/>
+                            <svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                            >
+                              <polyline points="20 6 9 17 4 12" />
                             </svg>
                             {isCompleting ? "Marking…" : "Mark Complete"}
                           </button>
@@ -634,7 +842,6 @@ export default function WiseYogiListing() {
               </div>
             </>
           )}
-
         </div>
       </div>
     </>

@@ -53,7 +53,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { credAndUrl } from "../../../utils/config";
 
-
 export const getWiseYogiRecommendations = createAsyncThunk(
   "wiseYogi/getRecommendations",
   async (_, { rejectWithValue }) => {
@@ -67,16 +66,14 @@ export const getWiseYogiRecommendations = createAsyncThunk(
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       return response.data;
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data || "Something went wrong"
-      );
+      return rejectWithValue(error.response?.data || "Something went wrong");
     }
-  }
+  },
 );
 
 // =======================
@@ -85,10 +82,7 @@ export const getWiseYogiRecommendations = createAsyncThunk(
 
 export const markExerciseDone = createAsyncThunk(
   "wiseYogi/markExerciseDone",
-  async (
-    { recommendationId, exerciseId, done },
-    { rejectWithValue }
-  ) => {
+  async ({ recommendationId, exerciseId, done }, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("token");
 
@@ -103,7 +97,7 @@ export const markExerciseDone = createAsyncThunk(
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       return {
@@ -113,11 +107,9 @@ export const markExerciseDone = createAsyncThunk(
         done,
       };
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data || "Something went wrong"
-      );
+      return rejectWithValue(error.response?.data || "Something went wrong");
     }
-  }
+  },
 );
 
 // =======================
@@ -154,21 +146,15 @@ const wiseYogiSlice = createSlice({
         state.error = null;
       })
 
-      .addCase(
-        getWiseYogiRecommendations.fulfilled,
-        (state, action) => {
-          state.loading = false;
-          state.recommendations = action.payload;
-        }
-      )
+      .addCase(getWiseYogiRecommendations.fulfilled, (state, action) => {
+        state.loading = false;
+        state.recommendations = action.payload;
+      })
 
-      .addCase(
-        getWiseYogiRecommendations.rejected,
-        (state, action) => {
-          state.loading = false;
-          state.error = action.payload;
-        }
-      )
+      .addCase(getWiseYogiRecommendations.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
 
       // =======================
       // MARK EXERCISE DONE
@@ -182,23 +168,33 @@ const wiseYogiSlice = createSlice({
       .addCase(markExerciseDone.fulfilled, (state, action) => {
         state.doneLoading = false;
 
-        const { recommendationId, exerciseId, done } =
-          action.payload;
+        const { recommendationId, exerciseId, done } = action.payload;
 
         // Update local state instantly
-        const recommendation = state.recommendations?.find(
-          (item) => item._id === recommendationId
-        );
+        const recommendation = state.recommendations?.data?.recommendation;
 
-        if (recommendation?.exercises) {
-          const exercise = recommendation.exercises.find(
-            (ex) => ex._id === exerciseId
+        if (recommendation?._id === recommendationId) {
+          const exercise = recommendation.exercises?.find(
+            (ex) => ex.exerciseId === exerciseId,
           );
 
           if (exercise) {
             exercise.done = done;
           }
         }
+        // const recommendation = state.recommendations?.find(
+        //   (item) => item._id === recommendationId
+        // );
+
+        // if (recommendation?.exercises) {
+        //   const exercise = recommendation.exercises.find(
+        //     (ex) => ex._id === exerciseId
+        //   );
+
+        //   if (exercise) {
+        //     exercise.done = done;
+        //   }
+        // }
       })
 
       .addCase(markExerciseDone.rejected, (state, action) => {

@@ -1,8 +1,7 @@
 import useOnboardingGuard from "./hooks/useOnboardingGuard";
 
 const AppLayout = ({ children }) => {
-  useOnboardingGuard(); // 👈 bas yaha call karo
-
+  useOnboardingGuard();
   return children;
 };
 

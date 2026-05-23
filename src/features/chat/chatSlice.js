@@ -118,6 +118,40 @@ export const getChatHistory = createAsyncThunk(
   },
 );
 
+export const synthesizeSpeech = createAsyncThunk(
+  "sarvam/synthesizeSpeech",
+  async (
+    { text, target_language_code, speaker, output_audio_codec },
+    { rejectWithValue }
+  ) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await axios.post(
+        `${credAndUrl.BASE_URL}/sarvam/tts/synthesize`,
+        {
+          text,
+          target_language_code,
+          speaker,
+          output_audio_codec,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data || error.message
+      );
+    }
+  }
+);
+
 // ================= SLICE =================
 const chatSlice = createSlice({
   name: "chat",

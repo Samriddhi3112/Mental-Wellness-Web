@@ -126,7 +126,6 @@
 
 // export default MoviesDetail;
 
-
 import React, { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -227,16 +226,12 @@ const MoviesDetail = () => {
                 </p>
               </div>
 
-              <div className="section-title color-grey">
-                {t("category")} :
-              </div>
+              <div className="section-title color-grey">{t("category")} :</div>
               <p>
                 <p>{movie?.category || "N/A"}</p>
               </p>
 
-              <div className="section-title color-grey">
-                {t("language")} :
-              </div>
+              <div className="section-title color-grey">{t("language")} :</div>
               <p>
                 <p>{movie?.language || "N/A"}</p>
               </p>
@@ -261,10 +256,7 @@ const MoviesDetail = () => {
         </div>
       </div>
 
-      <FeedbackModal
-        show={showModal}
-        handleClose={() => setShowModal(false)}
-      />
+      <FeedbackModal show={showModal} handleClose={() => setShowModal(false)} />
     </div>
   );
 };
