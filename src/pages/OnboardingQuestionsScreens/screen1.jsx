@@ -75,6 +75,33 @@ const Screen1 = () => {
   //   loading,
   // } = useSelector((state) => state.questions || {});
 
+   const playQuestionAudio = (audioObj) => {
+  if (!audioObj?.data) return;
+
+  try {
+    // stop previous audio
+    if (window.currentAudio) {
+      window.currentAudio.pause();
+      window.currentAudio.currentTime = 0;
+    }
+
+    const mimeType = audioObj?.contentType || "audio/mpeg";
+
+    // base64 -> playable url
+    const audioSrc = `data:${mimeType};base64,${audioObj.data}`;
+
+    const audio = new Audio(audioSrc);
+
+    window.currentAudio = audio;
+
+    audio.play().catch((err) => {
+      console.log("Audio play error:", err);
+    });
+  } catch (err) {
+    console.log("Audio error:", err);
+  }
+};
+
   const {
     data,
     currentQuestionIndex = 0,
@@ -206,13 +233,13 @@ const Screen1 = () => {
     }
   };
 
-  useEffect(() => {
-    if (question?.questionText && isAudioUnlocked) {
-      setTimeout(() => {
-        speakQuestion(question.questionText, question.language);
-      }, 700);
-    }
-  }, [question, isAudioUnlocked]);
+useEffect(() => {
+  if (question?.audio?.data) {
+    setTimeout(() => {
+      playQuestionAudio(question.audio);
+    }, 500);
+  }
+}, [question]);
 
   const speakQuestion = (text, langFromAPI) => {
     if (!text) return;
@@ -475,6 +502,8 @@ const Screen1 = () => {
   //   }
   // };
 
+ 
+
   return (
     <div className="container onboarding-screen">
       {loading && (
@@ -525,8 +554,8 @@ const Screen1 = () => {
                 </div>
               </div>
 
-              <h2 className="mb-3 title">{question?.title || "N/A"}</h2>
-              <p>{question?.questionText || "N/A"}</p>
+              <h2 className="mb-3 title">{question?.questionText || "N/A"}</h2>
+              {/* <p>{question?.questionText || "N/A"}</p> */}
 
               <form style={{ margin: "0 auto" }}>
                 <div className="mb-4">
@@ -544,9 +573,7 @@ const Screen1 = () => {
                     src={playAgain}
                     alt="play"
                     style={{ cursor: "pointer" }}
-                    onClick={() =>
-                      speakQuestion(question.questionText, question.language)
-                    }
+                    onClick={() => playQuestionAudio(question.audio)}
                   />
                 </div>
 
