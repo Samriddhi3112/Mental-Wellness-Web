@@ -437,8 +437,8 @@ const ProfileDetail = () => {
             {/* LEFT */}
             <div className="col-md-3">
               <div className="profile-left">
-                <div className="profile-avatar-section">
-                  <label style={{ cursor: "pointer" }}>
+                <div className="profile-avatar-section" style={{border: "1px solid #fff",borderRadius: "7px"}}>
+                  <label style={{ cursor: "pointer", marginTop:"15px" }}>
                     <img
                       src={user.profilePic || user.profileImage || image}
                       alt={user.name || "Profile"}

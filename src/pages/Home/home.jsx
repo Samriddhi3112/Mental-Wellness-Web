@@ -30,7 +30,7 @@ const Home = () => {
               <p>Your personal companion is here to listen, judgment-free.</p> */}
             </div>
           </div>
-          <Link to="/chat" className="btn no-hover">
+          <Link to="/chat" className="btn no-hover start-chat-btn">
             {t("startConversation")}
           </Link>
         </div>

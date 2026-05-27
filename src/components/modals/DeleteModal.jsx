@@ -37,8 +37,8 @@ const DeleteModal = ({ show, onClose }) => {
   return (
     <div className="modal-backdropD">
       <div className="modal-content delete-modal">
-        <h3>{t("deleteAccountTitle")}</h3>
-        <p>{t("deleteAccountDesc")}</p>
+        <h3 style={{ color: "#fff" }}>{t("deleteAccountTitle")}</h3>
+        <p style={{ color: "#fff" }}>{t("deleteAccountDesc")}</p>
 
         <div className="modal-actions">
           <button

@@ -216,32 +216,32 @@ const MoviesDetail = () => {
                   {movie?.description || "N/A"}
                 </div>
 
-                <div className="section-title color-grey">
+                <div className="section-title color-white">
                   {t("duration")} :
                 </div>
                 <p>
-                  <p>
+                  <p style={{color:"#fff"}}>
                     {movie?.duration || "N/A"} {t("minutes")}
                   </p>
                 </p>
               </div>
 
-              <div className="section-title color-grey">{t("category")} :</div>
-              <p>
+              <div className="section-title color-white">{t("category")} :</div>
+              <p style={{color:"#fff"}}>
                 <p>{movie?.category || "N/A"}</p>
               </p>
 
-              <div className="section-title color-grey">{t("language")} :</div>
+              <div className="section-title color-white">{t("language")} :</div>
               <p>
-                <p>{movie?.language || "N/A"}</p>
+                <p style={{color:"#fff"}}>{movie?.language || "N/A"}</p>
               </p>
 
-              <div className="section-title color-grey">
+              <div className="section-title color-white">
                 {t("uploadedBy")} :
               </div>
               <p>
-                <img src="/images/profile-image.svg" alt="" />
-                <p>Admin</p>
+                {/* <img src="/images/profile-image.svg" alt="" /> */}
+                <p style={{color:"#fff"}}>Admin</p>
               </p>
 
               {/* BUTTON */}

@@ -151,9 +151,9 @@ const Login = () => {
   // });
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid" >
       <div className="row">
-        <div className="col-lg-6 a">
+        <div className="col-lg-6 a" >
           <div className="login-left">
             <div className="logo-container">
               <div className="logo-icon">
@@ -178,7 +178,7 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="col-lg-6 d-flex align-items-center justify-content-center">
+        <div className="col-lg-6 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#030F25" }}>
           <div className="login-right">
             <h2 className="welcome-title">Welcome back</h2>
             <p className="welcome-description">
@@ -186,6 +186,7 @@ const Login = () => {
             </p>
 
             <form onSubmit={handleContinue}>
+              <label style={{ color: "#fff" ,marginBottom: "5px"}}>Email or Mobile Number</label>
               <div className="form-group">
                 <input
                   type="text"
@@ -197,7 +198,7 @@ const Login = () => {
                 />
               </div>
 
-              <button type="submit" className="btn-primary-orange">
+              <button type="submit" className="btn-primary-orange" >
                 Continue
               </button>
             </form>
@@ -211,7 +212,7 @@ const Login = () => {
             </button>
 
             <div className="divider">
-              <span>or</span>
+              <span style={{ color: "#fff" }}>or</span>
             </div>
 
             <div className="d-grid gap-3">
@@ -366,7 +367,9 @@ const Login = () => {
               </NavLink>
             </p>
 
-            <p className="text-center english">English (US)</p>
+            <p className="text-center english" style={{ color: "#fff" }}>
+              English (US)
+            </p>
           </div>
         </div>
       </div>

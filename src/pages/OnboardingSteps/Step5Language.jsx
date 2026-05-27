@@ -7,7 +7,7 @@ import {
 } from "../../features/onboarding/onboardingSlice";
 import { toast } from "react-toastify";
 
-import logo from "../../assets/images/logo-dark.svg";
+import logo from "../../assets/images/logo1.png";
 import meditationImg from "../../assets/images/meditation-two.png";
 import thanksIcon from "../../assets/images/thnks-for-sharing-icon.svg";
 import rightArrow from "../../assets/images/right-arrow-icon.png";
@@ -149,9 +149,9 @@ const handleSubmit = async () => {
 
   return (
     <div className="container-fluid">
-      <div className="row">
+      <div className="row" style={{minHeight:"100vh"}}>
         {/* LEFT SIDE */}
-        <div className="col-lg-6">
+        <div className="col-lg-6" style={{borderRight: "1px solid #fff"}}>
           <div className="login-left">
             <div className="logo-container">
               <div className="logo-icon">
@@ -172,7 +172,7 @@ const handleSubmit = async () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="col-lg-6 d-flex align-items-center justify-content-center">
+        <div className="col-lg-6 d-flex align-items-center justify-content-center" style={{background: "#030f25"}}>
           <div className="login-right">
             <div className="w-100 fade-in" style={{ maxWidth: 380 }}>
               <p className="welcome-mini-sub-title text-center">
@@ -195,7 +195,7 @@ const handleSubmit = async () => {
                         alt={selectedLang.name}
                         width={24}
                       />
-                      <span>{selectedLang.name}</span>
+                      <span style={{ color: "#fff" }}>{selectedLang.name}</span>
                     </div>
                     <span>✓</span>
                   </div>
@@ -225,7 +225,7 @@ const handleSubmit = async () => {
                           key={idx}
                           className={classNames.join(" ")}
                           onClick={() => handleLanguageChange(lang.code)}
-                          style={{ cursor: "pointer" }}
+                          style={{ cursor: "pointer", color: "#fff" }}
                         >
                           <div className="d-flex align-items-center gap-2">
                             <img src={lang.flag} alt={lang.name} width={24} />

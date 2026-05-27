@@ -116,7 +116,7 @@ const Step2 = () => {
 
         {/* RIGHT SECTION */}
 
-        <div className="col-lg-6 d-flex align-items-center justify-content-center absolute">
+        <div className="col-lg-6 d-flex align-items-center justify-content-center absolute" style={{background: "#030f25"}}>
           <div className="login-right">
             <div className="w-100 fade-in" style={{ maxWidth: 500 }}>
               <h2 className="welcome-title">A space just for you</h2>

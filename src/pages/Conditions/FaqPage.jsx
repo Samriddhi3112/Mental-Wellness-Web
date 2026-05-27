@@ -33,7 +33,7 @@ const FaqPage = () => {
                   </div>
                   <div className="setting-info">
                     <h4>{faq.question || t("notAvailable")}</h4>
-                    <p>{faq.answer || t("notAvailable")}</p>
+                    <p style={{color:"#fff"}}>{faq.answer || t("notAvailable")}</p>
                   </div>
                 </div>
 

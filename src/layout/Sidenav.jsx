@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/images/Swastii.svg";
+import logo from "../assets/images/logo1.png";
 import homeIcon from "../assets/images/home-icon.svg";
 import SettingIcon from "../assets/images/setting-icon.svg";
 import SidenavImage from "../assets/images/side-nav-bottom-image.png";
@@ -25,8 +25,13 @@ const Sidenav = () => {
 
   return (
     <div className="sidebar">
-      <div className="logo">
-        <img src={logo} alt="Logo" />
+      <div
+        style={{
+          marginTop: "5px",
+          // borderBottom: "1px solid #ffffff21",
+        }}
+      >
+        <img src={logo} alt="Logo" style={{width:"325px" , marginBottom: "10px",borderBottom: "1px solid #ffffff21",}}/>
       </div>
 
       <NavLink
@@ -63,7 +68,7 @@ const Sidenav = () => {
         <h4>{t("talkToKai")}</h4>
         <p>{t("kaiDescription")}</p>
         <a
-          className="btn"
+          className="btn no-hover start-chat-btn"
           onClick={() => navigate("/chat")}
           style={{ cursor: "pointer" }}
         >

@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { clearChat } from "../features/chat/chatSlice";
 import { useTranslation } from "react-i18next";
-import buttonIcon from "../assets/images/button.svg";
+import buttonIcon from "../assets/images/button 1.svg";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -96,7 +96,7 @@ const Header = () => {
 
             if (!token) {
               console.log("Guest user - navigation blocked");
-              return; // ❌ navigate mat karo
+              return;
             }
 
             navigate("/settingOption/profileDetail");

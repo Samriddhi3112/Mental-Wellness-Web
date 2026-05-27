@@ -150,7 +150,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMusic } from "../../../features/home/music/musicSlice";
-import music1 from "../../../assets/images/music-icon.png";
+import music1 from "../../../assets/images/div.png";
 import play from "../../../assets/images/play-icon.png";
 import play1 from "../../../assets/images/black-music-icon.png";
 import { useMusicPlayer } from "../../../context/MusicPlayerContext";
@@ -285,7 +285,7 @@ const CalmMusicListing = () => {
             }
           >
             <div className="left">
-              <div className="icon">
+              <div className="">
                 <img
                   src={music1}
                   alt=""
@@ -297,7 +297,7 @@ const CalmMusicListing = () => {
                   {item.trackName || "N/A"}
                 </h4>
 
-                <p>
+                <p style={{color:"#fff"}}>
                   {formatLength(item.length)}
 
                   <span className="tag">
@@ -307,7 +307,7 @@ const CalmMusicListing = () => {
               </div>
             </div>
 
-            <div className="d-flex align-items-center gap-2">
+            <div className="d-flex align-items-center gap-2" >
               {/* Selected Label */}
               {isBackgroundMusic && (
                 <span className="selected-music-badge">

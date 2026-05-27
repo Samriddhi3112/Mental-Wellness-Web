@@ -68,9 +68,11 @@ const LogoutModal = ({ show, onClose }) => {
   return (
     <div className="logout-overlay">
       <div className="logout-modal">
-        <h3 className="logout-title">{t("logoutTitle")}</h3>
+        <h3 className="logout-title" style={{ color: "#fff" }}>
+          {t("logoutTitle")}
+        </h3>
 
-        <p className="logout-text">{t("logoutDesc")}</p>
+        <p className="logout-text" style={{ color: "#fff" }}>{t("logoutDesc")}</p>
 
         <div className="logout-actions">
           <button className="logout-cancel" onClick={onClose}>

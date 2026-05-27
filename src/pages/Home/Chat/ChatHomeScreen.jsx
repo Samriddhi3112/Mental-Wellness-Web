@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ChatSidebar from "./ChatSidebar";
-import avatar from "../../../assets/images/avtar-three.png";
+import avatar from "../../../assets/images/bg-Img.png";
 import voiceIcon from "../../../assets/images/talk-with-voice.png";
 import textIcon from "../../../assets/images/chat-to-ai.png";
 import settingIcon from "../../../assets/images/setting-two.png";
@@ -69,7 +69,7 @@ const ChatHomeScreen = () => {
         selectedChatId={chatId}
       />
 
-      <div className="main-content" style={{ marginLeft: "640px" }}>
+      <div className="main-content" style={{padding: 0,width: "-webkit-fill-available"}}>
         <div className="activities-header">
           <h3 />
           {/* <a href="#">
@@ -85,6 +85,7 @@ const ChatHomeScreen = () => {
           {!chatId ? (
             <>
               <h2>{t("howWouldYouLikeToConnect")}</h2>
+              <p>Kai is ready to listen, judgment-free.  Choose the way that feels most comfortable for you right now.</p>
 
               <div className="connection-options">
                 <div

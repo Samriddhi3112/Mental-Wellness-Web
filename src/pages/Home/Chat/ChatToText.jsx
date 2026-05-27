@@ -346,7 +346,7 @@ const ChatToText = () => {
       />
 
       {/* MAIN CHAT */}
-      <div className="main-content" style={{padding: 0}}>
+      <div className="main-content" style={{padding: 0,width: "-webkit-fill-available"}}>
         <div
           className="connection-container"
           style={{
@@ -406,9 +406,10 @@ const ChatToText = () => {
                         lineHeight: "1.55",
                         wordBreak: "break-word",
                         boxSizing: "border-box",
-                        background: isUser ? "#f5f6fa" : "#f0f2f5",
+                        background: isUser ? "#030f25" : "rgb(97 135 246)",
                         color: isUser ? "#ffffff" : "#1a1a2e",
-                        border: isUser ? "none" : "1px solid #e4e6ea",
+                        // border: isUser ? "none" : "1px solid #e4e6ea",
+                        border:"1px solid #fff",
                       }}
                     >
                       {/* Message text / typing dots */}
@@ -450,7 +451,7 @@ const ChatToText = () => {
                             marginTop: "4px",
                             opacity: 0.65,
                             textAlign: isUser ? "right" : "left",
-                            color: isUser ? "#ffffff" : "#555555",
+                            color: isUser ? "#ffffff" : "#030f25",
                           }}
                         >
                           {new Date(msg.createdAt).toLocaleTimeString([], {
@@ -471,7 +472,7 @@ const ChatToText = () => {
           <div
             style={{
               padding: "12px 16px",
-              background: "#ffffff",
+              background: "rgb(3 15 37)",
               borderTop: "1px solid #e4e6ea",
             }}
           >
@@ -505,7 +506,7 @@ const ChatToText = () => {
               <button
                 onClick={handleSend}
                 style={{
-                  background: "rgb(255 81 26)",
+                  background: "rgb(3 15 37)",
                   color: "#ffffff",
                   border: "none",
                   borderRadius: "50%",

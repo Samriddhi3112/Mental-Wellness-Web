@@ -302,6 +302,8 @@ export default function SecretJournal() {
               style={{
                 width: "100%",
                 borderCollapse: "collapse",
+                backgroundColor: "#030f25",
+                color: "#fff",
               }}
             >
               <thead>

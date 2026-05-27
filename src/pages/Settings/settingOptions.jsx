@@ -236,7 +236,7 @@ import termsIcon from "../../assets/images/terms-and-service.svg";
 import { FaQuestionCircle } from "react-icons/fa";
 import { useNavigate, NavLink } from "react-router-dom";
 import privacyIcon from "../../assets/images/privacy-policy-img.svg";
-import arrowIcon from "../../assets/images/right-arrow-icon.svg";
+import arrowIcon from "../../assets/images/arrow.png";
 
 const SettingOptions = () => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);

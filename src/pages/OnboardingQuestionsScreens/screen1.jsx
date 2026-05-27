@@ -10,13 +10,13 @@ import {
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import logo from "../../assets/images/logo-dark.svg";
-import playAgain from "../../assets/images/play-again-image.svg";
+import logo from "../../assets/images/logo1.png";
+import playAgain from "../../assets/images/playAgain.png";
 import phoneIcon from "../../assets/images/phone-icon.svg";
 import rightArrow from "../../assets/images/right-arrow-icon.png";
 import ImmediateSupportModal from "../../components/modals/ImmediateSupportModal";
 import EmergencyModal from "../../components/modals/EmergencyModal";
-import helpButton from "../../assets/images/button.svg";
+import helpButton from "../../assets/images/button 1.svg";
 import { FaMicrophone } from "react-icons/fa6";
 
 const Screen1 = () => {
@@ -75,7 +75,34 @@ const Screen1 = () => {
   //   loading,
   // } = useSelector((state) => state.questions || {});
 
-   const playQuestionAudio = (audioObj) => {
+  // const playQuestionAudio = (audioObj) => {
+  //   if (!audioObj?.data) return;
+
+  //   try {
+  //     // stop previous audio
+  //     if (window.currentAudio) {
+  //       window.currentAudio.pause();
+  //       window.currentAudio.currentTime = 0;
+  //     }
+
+  //     const mimeType = audioObj?.contentType || "audio/mpeg";
+
+  //     // base64 -> playable url
+  //     const audioSrc = `data:${mimeType};base64,${audioObj.data}`;
+
+  //     const audio = new Audio(audioSrc);
+
+  //     window.currentAudio = audio;
+
+  //     audio.play().catch((err) => {
+  //       console.log("Audio play error:", err);
+  //     });
+  //   } catch (err) {
+  //     console.log("Audio error:", err);
+  //   }
+  // };
+
+  const playQuestionAudio = (audioObj) => {
   if (!audioObj?.data) return;
 
   try {
@@ -87,8 +114,11 @@ const Screen1 = () => {
 
     const mimeType = audioObj?.contentType || "audio/mpeg";
 
+    // remove spaces/new lines from base64
+    const cleanBase64 = audioObj.data.replace(/\s/g, "");
+
     // base64 -> playable url
-    const audioSrc = `data:${mimeType};base64,${audioObj.data}`;
+    const audioSrc = `data:${mimeType};base64,${cleanBase64}`;
 
     const audio = new Audio(audioSrc);
 
@@ -136,7 +166,6 @@ const Screen1 = () => {
   const handleNext = async (e) => {
     e.preventDefault();
 
-    // ✅ Answer mandatory
     if (!answer.trim()) {
       return toast.error("Please enter your answer before continuing");
     }
@@ -145,7 +174,6 @@ const Screen1 = () => {
 
     const finalAnswer = answer.trim();
 
-    // Update responses
     const updatedResponses = [...responses];
     const existingIndex = updatedResponses.findIndex(
       (r) => r.questionId === question._id,
@@ -166,9 +194,7 @@ const Screen1 = () => {
     setResponses(updatedResponses);
 
     try {
-      // ✅ LAST QUESTION
       if (currentQuestionIndex === questions.length - 1) {
-        // ✅ Check all skipped
         const allSkipped = updatedResponses.every(
           (item) => !item.answer || item.answer.trim() === "",
         );
@@ -178,8 +204,6 @@ const Screen1 = () => {
           return;
         }
 
-        // ✅ API hit
-        // const res = await dispatch(submitAnswers(updatedResponses)).unwrap();
         const filteredResponses = updatedResponses.filter(
           (item) => item.answer && item.answer.trim() !== "",
         );
@@ -192,7 +216,6 @@ const Screen1 = () => {
 
           toast.success(res?.message || "Answers submitted successfully");
 
-          // ✅ IMPORTANT: immediateHelp handling
           if (res?.success) {
             localStorage.setItem("onboarding_last_shown", Date.now());
 
@@ -208,13 +231,12 @@ const Screen1 = () => {
             navigate("/step-4");
           }
           // if (res?.immediateHelp) {
-          //   setShowModal(true); // 👈 modal open (state already bana lo)
+          //   setShowModal(true); 
           // } else {
           //   navigate("/step-4");
           // }
         }
       } else {
-        // ✅ Next Question
         dispatch(nextQuestion());
         setAnswer("");
       }
@@ -233,13 +255,13 @@ const Screen1 = () => {
     }
   };
 
-useEffect(() => {
-  if (question?.audio?.data) {
-    setTimeout(() => {
-      playQuestionAudio(question.audio);
-    }, 500);
-  }
-}, [question]);
+  useEffect(() => {
+    if (question?.audio?.data) {
+      setTimeout(() => {
+        playQuestionAudio(question.audio);
+      }, 500);
+    }
+  }, [question]);
 
   const speakQuestion = (text, langFromAPI) => {
     if (!text) return;
@@ -502,8 +524,6 @@ useEffect(() => {
   //   }
   // };
 
- 
-
   return (
     <div className="container onboarding-screen">
       {loading && (
@@ -602,7 +622,7 @@ useEffect(() => {
                         height: "46px",
                         borderRadius: "50%",
                         border: "none",
-                        background: "#ff5a1f",
+                        background: "#030f25",
                         color: "#fff",
                         fontSize: "18px",
                         display: "flex",
@@ -625,7 +645,7 @@ useEffect(() => {
                         display: "flex",
                         alignItems: "center",
                       }}
-                      onClick={()=> navigate('/therapy-session')}
+                      onClick={() => navigate("/therapy-session")}
                     >
                       <img
                         src={helpButton}
@@ -649,8 +669,8 @@ useEffect(() => {
                       height: "46px",
                       borderRadius: "10px",
                       border: "1px solid #d9dde3",
-                      background: "#f1f2f4",
-                      color: "#5f6b84",
+                      background: "#030f35",
+                      color: "#fff",
                       fontSize: "16px",
                       fontWeight: 600,
                       width: "100%",
@@ -668,8 +688,8 @@ useEffect(() => {
                       height: "46px",
                       borderRadius: "10px",
                       border: "1px solid #d9dde3",
-                      background: "#f1f2f4",
-                      color: "#5f6b84",
+                      background: "#030f35",
+                      color: "#fff",
                       fontSize: "16px",
                       fontWeight: 600,
                       width: "100%",
@@ -688,7 +708,7 @@ useEffect(() => {
                       height: "46px",
                       borderRadius: "10px",
                       border: "none",
-                      background: "#ff5a1f",
+                      background: "linear-gradient(135deg, #462297, #7631B2)",
                       color: "#fff",
                       fontSize: "16px",
                       fontWeight: 600,

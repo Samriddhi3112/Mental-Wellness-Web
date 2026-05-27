@@ -112,7 +112,7 @@ const Step3 = () => {
 
         {/* RIGHT SECTION */}
 
-        <div className="col-lg-6 d-flex align-items-center justify-content-center absolute">
+        <div className="col-lg-6 d-flex align-items-center justify-content-center absolute" style={{background: "#030f25"}}>
           <div className="login-right">
             <div className="w-100 fade-in" style={{ maxWidth: 350 }}>
               <p className="welcome-mini-sub-title">Privacy & Consent</p>
@@ -133,7 +133,7 @@ const Step3 = () => {
                   className="mb-4 p-3 border rounded-3"
                   style={{
                     border: errors.privacy_policy ? "1px solid #ff4d4f" : "",
-                    background: errors.privacy_policy ? "#fff5f5" : "",
+                    // background: errors.privacy_policy ? "#fff5f5" : "",
                   }}
                 >
                   <div className="form-check">
@@ -182,7 +182,7 @@ const Step3 = () => {
                   className="mb-4 p-3 border rounded-3"
                   style={{
                     border: errors.ai_consent ? "1px solid #ff4d4f" : "",
-                    background: errors.ai_consent ? "#fff5f5" : "",
+                    // background: errors.ai_consent ? "#fff5f5" : "",
                   }}
                 >
                   <div className="form-check">
@@ -229,7 +229,7 @@ const Step3 = () => {
 
                 <div
                   className="mb-4 p-3 border rounded-3"
-                  style={{ backgroundColor: "#F5F5F5" }}
+                  style={{ backgroundColor: "#030f25" }}
                 >
                   <div className="row">
                     <div className="col-1">

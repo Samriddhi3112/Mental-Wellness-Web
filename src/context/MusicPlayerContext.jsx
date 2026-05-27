@@ -13,7 +13,6 @@ export const MusicPlayerProvider = ({ children }) => {
 
     const audio = audioRef.current;
 
-    // same track toggle
     if (currentTrack?._id === track._id) {
       if (isPlaying) {
         audio.pause();

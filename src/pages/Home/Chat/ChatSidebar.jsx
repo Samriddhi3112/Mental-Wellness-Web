@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../../assets/images/logo-2.svg";
+import logo from "../../../assets/images/logo1.png";
 import searchIcon from "../../../assets/images/search-normal.png";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -18,9 +18,14 @@ const ChatSidebar = ({ chatList = [], onSelectChat, selectedChatId }) => {
   return (
     <div className="sidebar">
       {/* ✅ Logo */}
-      <div className="logo">
-        <img src={logo} alt="logo" />
-      </div>
+      <div
+              style={{
+                marginTop: "5px",
+                // borderBottom: "1px solid #ffffff21",
+              }}
+            >
+              <img src={logo} alt="Logo" style={{width:"325px" , marginBottom: "10px",borderBottom: "1px solid #ffffff21",}}/>
+            </div>
 
       {/* ✅ Search */}
       <div className="search-box">

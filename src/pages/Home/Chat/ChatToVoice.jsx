@@ -762,7 +762,7 @@ const ChatToVoice = () => {
                 🎤
               </button>
 
-              <button className="send-btn" style={{backgroundColor:"rgb(255 81 26)"}} onClick={handleSend}>
+              <button className="send-btn" style={{backgroundColor:"#030f25"}} onClick={handleSend}>
                 ➤
               </button>
             </div>

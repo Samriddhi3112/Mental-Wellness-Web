@@ -299,7 +299,7 @@ const OTPVerify = () => {
           </div>
         </div>
 
-        <div className="col-lg-6 d-flex align-items-center justify-content-center absolute">
+        <div className="col-lg-6 d-flex align-items-center justify-content-center absolute" style={{ backgroundColor: "#030F25" }}>
           <div className="login-right">
             <div className="text-center mb-4">
               <div className="d-inline-flex align-items-center justify-content-center">
@@ -310,7 +310,7 @@ const OTPVerify = () => {
             <h2 className="welcome-title">Enter verification code</h2>
 
             <p className="welcome-description">
-              A 6-digit code has been sent to your mobile number
+              A 6-digit code has been sent to your Email or Mobile Number
             </p>
 
             <form

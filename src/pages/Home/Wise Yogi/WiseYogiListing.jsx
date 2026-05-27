@@ -220,7 +220,7 @@ export default function WiseYogiListing() {
 .wy-card-sanskrit {
   font-size: 1rem;
   font-weight: 700;
-  color: #f26522;
+  color: #030f25;
   line-height: 1.2;
   margin-bottom: 0.1rem;
 }
@@ -235,7 +235,7 @@ export default function WiseYogiListing() {
   .wy-intro-text {
   font-size: 0.95rem;
   font-weight: 500;
-  color: #6b7694;
+  color: black;
   line-height: 1.7;
   margin: 0 0 1.4rem;
   padding: 0 0.2rem;
@@ -305,7 +305,7 @@ export default function WiseYogiListing() {
     .wy-progress-ring-bg { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 5; }
     .wy-progress-ring-fill {
       fill: none;
-      stroke: #f26522;
+      stroke: #030f25;
       stroke-width: 5;
       stroke-linecap: round;
       stroke-dasharray: 163;
@@ -329,7 +329,7 @@ export default function WiseYogiListing() {
     }
     .wy-prog-bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, #f26522, #ff8c42);
+      background: linear-gradient(135deg, #462297, #7631B2);
       border-radius: 10px;
       width: calc(var(--pct) * 1%);
       transition: width 0.8s cubic-bezier(.4,0,.2,1);
@@ -355,12 +355,12 @@ export default function WiseYogiListing() {
       transition: border-color .25s, box-shadow .25s, transform .2s, opacity .3s;
       overflow: hidden;
       position: relative;
-      border: 1px solid #f2e7df;
+      border: 1px solid #030f2524;
 background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
     }
     .wy-card:not(.wy-card--done):hover {
-      border-color: #f2652244;
-      box-shadow: 0 8px 28px rgba(242,101,34,0.1);
+      border-color: 1px solid #030f2524;
+      box-shadow: 0 8px 28px #030f25b0;
       transform: translateY(-2px);
     }
     .wy-card--done { opacity: 0.72; background: #fafbfe; }
@@ -392,8 +392,8 @@ background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
       width: 52px; height: 52px; flex-shrink: 0;
       border-radius: 12px; display: flex;
       align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #fff4ee, #ffe8d6);
-      color: #f26522; transition: background .3s;
+      background:linear-gradient(135deg, #462297, #7631B2);
+      color: #030f25; transition: background .3s;
     }
     .wy-card--done .wy-card-icon {
       background: linear-gradient(135deg, #f0f4f0, #e0eee0);
@@ -423,7 +423,7 @@ background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
     .wy-steps-toggle {
       background: none; border: none; cursor: pointer;
       // font-family: 'DM Sans', sans-serif;
-      font-size: 0.78rem; font-weight: 600; color: #f26522;
+      font-size: 0.78rem; font-weight: 600; color: #030f25;
       padding: 0; display: flex; align-items: center; gap: 0.3rem;
       transition: opacity .15s;
     }
@@ -434,17 +434,17 @@ background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
     .wy-steps--open { max-height: 400px; }
     .wy-steps-inner {
       margin-top: 0.7rem; padding: 0.9rem 1rem;
-      background: #f7f8fc; border-radius: 10px;
+      background: #030f25; border-radius: 10px;
       display: flex; flex-direction: column; gap: 0.55rem;
     }
     .wy-step {
       display: flex; gap: 0.7rem; align-items: flex-start;
-      font-size: 0.82rem; color: #4a5270; line-height: 1.5;
+      font-size: 0.82rem; color: #fff; line-height: 1.5;
     }
     .wy-step-num {
       width: 20px; height: 20px; background: #fff;
       border: 1.5px solid #e4e7f0; border-radius: 50%;
-      font-size: 0.65rem; font-weight: 700; color: #f26522;
+      font-size: 0.65rem; font-weight: 700; color: #030f25;
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .wy-card--done .wy-step-num { color: #66bb6a; }
@@ -457,7 +457,7 @@ background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
 }
     .btn-complete {
       display: flex; align-items: center; gap: 0.5rem;
-      background: #f26522; color: #fff; border: none;
+      background: linear-gradient(135deg, #462297, #7631B2); color: #fff; border: none;
       padding: 0.55rem 1.2rem; border-radius: 30px;
       font-size: 0.82rem; font-weight: 600; cursor: pointer;
       // font-family: 'DM Sans', sans-serif;
@@ -465,7 +465,7 @@ background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
       transition: background .2s, transform .15s, box-shadow .2s;
     }
     .btn-complete:hover:not(:disabled) {
-      background: #d9551a; transform: translateY(-1px);
+      background: linear-gradient(135deg, #462297, #7631B2); transform: translateY(-1px);
       box-shadow: 0 5px 16px rgba(242,101,34,0.35);
     }
     .btn-complete:disabled { opacity: 0.65; cursor: not-allowed; }
@@ -484,7 +484,7 @@ background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
     }
     .wy-spinner {
       width: 44px; height: 44px;
-      border: 3px solid #eef0f7; border-top-color: #f26522;
+      border: 3px solid #eef0f7; border-top-color: #030f25;
       border-radius: 50%; animation: wySpin 0.8s linear infinite;
     }
     @keyframes wySpin { to { transform: rotate(360deg); } }
@@ -496,7 +496,7 @@ background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
     .wy-error h3 { font-family: 'Playfair Display', serif; color: #1a1f36; margin: 0 0 0.4rem; }
     .wy-error p { font-size: 0.82rem; color: #8a94ab; margin: 0 0 1.2rem; }
     .btn-retry {
-      background: #f26522; color: #fff; border: none;
+      background: #030f25; color: #fff; border: none;
       padding: 0.6rem 1.4rem; border-radius: 10px;
       font-size: 0.88rem; font-weight: 600; cursor: pointer;
       // font-family: 'DM Sans', sans-serif;

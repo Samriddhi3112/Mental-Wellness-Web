@@ -27,7 +27,7 @@ const FloatingMusicPlayer = () => {
           width: "70px",
           height: "70px",
           borderRadius: "50%",
-          background: "linear-gradient(135deg, #FF9F43 0%, #FF6B00 100%)",
+          background: "linear-gradient(135deg, #462297, #7631B2)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
