@@ -519,6 +519,16 @@ const ChatToVoice = () => {
     ta: "tamil",
   };
 
+  const ttsLanguageMap = {
+    english: "en-IN",
+    hindi: "hi-IN",
+    bengali: "bn-IN",
+    odiya: "od-IN",
+    assamese: "as-IN",
+    malayalam: "ml-IN",
+    tamil: "ta-IN",
+  };
+
   // ================= LOAD CHAT =================
   useEffect(() => {
     if (chatId) {
@@ -550,10 +560,13 @@ const ChatToVoice = () => {
       try {
         spokenMessagesRef.current.add(lastMessage._id);
 
+        const langKey = localStorage.getItem("lang") || "english";
+        const ttsLangCode = ttsLanguageMap[langKey] || "en-IN";
+
         const response = await dispatch(
           synthesizeSpeech({
             text: lastMessage.content || lastMessage.text,
-            target_language_code: "hi-IN",
+            target_language_code: ttsLangCode, 
             speaker: "shubh",
             output_audio_codec: "mp3",
           }),
@@ -588,13 +601,13 @@ const ChatToVoice = () => {
 
   // ================= SEND MESSAGE =================
   const handleSend = () => {
-    if (!input.trim() || !chatId) return;
+  if (!input.trim() || !chatId) return;
 
-    const tempId = Date.now();
-    const botTempId = tempId + "_bot";
+  const tempId = Date.now();
+  const botTempId = tempId + "_bot";
 
-    const langCode = localStorage.getItem("lang") || "en";
-    const language = languageMap[langCode] || "english";
+  const langKey = localStorage.getItem("lang") || "english";
+  const language = langKey; // directly use karo — "english", "hindi", "tamil" etc.
 
     // 👤 user message
     dispatch(
