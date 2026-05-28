@@ -122,7 +122,7 @@ export const synthesizeSpeech = createAsyncThunk(
   "sarvam/synthesizeSpeech",
   async (
     { text, target_language_code, speaker, output_audio_codec },
-    { rejectWithValue }
+    { rejectWithValue },
   ) => {
     try {
       const token = localStorage.getItem("token");
@@ -140,16 +140,14 @@ export const synthesizeSpeech = createAsyncThunk(
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       return res.data;
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data || error.message
-      );
+      return rejectWithValue(error.response?.data || error.message);
     }
-  }
+  },
 );
 
 // ================= SLICE =================
@@ -167,11 +165,12 @@ const chatSlice = createSlice({
   },
   reducers: {
     setChatId: (state, action) => {
-      state.selectedChatId = action.payload;
+      state.chatId = action.payload;
     },
     clearChat: (state) => {
       state.messages = [];
       state.chatId = null;
+      state.selectedChatId = null;
     },
 
     addTempMessage: (state, action) => {

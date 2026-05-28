@@ -346,14 +346,14 @@ const ChatToText = () => {
       />
 
       {/* MAIN CHAT */}
-      <div className="main-content" style={{padding: 0,width: "-webkit-fill-available"}}>
+      <div className="main-content" style={{ padding:'10px', width: "-webkit-fill-available", marginTop:'67px', height:'auto',  minHeight:'calc(100vh - 67px)' }}>
         <div
           className="connection-container"
           style={{
             backgroundImage: "url(/images/chat-bg.png)",
             display: "flex",
             flexDirection: "column",
-            height: "87vh",
+    
             overflow: "hidden",
           }}
         >
@@ -367,7 +367,8 @@ const ChatToText = () => {
               display: "flex",
               flexDirection: "column",
               gap: "4px",
-              minHeight: 0,
+              minHeight: 'calc(-160px + 100vh)',
+              maxHeight:'calc(100vh - 160px)',
             }}
           >
             {allMessages.length === 0 ? (

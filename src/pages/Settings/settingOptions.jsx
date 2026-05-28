@@ -227,15 +227,16 @@ import i18n from "i18next";
 
 import LogoutModal from "../../components/modals/LogoutModal";
 import DeleteModal from "../../components/modals/DeleteModal";
-import profileIcon from "../../assets/images/my-profile-img.svg";
-import languageIcon from "../../assets/images/language-img.svg";
-import premiumIcon from "../../assets/images/upgrade-to-premium-img.svg";
-import exportDataIcon from "../../assets/images/export-my-data-img.svg";
-import deleteIcon from "../../assets/images/delete-img.svg";
-import termsIcon from "../../assets/images/terms-and-service.svg";
+import profileIcon from "../../assets/images/i (1).png";
+import languageIcon from "../../assets/images/i (2).png";
+import premiumIcon from "../../assets/images/div (1).png";
+import exportDataIcon from "../../assets/images/i (3).png";
+import deleteIcon from "../../assets/images/i (4).png";
+import termsIcon from "../../assets/images/i (5).png";
 import { FaQuestionCircle } from "react-icons/fa";
 import { useNavigate, NavLink } from "react-router-dom";
-import privacyIcon from "../../assets/images/privacy-policy-img.svg";
+import privacyIcon from "../../assets/images/i (6).png";
+import faqIcon from "../../assets/images/i (7).png";
 import arrowIcon from "../../assets/images/arrow.png";
 
 const SettingOptions = () => {
@@ -404,7 +405,7 @@ const SettingOptions = () => {
           <NavLink to="/settingOption/faq" className="setting-item">
             <div className="setting-item-left">
               <div className="setting-icon icon-terms">
-                <FaQuestionCircle size={18} color="#ff511a" />
+               <img src={faqIcon} alt="" />
               </div>
 
               <div className="setting-info">

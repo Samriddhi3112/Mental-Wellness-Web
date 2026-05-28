@@ -525,7 +525,7 @@ const Screen1 = () => {
   // };
 
   return (
-    <div className="container onboarding-screen">
+    <div className="container-fluid onboarding-screen" style={{background: "#030f25" , minHeight:"100vh"}}>
       {loading && (
         <div className="loader-overlay">
           <div className="loader"></div>
@@ -574,7 +574,7 @@ const Screen1 = () => {
                 </div>
               </div>
 
-              <h2 className="mb-3 title">{question?.questionText || "N/A"}</h2>
+              <h2 className="mb-3 title" style={{color:"#fff"}}>{question?.questionText || "N/A"}</h2>
               {/* <p>{question?.questionText || "N/A"}</p> */}
 
               <form style={{ margin: "0 auto" }}>
@@ -628,7 +628,8 @@ const Screen1 = () => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        boxShadow: "0 4px 12px rgba(255, 90, 31, 0.25)",
+                        border: "1px solid #fff",
+                        // boxShadow: "0 4px 12px rgba(255, 90, 31, 0.25)",
                         flexShrink: 0,
                       }}
                     >

@@ -136,7 +136,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                 <>
                   <div className="mb-3">
                     {/* <label className="form-label">Step 1 of 2</label> */}
-                    <label className="form-label">{t("step1")}</label>
+                    <label className="form-label1">{t("step1")}</label>
                     <div className="progress">
                       <div
                         className="progress-bar"
@@ -146,7 +146,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">{t("nameNickname")}</label>
+                    <label className="form-label1">{t("nameNickname")}</label>
                     {/* <label className="form-label">Name or Nickname</label> */}
                     <input
                       type="text"
@@ -158,7 +158,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">{t("age")}</label>
+                    <label className="form-label1">{t("age")}</label>
                     {/* <label className="form-label">Age</label> */}
                     <input
                       type="number"
@@ -170,7 +170,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">{t("gender")}</label>
+                    <label className="form-label1">{t("gender")}</label>
                     {/* <label className="form-label">Sex/Gender</label> */}
                     <div className="custom-select-wrapper">
                       <select
@@ -191,7 +191,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
 
                   <div className="row mb-3">
                     <div className="col-6">
-                      <label className="form-label">{t("bodyWeight")}</label>
+                      <label className="form-label1">{t("bodyWeight")}</label>
                       {/* <label className="form-label">Body Weight (kg)</label> */}
                       <input
                         type="text"
@@ -203,7 +203,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                     </div>
 
                     <div className="col-6">
-                      <label className="form-label">{t("height")}</label>
+                      <label className="form-label1">{t("height")}</label>
                       {/* <label className="form-label">Height (cm)</label> */}
                       <input
                         type="text"
@@ -216,7 +216,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">{t("educationLevel")}</label>
+                    <label className="form-label1">{t("educationLevel")}</label>
                     {/* <label className="form-label">Education Level</label> */}
                     <div className="custom-select-wrapper">
                       <select
@@ -244,7 +244,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">{t("occupation")}</label>
+                    <label className="form-label1">{t("occupation")}</label>
                     {/* <label className="form-label">Occupation</label> */}
                     <input
                       type="text"
@@ -270,7 +270,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                 <>
                   <div className="mb-3">
                     {/* <label className="form-label">Step 2 of 2</label> */}
-                    <label className="form-label">{t("step2")}</label>
+                    <label className="form-label1">{t("step2")}</label>
                     <div className="progress">
                       <div
                         className="progress-bar"
@@ -281,7 +281,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
 
                   <div className="row mb-3">
                     <div className="col-6">
-                      <label className="form-label">
+                      <label className="form-label1">
                         {t("placeOfResidence")}
                       </label>
                       {/* <label className="form-label">Place of Residence</label> */}
@@ -295,7 +295,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                     </div>
 
                     <div className="col-6">
-                      <label className="form-label">{t("maritalStatus")}</label>
+                      <label className="form-label1">{t("maritalStatus")}</label>
                       {/* <label className="form-label">Marital Status</label> */}
                       <div className="custom-select-wrapper">
                         <select
@@ -326,7 +326,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">{t("familyType")}</label>
+                    <label className="form-label1">{t("familyType")}</label>
                     {/* <label className="form-label">Family Type</label> */}
                     <div className="custom-select-wrapper">
                       <select
@@ -350,7 +350,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">
+                    <label className="form-label1">
                       {t("livingArrangement")}
                     </label>
                     {/* <label className="form-label">Living Arrangement</label> */}
@@ -381,7 +381,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">{t("language")}</label>
+                    <label className="form-label1">{t("language")}</label>
                     {/* <label className="form-label">Language</label> */}
                     <div className="custom-select-wrapper">
                       <select
@@ -407,7 +407,7 @@ const EditProfileModal = ({ show, onClose, user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">
+                    <label className="form-label1">
                      {t("mainFocusQuestion")}
                     </label>
 

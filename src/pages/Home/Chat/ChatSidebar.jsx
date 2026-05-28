@@ -19,16 +19,23 @@ const ChatSidebar = ({ chatList = [], onSelectChat, selectedChatId }) => {
     <div className="sidebar">
       {/* ✅ Logo */}
       <div
-              style={{
-                marginTop: "5px",
-                // borderBottom: "1px solid #ffffff21",
-              }}
-            >
-              <img src={logo} alt="Logo" style={{width:"325px" , marginBottom: "10px",borderBottom: "1px solid #ffffff21",}}/>
-            </div>
+        style={{
+          marginTop: "13px",borderBottom: "1px solid #ffffff1a"
+          // borderBottom: "1px solid #ffffff21",
+          // borderBottom: "1px solid #ffffff21",
+        }}
+      >
+        <img
+          src={logo}
+          alt="Logo"
+          style={{
+            // width: "325px",  
+          }}
+        />
+      </div>
 
       {/* ✅ Search */}
-      <div className="search-box">
+      <div className="search-box" style={{ marginTop: "40px" }}>
         <img src={searchIcon} alt="search" />
         <input
           type="text"

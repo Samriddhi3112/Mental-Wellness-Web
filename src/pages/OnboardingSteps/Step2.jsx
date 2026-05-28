@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/images/logo-dark.svg";
+import logo from "../../assets/images/logo1.png";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-two.png";
 import rightarrowicon from "../../assets/images/right-arrow-icon.png";

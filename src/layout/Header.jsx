@@ -17,6 +17,7 @@ const Header = () => {
   const location = useLocation();
   const userData = JSON.parse(localStorage.getItem("userData")) || {};
   const reduxUser = useSelector((state) => state.profile.user);
+  console.log(window.history.length);
 
   const localUser = JSON.parse(localStorage.getItem("userData")) || {};
   const user = reduxUser && reduxUser.name ? reduxUser : localUser;
@@ -24,17 +25,23 @@ const Header = () => {
 
   const userName = user?.name;
   console.log(userData);
-
+  
   const handleBack = () => {
-    if (
-      location.pathname.startsWith("/chat-text") ||
-      location.pathname.startsWith("/chat-voice")
-    ) {
-      dispatch(clearChat());
-    }
+  console.log("BACK CLICKED");
 
-    navigate(-1);
-  };
+  navigate(-1);
+};
+
+  // const handleBack = () => {
+  //   if (
+  //     location.pathname.startsWith("/chat-text") ||
+  //     location.pathname.startsWith("/chat-voice")
+  //   ) {
+  //     dispatch(clearChat());
+  //   }
+
+  //   navigate(-1);
+  // };
 
   const getGreeting = () => {
     const hour = new Date().getHours();
@@ -46,7 +53,13 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="d-flex align-items-center gap-2">
+      <div
+  className="d-flex align-items-center gap-2"
+  style={{
+    position: "relative",
+    zIndex: 99999,
+  }}
+>
         <img
           src={leftBack}
           alt="back"

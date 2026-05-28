@@ -28,10 +28,11 @@ const Sidenav = () => {
       <div
         style={{
           marginTop: "5px",
+           borderBottom:"1px solid #FFFFFF1A"
           // borderBottom: "1px solid #ffffff21",
         }}
       >
-        <img src={logo} alt="Logo" style={{width:"325px" , marginBottom: "10px",borderBottom: "1px solid #ffffff21",}}/>
+        <img src={logo} alt="Logo" style={{marginBottom: "10px"}}/>
       </div>
 
       <NavLink

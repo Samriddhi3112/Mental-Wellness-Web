@@ -11,6 +11,7 @@ import {
   getChatHistory,
   setChatId,
   getChatList,
+  clearChat,
 } from "../../../features/chat/chatSlice";
 import { useTranslation } from "react-i18next";
 
@@ -22,6 +23,11 @@ const ChatHomeScreen = () => {
   const chatId = useSelector((state) => state.chat.chatId);
   const chatList = useSelector((state) => state.chat.chatList);
   const messages = useSelector((state) => state.chat.messages);
+
+  useEffect(() => {
+    dispatch(getChatList());
+    dispatch(clearChat());
+  }, [dispatch]);
 
   const handleStartChat = async (type) => {
     try {
@@ -57,19 +63,22 @@ const ChatHomeScreen = () => {
   //   dispatch(getChatList());
   // }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getChatList());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getChatList());
+  // }, [dispatch]);
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", minHeight: "100vh" }}>
       <ChatSidebar
         chatList={chatList}
         onSelectChat={handleOpenChat}
         selectedChatId={chatId}
       />
 
-      <div className="main-content" style={{padding: 0,width: "-webkit-fill-available"}}>
+      <div
+        className="main-content"
+        style={{ padding: 0, width: "-webkit-fill-available" }}
+      >
         <div className="activities-header">
           <h3 />
           {/* <a href="#">
@@ -85,7 +94,10 @@ const ChatHomeScreen = () => {
           {!chatId ? (
             <>
               <h2>{t("howWouldYouLikeToConnect")}</h2>
-              <p>Kai is ready to listen, judgment-free.  Choose the way that feels most comfortable for you right now.</p>
+              <p>
+                Kai is ready to listen, judgment-free. Choose the way that feels
+                most comfortable for you right now.
+              </p>
 
               <div className="connection-options">
                 <div

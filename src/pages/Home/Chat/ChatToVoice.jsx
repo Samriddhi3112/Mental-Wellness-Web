@@ -506,7 +506,7 @@ const ChatToVoice = () => {
   } = useSelector((state) => state.chat || {});
 
   const allMessages = [...messages, ...tempMessages].sort(
-    (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+    (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
   );
 
   const languageMap = {
@@ -547,42 +547,41 @@ const ChatToVoice = () => {
     if (spokenMessagesRef.current.has(lastMessage._id)) return;
 
     const speakMessage = async () => {
-  try {
-    spokenMessagesRef.current.add(lastMessage._id);
+      try {
+        spokenMessagesRef.current.add(lastMessage._id);
 
-    const response = await dispatch(
-      synthesizeSpeech({
-        text: lastMessage.content || lastMessage.text,
-        target_language_code: "hi-IN",
-        speaker: "shubh",
-        output_audio_codec: "mp3",
-      })
-    ).unwrap();
+        const response = await dispatch(
+          synthesizeSpeech({
+            text: lastMessage.content || lastMessage.text,
+            target_language_code: "hi-IN",
+            speaker: "shubh",
+            output_audio_codec: "mp3",
+          }),
+        ).unwrap();
 
-    console.log("TTS RESPONSE =>", response);
+        console.log("TTS RESPONSE =>", response);
 
-    // ✅ base64 audio extract
-    const audioBase64 =
-      response?.data?.audioBase64 ||
-      response?.data?.audios?.[0];
+        // ✅ base64 audio extract
+        const audioBase64 =
+          response?.data?.audioBase64 || response?.data?.audios?.[0];
 
-    if (!audioBase64) {
-      console.log("No audio found");
-      return;
-    }
+        if (!audioBase64) {
+          console.log("No audio found");
+          return;
+        }
 
-    // ✅ mp3 base64 ko playable audio banana
-    const audioSrc = `data:audio/mp3;base64,${audioBase64}`;
+        // ✅ mp3 base64 ko playable audio banana
+        const audioSrc = `data:audio/mp3;base64,${audioBase64}`;
 
-    const audio = new Audio(audioSrc);
+        const audio = new Audio(audioSrc);
 
-    audio.play().catch((err) => {
-      console.log("Audio play error:", err);
-    });
-  } catch (error) {
-    console.log("TTS Error:", error);
-  }
-};
+        audio.play().catch((err) => {
+          console.log("Audio play error:", err);
+        });
+      } catch (error) {
+        console.log("TTS Error:", error);
+      }
+    };
 
     speakMessage();
   }, [allMessages, dispatch]);
@@ -605,7 +604,7 @@ const ChatToVoice = () => {
         content: input,
         createdAt: new Date().toISOString(),
         status: "sending",
-      })
+      }),
     );
 
     // 🤖 bot typing
@@ -616,7 +615,7 @@ const ChatToVoice = () => {
         content: "...",
         createdAt: new Date().toISOString(),
         status: "typing",
-      })
+      }),
     );
 
     dispatch(
@@ -626,7 +625,7 @@ const ChatToVoice = () => {
         language,
         tempId,
         botTempId,
-      })
+      }),
     );
 
     setInput("");
@@ -679,21 +678,46 @@ const ChatToVoice = () => {
 
   return (
     <div>
-      {/* ================= SIDEBAR ================= */}
       <ChatSidebar
         chatList={chatList}
         onSelectChat={handleOpenChat}
         selectedChatId={selectedChatId}
       />
 
-      {/* ================= MAIN CHAT ================= */}
-      <div className="main-content">
+      <div
+        className="main-content"
+        style={{
+          padding: "10px",
+          width: "-webkit-fill-available",
+          marginTop: "67px",
+          height: "auto",
+          minHeight: "calc(100vh - 67px)",
+        }}
+      >
         <div
           className="connection-container"
-          style={{ backgroundImage: "url(/images/chat-bg.png)" }}
+          style={{
+            backgroundImage: "url(/images/chat-bg.png)",
+            display: "flex",
+            flexDirection: "column",
+
+            overflow: "hidden",
+          }}
         >
           {/* ================= MESSAGES ================= */}
-          <div className="chat-messages">
+          <div
+            className="chat-messages"
+            style={{
+              flex: 1,
+              overflowY: "auto",
+              // padding: "16px 0",
+              display: "flex",
+              flexDirection: "column",
+              gap: "4px",
+              minHeight: "calc(-160px + 100vh)",
+              maxHeight: "calc(100vh - 160px)",
+            }}
+          >
             {!Array.isArray(messages) || messages.length === 0 ? (
               <div className="empty-chat-state">
                 <div className="empty-icon">💬</div>
@@ -730,7 +754,15 @@ const ChatToVoice = () => {
                       </p>
 
                       {isValidDate && (
-                        <span className="message-time">
+                        <span
+                          className="message-time"
+                          style={{
+                            display: "block",
+                            fontSize: "10px",
+                            marginTop: "4px",
+                            opacity: 0.65,
+                          }}
+                        >
                           {new Date(msg.createdAt).toLocaleString()}
                         </span>
                       )}
@@ -762,7 +794,11 @@ const ChatToVoice = () => {
                 🎤
               </button>
 
-              <button className="send-btn" style={{backgroundColor:"#030f25"}} onClick={handleSend}>
+              <button
+                className="send-btn"
+                style={{ backgroundColor: "#030f25" }}
+                onClick={handleSend}
+              >
                 ➤
               </button>
             </div>

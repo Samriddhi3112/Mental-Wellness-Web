@@ -310,7 +310,7 @@ const CalmMusicListing = () => {
             <div className="d-flex align-items-center gap-2" >
               {/* Selected Label */}
               {isBackgroundMusic && (
-                <span className="selected-music-badge">
+                <span className="selected-music-badge" style={{color:"#fff"}}>
                   Selected
                 </span>
               )}

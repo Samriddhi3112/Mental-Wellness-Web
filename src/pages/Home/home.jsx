@@ -1,12 +1,12 @@
 import React from "react";
 
 import kaiImage from "../../assets/images/side-nav-bottom-image.png";
-import mindful from "../../assets/images/mindful.png";
-import journal from "../../assets/images/your-secret-jounal.png";
-import movie from "../../assets/images/movie.png";
-import calmMusic from "../../assets/images/clam-music.png";
-import wiseYogi from "../../assets/images/wise-yogi.png";
-import health from "../../assets/images/health-is-wealth.png";
+import mindful from "../../assets/images/1.png";
+import journal from "../../assets/images/8.png";
+import movie from "../../assets/images/3.png";
+import calmMusic from "../../assets/images/music-new.svg";
+import wiseYogi from "../../assets/images/5.png";
+import health from "../../assets/images/6.png";
 import offcanvasImg1 from "../../assets/images/offcanvas-image-one.svg";
 import offcanvasImg2 from "../../assets/images/offcanvas-image-two.svg";
 import playIcon from "../../assets/images/play-icon.png";
@@ -18,24 +18,77 @@ const Home = () => {
   const { t } = useTranslation();
   return (
     <div>
-      <div className="main-content">
+      <div className="main-content" style={{ minHeight: "100vh" }}>
         {/* Talk to Kai Card */}
-        <div className="kai-card">
-          <div className="kai-card-left">
-            <img src={kaiImage} alt="Kai" />
+        <div
+          className="kai-card"
+          style={{
+            background: "linear-gradient(135deg, #20253F, #2E206B)",
+            border: "1px solid rgb(46 32 107)",
+            borderRadius: "14px",
+            padding: "16px 20px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <div
+            className="kai-card-left"
+            style={{ display: "flex", alignItems: "center", gap: "14px" }}
+          >
+            <img
+              src={kaiImage}
+              alt="Kai"
+              style={{
+                width: "55px",
+                height: "65px",
+                borderRadius: "50%",
+                // objectFit: "cover",
+                // border: "2px solid rgba(255,255,255,0.2)",
+              }}
+            />
             <div>
-              <h3>{t("talkToKai")}</h3>
-              <p>{t("kaiDescription")}</p>
-              {/* <h3>Talk to Kai</h3>
-              <p>Your personal companion is here to listen, judgment-free.</p> */}
+              <h3
+                style={{
+                  margin: "0 0 4px",
+                  fontSize: "15px",
+                  fontWeight: "700",
+                  color: "#ffffff",
+                }}
+              >
+                {t("talkToKai")}
+              </h3>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "12px",
+                  color: "rgba(255,255,255,0.5)",
+                  fontWeight: "400",
+                }}
+              >
+                {t("kaiDescription")}
+              </p>
             </div>
           </div>
-          <Link to="/chat" className="btn no-hover start-chat-btn">
+          <Link
+            to="/chat"
+            className="btn no-hover start-chat-btn"
+            style={{
+              background: "#5B35A0",
+              border: "none",
+              borderRadius: "10px",
+              color: "#ffffff",
+              padding: "12px 28px",
+              fontSize: "14px",
+              fontWeight: "500",
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+            }}
+          >
             {t("startConversation")}
           </Link>
         </div>
 
-        {/* Recommended Activities */}
         <div className="activities-header">
           {/* <h3>Recommended Activities</h3> */}
           <h3>{t("recommendedActivities")}</h3>
@@ -46,82 +99,108 @@ const Home = () => {
           <div
             className="activity-card"
             onClick={() => navigate("/home/mindfulGames")}
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(100, 70, 160, 0.5) 0%, rgba(13, 13, 30, 1) 60%)",
+              border: "1px solid rgba(100, 70, 160, 0.35)",
+              borderRadius: "10px",
+              padding: "12px",
+            }}
           >
             <div className="activity-icon icon-puzzle">
               <img src={mindful} alt="" />
             </div>
             <h4>{t("mindfulGames")}</h4>
             <p>{t("mindfulGamesDesc")}</p>
-            {/* <h4>Mindful Games</h4>
-            <p>Play, Relax, Focus</p> */}
           </div>
 
-          <div className="activity-card" onClick={() => navigate("/home/secret-journal")}>
+          <div
+            className="activity-card"
+            onClick={() => navigate("/home/secret-journal")}
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(140, 40, 80, 0.6) 0%, rgba(13, 13, 30, 1) 60%)",
+              border: "1px solid rgba(140, 40, 80, 0.35)",
+              borderRadius: "10px",
+              padding: "12px",
+            }}
+          >
             <div className="activity-icon icon-edit">
               <img src={journal} alt="" />
             </div>
             <h4>{t("secretJournal")}</h4>
             <p>{t("secretJournalDesc")}</p>
-            {/* <h4>Your Secret Journal</h4>
-            <p>Write Without Judgment</p> */}
           </div>
 
           <div
             className="activity-card"
             onClick={() => navigate("/home/moviesHome")}
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(30, 60, 120, 0.6) 0%, rgba(13, 13, 30, 1) 60%)",
+              border: "1px solid rgba(30, 60, 120, 0.35)",
+              borderRadius: "10px",
+              padding: "12px",
+            }}
           >
-            <div
-              className="activity-icon icon-movie"
-              onClick={() => navigate("/home/moviesHome")}
-            >
+            <div className="activity-icon icon-movie">
               <img src={movie} alt="" />
             </div>
             <h4>{t("movies")}</h4>
             <p>{t("moviesDesc")}</p>
-            {/* <h4>Movies</h4>
-            <p>Watch And Unwind</p> */}
           </div>
 
           <div
             className="activity-card"
             onClick={() => navigate("/home/musicHome")}
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(110, 60, 160, 0.5) 0%, rgba(13, 13, 30, 1) 60%)",
+              border: "1px solid rgba(110, 60, 160, 0.35)",
+              borderRadius: "10px",
+              padding: "12px",
+            }}
           >
-            <div
-              className="activity-icon icon-music"
-              onClick={() => navigate("/home/moviesHome")}
-            >
+            <div className="activity-icon icon-music">
               <img src={calmMusic} alt="" />
             </div>
             <h4>{t("calmMusic")}</h4>
             <p>{t("calmMusicDesc")}</p>
-            {/* <h4>Calm Music</h4>
-            <p>Relax Through Sound</p> */}
           </div>
 
           <div
             className="activity-card"
             onClick={() => navigate("/home/wiseYogi")}
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(30, 110, 100, 0.5) 0%, rgba(13, 13, 30, 1) 60%)",
+              border: "1px solid rgba(30, 110, 100, 0.35)",
+              borderRadius: "10px",
+              padding: "12px",
+            }}
           >
-            <div
-              className="activity-icon icon-yoga"
-              onClick={() => navigate("/home/wiseYogi")}
-            >
+            <div className="activity-icon icon-yoga">
               <img src={wiseYogi} alt="" />
             </div>
             <h4>{t("wiseYogi")}</h4>
             <p>{t("wiseYogiDesc")}</p>
-            {/* <h4>Wise Yogi</h4>
-            <p>Balance Mind & Body</p> */}
           </div>
 
-          <div className="activity-card">
+          <div
+            className="activity-card"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(140, 40, 100, 0.5) 0%, rgba(13, 13, 30, 1) 60%)",
+              border: "1px solid rgba(140, 40, 100, 0.35)",
+              borderRadius: "10px",
+              padding: "12px",
+            }}
+          >
             <div className="activity-icon icon-health">
               <img src={health} alt="" />
             </div>
             <h4>{t("healthIsWealth")}</h4>
             <p>{t("healthDesc")}</p>
-            {/* <h4>Health is Wealth</h4>
-            <p>Care For Health</p> */}
           </div>
         </div>
       </div>
@@ -175,7 +254,6 @@ const Home = () => {
 };
 
 export default Home;
-
 
 // import React from "react";
 // import kaiImage from "../../assets/images/side-nav-bottom-image.png";

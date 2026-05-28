@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { analyzeOnboarding } from "../../features/onboarding/onboardingSlice";
 
-import logo from "../../assets/images/logo-dark.svg";
+import logo from "../../assets/images/logo-dark.png";
 import meditationImg from "../../assets/images/meditation-two.png";
 import thanksIcon from "../../assets/images/thnks-for-sharing-icon.svg";
 import rightArrow from "../../assets/images/right-arrow-icon.png";
@@ -67,7 +67,10 @@ const Step4ThanksForSharing = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="col-lg-6 d-flex align-items-center justify-content-center">
+        <div
+          className="col-lg-6 d-flex align-items-center justify-content-center"
+          style={{ minHeight: "100vh", background: "#030f25" }}
+        >
           <div className="login-right">
             <div className="w-100 fade-in" style={{ maxWidth: 350 }}>
               <p className="welcome-mini-sub-title">{t("understandingYou")}</p>
@@ -87,23 +90,29 @@ const Step4ThanksForSharing = () => {
               {/* 🔄 LOADER */}
 
               {loading ? (
-                <p
-                  style={{
-                    marginTop: "20px",
-                    padding: "10px 16px",
-                    background: "#fff3cd",
-                    color: "#856404",
-                    border: "1px solid #ffeeba",
-                    borderRadius: "8px",
-                    fontWeight: "500",
-                    textAlign: "center",
-                    width: "fit-content",
-                    marginInline: "auto",
-                    boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-                  }}
-                >
-                  {t("analyzingResponses")}
-                </p>
+                <div className="analysis-loader-card">
+                  <div className="brain-loader">
+                    <div className="pulse-circle"></div>
+                    <div className="pulse-circle delay"></div>
+
+                    <svg width="38" height="38" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M12 2C9.5 2 7.5 4 7.5 6.5C5.5 7 4 8.8 4 11C4 13.2 5.5 15 7.5 15.5V16C7.5 18.2 9.3 20 11.5 20H12.5C14.7 20 16.5 18.2 16.5 16V15.5C18.5 15 20 13.2 20 11C20 8.8 18.5 7 16.5 6.5C16.5 4 14.5 2 12 2Z"
+                        stroke="white"
+                        strokeWidth="1.7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <h5 style={{ color: "#fff" }}>Analyzing your responses...</h5>
+
+                  <p>
+                    We're understanding your emotional patterns and preparing
+                    personalized insights.
+                  </p>
+                </div>
               ) : issues.length > 0 ? (
                 issues.map((item, index) => (
                   <div key={index} className="mb-3 p-3 border rounded-3">

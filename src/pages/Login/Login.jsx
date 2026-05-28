@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { GoogleLogin } from "@react-oauth/google";
-import logo from "../../assets/images/logo-dark.svg";
+import logo from "../../assets/images/logo-dark.png";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-one.png";
 import google from "../../assets/images/google.svg";
