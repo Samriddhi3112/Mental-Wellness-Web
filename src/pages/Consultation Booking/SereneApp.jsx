@@ -1,5 +1,7 @@
 import { useState } from "react";
 import SessionModeModal from "../../components/modals/SessionModeModal";
+import img from "../../assets/images/booking-img.svg";
+import timer from "../../assets/images/timer.png";
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
@@ -28,7 +30,7 @@ const styles = `
 
   /* HEADER CARD */
   .header-card {
-    background: #fff;
+    background: #20253F;
     border-radius: 16px;
     padding: 20px 24px;
     display: flex;
@@ -46,18 +48,18 @@ const styles = `
     flex-shrink: 0;
     overflow: hidden;
   }
-  .card-title { font-size: 18px; font-weight: 800; color: #1a1a2e; margin-bottom: 7px; }
+  .card-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 7px; }
   .card-desc { font-size: 13px; color: #6b7280; line-height: 1.6; }
 
   /* DURATION */
   .section-label { font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px; }
   .duration-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .duration-card {
-    background: #fff;
+  background: none;
     border-radius: 16px;
     padding: 18px 20px;
     cursor: pointer;
-    border: 2px solid transparent;
+    border: 1px solid #E5E5E5;
     position: relative;
     transition: border 0.2s, box-shadow 0.2s;
   }
@@ -83,14 +85,14 @@ const styles = `
     margin-bottom: 12px;
   }
   .icon-wrap.purple { background: #f3eeff; }
-  .dur-title { font-size: 15px; font-weight: 800; color: #1a1a2e; margin-bottom: 6px; }
+  .dur-title { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 6px; }
   .dur-desc { font-size: 12px; color: #6b7280; line-height: 1.5; margin-bottom: 10px; }
   .dur-rec { font-size: 11px; color: #b0b8cc; }
 
   /* CONTINUE BTN */
   .continue-btn {
-    background: #e2e5ef;
-    color: #a0a8c0;
+    background: linear-gradient(135deg, #462297, #7631B2);
+    color: #fff;
     border: none;
     border-radius: 14px;
     padding: 15px;
@@ -109,7 +111,7 @@ const styles = `
 
   /* INFO CARD */
   .info-card {
-    width: 230px;
+    width: 350px;
     flex-shrink: 0;
     background: #1e2235;
     border-radius: 16px;
@@ -184,7 +186,7 @@ export default function SereneApp() {
               {/* Header Card */}
               <div className="header-card">
                 <div className="therapist-avatar">
-                  <TherapistSVG />
+                  <img src={img} alt="Therapist" style={{width:"100%", height:"100%"}} />
                 </div>
                 <div>
                   <div className="card-title">Speak with a Professional</div>
@@ -231,6 +233,7 @@ export default function SereneApp() {
                       Standard check-in session perfect for routine
                       consultations and quick assessments.
                     </div>
+                    <hr style={{color:"#fff"}}></hr>
                     <div className="dur-rec">
                       Recommended for: Quick check-ins
                     </div>
@@ -243,7 +246,8 @@ export default function SereneApp() {
                       <div className="radio-dot" />
                     </div>
                     <div className="icon-wrap purple">
-                      <svg
+                      <img src={timer} alt="Timer" style={{width:"100%", height:"100%"}} />
+                      {/* <svg
                         width="20"
                         height="20"
                         viewBox="0 0 24 24"
@@ -258,13 +262,14 @@ export default function SereneApp() {
                         <line x1="10" y1="8" x2="14" y2="8" />
                         <line x1="9" y1="14" x2="15" y2="14" />
                         <line x1="9" y1="17" x2="13" y2="17" />
-                      </svg>
+                      </svg> */}
                     </div>
                     <div className="dur-title">60 Minutes</div>
                     <div className="dur-desc">
                       Deep-dive therapy session for comprehensive discussions
                       and detailed treatment planning.
                     </div>
+                    <hr style={{color:"#fff"}}></hr>
                     <div className="dur-rec">
                       Recommended for: In-depth sessions
                     </div>

@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import confirmedImg from "../../assets/images/confirm-tick.png";
+import bulb from "../../assets/images/bulb.png";
 
 export default function BookingConfirmedModal({ onClose }) {
     const navigate = useNavigate()
@@ -26,7 +28,7 @@ export default function BookingConfirmedModal({ onClose }) {
       <div
         style={{
           width: "360px",
-          background: "#fff",
+          background: "#030f25",
           borderRadius: "20px",
           padding: "20px",
           position: "relative",
@@ -65,15 +67,15 @@ export default function BookingConfirmedModal({ onClose }) {
             color: "#ff5a1f",
           }}
         >
-          ✔
+          <img src={confirmedImg} alt="Confirmed" />
         </div>
 
         {/* Title */}
-        <h2 style={{ margin: "10px 0 5px", fontSize: "20px" }}>
+        <h2 style={{ margin: "50px 0 5px", fontSize: "20px" , color:"#fff"}}>
           Booking Confirmed!
         </h2>
 
-        <p style={{ fontSize: "13px", color: "#666", marginBottom: "15px" }}>
+        <p style={{ fontSize: "13px", color: "#C2C2C2", marginBottom: "15px" }}>
           Your session is successfully scheduled. <br />
           We’ve sent the details to your email.
         </p>
@@ -116,6 +118,7 @@ export default function BookingConfirmedModal({ onClose }) {
               justifyContent: "space-between",
               fontSize: "13px",
               marginBottom: "10px",
+              color: "#fff",
             }}
           >
             <span>📅 16 Apr, 2024</span>
@@ -127,8 +130,8 @@ export default function BookingConfirmedModal({ onClose }) {
               display: "flex",
               justifyContent: "space-between",
               fontSize: "11px",
-              color: "#999",
               marginBottom: "5px",
+              color:"#fff",
             }}
           >
             <span>DURATION</span>
@@ -140,6 +143,7 @@ export default function BookingConfirmedModal({ onClose }) {
               display: "flex",
               justifyContent: "space-between",
               fontSize: "13px",
+              color: "#fff",
             }}
           >
             <span>⏳ 60 Minutes</span>
@@ -150,16 +154,17 @@ export default function BookingConfirmedModal({ onClose }) {
         {/* Pro tip */}
         <div
           style={{
-            background: "#f3f4f6",
+            background: "none",
             padding: "12px",
             borderRadius: "12px",
             textAlign: "left",
             fontSize: "12px",
-            color: "#555",
+            color: "#fff",
             marginBottom: "15px",
+            border: "1px solid #fff",
           }}
         >
-          <b>💡 Pro Tip</b>
+          <b><img src={bulb} alt="Pro Tip" /> Pro Tip</b>
           <div style={{ marginTop: "4px" }}>
             Find a quiet, comfortable space 5 minutes before your session
             begins.
@@ -173,7 +178,7 @@ export default function BookingConfirmedModal({ onClose }) {
             padding: "12px",
             borderRadius: "10px",
             border: "none",
-            background: "#ff5a1f",
+            background: "linear-gradient(135deg, #462297, #7631B2)",
             color: "#fff",
             fontSize: "14px",
             cursor: "pointer",

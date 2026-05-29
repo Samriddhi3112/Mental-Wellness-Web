@@ -607,7 +607,7 @@ const ChatToVoice = () => {
   const botTempId = tempId + "_bot";
 
   const langKey = localStorage.getItem("lang") || "english";
-  const language = langKey; // directly use karo — "english", "hindi", "tamil" etc.
+  const language = langKey; 
 
     // 👤 user message
     dispatch(

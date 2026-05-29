@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CancelBookingModal from "../../components/modals/CancelBookingModal";
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
@@ -36,34 +37,34 @@ const styles = `
 
   /* TOP ROW — date + time */
   .top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .info-card { background: #fff; border-radius: 14px; padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px; }
+  .info-card { background: none; border-radius: 14px; padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px; border:1px solid #fff }
   .info-icon-box { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
   .info-icon-box.orange { background: #fff3ee; }
   .info-icon-box.blue { background: #eef3ff; }
   .info-icon-box.purple { background: #f3eeff; }
   .info-field-label { font-size: 11px; color: #9ca3af; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
-  .info-field-val { font-size: 17px; font-weight: 800; color: #1a1a2e; }
+  .info-field-val { font-size: 17px; font-weight: 800; color: #fff; }
   .info-field-sub { font-size: 12px; color: #9ca3af; font-weight: 600; margin-top: 5px; }
 
   /* SESSION TYPE CARD */
-  .session-type-card { background: #fff; border-radius: 14px; padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px; }
+  .session-type-card { background: none; border-radius: 14px; padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px;border:1px solid #fff }
 
   /* GUIDELINES CARD */
-  .guidelines-card { background: #fff9f5; border: 1.5px solid #fde0cc; border-radius: 14px; padding: 18px 20px; }
+  .guidelines-card { background: none; border: 1.5px solid #fff; border-radius: 14px; padding: 18px 20px; }
   .guide-hdr { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .guide-dot { width: 24px; height: 24px; border-radius: 50%; background: #e8501a; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px; font-weight: 800; color: #fff; }
-  .guide-title { font-size: 14px; font-weight: 800; color: #1a1a2e; }
-  .guide-list { display: flex; flex-direction: column; gap: 9px; padding-left: 4px; }
+  .guide-title { font-size: 14px; font-weight: 800; color: #fff; }
+  .guide-list { display: flex; flex-direction: column; gap: 9px; padding-left: 4px; color:#fff }
   .guide-item { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: #4b5563; line-height: 1.5; }
   .bullet { width: 6px; height: 6px; border-radius: 50%; background: #e8501a; flex-shrink: 0; margin-top: 6px; }
 
   /* RIGHT — Session Actions */
-  .actions-col { width: 220px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px; }
-  .actions-title { font-size: 16px; font-weight: 800; color: #1a1a2e; margin-bottom: 4px; }
-  .btn-join { width: 100%; background: #e8501a; color: #fff; border: none; border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.15s; }
-  .btn-join:hover { background: #c44214; }
-  .btn-cancel { width: 100%; background: #fff; color: #e8501a; border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 13px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.15s, border 0.15s; }
-  .btn-cancel:hover { background: #fff3ee; border-color: #e8501a; }
+  .actions-col { width: 320px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px;border:1px solid #fff; border-radius: 14px; padding: 18px 20px; }
+  .actions-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+  .btn-join { width: 100%; background: linear-gradient(135deg, #462297, #7631B2); color: #fff; border: none; border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.15s; }
+  // .btn-join:hover { background: #c44214; }
+  .btn-cancel { width: 100%; background: none; color: #e8501a; border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 13px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.15s, border 0.15s; }
+  // .btn-cancel:hover { background: none; border-color: #e8501a; }
 `;
 
 const KaiSVG = () => (
@@ -79,6 +80,7 @@ const KaiSVG = () => (
 );
 
 export default function BookingDetails() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <style>{styles}</style>
@@ -163,7 +165,7 @@ export default function BookingDetails() {
                 </svg>
                 Join Session
               </button>
-              <button className="btn-cancel">
+              <button className="btn-cancel" onClick={() => setShowModal(true)}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e8501a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
                 </svg>
@@ -173,6 +175,9 @@ export default function BookingDetails() {
           </main>
         </div>
       </div>
+      {showModal && (
+        <CancelBookingModal onClose={() => setShowModal(false)} />
+      )}
     </>
   );
 }

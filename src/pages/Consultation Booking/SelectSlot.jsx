@@ -41,54 +41,55 @@ const styles = `
   .left-col { flex: 1; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 
   /* DURATION BANNER */
-  .duration-banner { background: #fff; border-radius: 14px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; }
+  .duration-banner {  border-radius: 14px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between;border:1px solid #fff }
   .dur-left { display: flex; align-items: center; gap: 14px; }
-  .dur-icon { width: 36px; height: 36px; border-radius: 50%; background: #fff3ee; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .dur-label { font-size: 11px; color: #9ca3af; font-weight: 600; margin-bottom: 2px; }
-  .dur-title { font-size: 16px; font-weight: 800; color: #1a1a2e; }
+  .dur-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(242, 228, 255, 1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .dur-label { font-size: 11px; color: #fff; font-weight: 600; margin-bottom: 2px; }
+  .dur-title { font-size: 16px; font-weight: 800; color: #fff; }
   .dur-sub { font-size: 12px; color: #9ca3af; margin-top: 2px; }
-  .change-btn { background: #fff3ee; color: #e8501a; border: none; border-radius: 20px; padding: 8px 18px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; white-space: nowrap; }
+  .change-btn { background: rgba(242, 228, 255, 1); color: #000000; border: none; border-radius: 20px; padding: 8px 18px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; white-space: nowrap; }
   .change-btn:hover { background: #ffe0d0; }
 
   /* DATE CARD */
-  .card { background: #fff; border-radius: 14px; padding: 18px 20px; }
-  .card-title { font-size: 15px; font-weight: 800; color: #1a1a2e; margin-bottom: 14px; }
+  .card { background: none; border-radius: 14px; padding: 18px 20px;border: 1px solid #fff }
+  .card-title { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 14px; }
   .date-grid { display: flex; gap: 10px; flex-wrap: wrap; }
-  .date-chip { border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 10px 18px; cursor: pointer; text-align: center; min-width: 80px; transition: all 0.15s; background: #fff; }
-  .date-chip:hover { border-color: #6c63ff; }
-  .date-chip.selected { background: #1a1a2e; border-color: #1a1a2e; }
-  .date-day { font-size: 11px; color: #9ca3af; font-weight: 600; }
+  .date-chip { border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 10px 18px; cursor: pointer; text-align: center; min-width: 80px; transition: all 0.15s; background: #000000; }
+  .date-chip:hover { border-color: #462297; }
+  .date-chip.selected { background: linear-gradient(135deg, rgba(70, 34, 151, 1), #7631B2)
+  ; border-color: #1a1a2e; }
+  .date-day { font-size: 11px; color: #fff; font-weight: 600; }
   .date-chip.selected .date-day { color: #a0a8c0; }
-  .date-num { font-size: 18px; font-weight: 800; color: #1a1a2e; }
+  .date-num { font-size: 18px; font-weight: 800; color: #fff; }
   .date-chip.selected .date-num { color: #fff; }
 
   /* SLOTS CARD */
   .slots-section { display: flex; flex-direction: column; gap: 0; }
-  .slot-group { background: #fff; border-radius: 14px; padding: 16px 20px; margin-bottom: 12px; }
+  .slot-group { background: none; border-radius: 14px; padding: 16px 20px; margin-bottom: 12px; border: 1px solid #fff}
   .slot-group-hdr { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .slot-icon { font-size: 18px; }
-  .slot-group-title { font-size: 12px; font-weight: 800; color: #6b7280; letter-spacing: 0.8px; text-transform: uppercase; }
+  .slot-group-title { font-size: 12px; font-weight: 800; color: #fff; letter-spacing: 0.8px; text-transform: uppercase; }
   .slots-row { display: flex; flex-wrap: wrap; gap: 10px; }
-  .slot-chip { border: 1.5px solid #e5e7eb; border-radius: 10px; padding: 9px 16px; font-size: 13px; font-weight: 700; color: #1a1a2e; cursor: pointer; background: #fff; font-family: 'Nunito', sans-serif; transition: all 0.15s; }
+  .slot-chip { border: 1.5px solid #e5e7eb; border-radius: 10px; padding: 9px 16px; font-size: 13px; font-weight: 700; color: #fff; cursor: pointer; background: none; font-family: 'Nunito', sans-serif; transition: all 0.15s; }
   .slot-chip:hover { border-color: #6c63ff; color: #6c63ff; }
-  .slot-chip.selected { background: #1a1a2e; border-color: #1a1a2e; color: #fff; }
+  .slot-chip.selected { background:linear-gradient(135deg,rgba(70, 34, 151, 1), rgba(118, 49, 178, 1)); border-color: #fff; color: #fff; }
 
   /* BOOKING SUMMARY */
-  .summary-col { width: 220px; flex-shrink: 0; }
-  .summary-card { background: #fff; border-radius: 14px; padding: 20px; }
-  .summary-title { font-size: 16px; font-weight: 800; color: #1a1a2e; margin-bottom: 18px; }
+  .summary-col { width: 320px; flex-shrink: 0; }
+  .summary-card { background: none; border-radius: 14px; padding: 20px; border: 1px solid #fff }
+  .summary-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 18px; }
   .summary-row { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
   .summary-icon { width: 28px; height: 28px; border-radius: 50%; background: #fff3ee; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
   .summary-field-label { font-size: 11px; color: #9ca3af; font-weight: 600; margin-bottom: 2px; }
-  .summary-field-val { font-size: 13px; font-weight: 700; color: #1a1a2e; }
+  .summary-field-val { font-size: 13px; font-weight: 700; color: #fff; }
   .summary-field-val.muted { color: #9ca3af; font-weight: 600; }
   .divider { border: none; border-top: 1px solid #f0f0f0; margin: 14px 0; }
   .fee-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .fee-label { font-size: 13px; color: #6b7280; }
-  .fee-val { font-size: 13px; font-weight: 700; color: #1a1a2e; }
+  .fee-label { font-size: 13px; color: #C2C2C2; }
+  .fee-val { font-size: 13px; font-weight: 700; color: #fff; }
   .total-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
-  .total-label { font-size: 14px; font-weight: 800; color: #1a1a2e; }
-  .total-val { font-size: 20px; font-weight: 800; color: #e8501a; }
+  .total-label { font-size: 14px; font-weight: 800; color: #fff; }
+  .total-val { font-size: 20px; font-weight: 800; color: #fff; }
   .book-btn { width: 100%; background: #e5e7ef; color: #9ca3af; border: none; border-radius: 10px; padding: 12px; font-size: 14px; font-weight: 700; cursor: not-allowed; font-family: 'Nunito', sans-serif; margin-top: 14px; transition: background 0.2s, color 0.2s; }
   .book-btn.active { background: linear-gradient(135deg, #6c63ff, #a78bfa); color: #fff; cursor: pointer; }
   .secure-note { display: flex; align-items: center; gap: 5px; margin-top: 10px; justify-content: center; }
@@ -150,11 +151,11 @@ export default function SelectSlot() {
     navigate("/therapy-session");
   };
 
-  const handleSlotBooking = () => {
-    if (!selectedSlot) return;
+  // const handleSlotBooking = () => {
+  //   if (!selectedSlot) return;
 
-    navigate("/my-consultation");
-  };
+  //   navigate("/my-consultation");
+  // };
 
   return (
     <>
@@ -169,11 +170,12 @@ export default function SelectSlot() {
                 <div className="dur-left">
                   <div className="dur-icon">
                     <svg
+
                       width="18"
                       height="18"
                       viewBox="0 0 24 24"
                       fill="none"
-                      stroke="#e8501a"
+                      stroke="#030f25"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -213,7 +215,7 @@ export default function SelectSlot() {
               {/* Morning Slots */}
               <div className="slot-group">
                 <div className="slot-group-hdr">
-                  <span className="slot-icon">☀️</span>
+                  <span className="slot-icon" style={{backgroundColor: "rgba(255, 251, 235, 1)", borderRadius:"8px"}}>☀️</span>
                   <span className="slot-group-title">Morning Slots</span>
                 </div>
                 <div className="slots-row">
@@ -232,7 +234,7 @@ export default function SelectSlot() {
               {/* Afternoon Slots */}
               <div className="slot-group">
                 <div className="slot-group-hdr">
-                  <span className="slot-icon">🌤️</span>
+                  <span className="slot-icon" style={{backgroundColor: "rgba(255, 247, 237, 1)", borderRadius:"8px"}}>🌤️</span>
                   <span className="slot-group-title">Afternoon Slots</span>
                 </div>
                 <div className="slots-row">
@@ -251,7 +253,7 @@ export default function SelectSlot() {
               {/* Evening Slots */}
               <div className="slot-group">
                 <div className="slot-group-hdr">
-                  <span className="slot-icon">🌙</span>
+                  <span className="slot-icon" style={{backgroundColor: "rgba(238, 242, 255, 1)", borderRadius:"8px"}}>🌙</span>
                   <span className="slot-group-title">Evening Slots</span>
                 </div>
                 <div className="slots-row">

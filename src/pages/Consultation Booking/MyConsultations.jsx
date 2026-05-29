@@ -14,7 +14,7 @@ const styles = `
   .logo-name { font-size: 16px; font-weight: 800; color: #fff; }
   .header-center { display: flex; align-items: center; flex: 1; justify-content: center; }
   .back-btn { background: none; border: none; color: #a0a8c0; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 14px; font-family: 'Nunito', sans-serif; font-weight: 600; padding: 6px 10px; border-radius: 8px; transition: background 0.15s; }
-  .back-btn:hover { background: rgba(255,255,255,0.07); color: #fff; }
+  // .back-btn:hover { background: rgba(255,255,255,0.07); color: #fff; }
   .header-right { display: flex; align-items: center; gap: 14px; }
   .notif-btn { background: none; border: none; cursor: pointer; color: #a0a8c0; display: flex; align-items: center; padding: 4px; border-radius: 8px; }
   .avatar-circle { width: 34px; height: 34px; border-radius: 50%; background: #3d4263; border: 2px solid #4a5070; display: flex; align-items: center; justify-content: center; cursor: pointer; overflow: hidden; }
@@ -26,52 +26,52 @@ const styles = `
   .sidenav { width: 160px; background: #181c2e; display: flex; flex-direction: column; justify-content: space-between; padding: 16px 12px; flex-shrink: 0; }
   .nav-top { display: flex; flex-direction: column; gap: 6px; }
   .nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 14px; font-weight: 600; color: #a0a8c0; transition: background 0.15s, color 0.15s; }
-  .nav-item:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  // .nav-item:hover { background: rgba(255,255,255,0.06); color: #fff; }
   .nav-item.active { background: #e8501a; color: #fff; }
   .nav-bottom { background: #22273d; border-radius: 14px; padding: 16px 12px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
   .kai-avatar { width: 52px; height: 52px; border-radius: 50%; background: #e8f0ff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .kai-name { font-size: 14px; font-weight: 800; color: #fff; text-align: center; }
   .kai-desc { font-size: 11px; color: #8a93b0; text-align: center; line-height: 1.4; }
   .start-btn { background: #e8501a; color: #fff; border: none; border-radius: 10px; padding: 9px 14px; font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; font-family: 'Nunito', sans-serif; }
-  .start-btn:hover { background: #c44214; }
+  // .start-btn:hover { background: #c44214; }
 
   /* MAIN */
   .main-content { flex: 1; padding: 20px 24px; overflow-y: auto; }
 
   /* STATS */
   .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 22px; }
-  .stat-card { background: #fff; border-radius: 14px; padding: 18px 20px; }
+  .stat-card { background: #20253F; border-radius: 14px; padding: 18px 20px;border:1px solid #F3F4F6 }
   .stat-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
   .stat-icon.green { background: #e8f8ee; }
   .stat-icon.dark { background: #eef0f8; }
   .stat-icon.red { background: #feeee9; }
-  .stat-num { font-size: 28px; font-weight: 800; color: #1a1a2e; margin-bottom: 4px; }
-  .stat-label { font-size: 13px; color: #9ca3af; font-weight: 600; }
+  .stat-num { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+  .stat-label { font-size: 13px; color: #fff; font-weight: 600; }
 
   /* ALL SESSIONS */
   .sessions-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
   .sessions-title { font-size: 16px; font-weight: 800; color: #1a1a2e; }
-  .book-new-btn { background: #e8501a; color: #fff; border: none; border-radius: 10px; padding: 9px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; display: flex; align-items: center; gap: 6px; }
-  .book-new-btn:hover { background: #c44214; }
+  .book-new-btn { background: linear-gradient(135deg, #462297, #7631B2); color: #fff; border: none; border-radius: 10px; padding: 9px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; display: flex; align-items: center; gap: 6px; }
+  // .book-new-btn:hover { background: #c44214; }
 
   .sessions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
   /* SESSION CARD */
-  .session-card { background: #fff; border-radius: 14px; padding: 18px 20px; position: relative; overflow: hidden; }
+  .session-card { background: none; border-radius: 14px; padding: 18px 20px; position: relative; overflow: hidden;border:1px solid #fff }
   .badge { position: absolute; top: 0; right: 0; padding: 5px 14px; font-size: 11px; font-weight: 800; border-radius: 0 14px 0 10px; letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px; }
   .badge.upcoming { background: #1db96a; color: #fff; }
   .badge.completed { background: #3d4263; color: #fff; }
   .badge.cancelled { background: #e8501a; color: #fff; }
 
   .session-date { font-size: 12px; color: #9ca3af; font-weight: 600; margin-bottom: 4px; margin-top: 4px; }
-  .session-time { font-size: 22px; font-weight: 800; color: #e8501a; margin-bottom: 10px; }
+  .session-time { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 10px; }
   .session-time.dark { color: #1a1a2e; }
   .session-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-  .meta-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #6b7280; font-weight: 600; }
+  .meta-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #fff; font-weight: 600; }
 
   .session-actions { display: flex; gap: 10px; }
 .btn-join {
-  background: #e8501a;
+  background: linear-gradient(135deg, #462297, #7631B2);
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -89,15 +89,15 @@ const styles = `
   width: 100%;
   min-width: 250px; /* 👈 ye add karo */
 }
-  .btn-join:hover { background: #c44214; }
+  // .btn-join:hover { background: #c44214; }
   .btn-secondary { background: #fff; color: #1a1a2e; border: 1.5px solid #e5e7eb; border-radius: 10px; padding: 10px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; display: flex; align-items: center; gap: 6px; }
-  .btn-secondary:hover { background: #f5f5f8; }
+  // .btn-secondary:hover { background: #f5f5f8; }
   .btn-orange-outline { background: #fff; color: #e8501a; border: 1.5px solid #e8501a; border-radius: 10px; padding: 10px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; display: flex; align-items: center; gap: 6px; }
-  .btn-orange-outline:hover { background: #fff3ee; }
+  // .btn-orange-outline:hover { background: #fff3ee; }
 
   .scheduled-tag { background: #f0f2f8; border-radius: 10px; padding: 10px; text-align: center; font-size: 13px; font-weight: 700; color: #6b7280; display: flex; align-items: center; justify-content: center; gap: 6px; }
 
-  .cancelled-note { background: #fff3ee; border-radius: 10px; padding: 10px 14px; font-size: 12px; color: #e8501a; font-weight: 600; display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+  .cancelled-note { background: #FEF2F2; border-radius: 10px; padding: 10px 14px; font-size: 12px; color: #B91C1C; font-weight: 600; display: flex; align-items: center; gap: 6px; margin-top: 2px; }
 `;
 
 const KaiSVG = () => (
@@ -219,7 +219,7 @@ export default function MyConsultations() {
                 </div>
                 <div className="session-actions">
                   <button className="btn-join"><IconCam /> Join Session</button>
-                  <button className="btn-secondary">Reschedule</button>
+                  {/* <button className="btn-secondary">Reschedule</button> */}
                 </div>
               </div>
 
@@ -236,8 +236,8 @@ export default function MyConsultations() {
                   <div className="meta-item"><IconVideo /> Video Call</div>
                 </div>
                 <div className="session-actions">
-                  <button className="btn-secondary"><IconNotes /> View Notes</button>
-                  <button className="btn-orange-outline"><IconRefresh /> Book Again</button>
+                  {/* <button className="btn-secondary"><IconNotes /> View Notes</button> */}
+                  <button className="btn-join"><IconRefresh /> Book Again</button>
                 </div>
               </div>
 
@@ -254,10 +254,10 @@ export default function MyConsultations() {
                   <div className="meta-item"><IconPhone /> Audio Call</div>
                 </div>
                 <div className="scheduled-tag">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  {/* <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-                  </svg>
-                  Scheduled
+                  </svg> */}
+                  Cancel
                 </div>
               </div>
 
