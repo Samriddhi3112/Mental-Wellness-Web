@@ -1,0 +1,201 @@
+{
+  "welcome": "स्वागत है",
+  "logout": "लॉगआउट",
+  "currentLanguage": "वर्तमान भाषा",
+  "agreement": "समझौता",
+  "lastUpdatedOn": "अंतिम अपडेट",
+
+  "hereToHelp": "मदद के लिए यहाँ हैं",
+  "takeMoment": "अपने लिए एक पल निकालें",
+  "talkToAI": "AI से बात करें",
+  "safeSpace": "बात करने के लिए सुरक्षित जगह",
+
+  "calmMusic": "शांत संगीत",
+  "relaxingSounds": "आरामदायक ध्वनियाँ",
+  "guidedMeditation": "मार्गदर्शित ध्यान",
+  "findYourCalm": "अपनी शांति खोजें",
+  "breathingExercise": "श्वास अभ्यास",
+
+  "emergencyHelp": "आपातकालीन सहायता",
+  "getImmediateSupport": "तुरंत सहायता प्राप्त करें",
+  "goToHome": "होम पर जाएं",
+
+  "copyright": "© 2026 सेरीन वेलनेस ऐप। सर्वाधिकार सुरक्षित।",
+  "privacyPolicy": "गोपनीयता नीति",
+
+  "notAvailable": "उपलब्ध नहीं",
+  "availableLanguages": "उपलब्ध भाषाएँ",
+
+  "startConversationSpeak": "चैट शुरू करने के लिए बोलें या अपना संदेश टाइप करें",
+  "noChatHistoryTitle": "कोई चैट इतिहास नहीं",
+  "noChatHistoryDesc": "कोई चैट चुनें या नई बातचीत शुरू करें",
+  "searchChatPlaceholder": "चैट इतिहास खोजें",
+
+  "mainFocusQuestion": "आपका मुख्य फोकस क्या है?",
+  "logoutTitle": "लॉगआउट की पुष्टि करें",
+  "logoutDesc": "क्या आप वाकई अपने खाते से लॉगआउट करना चाहते हैं?",
+
+  "understandingYou": "आपको समझ रहे हैं",
+  "thankYouForSharing": "साझा करने के लिए धन्यवाद",
+
+  "faqs": "अक्सर पूछे जाने वाले प्रश्न",
+  "loadingFaqs": "FAQ लोड हो रहे हैं...",
+  "basedOnResponses": "आपके जवाबों के आधार पर, हमने कुछ क्षेत्रों की पहचान की है जिनसे आप शुरुआत कर सकते हैं।",
+  "identifiedFocusAreas": "पहचाने गए फोकस क्षेत्र",
+  "analyzingResponses": "आपके जवाबों का विश्लेषण किया जा रहा है...",
+  "noInsights": "कोई जानकारी उपलब्ध नहीं है",
+  "journeyStart": "यह तो बस शुरुआत है। हम आगे आपकी यात्रा को व्यक्तिगत बनाएंगे।",
+
+  "continueBtn": "जारी रखें",
+  "currentLanguageLabel": "हिंदी",
+
+  "goodMorning": "सुप्रभात",
+  "goodAfternoon": "नमस्कार",
+  "goodEvening": "शुभ संध्या",
+
+  "recentChats": "हाल की चैट्स",
+
+  "deleteAccountTitle": "खाता हटाएं",
+  "deleteAccountDesc": "क्या आप वाकई अपना खाता हटाना चाहते हैं? यह क्रिया वापस नहीं की जा सकती।",
+  "cancel": "रद्द करें",
+  "delete": "हटाएं",
+  "deleting": "हटाया जा रहा है...",
+  "deleteSuccess": "आपका खाता सफलतापूर्वक हटा दिया गया है। पुनः सक्रिय करने के लिए सहायता से संपर्क करें।",
+  "deleteFailed": "खाता हटाने में विफल",
+
+  "account": "खाता",
+  "myProfile": "मेरी प्रोफ़ाइल",
+  "language": "भाषा",
+  "upgradePremium": "प्रीमियम में अपग्रेड करें",
+  "dataPrivacy": "डेटा और गोपनीयता",
+  "exportData": "मेरा डेटा निर्यात करें",
+  "deleteAccount": "खाता हटाएं",
+
+  "about": "के बारे में",
+  "terms": "सेवा की शर्तें",
+  "privacy": "गोपनीयता नीति",
+  "faq": "सामान्य प्रश्न",
+
+  "loadingProfile": "प्रोफ़ाइल लोड हो रही है...",
+  "changeProfile": "प्रोफ़ाइल बदलें",
+  "editProfile": "प्रोफ़ाइल संपादित करें",
+
+  "personalInfo": "व्यक्तिगत जानकारी",
+  "healthInfo": "स्वास्थ्य जानकारी",
+
+  "age": "आयु",
+  "gender": "लिंग",
+  "maritalStatus": "वैवाहिक स्थिति",
+  "educationLevel": "शिक्षा स्तर",
+  "occupation": "पेशा",
+  "placeOfResidence": "निवास स्थान",
+  "familyType": "परिवार का प्रकार",
+  "livingArrangement": "रहने की व्यवस्था",
+  "bodyWeight": "वजन",
+  "height": "ऊंचाई",
+  "mainFocus": "मुख्य फोकस",
+
+  "male": "पुरुष",
+  "female": "महिला",
+  "other": "अन्य",
+
+  "single": "अविवाहित",
+  "married": "विवाहित",
+  "divorced": "तलाकशुदा",
+  "widowed": "विधवा/विधुर",
+  "preferNotToSay": "बताना नहीं चाहते",
+
+  "highSchool": "हाई स्कूल",
+  "diploma": "डिप्लोमा",
+  "bachelors": "स्नातक",
+  "masters": "परास्नातक",
+  "phd": "पीएचडी",
+
+  "nuclear": "एकल परिवार",
+  "joint": "संयुक्त परिवार",
+  "extended": "विस्तारित परिवार",
+
+  "withFamily": "परिवार के साथ",
+  "alone": "अकेले",
+  "withPartner": "साथी के साथ",
+  "withRoommates": "रूममेट्स के साथ",
+
+  "sleep": "नींद",
+  "anxiety": "चिंता",
+  "stress": "तनाव",
+  "notSure": "पता नहीं",
+
+  "step1": "चरण 1 / 2",
+  "step2": "चरण 2 / 2",
+
+  "nameNickname": "नाम या उपनाम",
+  "select": "चुनें",
+  "continue": "आगे बढ़ें",
+  "back": "वापस",
+  "save": "सहेजें",
+  "fillField": "कृपया भरें",
+  "profileUpdated": "प्रोफ़ाइल सफलतापूर्वक अपडेट हुई",
+  "updateFailed": "अपडेट विफल",
+
+  "mindfulGames": "माइंडफुल गेम्स",
+  "mindfulGamesDesc": "खेलें, आराम करें, ध्यान लगाएं",
+
+  "secretJournal": "आपकी निजी डायरी",
+  "secretJournalDesc": "बिना झिझक लिखें",
+
+  "movies": "फिल्में",
+  "moviesDesc": "देखें और आराम करें",
+
+  "calmMusicDesc": "संगीत के साथ आराम करें",
+
+  "wiseYogi": "वाइज योगी",
+  "wiseYogiDesc": "मन और शरीर का संतुलन",
+
+  "healthIsWealth": "स्वास्थ्य ही धन है",
+  "healthDesc": "स्वास्थ्य का ध्यान रखें",
+
+  "talkToKai": "काई से बात करें",
+  "kaiDescription": "आपका व्यक्तिगत साथी यहाँ है, बिना किसी निर्णय के आपकी बात सुनने के लिए।",
+  "startConversation": "बातचीत शुरू करें",
+
+  "recommendedActivities": "सुझाई गई गतिविधियाँ",
+  "noDataFound": "कोई डेटा नहीं मिला",
+
+  "duration": "अवधि",
+  "minutes": "मिनट",
+  "category": "श्रेणी",
+  "uploadedBy": "अपलोड किया गया द्वारा",
+
+  "startActivity": "गतिविधि शुरू करें",
+  "minutesShort": "मिनट",
+  "audioGuided": "ऑडियो गाइडेड",
+
+  "aboutActivity": "इस गतिविधि के बारे में",
+  "whatYouNeed": "आपको क्या चाहिए",
+  "defaultActivityDescription": "यह निर्देशित श्वास अभ्यास आपके मन को शांत करने और तनाव कम करने में मदद करता है।",
+  "defaultRequirement": "बैठने के लिए एक शांत और आरामदायक जगह",
+
+  "home": "होम",
+  "settings": "सेटिंग्स",
+
+  "howWouldYouLikeToConnect": "आप कैसे जुड़ना चाहेंगे?",
+  "talkWithVoice": "आवाज़ से बात करें",
+  "chatWithText": "टेक्स्ट से चैट करें",
+  "startConversationTitle": "बातचीत शुरू करें",
+  "startConversationDesc": "चैट शुरू करने के लिए अपना संदेश लिखें",
+  "speakWithProfessional": "किसी विशेषज्ञ से बात करें",
+  "therapyDescription": "हमारे प्रमाणित थेरेपिस्ट आपकी यात्रा में मदद के लिए यहाँ हैं। अपने समय और ज़रूरत के अनुसार सत्र बुक करें। अपनी सुविधा अनुसार अवधि चुनें।",
+  "selectDuration": "अवधि चुनें",
+  "minutes": "मिनट",
+  "thirtyMinDesc": "रूटीन जांच और त्वरित मूल्यांकन के लिए उपयुक्त स्टैंडर्ड सत्र।",
+  "sixtyMinDesc": "विस्तृत चर्चा और उपचार योजना के लिए गहन थेरेपी सत्र।",
+  "recommendedQuickCheckins": "सुझाव: त्वरित जांच के लिए",
+  "recommendedDeepSessions": "सुझाव: गहन सत्रों के लिए",
+  "continue": "जारी रखें",
+  "importantInformation": "महत्वपूर्ण जानकारी",
+  "rescheduleInfo": "आप अपनी अपॉइंटमेंट को 24 घंटे पहले तक बिना किसी शुल्क के रद्द या पुनर्निर्धारित कर सकते हैं।",
+  "freeCancellation": "24 घंटे तक मुफ्त रद्दीकरण",
+  "secureVideoConsultation": "सुरक्षित वीडियो परामर्श",
+  "licensedProfessionals": "केवल प्रमाणित विशेषज्ञ"
+
+}

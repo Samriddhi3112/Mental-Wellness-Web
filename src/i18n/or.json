@@ -1,0 +1,187 @@
+{
+  "welcome": "ସ୍ୱାଗତ",
+  "logout": "ଲଗଆଉଟ୍",
+
+  "startConversationSpeak": "ଚାଟ୍ ଆରମ୍ଭ କରିବାକୁ କଥା କହନ୍ତୁ କିମ୍ବା ଆପଣଙ୍କ ସନ୍ଦେଶ ଟାଇପ୍ କରନ୍ତୁ",
+  "startConversationTitle": "କଥା ଆରମ୍ଭ କରନ୍ତୁ",
+  "startConversationDesc": "ଚାଟ୍ ଆରମ୍ଭ କରିବା ପାଇଁ ଆପଣଙ୍କ ମେସେଜ୍ ଟାଇପ୍ କରନ୍ତୁ",
+
+  "noChatHistoryTitle": "କୌଣସି ଚାଟ୍ ଇତିହାସ ନାହିଁ",
+  "noChatHistoryDesc": "ଏକ ଚାଟ୍ ବାଛନ୍ତୁ କିମ୍ବା ନୂତନ କଥା ଆରମ୍ଭ କରନ୍ତୁ",
+  "searchChatPlaceholder": "ଚାଟ୍ ଇତିହାସ ଖୋଜନ୍ତୁ",
+  "recentChats": "ସମ୍ପ୍ରତିକ ଚାଟ୍",
+
+  "currentLanguage": "ବର୍ତ୍ତମାନ ଭାଷା",
+  "currentLanguageLabel": "ଓଡ଼ିଆ",
+
+  "agreement": "ଚୁକ୍ତି",
+  "lastUpdatedOn": "ଶେଷ ଅଦ୍ୟତନ",
+  "privacyPolicy": "ଗୋପନୀୟତା ନୀତି",
+  "availableLanguages": "ଉପଲବ୍ଧ ଭାଷାଗୁଡ଼ିକ",
+
+  "faqs": "ପ୍ରାୟ ପଚାରାଯାଇଥିବା ପ୍ରଶ୍ନ",
+  "loadingFaqs": "FAQ ଲୋଡ୍ ହେଉଛି...",
+  "notAvailable": "ଉପଲବ୍ଧ ନାହିଁ",
+
+  "mainFocusQuestion": "ଆପଣଙ୍କ ମୁଖ୍ୟ ଲକ୍ଷ୍ୟ କଣ?",
+  "copyright": "© 2026 ସେରିନ୍ ୱେଲନେସ୍ ଆପ୍। ସମସ୍ତ ଅଧିକାର ସଂରକ୍ଷିତ।",
+
+  "understandingYou": "ଆପଣଙ୍କୁ ବୁଝୁଛୁ",
+  "thankYouForSharing": "ସେୟାର କରିଥିବା ପାଇଁ ଧନ୍ୟବାଦ",
+
+  "basedOnResponses": "ଆପଣଙ୍କ ଉତ୍ତର ଆଧାରରେ, ଆମେ କିଛି କ୍ଷେତ୍ର ଚିହ୍ନଟ କରିଛୁ ଯାହାରୁ ଆପଣ ଆରମ୍ଭ କରିପାରିବେ।",
+  "identifiedFocusAreas": "ଚିହ୍ନଟ ହୋଇଥିବା କ୍ଷେତ୍ର",
+  "analyzingResponses": "ଆପଣଙ୍କ ଉତ୍ତର ବିଶ୍ଳେଷଣ କରାଯାଉଛି...",
+  "noInsights": "କୌଣସି ତଥ୍ୟ ମିଳିଲା ନାହିଁ",
+  "journeyStart": "ଏହା କେବଳ ଆରମ୍ଭ। ଆମେ ଆପଣଙ୍କ ଯାତ୍ରାକୁ ବ୍ୟକ୍ତିଗତ କରିବୁ।",
+  "continueBtn": "ଜାରି ରଖନ୍ତୁ",
+
+  "logoutTitle": "ଲଗଆଉଟ୍ ନିଶ୍ଚିତ କରନ୍ତୁ",
+  "logoutDesc": "ଆପଣ ନିଶ୍ଚିତ କି ଆପଣଙ୍କ ଖାତାରୁ ଲଗଆଉଟ୍ କରିବେ?",
+  "logout": "ଲଗଆଉଟ୍",
+
+  "goodMorning": "ଶୁଭ ସକାଳ",
+  "goodAfternoon": "ଶୁଭ ଅପରାହ୍ନ",
+  "goodEvening": "ଶୁଭ ସନ୍ଧ୍ୟା",
+
+  "deleteAccountTitle": "ଖାତା ଡିଲିଟ୍ କରନ୍ତୁ",
+  "deleteAccountDesc": "ଆପଣ ନିଶ୍ଚିତ କି ଆପଣଙ୍କ ଖାତାକୁ ଡିଲିଟ୍ କରିବେ? ଏହି କାମକୁ ପୁନଃବାତିଲ୍ କରିହେବ ନାହିଁ।",
+  "cancel": "ବାତିଲ୍",
+  "delete": "ଡିଲିଟ୍",
+  "deleting": "ଡିଲିଟ୍ ହେଉଛି...",
+  "deleteSuccess": "ଆପଣଙ୍କ ଖାତା ସଫଳତାର ସହ ଡିଲିଟ୍ ହୋଇଛି। ପୁନଃ ସକ୍ରିୟ କରିବା ପାଇଁ ସପୋର୍ଟ ସହିତ ସମ୍ପର୍କ କରନ୍ତୁ।",
+  "deleteFailed": "ଖାତା ଡିଲିଟ୍ କରିବାରେ ବିଫଳ",
+
+  "account": "ଖାତା",
+  "myProfile": "ମୋ ପ୍ରୋଫାଇଲ",
+  "language": "ଭାଷା",
+  "upgradePremium": "ପ୍ରିମିୟମକୁ ଅପଗ୍ରେଡ୍ କରନ୍ତୁ",
+  "dataPrivacy": "ଡାଟା ଏବଂ ଗୋପନୀୟତା",
+  "exportData": "ମୋ ଡାଟା ଏକ୍ସପୋର୍ଟ କରନ୍ତୁ",
+
+  "about": "ସମ୍ବନ୍ଧରେ",
+  "terms": "ସେବା ନିୟମ",
+  "privacy": "ଗୋପନୀୟତା ନୀତି",
+  "faq": "ପ୍ରଶ୍ନୋତ୍ତର",
+
+  "loadingProfile": "ପ୍ରୋଫାଇଲ ଲୋଡ୍ ହେଉଛି...",
+  "changeProfile": "ପ୍ରୋଫାଇଲ ପରିବର୍ତ୍ତନ କରନ୍ତୁ",
+  "editProfile": "ପ୍ରୋଫାଇଲ ସମ୍ପାଦନ କରନ୍ତୁ",
+
+  "personalInfo": "ବ୍ୟକ୍ତିଗତ ସୂଚନା",
+  "healthInfo": "ସ୍ୱାସ୍ଥ୍ୟ ସୂଚନା",
+
+  "age": "ବୟସ",
+  "gender": "ଲିଙ୍ଗ",
+  "maritalStatus": "ବିବାହିତ ଅବସ୍ଥା",
+  "educationLevel": "ଶିକ୍ଷା ମାନ",
+  "occupation": "ପେଶା",
+  "placeOfResidence": "ବସୋବାସ ସ୍ଥାନ",
+  "familyType": "ପରିବାର ପ୍ରକାର",
+  "livingArrangement": "ରହିବା ବ୍ୟବସ୍ଥା",
+  "bodyWeight": "ଓଜନ",
+  "height": "ଉଚ୍ଚତା",
+  "mainFocus": "ମୁଖ୍ୟ ଲକ୍ଷ୍ୟ",
+
+  "male": "ପୁରୁଷ",
+  "female": "ମହିଳା",
+  "other": "ଅନ୍ୟ",
+
+  "single": "ଅବିବାହିତ",
+  "married": "ବିବାହିତ",
+  "divorced": "ତାଲାକ ପାଇଥିବା",
+  "widowed": "ବିଧବା/ବିଧୁର",
+  "preferNotToSay": "କହିବାକୁ ଚାହୁଁନି",
+
+  "highSchool": "ହାଇ ସ୍କୁଲ",
+  "diploma": "ଡିପ୍ଲୋମା",
+  "bachelors": "ସ୍ନାତକ",
+  "masters": "ସ୍ନାତକୋତ୍ତର",
+  "phd": "ପିଏଚଡି",
+
+  "nuclear": "ଏକକ ପରିବାର",
+  "joint": "ଯୁକ୍ତ ପରିବାର",
+  "extended": "ବିସ୍ତୃତ ପରିବାର",
+
+  "withFamily": "ପରିବାର ସହିତ",
+  "alone": "ଏକା",
+  "withPartner": "ସଙ୍ଗୀ ସହିତ",
+  "withRoommates": "ରୁମମେଟ୍ ସହିତ",
+
+  "sleep": "ନିଦ୍ରା",
+  "anxiety": "ଚିନ୍ତା",
+  "stress": "ଚାପ",
+  "notSure": "ନିଶ୍ଚିତ ନୁହେଁ",
+
+  "step1": "ପଦକ୍ରମ 1 / 2",
+  "step2": "ପଦକ୍ରମ 2 / 2",
+
+  "nameNickname": "ନାମ କିମ୍ବା ଡାକନାମ",
+  "select": "ଚୟନ କରନ୍ତୁ",
+  "continue": "ଆଗକୁ ବଢନ୍ତୁ",
+  "back": "ପଛକୁ ଯାଆନ୍ତୁ",
+  "save": "ସେଭ୍ କରନ୍ତୁ",
+  "fillField": "ଦୟାକରି ପୁରଣ କରନ୍ତୁ",
+  "profileUpdated": "ପ୍ରୋଫାଇଲ ସଫଳତାର ସହ ଅଦ୍ୟତନ ହେଲା",
+  "updateFailed": "ଅଦ୍ୟତନ ବିଫଳ",
+
+  "mindfulGames": "ମାଇଣ୍ଡଫୁଲ୍ ଗେମ୍ସ",
+  "mindfulGamesDesc": "ଖେଳନ୍ତୁ, ଆରାମ କରନ୍ତୁ, ଧ୍ୟାନ କରନ୍ତୁ",
+
+  "secretJournal": "ଆପଣଙ୍କର ଗୋପନୀୟ ଡାଏରୀ",
+  "secretJournalDesc": "ନିର୍ବିକାରରେ ଲେଖନ୍ତୁ",
+
+  "movies": "ସିନେମା",
+  "moviesDesc": "ଦେଖନ୍ତୁ ଏବଂ ଆରାମ କରନ୍ତୁ",
+
+  "calmMusic": "ଶାନ୍ତ ସଙ୍ଗୀତ",
+  "calmMusicDesc": "ସଙ୍ଗୀତ ସହିତ ଆରାମ କରନ୍ତୁ",
+
+  "wiseYogi": "ୱାଇଜ୍ ଯୋଗୀ",
+  "wiseYogiDesc": "ମନ ଓ ଶରୀରର ସମତୁଳନ",
+
+  "healthIsWealth": "ସ୍ୱାସ୍ଥ୍ୟ ହେଉଛି ଧନ",
+  "healthDesc": "ସ୍ୱାସ୍ଥ୍ୟର ଯତ୍ନ ନିଅନ୍ତୁ",
+
+  "talkToKai": "କାଇ ସହିତ କଥାହୁଅନ୍ତୁ",
+  "kaiDescription": "ଆପଣଙ୍କର ବ୍ୟକ୍ତିଗତ ସାଥୀ ଏଠାରେ ଅଛନ୍ତି, କୌଣସି ବିଚାର ବିନା ଆପଣଙ୍କୁ ଶୁଣିବା ପାଇଁ।",
+  "startConversation": "କଥା ଆରମ୍ଭ କରନ୍ତୁ",
+
+  "recommendedActivities": "ସୁପାରିଶିତ କାର୍ଯ୍ୟକଳାପ",
+  "noDataFound": "କୌଣସି ଡାଟା ମିଳିଲା ନାହିଁ",
+
+  "duration": "ସମୟାବଧି",
+  "minutes": "ମିନିଟ୍",
+  "category": "ଶ୍ରେଣୀ",
+  "uploadedBy": "ଅପଲୋଡ୍ କରିଛନ୍ତି",
+  "startActivity": "କାର୍ଯ୍ୟ ଆରମ୍ଭ କରନ୍ତୁ",
+  "minutesShort": "ମିନିଟ୍",
+  "audioGuided": "ଅଡିଓ ଗାଇଡେଡ୍",
+
+  "aboutActivity": "ଏହି କାର୍ଯ୍ୟ ବିଷୟରେ",
+  "whatYouNeed": "ଆପଣଙ୍କୁ କଣ ଦରକାର",
+  "defaultActivityDescription": "ଏହି ନିର୍ଦ୍ଦେଶିତ ଶ୍ୱାସ ଅଭ୍ୟାସ ଆପଣଙ୍କ ମନକୁ ଶାନ୍ତ କରିବାରେ ଏବଂ ଚାପ କମାଇବାରେ ସାହାଯ୍ୟ କରେ।",
+  "defaultRequirement": "ବସିବା ପାଇଁ ଏକ ଶାନ୍ତ ଏବଂ ସୁବିଧାଜନକ ସ୍ଥାନ",
+
+  "home": "ହୋମ",
+  "settings": "ସେଟିଂସ୍",
+
+  "howWouldYouLikeToConnect": "ଆପଣ କିପରି ଯୋଗାଯୋଗ କରିବାକୁ ଚାହୁଁଛନ୍ତି?",
+  "talkWithVoice": "ଭୟସ୍ ସହିତ କଥା କରନ୍ତୁ",
+  "chatWithText": "ଟେକ୍ସଟ୍ ସହିତ ଚାଟ୍ କରନ୍ତୁ",
+  "speakWithProfessional": "ଏକ ବିଶେଷଜ୍ଞ ସହ କଥା ହୁଅନ୍ତୁ",
+  "therapyDescription": "ଆମ ସର୍ଟିଫାଇଡ୍ ଥେରାପିଷ୍ଟମାନେ ଆପଣଙ୍କ ସହାୟତା ପାଇଁ ଅଛନ୍ତି। ଆପଣଙ୍କ ସମୟ ଅନୁଯାୟୀ ସେସନ ବୁକ୍ କରନ୍ତୁ।",
+  "selectDuration": "ସମୟାବଧି ବାଛନ୍ତୁ",
+  "minutes": "ମିନିଟ୍",
+  "thirtyMinDesc": "ଦ୍ରୁତ ଚେକ୍-ଇନ୍ ପାଇଁ ଉପଯୁକ୍ତ ସେସନ।",
+  "sixtyMinDesc": "ଗଭୀର ଆଲୋଚନା ପାଇଁ ଲମ୍ବା ସେସନ।",
+  "recommendedQuickCheckins": "ସୁପାରିଶ: ଦ୍ରୁତ ଚେକ୍-ଇନ୍",
+  "recommendedDeepSessions": "ସୁପାରିଶ: ଗଭୀର ସେସନ",
+  "continue": "ଜାରି ରଖନ୍ତୁ",
+  "importantInformation": "ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ସୂଚନା",
+  "rescheduleInfo": "ଆପଣ 24 ଘଣ୍ଟା ପୂର୍ବରୁ ମାଗଣାରେ ବାତିଲ୍ କରିପାରିବେ।",
+  "freeCancellation": "24 ଘଣ୍ଟା ମଧ୍ୟରେ ମାଗଣା ବାତିଲ୍",
+  "secureVideoConsultation": "ସୁରକ୍ଷିତ ଭିଡିଓ ପରାମର୍ଶ",
+  "licensedProfessionals": "କେବଳ ପ୍ରମାଣିତ ବିଶେଷଜ୍ଞ"
+
+}

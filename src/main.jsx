@@ -7,7 +7,8 @@ import "./assets/css/style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./i18n.js";
+// import "./i18n.js";
+import "./i18n";
 import { MusicPlayerProvider } from "./context/MusicPlayerContext.jsx";
 
 import { Provider } from "react-redux";

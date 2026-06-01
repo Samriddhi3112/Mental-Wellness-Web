@@ -9,6 +9,7 @@ import meditation from "../../assets/images/meditation-one.png";
 import google from "../../assets/images/google.svg";
 import apple from "../../assets/images/apple.svg";
 import facebook from "../../assets/images/facebook.svg";
+import {getFCMToken} from "../../utils/firebase";
 
 import { checkUserExists } from "../../features/auth/authSlice";
 import useDisableNavigation from "../../custom hooks/useDisableNavigation";
@@ -64,7 +65,7 @@ const Login = () => {
         return;
       }
 
-      payload = { phone: value };
+      payload = { phone: value,deviceToken: getFCMToken, };
     }
 
     try {

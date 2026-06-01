@@ -1,0 +1,124 @@
+{
+  "translation": {
+    "welcome": "Welcome",
+    "logout": "Logout",
+
+    "startConversationSpeak": "Speak or type your message to begin chatting",
+    "noChatHistoryTitle": "No Chat History",
+    "noChatHistoryDesc": "Select a chat or start a new conversation",
+    "searchChatPlaceholder": "Search chat history",
+
+    "hereToHelp": "Here to help",
+    "takeMoment": "Take a moment for yourself",
+    "talkToAI": "Talk to AI",
+    "safeSpace": "A safe space to talk",
+
+    "calmMusic": "Calm Music",
+    "relaxingSounds": "Relaxing sounds",
+    "guidedMeditation": "Guided Meditation",
+
+    "findYourCalm": "Find your calm",
+    "breathingExercise": "Breathing Exercise",
+    "emergencyHelp": "Emergency Help",
+    "getImmediateSupport": "Get immediate support",
+    "goToHome": "Go to home",
+
+    "copyright": "© 2026 Serene Wellness App. All rights reserved.",
+
+    "logoutTitle": "Confirm Logout",
+    "logoutDesc": "Are you sure you want to logout from your account?",
+    "cancel": "Cancel",
+
+    "faqs": "FAQs",
+    "loadingFaqs": "Loading FAQs...",
+    "mainFocusQuestion": "What is your main focus?",
+
+    "understandingYou": "Understanding You",
+    "thankYouForSharing": "Thank you for sharing",
+
+    "agreement": "Agreement",
+    "lastUpdatedOn": "Last updated on",
+    "privacyPolicy": "Privacy Policy",
+    "notAvailable": "N/A",
+
+    "basedOnResponses": "Based on your responses, we've identified a few areas to help you get started.",
+    "identifiedFocusAreas": "Identified Focus Areas",
+    "analyzingResponses": "Analyzing your responses...",
+    "noInsights": "No insights available",
+
+    "journeyStart": "This is just the beginning. We'll personalize your journey ahead.",
+
+    "continueBtn": "Continue",
+    "currentLanguageLabel": "English (US)",
+
+    "goodMorning": "Good Morning",
+    "goodAfternoon": "Good Afternoon",
+    "goodEvening": "Good Evening",
+
+    "recentChats": "Recent Chats",
+
+    "account": "Account",
+    "myProfile": "My Profile",
+    "language": "Language",
+
+    "upgradePremium": "Upgrade to Premium",
+    "dataPrivacy": "Data & Privacy",
+    "exportData": "Export My Data",
+    "deleteAccount": "Delete Account",
+
+    "about": "About",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "faq": "FAQ",
+
+    "loadingProfile": "Loading profile...",
+    "changeProfile": "Change Profile",
+    "editProfile": "Edit Profile",
+
+    "personalInfo": "Personal Information",
+    "healthInfo": "Health Information",
+
+    "age": "Age",
+    "gender": "Gender",
+    "maritalStatus": "Marital Status",
+    "educationLevel": "Education Level",
+    "occupation": "Occupation",
+    "placeOfResidence": "Place of Residence",
+    "familyType": "Family Type",
+    "livingArrangement": "Living Arrangement",
+    "bodyWeight": "Body Weight",
+    "height": "Height",
+    "mainFocus": "Main Focus",
+
+    "consulationBooking": "Consultation Booking",
+
+    "male": "Male",
+    "female": "Female",
+    "other": "Other",
+    "single": "Single",
+    "married": "Married",
+    "divorced": "Divorced",
+    "widowed": "Widowed",
+    "preferNotToSay": "Prefer Not To Say",
+
+    "home": "Home",
+    "settings": "Settings",
+    "talkToKai": "Talk to Kai",
+    "kaiDescription": "Your personal companion is here to listen, judgment-free.",
+    "startConversation": "Start Conversation",
+  "speakWithProfessional": "Speak with a Professional",
+  "therapyDescription": "Our certified therapists are here to support your journey. Book a session that fits your schedule and needs. Choose the duration that works best for your consultation.",
+  "selectDuration": "Select Duration",
+  "minutes": "Minutes",
+  "thirtyMinDesc": "Standard check-in session perfect for routine consultations and quick assessments.",
+  "sixtyMinDesc": "Deep-dive therapy session for comprehensive discussions and detailed treatment planning.",
+  "recommendedQuickCheckins": "Recommended for: Quick check-ins",
+  "recommendedDeepSessions": "Recommended for: In-depth sessions",
+  "continue": "Continue",
+  "importantInformation": "Important Information",
+  "rescheduleInfo": "You can reschedule or cancel your appointment up to 24 hours before the scheduled time without any fees.",
+  "freeCancellation": "Free cancellation up to 24h",
+  "secureVideoConsultation": "Secure video consultation",
+  "licensedProfessionals": "Licensed professionals only"
+  }
+}

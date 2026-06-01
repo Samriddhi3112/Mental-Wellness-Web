@@ -1,0 +1,190 @@
+{
+  "welcome": "স্বাগতম",
+  "logout": "লগআউট",
+
+  "startConversationTitle": "কথোপকথন শুরু করুন",
+  "startConversationDesc": "চ্যাট শুরু করতে আপনার বার্তা লিখুন",
+  "startConversationSpeak": "চ্যাট শুরু করতে কথা বলুন বা আপনার বার্তা টাইপ করুন",
+
+  "mainFocusQuestion": "আপনার প্রধান লক্ষ্য কী?",
+  "faqs": "প্রায়শই জিজ্ঞাসিত প্রশ্ন",
+  "loadingFaqs": "FAQ লোড হচ্ছে...",
+
+  "notAvailable": "উপলব্ধ নয়",
+  "currentLanguage": "বর্তমান ভাষা",
+  "currentLanguageLabel": "বাংলা",
+
+  "agreement": "চুক্তি",
+  "lastUpdatedOn": "সর্বশেষ আপডেট",
+  "privacyPolicy": "গোপনীয়তা নীতি",
+  "availableLanguages": "উপলব্ধ ভাষাসমূহ",
+
+  "copyright": "© 2026 সেরিন ওয়েলনেস অ্যাপ। সর্বস্বত্ব সংরক্ষিত।",
+
+  "logoutTitle": "লগআউট নিশ্চিত করুন",
+  "logoutDesc": "আপনি কি নিশ্চিত যে আপনি আপনার অ্যাকাউন্ট থেকে লগআউট করতে চান?",
+
+  "understandingYou": "আপনাকে বোঝা হচ্ছে",
+  "thankYouForSharing": "শেয়ার করার জন্য ধন্যবাদ",
+
+  "basedOnResponses": "আপনার উত্তরের ভিত্তিতে, আমরা কয়েকটি ক্ষেত্র চিহ্নিত করেছি যা দিয়ে আপনি শুরু করতে পারেন।",
+  "identifiedFocusAreas": "চিহ্নিত ফোকাস ক্ষেত্র",
+  "analyzingResponses": "আপনার উত্তর বিশ্লেষণ করা হচ্ছে...",
+  "noInsights": "কোনো তথ্য পাওয়া যায়নি",
+  "journeyStart": "এটি শুধুই শুরু। আমরা আপনার যাত্রাকে ব্যক্তিগতকৃত করব।",
+
+  "continueBtn": "চালিয়ে যান",
+
+  "goodMorning": "সুপ্রভাত",
+  "goodAfternoon": "শুভ অপরাহ্ন",
+  "goodEvening": "শুভ সন্ধ্যা",
+
+  "noChatHistoryTitle": "কোনো চ্যাট ইতিহাস নেই",
+  "noChatHistoryDesc": "একটি চ্যাট নির্বাচন করুন বা নতুন কথোপকথন শুরু করুন",
+  "searchChatPlaceholder": "চ্যাট ইতিহাস খুঁজুন",
+  "recentChats": "সাম্প্রতিক চ্যাট",
+
+  "deleteAccountTitle": "অ্যাকাউন্ট মুছুন",
+  "deleteAccountDesc": "আপনি কি নিশ্চিত যে আপনি আপনার অ্যাকাউন্ট মুছতে চান? এই কাজটি ফেরানো যাবে না।",
+
+  "cancel": "বাতিল",
+  "delete": "মুছুন",
+  "deleting": "মুছে ফেলা হচ্ছে...",
+  "deleteSuccess": "আপনার অ্যাকাউন্ট সফলভাবে মুছে ফেলা হয়েছে। পুনরায় সক্রিয় করতে সাপোর্টে যোগাযোগ করুন।",
+  "deleteFailed": "অ্যাকাউন্ট মুছতে ব্যর্থ",
+
+  "account": "অ্যাকাউন্ট",
+  "myProfile": "আমার প্রোফাইল",
+  "language": "ভাষা",
+  "upgradePremium": "প্রিমিয়ামে আপগ্রেড করুন",
+  "dataPrivacy": "ডেটা এবং গোপনীয়তা",
+  "exportData": "আমার ডেটা রপ্তানি করুন",
+  "deleteAccount": "অ্যাকাউন্ট মুছুন",
+
+  "about": "সম্পর্কে",
+  "terms": "সার্ভিসের শর্তাবলী",
+  "privacy": "গোপনীয়তা নীতি",
+  "faq": "প্রশ্নোত্তর",
+
+  "loadingProfile": "প্রোফাইল লোড হচ্ছে...",
+  "changeProfile": "প্রোফাইল পরিবর্তন করুন",
+  "editProfile": "প্রোফাইল সম্পাদনা করুন",
+
+  "personalInfo": "ব্যক্তিগত তথ্য",
+  "healthInfo": "স্বাস্থ্য সম্পর্কিত তথ্য",
+
+  "age": "বয়স",
+  "gender": "লিঙ্গ",
+  "maritalStatus": "বৈবাহিক অবস্থা",
+  "educationLevel": "শিক্ষার স্তর",
+  "occupation": "পেশা",
+  "placeOfResidence": "বাসস্থান",
+  "familyType": "পরিবারের ধরন",
+  "livingArrangement": "বাস করার ব্যবস্থা",
+  "bodyWeight": "ওজন",
+  "height": "উচ্চতা",
+  "mainFocus": "প্রধান লক্ষ্য",
+
+  "male": "পুরুষ",
+  "female": "মহিলা",
+  "other": "অন্যান্য",
+
+  "single": "অবিবাহিত",
+  "married": "বিবাহিত",
+  "divorced": "তালাকপ্রাপ্ত",
+  "widowed": "বিধবা/বিধুর",
+  "preferNotToSay": "বলতে চাই না",
+
+  "highSchool": "হাই স্কুল",
+  "diploma": "ডিপ্লোমা",
+  "bachelors": "স্নাতক",
+  "masters": "স্নাতকোত্তর",
+  "phd": "পিএইচডি",
+
+  "nuclear": "একক পরিবার",
+  "joint": "যৌথ পরিবার",
+  "extended": "বর্ধিত পরিবার",
+
+  "withFamily": "পরিবারের সাথে",
+  "alone": "একা",
+  "withPartner": "সঙ্গীর সাথে",
+  "withRoommates": "রুমমেটদের সাথে",
+
+  "sleep": "ঘুম",
+  "anxiety": "উদ্বেগ",
+  "stress": "চাপ",
+  "notSure": "নিশ্চিত নই",
+
+  "step1": "ধাপ ১ / ২",
+  "step2": "ধাপ ২ / ২",
+
+  "nameNickname": "নাম বা ডাকনাম",
+  "select": "নির্বাচন করুন",
+  "continue": "চালিয়ে যান",
+  "back": "ফিরে যান",
+  "save": "সংরক্ষণ করুন",
+  "fillField": "দয়া করে পূরণ করুন",
+  "profileUpdated": "প্রোফাইল সফলভাবে আপডেট হয়েছে",
+  "updateFailed": "আপডেট ব্যর্থ হয়েছে",
+
+  "mindfulGames": "মাইন্ডফুল গেমস",
+  "mindfulGamesDesc": "খেলুন, আরাম করুন, মনোযোগ দিন",
+
+  "secretJournal": "আপনার গোপন জার্নাল",
+  "secretJournalDesc": "বিনা দ্বিধায় লিখুন",
+
+  "movies": "মুভিজ",
+  "moviesDesc": "দেখুন এবং আরাম করুন",
+
+  "calmMusic": "শান্ত সঙ্গীত",
+  "calmMusicDesc": "সুরের মাধ্যমে আরাম করুন",
+
+  "wiseYogi": "ওয়াইজ যোগী",
+  "wiseYogiDesc": "মন ও শরীরের ভারসাম্য",
+
+  "healthIsWealth": "স্বাস্থ্যই সম্পদ",
+  "healthDesc": "স্বাস্থ্যের যত্ন নিন",
+
+  "talkToKai": "কাই-এর সাথে কথা বলুন",
+  "kaiDescription": "আপনার ব্যক্তিগত সঙ্গী এখানে আছে, কোনো বিচার ছাড়াই আপনাকে শুনতে।",
+  "startConversation": "কথোপকথন শুরু করুন",
+
+  "recommendedActivities": "প্রস্তাবিত কার্যকলাপ",
+  "noDataFound": "কোনো ডেটা পাওয়া যায়নি",
+
+  "duration": "সময়কাল",
+  "minutes": "মিনিট",
+  "category": "বিভাগ",
+  "uploadedBy": "আপলোড করেছেন",
+  "startActivity": "কার্যক্রম শুরু করুন",
+  "minutesShort": "মিনিট",
+  "audioGuided": "অডিও গাইডেড",
+
+  "aboutActivity": "এই কার্যক্রম সম্পর্কে",
+  "whatYouNeed": "আপনার যা প্রয়োজন",
+  "defaultActivityDescription": "এই নির্দেশিত শ্বাস-প্রশ্বাসের অনুশীলন আপনার মনকে শান্ত করতে এবং চাপ কমাতে সাহায্য করে।",
+  "defaultRequirement": "বসার জন্য একটি শান্ত ও আরামদায়ক জায়গা",
+
+  "home": "হোম",
+  "settings": "সেটিংস",
+
+  "howWouldYouLikeToConnect": "আপনি কীভাবে সংযুক্ত হতে চান?",
+  "talkWithVoice": "ভয়েস দিয়ে কথা বলুন",
+  "chatWithText": "টেক্সট দিয়ে চ্যাট করুন",
+
+  "speakWithProfessional": "একজন পেশাদারের সাথে কথা বলুন",
+  "therapyDescription": "আমাদের সার্টিফাইড থেরাপিস্টরা আপনার যাত্রায় সাহায্য করতে এখানে আছেন। আপনার সময় অনুযায়ী সেশন বুক করুন।",
+  "selectDuration": "সময়কাল নির্বাচন করুন",
+  "minutes": "মিনিট",
+  "thirtyMinDesc": "দ্রুত চেক-ইন এবং রুটিন পরামর্শের জন্য উপযুক্ত সেশন।",
+  "sixtyMinDesc": "গভীর আলোচনা এবং চিকিৎসা পরিকল্পনার জন্য দীর্ঘ সেশন।",
+  "recommendedQuickCheckins": "পরামর্শ: দ্রুত চেক-ইন",
+  "recommendedDeepSessions": "পরামর্শ: গভীর সেশনের জন্য",
+  "continue": "চালিয়ে যান",
+  "importantInformation": "গুরুত্বপূর্ণ তথ্য",
+  "rescheduleInfo": "আপনি ২৪ ঘণ্টা আগে পর্যন্ত বিনামূল্যে বাতিল বা পুনঃনির্ধারণ করতে পারেন।",
+  "freeCancellation": "২৪ ঘণ্টা পর্যন্ত ফ্রি বাতিল",
+  "secureVideoConsultation": "নিরাপদ ভিডিও পরামর্শ",
+  "licensedProfessionals": "শুধুমাত্র লাইসেন্সপ্রাপ্ত পেশাদার"
+
+}

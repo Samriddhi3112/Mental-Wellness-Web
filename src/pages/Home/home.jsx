@@ -18,7 +18,7 @@ const Home = () => {
   const { t } = useTranslation();
   return (
     <div>
-      <div className="main-content" style={{ minHeight: "100vh" }}>
+      <div className="main-content" style={{ minHeight: "100vh", display:"block" }}>
         {/* Talk to Kai Card */}
         <div
           className="kai-card"

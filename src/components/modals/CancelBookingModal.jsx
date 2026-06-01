@@ -1,22 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import cancel from "../../assets/images/cancel-booking.png";
 import BookingCancelledModal from "./BookingCancelledModal";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  cancelBooking,
+  resetBookingState,
+} from "../../features/booking/bookingSlice";
+import { toast } from "react-toastify";
+import BookingDetails from "../../pages/Consultation Booking/BookingDetails";
 
 const styles = {
   backdrop: {
-  position: "fixed",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100vh",
-  background: "rgba(0,0,0,0.6)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  zIndex: 9999,
-  padding: "2rem 1rem",
-  fontFamily: "'Nunito', sans-serif",
-},
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100vh",
+    background: "rgba(0,0,0,0.6)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9999,
+    padding: "2rem 1rem",
+    fontFamily: "'Nunito', sans-serif",
+  },
   modalCard: {
     background: "#1e1e35",
     borderRadius: "40px",
@@ -156,21 +163,52 @@ function CalendarXIcon() {
   );
 }
 
-export default function CancelBookingModal({ onClose }) {
+export default function CancelBookingModal({ onClose, bookingId }) {
+  const dispatch = useDispatch();
+
+  const { cancelLoading, cancelSuccess } = useSelector(
+    (state) => state.booking,
+  );
+  const { bookingDetails } = useSelector((state) => state.booking);
+
   const [confirmHover, setConfirmHover] = useState(false);
   const [cancelHover, setCancelHover] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [cancellationReason, setCancellationReason] = useState("");
+
+  useEffect(() => {
+    if (cancelSuccess) {
+      setShowSuccessModal(true);
+
+      dispatch(resetBookingState());
+    }
+  }, [cancelSuccess, dispatch]);
+
+  const handleCancelBooking = () => {
+    if (!cancellationReason.trim()) {
+      toast.error("Please enter a cancellation reason.");
+      return;
+    }
+
+    dispatch(
+      cancelBooking({
+        bookingId,
+        cancellationReason,
+      }),
+    );
+  };
 
   return (
     <>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');`}</style>
-
       <div style={styles.backdrop}>
         <div style={styles.modalCard}>
-
           {/* Icon */}
-          <div >
-              <img src={cancel} alt="Cancel" style={{ width: "60%", height: "60%" }} />
+          <div>
+            <img
+              src={cancel}
+              alt="Cancel"
+              style={{ width: "60%", height: "60%" }}
+            />
           </div>
 
           {/* Title */}
@@ -178,7 +216,8 @@ export default function CancelBookingModal({ onClose }) {
 
           {/* Description */}
           <p style={styles.modalDesc}>
-            Are you sure you want to cancel your<br />
+            Are you sure you want to cancel your
+            <br />
             session? This action cannot be undone.
           </p>
 
@@ -188,24 +227,60 @@ export default function CancelBookingModal({ onClose }) {
             <div style={styles.policyTextWrap}>
               <p style={styles.policyHeading}>Cancellation Policy</p>
               <p style={styles.policyBody}>
-                Cancellations are only permitted{" "}
-                <u>24 hours</u> before the session starts to receive a
-                full refund.
+                Cancellations are only permitted <u>24 hours</u> before the
+                session starts to receive a full refund.
               </p>
             </div>
           </div>
 
-          {/* Confirm Button */}
+          <div style={{ width: "100%", marginBottom: "1rem" }}>
+            <label
+              style={{
+                color: "#f0f0ff",
+                fontSize: "14px",
+                fontWeight: "600",
+                marginBottom: "8px",
+                display: "block",
+              }}
+            >
+              Reason for Cancellation
+            </label>
+
+            <textarea
+              value={cancellationReason}
+              onChange={(e) => setCancellationReason(e.target.value)}
+              placeholder="Please tell us why you are cancelling this booking..."
+              rows={4}
+              style={{
+                width: "100%",
+                padding: "12px",
+                borderRadius: "12px",
+                border: "1px solid #3a3a5a",
+                background: "#2a2a45",
+                color: "#fff",
+                resize: "none",
+                outline: "none",
+                fontSize: "14px",
+                boxSizing: "border-box",
+                fontFamily: "'Nunito', sans-serif",
+              }}
+            />
+          </div>
+
+          {/* 
+           Button */}
           <button
             style={{
               ...styles.btnConfirm,
               background: confirmHover ? "#462297" : "#7631B2",
+              opacity: cancelLoading ? 0.7 : 1,
             }}
             onMouseEnter={() => setConfirmHover(true)}
             onMouseLeave={() => setConfirmHover(false)}
-            onClick={() => setShowSuccessModal(true)}
+            onClick={handleCancelBooking}
+            disabled={cancelLoading}
           >
-            Confirm Cancellation
+            {cancelLoading ? "Cancelling..." : "Confirm Cancellation"}
           </button>
 
           {/* Cancel Button */}
@@ -221,14 +296,17 @@ export default function CancelBookingModal({ onClose }) {
           >
             Cancel Booking
           </button>
-
         </div>
       </div>
       {showSuccessModal && (
-  <BookingCancelledModal
-    onClose={() => setShowSuccessModal(false)}
-  />
-)}
+        console.log("BOOKING DETAILS IN CANCEL MODAL", bookingDetails),
+        
+        <BookingCancelledModal
+          booking={bookingDetails}
+          cancellationReason={cancellationReason}
+          onClose={() => setShowSuccessModal(false)}
+        />
+      )}
     </>
   );
 }

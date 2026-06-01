@@ -1,0 +1,188 @@
+{
+  "welcome": "স্বাগতম",
+  "logout": "লগআউট",
+
+  "startConversationTitle": "আলোচনা আৰম্ভ কৰক",
+  "startConversationDesc": "চেট আৰম্ভ কৰিবলৈ আপোনাৰ বাৰ্তা লিখক",
+  "startConversationSpeak": "চেট আৰম্ভ কৰিবলৈ কওক বা আপোনাৰ বাৰ্তা টাইপ কৰক",
+
+  "agreement": "চুক্তি",
+  "lastUpdatedOn": "শেষ আপডেট",
+  "privacyPolicy": "গোপনীয়তা নীতি",
+
+  "faqs": "সঘনাই সোধা প্ৰশ্নসমূহ",
+  "loadingFaqs": "FAQ লোড হৈ আছে...",
+
+  "notAvailable": "উপলব্ধ নহয়",
+
+  "mainFocusQuestion": "আপোনাৰ মুখ্য লক্ষ্য কি?",
+  "currentLanguage": "বৰ্তমান ভাষা",
+  "currentLanguageLabel": "অসমীয়া",
+  "availableLanguages": "উপলব্ধ ভাষাসমূহ",
+
+  "noChatHistoryTitle": "কোনো চেট ইতিহাস নাই",
+  "noChatHistoryDesc": "এটা চেট বাছক বা নতুন আলোচনা আৰম্ভ কৰক",
+  "searchChatPlaceholder": "চেট ইতিহাস সন্ধান কৰক",
+  "recentChats": "সাম্প্ৰতিক চেটসমূহ",
+
+  "understandingYou": "আপোনাক বুজি আছো",
+  "thankYouForSharing": "শ্বেয়াৰ কৰাৰ বাবে ধন্যবাদ",
+
+  "basedOnResponses": "আপোনাৰ উত্তৰৰ ওপৰত ভিত্তি কৰি, আমি কেইবাটাও ক্ষেত্ৰ চিনাক্ত কৰিছো যাৰ পৰা আপুনি আৰম্ভ কৰিব পাৰে।",
+  "identifiedFocusAreas": "চিনাক্ত কৰা ক্ষেত্ৰসমূহ",
+  "analyzingResponses": "আপোনাৰ উত্তৰ বিশ্লেষণ কৰা হৈছে...",
+  "noInsights": "কোনো তথ্য পোৱা নগ'ল",
+  "journeyStart": "এইটো মাত্ৰ আৰম্ভণি। আমি আপোনাৰ যাত্ৰাক ব্যক্তিগত কৰিম।",
+  "continueBtn": "আগবাঢ়ক",
+
+  "copyright": "© 2026 সেরিন ৱেলনেছ এপ। সকলো অধিকাৰ সংৰক্ষিত।",
+
+  "logoutTitle": "লগআউট নিশ্চিত কৰক",
+  "logoutDesc": "আপুনি নিশ্চিতনে আপুনি আপোনাৰ একাউন্টৰ পৰা লগআউট কৰিব বিচাৰে?",
+  "cancel": "বাতিল কৰক",
+
+  "goodMorning": "সুপ্ৰভাত",
+  "goodAfternoon": "শুভ দুপৰীয়া",
+  "goodEvening": "শুভ সন্ধিয়া",
+
+  "deleteAccountTitle": "একাউন্ট ডিলিট কৰক",
+  "deleteAccountDesc": "আপুনি নিশ্চিতনে আপুনি আপোনাৰ একাউন্ট ডিলিট কৰিব বিচাৰে? এই কামটো ঘূৰাই আনিব নোৱাৰি।",
+  "delete": "ডিলিট কৰক",
+  "deleting": "ডিলিট কৰা হৈছে...",
+  "deleteSuccess": "আপোনাৰ একাউন্ট সফলতাৰে ডিলিট কৰা হৈছে। পুনৰ সক্ৰিয় কৰিবলৈ সাপোৰ্টৰ সৈতে যোগাযোগ কৰক।",
+  "deleteFailed": "একাউন্ট ডিলিট কৰিব নোৱাৰিলে",
+
+  "account": "একাউন্ট",
+  "myProfile": "মোৰ প্ৰ'ফাইল",
+  "language": "ভাষা",
+  "upgradePremium": "প্ৰিমিয়ামলৈ আপগ্ৰেড কৰক",
+  "dataPrivacy": "ডাটা আৰু গোপনীয়তা",
+  "exportData": "মোৰ ডাটা এক্সপোৰ্ট কৰক",
+  "deleteAccount": "একাউন্ট ডিলিট কৰক",
+
+  "about": "সম্পৰ্কে",
+  "terms": "সেৱাৰ নিয়ম",
+  "privacy": "গোপনীয়তা নীতি",
+  "faq": "প্ৰশ্নোত্তৰ",
+
+  "loadingProfile": "প্ৰফাইল লোড হৈ আছে...",
+  "changeProfile": "প্ৰফাইল সলনি কৰক",
+  "editProfile": "প্ৰফাইল সম্পাদনা কৰক",
+
+  "personalInfo": "ব্যক্তিগত তথ্য",
+  "healthInfo": "স্বাস্থ্য তথ্য",
+
+  "age": "বয়স",
+  "gender": "লিংগ",
+  "maritalStatus": "বৈবাহিক অৱস্থা",
+  "educationLevel": "শিক্ষাৰ স্তৰ",
+  "occupation": "পেচা",
+  "placeOfResidence": "বাসস্থান",
+  "familyType": "পৰিয়ালৰ ধৰণ",
+  "livingArrangement": "থকাৰ ব্যৱস্থা",
+  "bodyWeight": "ওজন",
+  "height": "উচ্চতা",
+  "mainFocus": "মূল লক্ষ্য",
+
+  "male": "পুৰুষ",
+  "female": "মহিলা",
+  "other": "অন্যান্য",
+
+  "single": "অবিবাহিত",
+  "married": "বিবাহিত",
+  "divorced": "বিচ্ছিন্ন",
+  "widowed": "বিধবা/বিধুৰ",
+  "preferNotToSay": "ক'ব নিবিচাৰে",
+
+  "highSchool": "হাই স্কুল",
+  "diploma": "ডিপ্লোমা",
+  "bachelors": "স্নাতক",
+  "masters": "স্নাতকোত্তৰ",
+  "phd": "পিএইচডি",
+
+  "nuclear": "একক পৰিয়াল",
+  "joint": "যৌথ পৰিয়াল",
+  "extended": "বিস্তৃত পৰিয়াল",
+
+  "withFamily": "পৰিয়ালৰ সৈতে",
+  "alone": "একা",
+  "withPartner": "সঙ্গীৰ সৈতে",
+  "withRoommates": "ৰুমমেটৰ সৈতে",
+
+  "sleep": "নিদ্ৰা",
+  "anxiety": "উদ্বেগ",
+  "stress": "চাপ",
+  "notSure": "নিশ্চিত নহয়",
+
+  "step1": "ধাপ ১ / ২",
+  "step2": "ধাপ ২ / ২",
+
+  "nameNickname": "নাম বা ডাকনাম",
+  "select": "বাছক",
+  "continue": "আগবাঢ়ক",
+  "back": "ঘূৰি যাওক",
+  "save": "সংৰক্ষণ কৰক",
+  "fillField": "অনুগ্ৰহ কৰি পূৰণ কৰক",
+  "profileUpdated": "প্ৰফাইল সফলভাৱে আপডেট হৈছে",
+  "updateFailed": "আপডেট বিফল হৈছে",
+
+  "mindfulGames": "মাইণ্ডফুল গেমছ",
+  "mindfulGamesDesc": "খেলক, বিশ্ৰাম লওক, মনোযোগ দিয়ক",
+
+  "secretJournal": "আপোনাৰ গোপন জাৰ্নাল",
+  "secretJournalDesc": "নিঃসংকোচে লিখক",
+
+  "movies": "চলচ্চিত্ৰ",
+  "moviesDesc": "চাওক আৰু বিশ্ৰাম লওক",
+
+  "calmMusic": "শান্ত সংগীত",
+  "calmMusicDesc": "সংগীতৰ সৈতে বিশ্ৰাম লওক",
+
+  "wiseYogi": "ৱাইজ যোগী",
+  "wiseYogiDesc": "মন আৰু দেহৰ সমতা",
+
+  "healthIsWealth": "স্বাস্থ্যই সম্পদ",
+  "healthDesc": "স্বাস্থ্যৰ যত্ন লওক",
+
+  "talkToKai": "কাইৰ সৈতে কথা পাতক",
+  "kaiDescription": "আপোনাৰ ব্যক্তিগত সংগী ইয়াত আছে, কোনো বিচাৰ নকৰাকৈ আপোনাক শুনিবলৈ।",
+
+  "startConversation": "আলোচনা আৰম্ভ কৰক",
+  "recommendedActivities": "প্ৰস্তাৱিত কাৰ্যকলাপ",
+  "noDataFound": "কোনো ডাটা পোৱা নগ'ল",
+
+  "duration": "সময়কাল",
+  "minutes": "মিনিট",
+  "category": "শ্ৰেণী",
+  "uploadedBy": "আপলোড কৰিছে",
+  "startActivity": "কাৰ্যসূচী আৰম্ভ কৰক",
+  "minutesShort": "মিনিট",
+  "audioGuided": "অডিঅ' গাইডেড",
+
+  "aboutActivity": "এই কাৰ্যসূচীৰ বিষয়ে",
+  "whatYouNeed": "আপোনাৰ কি লাগে",
+  "defaultActivityDescription": "এই নিৰ্দেশিত শ্বাস-প্ৰশ্বাসৰ অনুশীলনে আপোনাৰ মন শান্ত কৰে আৰু চাপ কমায়।",
+  "defaultRequirement": "বসিবলৈ এটা শান্ত আৰু আৰামদায়ক ঠাই",
+
+  "home": "হোম",
+  "settings": "ছেটিংছ",
+
+  "howWouldYouLikeToConnect": "আপুনি কেনেকৈ সংযোগ কৰিব বিচাৰে?",
+  "talkWithVoice": "ভয়েচৰ সৈতে কথা পাতক",
+  "chatWithText": "টেক্সটৰ সৈতে চ্যাট কৰক",
+  "speakWithProfessional": "এজন বিশেষজ্ঞৰ সৈতে কথা পাতক",
+  "therapyDescription": "আমাৰ প্ৰমাণিত থেৰাপিষ্টসকলে আপোনাক সহায় কৰিবলৈ ইয়াত আছে। আপোনাৰ সুবিধা অনুযায়ী সেশন বুক কৰক।",
+  "selectDuration": "সময় নিৰ্বাচন কৰক",
+  "minutes": "মিনিট",
+  "thirtyMinDesc": "দ্ৰুত পৰীক্ষাৰ বাবে উপযুক্ত সেশন।",
+  "sixtyMinDesc": "গভীৰ আলোচনা আৰু চিকিৎসাৰ বাবে দীঘলীয়া সেশন।",
+  "recommendedQuickCheckins": "পৰামৰ্শ: দ্ৰুত পৰীক্ষা",
+  "recommendedDeepSessions": "পৰামৰ্শ: গভীৰ সেশন",
+  "continue": "আগবাঢ়ক",
+  "importantInformation": "গুৰুত্বপূর্ণ তথ্য",
+  "rescheduleInfo": "২৪ ঘণ্টাৰ আগতে বিনামূল্যে বাতিল কৰিব পাৰি।",
+  "freeCancellation": "২৪ ঘণ্টাৰ ভিতৰত বিনামূলীয়া বাতিল",
+  "secureVideoConsultation": "সুৰক্ষিত ভিডিঅ’ পৰামৰ্শ",
+  "licensedProfessionals": "কেৱল প্ৰমাণিত বিশেষজ্ঞ"
+
+}

@@ -44,6 +44,15 @@ const Sidenav = () => {
         </span>
         <span>{t("home")}</span>
       </NavLink>
+      <NavLink
+        to="/my-consultation"
+        className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
+      >
+        <span>
+          <span style={{ fontSize: "18px" }}>📅</span>
+        </span>
+        <span>My Consulations</span>
+      </NavLink>
       {/* <NavLink
         to="/therapy-session"
         className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}

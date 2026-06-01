@@ -11,6 +11,7 @@ import logo from "../../assets/images/logo-dark.png";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-two.png";
 import otpIcon from "../../assets/images/otp-icon.svg";
+import {getFCMToken} from "../../utils/firebase";
 
 const OTPVerify = () => {
   const location = useLocation();
@@ -60,9 +61,11 @@ const OTPVerify = () => {
       return;
     }
 
+     const fcmToken = await getFCMToken();
+
     const payload = emailOrPhone.includes("@")
-      ? { email: emailOrPhone, otp: otpValue, fcmToken: "", apnToken: "" }
-      : { phone: emailOrPhone, otp: otpValue, fcmToken: "", apnToken: "" };
+      ? { email: emailOrPhone, otp: otpValue,deviceToken: fcmToken, }
+      : { phone: emailOrPhone, otp: otpValue,deviceToken: fcmToken,};
 
     try {
       const res = isNewUser

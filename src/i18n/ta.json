@@ -1,0 +1,203 @@
+{
+  "hereToHelp": "உதவிக்கு இங்கே இருக்கிறோம்",
+  "takeMoment": "உங்களுக்காக ஒரு நிமிடம் எடுத்துக்கொள்ளுங்கள்",
+  "talkToAI": "AI உடன் பேசுங்கள்",
+  "safeSpace": "பேசுவதற்கு பாதுகாப்பான இடம்",
+
+  "relaxingSounds": "தளர்வான ஒலிகள்",
+  "guidedMeditation": "வழிகாட்டப்பட்ட தியானம்",
+  "findYourCalm": "உங்கள் அமைதியை கண்டறியுங்கள்",
+  "breathingExercise": "மூச்சுப் பயிற்சி",
+  "emergencyHelp": "அவசர உதவி",
+  "getImmediateSupport": "உடனடி உதவி பெறுங்கள்",
+  "goToHome": "முகப்பிற்கு செல்லுங்கள்",
+
+  "welcome": "வரவேற்கிறோம்",
+  "logout": "வெளியேறு",
+
+  "howWouldYouLikeToConnect": "நீங்கள் எப்படி இணைவதை விரும்புகிறீர்கள்?",
+  "goodMorning": "காலை வணக்கம்",
+  "goodAfternoon": "மதிய வணக்கம்",
+  "goodEvening": "மாலை வணக்கம்",
+
+  "agreement": "ஒப்பந்தம்",
+  "faqs": "அடிக்கடி கேட்கப்படும் கேள்விகள்",
+  "loadingFaqs": "FAQ ஏற்றப்படுகிறது...",
+  "notAvailable": "கிடைக்கவில்லை",
+
+  "lastUpdatedOn": "கடைசியாக புதுப்பிக்கப்பட்டது",
+  "privacyPolicy": "தனியுரிமைக் கொள்கை",
+
+  "understandingYou": "உங்களை புரிந்துகொள்கிறோம்",
+  "thankYouForSharing": "பகிர்ந்ததற்கு நன்றி",
+
+  "mainFocusQuestion": "உங்கள் முக்கிய கவனம் என்ன?",
+  "copyright": "© 2026 செரீன் வெல்னஸ் ஆப். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+
+  "basedOnResponses": "உங்கள் பதில்களின் அடிப்படையில், நீங்கள் தொடங்க சில பகுதிகளை கண்டறிந்துள்ளோம்.",
+  "identifiedFocusAreas": "அடையாளம் காணப்பட்ட பகுதிகள்",
+  "analyzingResponses": "உங்கள் பதில்கள் பகுப்பாய்வு செய்யப்படுகிறது...",
+  "noInsights": "தகவல் இல்லை",
+  "journeyStart": "இது தொடக்கம் மட்டுமே. உங்கள் பயணத்தை தனிப்பயனாக்குவோம்.",
+  "continueBtn": "தொடரவும்",
+
+  "currentLanguageLabel": "தமிழ்",
+  "currentLanguage": "தற்போதைய மொழி",
+  "availableLanguages": "கிடைக்கக்கூடிய மொழிகள்",
+
+  "logoutTitle": "வெளியேறலை உறுதிப்படுத்தவும்",
+  "logoutDesc": "நீங்கள் உங்கள் கணக்கில் இருந்து வெளியேற விரும்புகிறீர்களா?",
+  "cancel": "ரத்து செய்",
+
+  "startConversationTitle": "உரையாடலை தொடங்குங்கள்",
+  "startConversationDesc": "சாட் தொடங்க உங்கள் செய்தியை টাইப் செய்யவும்",
+  "startConversationSpeak": "சாட் தொடங்க பேசவும் அல்லது உங்கள் செய்தியை টাইப் செய்யவும்",
+
+  "noChatHistoryTitle": "சாட் வரலாறு இல்லை",
+  "noChatHistoryDesc": "ஒரு சாட்டை தேர்வு செய்யவும் அல்லது புதிய உரையாடலை தொடங்கவும்",
+  "searchChatPlaceholder": "சாட் வரலாற்றை தேடவும்",
+  "recentChats": "சமீபத்திய சாட்கள்",
+
+  "deleteAccountTitle": "கணக்கை நீக்கு",
+  "deleteAccountDesc": "நீங்கள் உங்கள் கணக்கை நீக்க விரும்புகிறீர்களா? இந்த செயலை மீண்டும் மாற்ற முடியாது.",
+  "delete": "நீக்கு",
+  "deleting": "நீக்கப்படுகிறது...",
+  "deleteSuccess": "உங்கள் கணக்கு வெற்றிகரமாக நீக்கப்பட்டது. மீண்டும் செயல்படுத்த ஆதரவுடன் தொடர்பு கொள்ளவும்.",
+  "deleteFailed": "கணக்கை நீக்க முடியவில்லை",
+
+  "account": "கணக்கு",
+  "myProfile": "என் சுயவிவரம்",
+  "language": "மொழி",
+  "upgradePremium": "பிரீமியத்திற்கு மேம்படுத்து",
+  "dataPrivacy": "தரவு மற்றும் தனியுரிமை",
+  "exportData": "என் தரவை ஏற்றுமதி செய்",
+  "deleteAccount": "கணக்கை நீக்கு",
+
+  "about": "பற்றி",
+  "terms": "சேவை விதிமுறைகள்",
+  "privacy": "தனியுரிமைக் கொள்கை",
+  "faq": "அடிக்கடி கேட்கப்படும் கேள்விகள்",
+
+  "loadingProfile": "சுயவிவரம் ஏற்றப்படுகிறது...",
+  "changeProfile": "சுயவிவரம் மாற்றவும்",
+  "editProfile": "சுயவிவரம் திருத்தவும்",
+
+  "personalInfo": "தனிப்பட்ட தகவல்",
+  "healthInfo": "ஆரோக்கிய தகவல்",
+
+  "age": "வயது",
+  "gender": "பாலினம்",
+  "maritalStatus": "திருமண நிலை",
+  "educationLevel": "கல்வி நிலை",
+  "occupation": "வேலை",
+  "placeOfResidence": "வசிக்கும் இடம்",
+  "familyType": "குடும்ப வகை",
+  "livingArrangement": "வாழும் அமைப்பு",
+  "bodyWeight": "எடை",
+  "height": "உயரம்",
+  "mainFocus": "முக்கிய கவனம்",
+
+  "male": "ஆண்",
+  "female": "பெண்",
+  "other": "மற்றவை",
+
+  "single": "திருமணம் ஆகாதவர்",
+  "married": "திருமணமானவர்",
+  "divorced": "விவாகரத்து செய்தவர்",
+  "widowed": "விதவை/விதவர்",
+  "preferNotToSay": "சொல்ல விரும்பவில்லை",
+
+  "highSchool": "மேல்நிலை பள்ளி",
+  "diploma": "டிப்ளமோ",
+  "bachelors": "பட்டப்படிப்பு",
+  "masters": "முதுநிலை",
+  "phd": "முனைவர் பட்டம்",
+
+  "nuclear": "அணுக்குடும்பம்",
+  "joint": "கூட்டு குடும்பம்",
+  "extended": "விரிவான குடும்பம்",
+
+  "withFamily": "குடும்பத்துடன்",
+  "alone": "தனியாக",
+  "withPartner": "துணையுடன்",
+  "withRoommates": "ரூம் மேட்களுடன்",
+
+  "sleep": "தூக்கம்",
+  "anxiety": "பதட்டம்",
+  "stress": "மன அழுத்தம்",
+  "notSure": "உறுதியாக இல்லை",
+
+  "step1": "படி 1 / 2",
+  "step2": "படி 2 / 2",
+
+  "nameNickname": "பெயர் அல்லது செல்லப்பெயர்",
+  "select": "தேர்ந்தெடுக்கவும்",
+  "continue": "தொடரவும்",
+  "back": "பின்செல்",
+  "save": "சேமிக்கவும்",
+  "fillField": "தயவுசெய்து நிரப்பவும்",
+  "profileUpdated": "சுயவிவரம் வெற்றிகரமாக புதுப்பிக்கப்பட்டது",
+  "updateFailed": "புதுப்பிப்பு தோல்வியடைந்தது",
+
+  "student": "மாணவர்",
+  "noida": "நொய்டா",
+
+  "mindfulGames": "மைண்ட்ஃபுல் விளையாட்டுகள்",
+  "mindfulGamesDesc": "விளையாடு, ஓய்வு எடு, கவனம் செலுத்து",
+
+  "secretJournal": "உங்கள் ரகசிய குறிப்பேடு",
+  "secretJournalDesc": "தடையின்றி எழுதுங்கள்",
+
+  "movies": "திரைப்படங்கள்",
+  "moviesDesc": "பார்த்து ஓய்வெடுக்கவும்",
+
+  "calmMusic": "அமைதியான இசை",
+  "calmMusicDesc": "இசையின் மூலம் ஓய்வெடுக்கவும்",
+
+  "wiseYogi": "வைஸ் யோகி",
+  "wiseYogiDesc": "மனம் மற்றும் உடலை சமநிலைப்படுத்து",
+
+  "healthIsWealth": "ஆரோக்கியமே செல்வம்",
+  "healthDesc": "ஆரோக்கியத்தை கவனியுங்கள்",
+
+  "talkToKai": "காயுடன் பேசுங்கள்",
+  "kaiDescription": "உங்கள் தனிப்பட்ட துணை எந்த தீர்ப்பும் இன்றி உங்களை கேட்க இங்கே உள்ளது.",
+
+  "startConversation": "உரையாடலை தொடங்குங்கள்",
+  "howWouldYouLikeToConnect": "நீங்கள் எப்படி இணைவதை விரும்புகிறீர்கள்?",
+  "talkWithVoice": "குரல் மூலம் பேசுங்கள்",
+  "chatWithText": "உரையாடல் மூலம் பேசுங்கள்",
+
+  "recommendedActivities": "பரிந்துரைக்கப்பட்ட செயல்பாடுகள்",
+  "noDataFound": "தரவு கிடைக்கவில்லை",
+
+  "duration": "நேரம்",
+  "minutes": "நிமிடங்கள்",
+  "category": "வகை",
+  "uploadedBy": "பதிவேற்றியது",
+  "startActivity": "செயல்பாட்டை தொடங்கவும்",
+  "minutesShort": "நிமிடம்",
+  "audioGuided": "ஆடியோ வழிகாட்டி",
+
+  "aboutActivity": "இந்த செயல்பாட்டைப் பற்றி",
+  "whatYouNeed": "உங்களுக்கு தேவையானவை",
+  "defaultActivityDescription": "இந்த வழிகாட்டப்பட்ட மூச்சுப் பயிற்சி உங்கள் மனதை அமைதியாக்கி மன அழுத்தத்தை குறைக்க உதவும்.",
+  "defaultRequirement": "அமைதியான மற்றும் வசதியான இடம்",
+
+  "home": "ஹோம்",
+  "settings": "அமைப்புகள்",
+  "speakWithProfessional": "ஒரு நிபுணருடன் பேசுங்கள்",
+  "therapyDescription": "எங்கள் சான்றளிக்கப்பட்ட தெரபிஸ்ட்கள் உங்களை ஆதரிக்க உள்ளனர். உங்கள் வசதிக்கேற்ப அமர்வை பதிவு செய்யுங்கள்.",
+  "selectDuration": "கால அளவை தேர்ந்தெடுக்கவும்",
+  "minutes": "நிமிடங்கள்",
+  "thirtyMinDesc": "விரைவு ஆலோசனைக்கான குறுகிய அமர்வு.",
+  "sixtyMinDesc": "ஆழமான ஆலோசனை மற்றும் திட்டமிடலுக்கான அமர்வு.",
+  "recommendedQuickCheckins": "பரிந்துரை: விரைவு சோதனைகள்",
+  "recommendedDeepSessions": "பரிந்துரை: ஆழமான அமர்வுகள்",
+  "continue": "தொடரவும்",
+  "importantInformation": "முக்கிய தகவல்",
+  "rescheduleInfo": "24 மணி நேரத்திற்கு முன் இலவசமாக ரத்து செய்யலாம்.",
+  "freeCancellation": "24 மணி நேர இலவச ரத்து",
+  "secureVideoConsultation": "பாதுகாப்பான வீடியோ ஆலோசனை",
+  "licensedProfessionals": "சான்றளிக்கப்பட்ட நிபுணர்கள் மட்டுமே"
+}

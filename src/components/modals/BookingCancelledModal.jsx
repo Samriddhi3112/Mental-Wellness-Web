@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const styles = {
   overlay: {
@@ -158,7 +159,32 @@ const ClockIcon = () => (
   </svg>
 );
 
-export default function BookingCancelledModal({ onClose }) {
+export default function BookingCancelledModal({
+  onClose,
+  booking,
+  cancellationReason,
+}) {
+  const navigate = useNavigate();
+  const bookingDate = booking?.startAt
+    ? new Date(booking.startAt).toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })
+    : "-";
+
+  const bookingTime =
+    booking?.slotId?.startTimeUtc && booking?.slotId?.endTimeUtc
+      ? `${booking.slotId.startTimeUtc} - ${booking.slotId.endTimeUtc}`
+      : "-";
+
+  const duration = booking?.durationMinutes
+    ? `${booking.durationMinutes} Minutes`
+    : "-";
+
+  const mode = booking?.mode || "-";
+
   return (
     <div style={styles.overlay}>
       <div style={styles.modal}>
@@ -177,7 +203,6 @@ export default function BookingCancelledModal({ onClose }) {
           session? This action cannot be undone.
         </p>
 
-        {/* Summary Card */}
         <div style={styles.summaryCard}>
           <div style={styles.summaryHeading}>CONSULTATION SUMMARY</div>
 
@@ -189,34 +214,60 @@ export default function BookingCancelledModal({ onClose }) {
 
             <div>
               <div style={styles.label}>Date</div>
-              <div style={styles.value}>Monday, May 24, 2024</div>
+              <div style={styles.value}>{bookingDate || "-"}</div>
             </div>
           </div>
 
-          {/* Time */}
-          <div style={{ ...styles.row, marginBottom: 0 }}>
+          {/* Slot */}
+          <div style={styles.row}>
             <div style={styles.iconBox}>
               <ClockIcon />
             </div>
 
             <div>
               <div style={styles.label}>Slot & Duration</div>
-              <div style={styles.value}>10:00 AM • 45 Minutes</div>
+              <div style={styles.value}>
+                {bookingTime || "-"} • {duration || "-"}
+              </div>
+            </div>
+          </div>
+
+          {/* Session Mode */}
+          <div style={styles.row}>
+            <div style={styles.iconBox}>📹</div>
+
+            <div>
+              <div style={styles.label}>Session Mode</div>
+              <div style={styles.value}>{mode || "-"}</div>
+            </div>
+          </div>
+
+          {/* Cancellation Reason */}
+          <div style={{ ...styles.row, marginBottom: 0 }}>
+            <div style={styles.iconBox}>📝</div>
+
+            <div>
+              <div style={styles.label}>Cancellation Reason</div>
+              <div
+                style={{
+                  color: "#fff",
+                  fontSize: "13px",
+                  lineHeight: "1.5",
+                  wordBreak: "break-word",
+                  maxWidth: "200px",
+                }}
+              >
+                {cancellationReason || "-"}
+              </div>
             </div>
           </div>
         </div>
-
         {/* Button */}
-        <button style={styles.button}>
-          Back to My Consultations
-        </button>
+        <button style={styles.button} onClick={()=> navigate("/my-consultation")}>Back to My Consultations</button>
 
         {/* Footer */}
         <div style={styles.support}>
-          Need help?{" "}
-          <span style={styles.supportLink}>
-            Contact Support
-          </span>
+          Need help? <span style={styles.supportLink}>Contact Support</span>
         </div>
       </div>
     </div>

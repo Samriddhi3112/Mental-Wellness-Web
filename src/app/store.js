@@ -12,6 +12,7 @@ import wiseYogiReducer from "../features/home/wise yogi/wiseYogiSlice";
 import chatReducer from "../features/chat/chatSlice";
 import gamesReducer from "../features/home/games/gamesSlice";
 import secretJournalReducer from "../features/home/secret journal/secretjournalSlice";
+import bookingReducer from "../features/booking/bookingSlice";
 
 const store = configureStore({
   reducer: {
@@ -28,6 +29,7 @@ const store = configureStore({
      chat: chatReducer,
      games: gamesReducer,
      secretJournal: secretJournalReducer,
+     booking: bookingReducer,
   },
 });
 
