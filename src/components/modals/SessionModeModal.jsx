@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import callIcon from "../../assets/images/.call-img.png";
 import videoIcon from "../../assets/images/video-icon.png";
 import secureIcon from "../../assets/images/secure.png";
+import { useTranslation } from "react-i18next";
 
 export default function SessionModeModal({ onClose }) {
   const navigate = useNavigate();
+  const {t} = useTranslation();
   const [mode, setMode] = useState("video");
 
   const handleContinue = () => {
@@ -80,7 +82,7 @@ export default function SessionModeModal({ onClose }) {
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontWeight: 600, fontSize: "15px", color: "#94a3b8" }}>
-            Join Session
+            {t("joinSession")}
           </span>
           <button
             onClick={onClose}
@@ -100,10 +102,10 @@ export default function SessionModeModal({ onClose }) {
         </div>
 
         <h2 style={{ marginTop: "12px", marginBottom: "4px", fontSize: "22px", fontWeight: 700, color: "#f1f5f9" }}>
-          Choose your mode
+         {t("chooseYourMode")}
         </h2>
         <p style={{ fontSize: "13px", marginBottom: "18px", color: "#64748b", marginTop: 0 }}>
-          How would you like to connect with today?
+           {t("connectToday")}
         </p>
 
         {/* Voice Card */}
@@ -120,8 +122,8 @@ export default function SessionModeModal({ onClose }) {
             <img src={callIcon} alt="Call" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
           </div>
           <div style={{ flex: 1 }}>
-            <p style={titleColor("voice")}>Voice Call</p>
-            <p style={descColor("voice")}>Perfect for private, focused audio-only conversations.</p>
+            <p style={titleColor("voice")}>{t("voiceCall")}</p>
+            <p style={descColor("voice")}>{t("voiceCallDescription")}</p>
           </div>
           <div style={radioStyle("voice")} />
         </div>
@@ -140,8 +142,8 @@ export default function SessionModeModal({ onClose }) {
             <img src={videoIcon} alt="Video" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
           </div>
           <div style={{ flex: 1 }}>
-            <p style={titleColor("video")}>Video Call</p>
-            <p style={descColor("video")}>Face-to-face connection for a more personal experience.</p>
+            <p style={titleColor("video")}>{t("videoCall")}</p>
+            <p style={descColor("video")}>{t("videoCallDescription")}</p>
           </div>
           <div style={radioStyle("video")} />
         </div>
@@ -163,7 +165,7 @@ export default function SessionModeModal({ onClose }) {
           }}
         >
           <img src={secureIcon} alt="Secure" style={{ width: "15px", height: "15px", flexShrink: 0, marginTop: "1px", opacity: 0.7 }} />
-          <span>All sessions are end-to-end encrypted and private. Your data and conversations are never recorded without consent.</span>
+          <span> {t("sessionSecurityInfo")}</span>
         </div>
 
         {/* CTA Button */}
@@ -182,7 +184,7 @@ export default function SessionModeModal({ onClose }) {
           }}
           onClick={handleContinue}
         >
-          Continue to Session
+          {t("continueToSession")}
         </button>
       </div>
     </div>

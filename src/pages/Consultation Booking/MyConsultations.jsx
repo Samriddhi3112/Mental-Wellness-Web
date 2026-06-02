@@ -457,6 +457,7 @@ import {
   getMyBookings,
 } from "../../features/booking/bookingSlice";
 import CancelBookingModal from "../../components/modals/CancelBookingModal";
+import { useTranslation } from "react-i18next";
 
 const IconCal = ({ color = "#1db96a" }) => (
   <svg
@@ -608,7 +609,7 @@ const formatTime = (utcString) => {
   });
 };
 
-const formatDate = (utcString) => {
+const formatDate = (utcString,t) => {
   if (!utcString) return "--";
   const d = new Date(utcString);
   const months = [
@@ -628,8 +629,8 @@ const formatDate = (utcString) => {
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
-  if (d.toDateString() === today.toDateString()) return "Today";
-  if (d.toDateString() === tomorrow.toDateString()) return "Tomorrow";
+  if (d.toDateString() === today.toDateString()) return t("today");
+  if (d.toDateString() === tomorrow.toDateString()) return t("tomorrow");
   return `${months[d.getUTCMonth()]} ${d.getUTCDate()}`;
 };
 
@@ -641,24 +642,24 @@ const getBadgeClass = (status) => {
   return "upcoming";
 };
 
-const getBadgeLabel = (status) => {
+const getBadgeLabel = (status, t) => {
   if (status === "pending_assignment" || status === "assigned")
-    return "UPCOMING";
-  if (status === "completed") return "COMPLETED";
-  if (status === "cancelled") return "CANCELLED";
+    return t("upcoming").toUpperCase();;
+  if (status === "completed") return t("completed").toUpperCase();
+  if (status === "cancelled") return t("cancelled").toUpperCase();
   return status.toUpperCase();
 };
 
 export default function MyConsultations() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {t} = useTranslation();
   const { bookings, loading } = useSelector((state) => state.booking?.bookings);
   const { upcoming, completed, cancelled } = useSelector(
     (state) => state.booking.summary,
   );
   const [activeFilter, setActiveFilter] = useState("all");
 
-  // Filtered bookings — yeh use karo map() mein bookings ki jagah
   const filteredBookings =
     bookings?.filter((b) => {
       if (activeFilter === "all") return true;
@@ -669,12 +670,11 @@ export default function MyConsultations() {
       return true;
     }) || [];
 
-  // Track which booking's cancel modal is open (null = closed)
   const [cancelModalBookingId, setCancelModalBookingId] = useState(null);
 
   useEffect(() => {
     dispatch(getMyBookings({ page: 1, limit: 20 }));
-     dispatch(getBookingSummary());
+    dispatch(getBookingSummary());
   }, [dispatch]);
   // const upcoming =
   //   bookings?.filter(
@@ -695,34 +695,34 @@ export default function MyConsultations() {
                   <IconCal color="#1db96a" />
                 </div>
                 <div className="stat-num">{upcoming}</div>
-                <div className="stat-label">Upcoming Sessions</div>
+                <div className="stat-label">{t("upcomingSessions")}</div>
               </div>
               <div className="stat-card">
                 <div className="stat-icon dark">
                   <IconCheck />
                 </div>
                 <div className="stat-num">{completed}</div>
-                <div className="stat-label">Completed Sessions</div>
+                <div className="stat-label">{t("completedSessions")}</div>
               </div>
               <div className="stat-card">
                 <div className="stat-icon red">
                   <IconX />
                 </div>
                 <div className="stat-num">{cancelled}</div>
-                <div className="stat-label">Cancelled Sessions</div>
+                <div className="stat-label">{t("cancelledSessions")}</div>
               </div>
             </div>
 
             {/* All Sessions */}
             <div className="sessions-header">
-              <div className="sessions-title">All Sessions</div>
+              <div className="sessions-title">{t("allSessions")}</div>
 
               <div className="filter-tabs">
                 {[
-                  { key: "all", label: "All" },
-                  { key: "upcoming", label: "Upcoming" }, // "pending_assignment" tha, "upcoming" karo
-                  { key: "completed", label: "Completed" },
-                  { key: "cancelled", label: "Cancelled" },
+                  { key: "all", label: t("all") },
+                  { key: "upcoming", label: t("upcoming") },
+                  { key: "completed", label: t("completed") },
+                  { key: "cancelled", label: t("cancelled") },
                 ].map(({ key, label }) => (
                   <button
                     key={key}
@@ -744,7 +744,7 @@ export default function MyConsultations() {
                   padding: "40px",
                 }}
               >
-                Loading sessions...
+                {loading ? t("loadingSessions") : t("noSessionsFound")}
               </div>
             ) : filteredBookings?.length === 0 ? (
               <div
@@ -754,7 +754,7 @@ export default function MyConsultations() {
                   padding: "40px",
                 }}
               >
-                No sessions found
+                {t("noSessionsFound")}
               </div>
             ) : (
               <div className="sessions-grid">
@@ -768,7 +768,6 @@ export default function MyConsultations() {
                     <div
                       className="session-card"
                       key={booking._id}
-                      // Only card-level click opens detail; buttons handle their own actions
                       onClick={() =>
                         navigate(`/booking-details/${booking._id}`)
                       }
@@ -819,11 +818,11 @@ export default function MyConsultations() {
                             <line x1="6" y1="6" x2="18" y2="18" />
                           </svg>
                         )}
-                        {getBadgeLabel(booking.status)}
+                        {getBadgeLabel(booking.status , t)}
                       </div>
 
                       <div className="session-date">
-                        {formatDate(booking.startAt)}
+                        {formatDate(booking.startAt,t)}
                       </div>
                       <div
                         className={`session-time${!(isPending || isAssigned) ? " dark" : ""}`}
@@ -834,7 +833,7 @@ export default function MyConsultations() {
                       <div className="session-meta">
                         <div className="meta-item">
                           <IconClock color="#6b7280" />
-                          {booking.durationMinutes} Minutes
+                          {booking.durationMinutes} {t("minutes")}
                         </div>
                         <div className="meta-item">
                           {booking.mode === "video" ? (
@@ -843,8 +842,8 @@ export default function MyConsultations() {
                             <IconPhone />
                           )}
                           {booking.mode === "video"
-                            ? "Video Call"
-                            : "Voice Call"}
+                            ? t("videoCall")
+                            : t("voiceCall")}
                         </div>
                       </div>
 
@@ -858,7 +857,7 @@ export default function MyConsultations() {
                               setCancelModalBookingId(booking._id);
                             }}
                           >
-                            <IconCancel /> Cancel Booking
+                            <IconCancel /> {t("cancelBooking")}
                           </button>
                         </div>
                       )}
@@ -868,9 +867,9 @@ export default function MyConsultations() {
                         <div className="session-actions">
                           <button
                             className="btn-join"
-                            onClick={(e) => e.stopPropagation()} // non-functional for now
+                            onClick={(e) => e.stopPropagation()}
                           >
-                            <IconCam /> Join Session
+                            <IconCam /> {t("joinSession")}
                           </button>
                         </div>
                       )}
@@ -885,7 +884,7 @@ export default function MyConsultations() {
                               navigate("/therapy-session");
                             }}
                           >
-                            <IconRefresh /> Book Again
+                            <IconRefresh /> {t("bookAgain")}
                           </button>
                         </div>
                       )}

@@ -196,6 +196,165 @@
   "rescheduleInfo": "आप अपनी अपॉइंटमेंट को 24 घंटे पहले तक बिना किसी शुल्क के रद्द या पुनर्निर्धारित कर सकते हैं।",
   "freeCancellation": "24 घंटे तक मुफ्त रद्दीकरण",
   "secureVideoConsultation": "सुरक्षित वीडियो परामर्श",
-  "licensedProfessionals": "केवल प्रमाणित विशेषज्ञ"
+  "licensedProfessionals": "केवल प्रमाणित विशेषज्ञ",
+  "professionalDescription": "हमारे प्रमाणित थेरेपिस्ट आपकी यात्रा में सहयोग देने के लिए यहाँ हैं। अपने समय और आवश्यकताओं के अनुसार एक सत्र बुक करें। अपनी परामर्श आवश्यकता के लिए सबसे उपयुक्त अवधि चुनें।",
+  "selectDuration": "अवधि चुनें",
+
+  "minutes30": "30 मिनट",
+  "minutes60": "60 मिनट",
+
+  "duration30Description": "नियमित परामर्श और त्वरित मूल्यांकन के लिए उपयुक्त मानक चेक-इन सत्र।",
+  "duration60Description": "विस्तृत चर्चा और उपचार योजना के लिए गहन थेरेपी सत्र।",
+  "importantInformation": "महत्वपूर्ण जानकारी",
+  "appointmentInfo": "आप निर्धारित समय से 24 घंटे पहले तक बिना किसी शुल्क के अपनी अपॉइंटमेंट को पुनर्निर्धारित या रद्द कर सकते हैं।",
+  "freeCancellation": "24 घंटे तक निःशुल्क रद्दीकरण",
+  "secureVideoConsultation": "सुरक्षित वीडियो परामर्श",
+  "licensedProfessionalsOnly": "केवल लाइसेंस प्राप्त पेशेवर",
+
+  "recommendedQuickCheckins": "अनुशंसित: त्वरित चेक-इन",
+  "recommendedInDepthSessions": "अनुशंसित: गहन सत्र",
+  
+  "cancelBookingTitle": "बुकिंग रद्द करें?",
+  "cancelBookingDescription": "क्या आप वाकई अपना सत्र रद्द करना चाहते हैं? इस कार्रवाई को वापस नहीं किया जा सकता।",
+
+  "cancellationPolicy": "रद्दीकरण नीति",
+  "cancellationPolicyText": "पूर्ण धनवापसी प्राप्त करने के लिए सत्र शुरू होने से कम से कम 24 घंटे पहले ही रद्दीकरण की अनुमति है।",
+
+  "reasonForCancellation": "रद्द करने का कारण",
+  "cancellationPlaceholder": "कृपया बताएं कि आप यह बुकिंग क्यों रद्द कर रहे हैं...",
+
+  "confirmCancellation": "रद्दीकरण की पुष्टि करें",
+  "cancelling": "रद्द किया जा रहा है...",
+  "cancelBookingButton": "बुकिंग रद्द करें",
+  
+  "joinSession": "सत्र में शामिल हों",
+  "chooseYourMode": "अपना तरीका चुनें",
+  "connectToday": "आज आप कैसे जुड़ना चाहेंगे?",
+
+  "voiceCall": "वॉइस कॉल",
+  "voiceCallDescription": "निजी और केंद्रित केवल-ऑडियो बातचीत के लिए उपयुक्त।",
+
+  "videoCall": "वीडियो कॉल",
+  "videoCallDescription": "अधिक व्यक्तिगत अनुभव के लिए आमने-सामने जुड़ाव।",
+
+  "sessionSecurityInfo": "सभी सत्र एंड-टू-एंड एन्क्रिप्टेड और निजी हैं। आपकी जानकारी और बातचीत आपकी अनुमति के बिना कभी रिकॉर्ड नहीं की जाती।",
+
+  "continueToSession": "सत्र जारी रखें",
+  
+  "selectedDuration": "चयनित अवधि",
+  "minutesSession": "{{duration}} मिनट का सत्र",
+  "standardConsultationLength": "मानक परामर्श अवधि",
+  "changeDuration": "अवधि बदलें",
+
+  "selectDate": "तारीख चुनें",
+
+  "morningSlots": "सुबह के स्लॉट",
+  "afternoonSlots": "दोपहर के स्लॉट",
+  "eveningSlots": "शाम के स्लॉट",
+
+  "bookingSummary": "बुकिंग सारांश",
+  "selectedDate": "चयनित तिथि",
+  "selectedTime": "चयनित समय",
+  "duration": "अवधि",
+
+  "sessionFee": "सत्र शुल्क",
+  "platformFee": "प्लेटफ़ॉर्म शुल्क",
+  "totalAmount": "कुल राशि",
+
+  "bookingSecure": "आपकी बुकिंग सुरक्षित और संरक्षित है",
+
+  "booking": "बुकिंग की जा रही है...",
+  "confirmBooking": "बुकिंग की पुष्टि करें",
+  "selectTimeSlot": "एक समय स्लॉट चुनें",
+  
+  "today": "आज",
+  "tomorrow": "कल",
+
+  "sunday": "रविवार",
+  "monday": "सोमवार",
+  "tuesday": "मंगलवार",
+  "wednesday": "बुधवार",
+  "thursday": "गुरुवार",
+  "friday": "शुक्रवार",
+  "saturday": "शनिवार",
+
+  "jan": "जन",
+  "feb": "फ़र",
+  "mar": "मार्च",
+  "apr": "अप्रै",
+  "may": "मई",
+  "jun": "जून",
+  "jul": "जुल",
+  "aug": "अग",
+  "sep": "सित",
+  "oct": "अक्टू",
+  "nov": "नव",
+  "dec": "दिस",
+
+  "loadingSlots": "स्लॉट लोड हो रहे हैं...",
+  "noSlotsAvailable": "कोई स्लॉट उपलब्ध नहीं है",
+  "notSelectedYet": "अभी तक चयनित नहीं",
+  
+  "bookingConfirmed": "बुकिंग सफल हुई!",
+  "bookingConfirmedDesc": "आपका सत्र सफलतापूर्वक निर्धारित कर दिया गया है। विवरण आपके ईमेल पर भेज दिए गए हैं।",
+  "dateAndTime": "तारीख और समय",
+  "upcoming": "आगामी",
+  "type": "प्रकार",
+  "proTip": "विशेष सुझाव",
+  "proTipDescription": "सत्र शुरू होने से 5 मिनट पहले शांत और आरामदायक स्थान पर पहुँचें।",
+  "viewMyConsultations": "मेरे परामर्श देखें",
+  "backToHome": "होम पर वापस जाएँ",
+  
+  "upcomingSessions": "आगामी सत्र",
+  "completedSessions": "पूर्ण सत्र",
+  "cancelledSessions": "रद्द किए गए सत्र",
+
+  "allSessions": "सभी सत्र",
+
+  "all": "सभी",
+  "upcoming": "आगामी",
+  "completed": "पूर्ण",
+  "cancelled": "रद्द",
+
+  "loadingSessions": "सत्र लोड हो रहे हैं...",
+  "noSessionsFound": "कोई सत्र नहीं मिला",
+
+  "minutes": "मिनट",
+
+  "videoCall": "वीडियो कॉल",
+  "voiceCall": "वॉइस कॉल",
+
+  "cancelBooking": "बुकिंग रद्द करें",
+  "joinSession": "सत्र में शामिल हों",
+  "bookAgain": "फिर से बुक करें",
+  
+  "loadingBookingDetails": "बुकिंग विवरण लोड हो रहे हैं...",
+  "appointmentDate": "अपॉइंटमेंट तिथि",
+  "timeSlot": "समय स्लॉट",
+  "durationMinutes": "अवधि: {{duration}} मिनट",
+  "sessionType": "सेशन प्रकार",
+  "secureEncrypted": "सुरक्षित एंड-टू-एंड एन्क्रिप्टेड",
+  "sessionPreparationGuidelines": "सेशन तैयारी दिशानिर्देश",
+  "guideline1": "कृपया सुनिश्चित करें कि आप शांत और निजी स्थान पर हों तथा इंटरनेट कनेक्शन स्थिर हो",
+  "guideline2": "कंसल्टेशन रूम निर्धारित समय से 5 मिनट पहले उपलब्ध होगा",
+  "guideline3": "चर्चा के लिए अपने नोट्स और संबंधित दस्तावेज़ तैयार रखें",
+  "guideline4": "बेहतर अनुभव के लिए पहले से अपने कैमरा और माइक्रोफोन की जाँच करें",
+  "sessionActions": "सेशन क्रियाएँ",
+  "joinSession": "सेशन में शामिल हों",
+  "cancelBooking": "बुकिंग रद्द करें",
+  "status": "स्थिति",
+  
+  "bookingCancelled": "बुकिंग रद्द कर दी गई",
+  "cancelSessionConfirm": "क्या आप वाकई अपना सत्र रद्द करना चाहते हैं? यह कार्रवाई वापस नहीं की जा सकती।",
+  "consultationSummary": "परामर्श सारांश",
+  "slotAndDuration": "समय स्लॉट और अवधि",
+  "sessionMode": "सत्र मोड",
+  "cancellationReason": "रद्द करने का कारण",
+  "backToMyConsultations": "मेरे परामर्शों पर वापस जाएँ",
+  "needHelp": "मदद चाहिए?",
+  "contactSupport": "सहायता से संपर्क करें"
+
+
+
 
 }

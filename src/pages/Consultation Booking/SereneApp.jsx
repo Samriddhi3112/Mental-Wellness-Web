@@ -2,6 +2,7 @@ import { useState } from "react";
 import SessionModeModal from "../../components/modals/SessionModeModal";
 import img from "../../assets/images/booking-img.svg";
 import timer from "../../assets/images/timer.png";
+import { useTranslation } from "react-i18next";
 
 const TherapistSVG = () => (
   <svg width="64" height="64" viewBox="0 0 80 80" fill="none">
@@ -45,10 +46,10 @@ const TherapistSVG = () => (
 export default function SereneApp() {
   const [selected, setSelected] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const { t } = useTranslation();
 
   const handleContinue = () => {
-    // Duration save karo localStorage mein
-    localStorage.setItem("selectedDuration", selected); // "30" or "60"
+    localStorage.setItem("selectedDuration", selected);
     setShowModal(true);
   };
 
@@ -63,9 +64,22 @@ export default function SereneApp() {
               {/* Header Card */}
               <div className="header-card">
                 <div className="therapist-avatar">
-                  <img src={img} alt="Therapist" style={{width:"100%", height:"100%"}} />
+                  <img
+                    src={img}
+                    alt="Therapist"
+                    style={{ width: "100%", height: "100%" }}
+                  />
                 </div>
                 <div>
+                  <div className="card-title" style={{ color: "#fff" }}>
+                    {t("speakWithProfessional")}
+                  </div>
+
+                  <div className="card-desc">
+                    {t("professionalDescription")}
+                  </div>
+                </div>
+                {/* <div>
                   <div className="card-title" style={{color:"#fff"}}>Speak with a Professional</div>
                   <div className="card-desc">
                     Our certified therapists are here to support your journey.
@@ -76,12 +90,12 @@ export default function SereneApp() {
                     <br />
                     for your consultation.
                   </div>
-                </div>
+                </div> */}
               </div>
 
               {/* Duration */}
               <div>
-                <div className="section-label">Select Duration</div>
+                <div className="section-label">{t("selectDuration")}</div>
                 <div className="duration-grid">
                   <div
                     className={`duration-card${selected === "30" ? " selected" : ""}`}
@@ -105,14 +119,11 @@ export default function SereneApp() {
                         <polyline points="12 6 12 12 16 14" />
                       </svg>
                     </div>
-                    <div className="dur-title">30 Minutes</div>
-                    <div className="dur-desc">
-                      Standard check-in session perfect for routine
-                      consultations and quick assessments.
-                    </div>
-                    <hr style={{color:"#fff"}}></hr>
+                    <div className="dur-title">{t("minutes30")}</div>
+                    <div className="dur-desc">{t("duration30Description")}</div>
+                    <hr style={{ color: "#fff" }}></hr>
                     <div className="dur-rec">
-                      Recommended for: Quick check-ins
+                      {t("recommendedQuickCheckins")}
                     </div>
                   </div>
                   <div
@@ -123,7 +134,11 @@ export default function SereneApp() {
                       <div className="radio-dot" />
                     </div>
                     <div className="icon-wrap purple">
-                      <img src={timer} alt="Timer" style={{width:"100%", height:"100%"}} />
+                      <img
+                        src={timer}
+                        alt="Timer"
+                        style={{ width: "100%", height: "100%" }}
+                      />
                       {/* <svg
                         width="20"
                         height="20"
@@ -141,14 +156,11 @@ export default function SereneApp() {
                         <line x1="9" y1="17" x2="13" y2="17" />
                       </svg> */}
                     </div>
-                    <div className="dur-title">60 Minutes</div>
-                    <div className="dur-desc">
-                      Deep-dive therapy session for comprehensive discussions
-                      and detailed treatment planning.
-                    </div>
-                    <hr style={{color:"#fff"}}></hr>
+                    <div className="dur-title">{t("minutes60")}</div>
+                    <div className="dur-desc">{t("duration60Description")}</div>
+                    <hr style={{ color: "#fff" }}></hr>
                     <div className="dur-rec">
-                      Recommended for: In-depth sessions
+                      {t("recommendedInDepthSessions")}
                     </div>
                   </div>
                 </div>
@@ -157,9 +169,9 @@ export default function SereneApp() {
               <button
                 className={`continue-btn${selected ? " active" : ""}`}
                 disabled={!selected}
-               onClick={handleContinue}
+                onClick={handleContinue}
               >
-                Continue
+                {t("continue")}
               </button>
             </div>
 
@@ -167,21 +179,19 @@ export default function SereneApp() {
             <div className="info-card">
               <div className="info-hdr">
                 <div className="info-dot">i</div>
-                <div className="info-hdr-text">Important Information</div>
+                <div className="info-hdr-text">{t("importantInformation")}</div>
               </div>
-              <div className="info-body">
-                You can reschedule or cancel your appointment up to 24 hours
-                before the scheduled time without any fees.
-              </div>
-              <ul className="info-list" style={{paddingLeft:"none"}}>
+              <div className="info-body">{t("appointmentInfo")}</div>
+              <ul className="info-list" style={{ paddingLeft: "none" }}>
                 <li>
-                  <span className="chk">✓</span> Free cancellation up to 24h
+                  <span className="chk">✓</span> {t("freeCancellation")}
                 </li>
                 <li>
-                  <span className="chk">✓</span> Secure video consultation
+                  <span className="chk">✓</span> {t("secureVideoConsultation")}
                 </li>
                 <li>
-                  <span className="chk">✓</span> Licensed professionals only
+                  <span className="chk">✓</span>{" "}
+                  {t("licensedProfessionalsOnly")}
                 </li>
               </ul>
             </div>

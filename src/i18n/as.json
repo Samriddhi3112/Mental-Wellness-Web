@@ -183,6 +183,166 @@
   "rescheduleInfo": "২৪ ঘণ্টাৰ আগতে বিনামূল্যে বাতিল কৰিব পাৰি।",
   "freeCancellation": "২৪ ঘণ্টাৰ ভিতৰত বিনামূলীয়া বাতিল",
   "secureVideoConsultation": "সুৰক্ষিত ভিডিঅ’ পৰামৰ্শ",
-  "licensedProfessionals": "কেৱল প্ৰমাণিত বিশেষজ্ঞ"
+  "licensedProfessionals": "কেৱল প্ৰমাণিত বিশেষজ্ঞ",
+  "speakWithProfessional": "এজন পেছাদাৰৰ সৈতে কথা পাতক",
+  "professionalDescription": "আমাৰ প্ৰমাণিত থেৰাপিষ্টসকলে আপোনাৰ যাত্ৰাত সহায় কৰিবলৈ সাজু। আপোনাৰ সময়সূচী আৰু প্ৰয়োজন অনুসৰি এটা ছেচন বুক কৰক। আপোনাৰ পৰামৰ্শৰ বাবে সৰ্বাধিক উপযুক্ত সময়সীমা বাছনি কৰক।",
+  "selectDuration": "সময়সীমা বাছক",
+
+  "minutes30": "৩০ মিনিট",
+  "minutes60": "৬০ মিনিট",
+
+  "duration30Description": "নিয়মীয়া পৰামৰ্শ আৰু দ্ৰুত মূল্যায়নৰ বাবে উপযুক্ত মানক চেক-ইন ছেচন।",
+  "duration60Description": "বিশদ আলোচনা আৰু চিকিৎসা পৰিকল্পনাৰ বাবে গভীৰ থেৰাপি ছেচন।",
+
+  "recommendedQuickCheckins": "পৰামৰ্শিত: দ্ৰুত চেক-ইন",
+  "recommendedInDepthSessions": "পৰামৰ্শিত: গভীৰ ছেচন",
+
+  "importantInformation": "গুৰুত্বপূৰ্ণ তথ্য",
+  "appointmentInfo": "নিৰ্ধাৰিত সময়ৰ ২৪ ঘণ্টা আগলৈকে আপুনি কোনো মাচুল নোহোৱাকৈ আপোনাৰ এপইণ্টমেণ্ট পুনঃনিৰ্ধাৰণ বা বাতিল কৰিব পাৰে।",
+  "freeCancellation": "২৪ ঘণ্টালৈ বিনামূলীয়া বাতিল",
+  "secureVideoConsultation": "সুৰক্ষিত ভিডিঅ' পৰামৰ্শ",
+  "licensedProfessionalsOnly": "কেৱল লাইচেঞ্চপ্ৰাপ্ত পেছাদাৰ",
+  
+  "cancelBookingTitle": "বুকিং বাতিল কৰিবনে?",
+  "cancelBookingDescription": "আপুনি নিশ্চিতনে যে আপোনাৰ ছেচন বাতিল কৰিব বিচাৰে? এই কাৰ্য্য পিছত পূৰ্বাবস্থালৈ ঘূৰাই অনা নাযায়।",
+
+  "cancellationPolicy": "বাতিল নীতি",
+  "cancellationPolicyText": "সম্পূৰ্ণ ধন ঘূৰাই পাবলৈ ছেচন আৰম্ভ হোৱাৰ কমেও ২৪ ঘণ্টা আগতে বাতিল কৰিব লাগিব।",
+
+  "reasonForCancellation": "বাতিল কৰাৰ কাৰণ",
+  "cancellationPlaceholder": "অনুগ্ৰহ কৰি কওক আপুনি কিয় এই বুকিং বাতিল কৰিছে...",
+
+  "confirmCancellation": "বাতিল নিশ্চিত কৰক",
+  "cancelling": "বাতিল কৰা হৈছে...",
+  "cancelBookingButton": "বুকিং বাতিল কৰক",
+  
+  "joinSession": "ছেচনত যোগ দিয়ক",
+  "chooseYourMode": "আপোনাৰ ধৰণ বাছক",
+  "connectToday": "আজি আপুনি কেনেদৰে সংযোগ স্থাপন কৰিব বিচাৰে?",
+
+  "voiceCall": "ভইচ কল",
+  "voiceCallDescription": "ব্যক্তিগত আৰু মনোযোগী কেৱল অডিঅ' কথোপকথনৰ বাবে উপযুক্ত।",
+
+  "videoCall": "ভিডিঅ' কল",
+  "videoCallDescription": "অধিক ব্যক্তিগত অভিজ্ঞতাৰ বাবে মুখামুখি সংযোগ।",
+
+  "sessionSecurityInfo": "সকলো ছেচন এণ্ড-টু-এণ্ড এনক্ৰিপ্টেড আৰু ব্যক্তিগত। আপোনাৰ অনুমতি অবিহনে আপোনাৰ তথ্য বা কথোপকথন কেতিয়াও ৰেকৰ্ড কৰা নহয়।",
+
+  "continueToSession": "ছেচনলৈ আগবাঢ়ক",
+  
+  "selectedDuration": "নিৰ্বাচিত সময়সীমা",
+  "minutesSession": "{{duration}} মিনিটৰ ছেচন",
+  "standardConsultationLength": "মানক পৰামৰ্শ সময়সীমা",
+  "changeDuration": "সময়সীমা সলনি কৰক",
+
+  "selectDate": "তাৰিখ বাছক",
+
+  "morningSlots": "পুৱাৰ স্লট",
+  "afternoonSlots": "দুপৰীয়াৰ স্লট",
+  "eveningSlots": "সন্ধিয়াৰ স্লট",
+
+  "bookingSummary": "বুকিং সাৰাংশ",
+  "selectedDate": "নিৰ্বাচিত তাৰিখ",
+  "selectedTime": "নিৰ্বাচিত সময়",
+  "duration": "সময়সীমা",
+
+  "sessionFee": "ছেচন মাচুল",
+  "platformFee": "প্লেটফৰ্ম মাচুল",
+  "totalAmount": "মুঠ পৰিমাণ",
+
+  "bookingSecure": "আপোনাৰ বুকিং সুৰক্ষিত আৰু সংৰক্ষিত",
+
+  "booking": "বুকিং কৰা হৈছে...",
+  "confirmBooking": "বুকিং নিশ্চিত কৰক",
+  "selectTimeSlot": "এটা সময় স্লট বাছক",
+  
+  "today": "আজি",
+  "tomorrow": "কাইলৈ",
+
+  "sunday": "ৰবিবাৰ",
+  "monday": "সোমবাৰ",
+  "tuesday": "মঙলবাৰ",
+  "wednesday": "বুধবাৰ",
+  "thursday": "বৃহস্পতিবাৰ",
+  "friday": "শুকুৰবাৰ",
+  "saturday": "শনিবাৰ",
+
+  "jan": "জানু",
+  "feb": "ফেব",
+  "mar": "মাৰ্চ",
+  "apr": "এপ্ৰিল",
+  "may": "মে",
+  "jun": "জুন",
+  "jul": "জুলাই",
+  "aug": "আগ",
+  "sep": "ছেপ্ট",
+  "oct": "অক্টো",
+  "nov": "নভে",
+  "dec": "ডিচে",
+
+  "loadingSlots": "স্লট লোড হৈ আছে...",
+  "noSlotsAvailable": "কোনো স্লট উপলব্ধ নহয়",
+  "notSelectedYet": "এতিয়াও নিৰ্বাচন কৰা হোৱা নাই",
+  
+  "bookingConfirmed": "বুকিং নিশ্চিত হৈছে!",
+  "bookingConfirmedDesc": "আপোনাৰ ছেছন সফলভাৱে নিৰ্ধাৰিত হৈছে। সবিশেষ আপোনাৰ ইমেইললৈ পঠোৱা হৈছে।",
+  "dateAndTime": "তাৰিখ আৰু সময়",
+  "upcoming": "আহিবলগীয়া",
+  "type": "ধৰণ",
+  "proTip": "পৰামৰ্শ",
+  "proTipDescription": "ছেছন আৰম্ভ হোৱাৰ ৫ মিনিট আগতে এটা শান্ত আৰু আৰামদায়ক ঠাই বিচাৰি লওক।",
+  "viewMyConsultations": "মোৰ পৰামৰ্শসমূহ চাওক",
+  "backToHome": "হোমলৈ উভতি যাওক",
+  
+  "upcomingSessions": "আগত অধিৱেশন",
+  "completedSessions": "সম্পূৰ্ণ অধিৱেশন",
+  "cancelledSessions": "বাতিল অধিৱেশন",
+  "allSessions": "সকলো অধিৱেশন",
+  "all": "সকলো",
+  "upcoming": "আগত",
+  "completed": "সম্পূৰ্ণ",
+  "cancelled": "বাতিল",
+  "loadingSessions": "অধিৱেশন লোড হৈ আছে...",
+  "noSessionsFound": "কোনো অধিৱেশন পোৱা নগ'ল",
+  "minutes": "মিনিট",
+  "videoCall": "ভিডিঅ' কল",
+  "voiceCall": "ভইচ কল",
+  "cancelBooking": "বুকিং বাতিল কৰক",
+  "joinSession": "অধিৱেশনত যোগ দিয়ক",
+  "bookAgain": "পুনৰ বুক কৰক",
+  
+  "loadingBookingDetails": "বুকিংৰ বিৱৰণ লোড হৈ আছে...",
+  "appointmentDate": "এপইণ্টমেণ্টৰ তাৰিখ",
+  "timeSlot": "সময় স্লট",
+  "durationMinutes": "সময়কাল: {{duration}} মিনিট",
+  "sessionType": "চেচনৰ ধৰণ",
+  "secureEncrypted": "নিৰাপদ এণ্ড-টু-এণ্ড এনক্ৰিপ্টেড",
+  "sessionPreparationGuidelines": "চেচন প্ৰস্তুতি নিৰ্দেশনা",
+  "guideline1": "অনুগ্ৰহ কৰি নিশ্চিত কৰক যে আপুনি এটা শান্ত আৰু ব্যক্তিগত স্থানত আছে আৰু ইণ্টাৰনেট সংযোগ স্থিৰ আছে",
+  "guideline2": "নিৰ্ধাৰিত সময়ৰ ৫ মিনিট আগতে পৰামৰ্শ কক্ষ উপলব্ধ হ'ব",
+  "guideline3": "আলোচনাৰ বাবে আপোনাৰ টোকা আৰু প্ৰাসংগিক নথিপত্ৰ সাজু ৰাখক",
+  "guideline4": "সৰ্বোত্তম অভিজ্ঞতাৰ বাবে আগতেই কেমেৰা আৰু মাইক্ৰোফোন পৰীক্ষা কৰক",
+  "sessionActions": "চেচন কাৰ্যসমূহ",
+  "joinSession": "চেচনত যোগদান কৰক",
+  "cancelBooking": "বুকিং বাতিল কৰক",
+  "status": "স্থিতি",
+  
+  "bookingCancelled": "বুকিং বাতিল কৰা হৈছে",
+  "cancelSessionConfirm": "আপুনি নিশ্চিত নেকি যে আপুনি এই অধিৱেশন বাতিল কৰিব বিচাৰে? এই কাৰ্য পুনৰ ঘূৰাই আনিব নোৱাৰি।",
+  "consultationSummary": "পৰামৰ্শৰ সাৰাংশ",
+  "slotAndDuration": "সময় স্লট আৰু সময়কাল",
+  "sessionMode": "অধিৱেশন মোড",
+  "cancellationReason": "বাতিলৰ কাৰণ",
+  "backToMyConsultations": "মোৰ পৰামৰ্শসমূহলৈ উভতি যাওক",
+  "needHelp": "সহায় লাগিব নেকি?",
+  "contactSupport": "সহায় কেন্দ্ৰৰ সৈতে যোগাযোগ কৰক"
+
+
+
+
+
+
+
+
 
 }

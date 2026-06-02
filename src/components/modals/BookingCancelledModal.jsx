@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const styles = {
@@ -165,6 +166,7 @@ export default function BookingCancelledModal({
   cancellationReason,
 }) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const bookingDate = booking?.startAt
     ? new Date(booking.startAt).toLocaleDateString("en-US", {
         weekday: "long",
@@ -194,17 +196,15 @@ export default function BookingCancelledModal({
         </button>
 
         {/* Title */}
-        <h2 style={styles.title}>Booking Cancelled</h2>
+        <h2 style={styles.title}>{t("bookingCancelled")}</h2>
 
         {/* Description */}
         <p style={styles.desc}>
-          Are you sure you want to cancel your
-          <br />
-          session? This action cannot be undone.
+          {t("cancelSessionConfirm")}
         </p>
 
         <div style={styles.summaryCard}>
-          <div style={styles.summaryHeading}>CONSULTATION SUMMARY</div>
+          <div style={styles.summaryHeading}> {t("consultationSummary")}</div>
 
           {/* Date */}
           <div style={styles.row}>
@@ -213,7 +213,7 @@ export default function BookingCancelledModal({
             </div>
 
             <div>
-              <div style={styles.label}>Date</div>
+              <div style={styles.label}>{t("slotAndDuration")}</div>
               <div style={styles.value}>{bookingDate || "-"}</div>
             </div>
           </div>
@@ -225,7 +225,7 @@ export default function BookingCancelledModal({
             </div>
 
             <div>
-              <div style={styles.label}>Slot & Duration</div>
+              <div style={styles.label}>{t("slotAndDuration")}</div>
               <div style={styles.value}>
                 {bookingTime || "-"} • {duration || "-"}
               </div>
@@ -237,7 +237,7 @@ export default function BookingCancelledModal({
             <div style={styles.iconBox}>📹</div>
 
             <div>
-              <div style={styles.label}>Session Mode</div>
+              <div style={styles.label}>{t("sessionMode")}</div>
               <div style={styles.value}>{mode || "-"}</div>
             </div>
           </div>
@@ -247,7 +247,7 @@ export default function BookingCancelledModal({
             <div style={styles.iconBox}>📝</div>
 
             <div>
-              <div style={styles.label}>Cancellation Reason</div>
+              <div style={styles.label}>{t("cancellationReason")}</div>
               <div
                 style={{
                   color: "#fff",
@@ -263,11 +263,16 @@ export default function BookingCancelledModal({
           </div>
         </div>
         {/* Button */}
-        <button style={styles.button} onClick={()=> navigate("/my-consultation")}>Back to My Consultations</button>
+        <button
+          style={styles.button}
+          onClick={() => navigate("/my-consultation")}
+        >
+          {t("backToMyConsultations")}
+        </button>
 
         {/* Footer */}
         <div style={styles.support}>
-          Need help? <span style={styles.supportLink}>Contact Support</span>
+          {t("needHelp")} <span style={styles.supportLink}>{t("contactSupport")}</span>
         </div>
       </div>
     </div>

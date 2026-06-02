@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBookingById } from "../../features/booking/bookingSlice";
 import CancelBookingModal from "../../components/modals/CancelBookingModal";
+import { useTranslation } from "react-i18next";
 
 const KaiSVG = () => (
   <svg width="48" height="48" viewBox="0 0 80 80" fill="none">
@@ -51,8 +52,9 @@ const formatTime = (utcString) => {
 };
 
 export default function BookingDetails() {
-  const { id } = useParams(); // /booking-details/:id
+  const { id } = useParams();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { bookingDetails, detailsLoading } = useSelector(
     (state) => state.booking,
   );
@@ -71,7 +73,9 @@ export default function BookingDetails() {
               className="main-content"
               style={{ alignItems: "center", justifyContent: "center" }}
             >
-              <div style={{ color: "#9ca3af" }}>Loading booking details...</div>
+              <div style={{ color: "#9ca3af" }}>
+                {t("loadingBookingDetails")}
+              </div>
             </main>
           </div>
         </div>
@@ -110,7 +114,9 @@ export default function BookingDetails() {
                     </svg>
                   </div>
                   <div>
-                    <div className="info-field-label">Appointment Date</div>
+                    <div className="info-field-label">
+                      {t("appointmentDate")}
+                    </div>
                     <div className="info-field-val">
                       {formatFullDate(bookingDetails?.startAt)}
                     </div>
@@ -134,14 +140,15 @@ export default function BookingDetails() {
                     </svg>
                   </div>
                   <div>
-                    <div className="info-field-label">Time Slot</div>
+                    <div className="info-field-label">{t("timeSlot")}</div>
                     <div className="info-field-val">
                       {formatTime(bookingDetails?.startAt)} –{" "}
                       {formatTime(bookingDetails?.endAt)}
                     </div>
                     <div className="info-field-sub">
-                      Duration: {bookingDetails?.durationMinutes ?? "--"}{" "}
-                      minutes
+                      {t("durationMinutes", {
+                        duration: bookingDetails?.durationMinutes ?? "--",
+                      })}
                     </div>
                   </div>
                 </div>
@@ -165,15 +172,13 @@ export default function BookingDetails() {
                   </svg>
                 </div>
                 <div>
-                  <div className="info-field-label">Session Type</div>
+                  <div className="info-field-label">{t("sessionType")}</div>
                   <div className="info-field-val">
                     {bookingDetails?.mode === "video"
-                      ? "Video Consultation"
-                      : "Voice Consultation"}
+                      ? t("videoCall")
+                      : t("voiceCall")}
                   </div>
-                  <div className="info-field-sub">
-                    Secure end-to-end encrypted
-                  </div>
+                  <div className="info-field-sub">{t("secureEncrypted")}</div>
                 </div>
               </div>
 
@@ -182,19 +187,19 @@ export default function BookingDetails() {
                 <div className="guide-hdr">
                   <div className="guide-dot">i</div>
                   <div className="guide-title">
-                    Session Preparation Guidelines
+                    {t("sessionPreparationGuidelines")}
                   </div>
                 </div>
                 <div className="guide-list">
                   {[
-                    "Please ensure you're in a quiet, private space with a stable internet connection",
-                    "The consultation room will be available 5 minutes before the scheduled time",
-                    "Have your notes and any relevant documents ready for discussion",
-                    "Test your camera and microphone beforehand for the best experience",
+                    t("guideline1"),
+                    t("guideline2"),
+                    t("guideline3"),
+                    t("guideline4"),
                   ].map((text, i) => (
                     <div className="guide-item" key={i}>
                       <div className="bullet" />
-                      {text}
+                      {t(text)}
                     </div>
                   ))}
                 </div>
@@ -203,7 +208,7 @@ export default function BookingDetails() {
 
             {/* SESSION ACTIONS */}
             <div className="actions-col">
-              <div className="actions-title">Session Actions</div>
+              <div className="actions-title">{t("sessionActions")}</div>
               {isUpcoming && (
                 <>
                   <button className="btn-join">
@@ -220,7 +225,7 @@ export default function BookingDetails() {
                       <polygon points="23 7 16 12 23 17 23 7" />
                       <rect x="1" y="5" width="15" height="14" rx="2" />
                     </svg>
-                    Join Session
+                    {t("joinSession")}
                   </button>
                   <button
                     className="btn-cancel"
@@ -241,7 +246,7 @@ export default function BookingDetails() {
                       <line x1="8" y1="2" x2="8" y2="6" />
                       <line x1="3" y1="10" x2="21" y2="10" />
                     </svg>
-                    Cancel Booking
+                    {t("cancelBooking")}
                   </button>
                 </>
               )}
@@ -250,11 +255,11 @@ export default function BookingDetails() {
                   style={{
                     fontSize: "13px",
                     color: "#9ca3af",
-                    textAlign: "center",
+                    // textAlign: "center",
                     padding: "10px 0",
                   }}
                 >
-                  Status:{" "}
+                  {t("status")} : {""}
                   <span
                     style={{
                       color: "#fff",
@@ -262,7 +267,7 @@ export default function BookingDetails() {
                       textTransform: "capitalize",
                     }}
                   >
-                    {bookingDetails?.status?.replace("_", " ")}
+                    {t(bookingDetails?.status?.replace("_", " "))}
                   </span>
                 </div>
               )}

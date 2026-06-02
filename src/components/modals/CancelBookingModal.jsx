@@ -8,6 +8,7 @@ import {
 } from "../../features/booking/bookingSlice";
 import { toast } from "react-toastify";
 import BookingDetails from "../../pages/Consultation Booking/BookingDetails";
+import { useTranslation } from "react-i18next";
 
 const styles = {
   backdrop: {
@@ -165,6 +166,7 @@ function CalendarXIcon() {
 
 export default function CancelBookingModal({ onClose, bookingId }) {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const { cancelLoading, cancelSuccess } = useSelector(
     (state) => state.booking,
@@ -212,24 +214,17 @@ export default function CancelBookingModal({ onClose, bookingId }) {
           </div>
 
           {/* Title */}
-          <p style={styles.modalTitle}>Cancel Booking?</p>
+          <p style={styles.modalTitle}>{t("cancelBookingTitle")}</p>
 
           {/* Description */}
-          <p style={styles.modalDesc}>
-            Are you sure you want to cancel your
-            <br />
-            session? This action cannot be undone.
-          </p>
+          <p style={styles.modalDesc}>{t("cancelBookingDescription")}</p>
 
           {/* Policy Box */}
           <div style={styles.policyBox}>
             <div style={styles.policyIcon}>!</div>
             <div style={styles.policyTextWrap}>
-              <p style={styles.policyHeading}>Cancellation Policy</p>
-              <p style={styles.policyBody}>
-                Cancellations are only permitted <u>24 hours</u> before the
-                session starts to receive a full refund.
-              </p>
+              <p style={styles.policyHeading}>{t("cancellationPolicy")}</p>
+              <p style={styles.policyBody}>{t("cancellationPolicyText")}</p>
             </div>
           </div>
 
@@ -243,13 +238,13 @@ export default function CancelBookingModal({ onClose, bookingId }) {
                 display: "block",
               }}
             >
-              Reason for Cancellation
+              {t("reasonForCancellation")}
             </label>
 
             <textarea
               value={cancellationReason}
               onChange={(e) => setCancellationReason(e.target.value)}
-              placeholder="Please tell us why you are cancelling this booking..."
+                placeholder={t("cancellationPlaceholder")}
               rows={4}
               style={{
                 width: "100%",
@@ -280,7 +275,7 @@ export default function CancelBookingModal({ onClose, bookingId }) {
             onClick={handleCancelBooking}
             disabled={cancelLoading}
           >
-            {cancelLoading ? "Cancelling..." : "Confirm Cancellation"}
+            {cancelLoading ? t("cancelling") : t("confirmCancellation")}
           </button>
 
           {/* Cancel Button */}
@@ -294,19 +289,19 @@ export default function CancelBookingModal({ onClose, bookingId }) {
             onMouseLeave={() => setCancelHover(false)}
             onClick={onClose}
           >
-            Cancel Booking
+           {t("cancelBookingButton")}
           </button>
         </div>
       </div>
-      {showSuccessModal && (
-        console.log("BOOKING DETAILS IN CANCEL MODAL", bookingDetails),
-        
-        <BookingCancelledModal
-          booking={bookingDetails}
-          cancellationReason={cancellationReason}
-          onClose={() => setShowSuccessModal(false)}
-        />
-      )}
+      {showSuccessModal &&
+        (console.log("BOOKING DETAILS IN CANCEL MODAL", bookingDetails),
+        (
+          <BookingCancelledModal
+            booking={bookingDetails}
+            cancellationReason={cancellationReason}
+            onClose={() => setShowSuccessModal(false)}
+          />
+        ))}
     </>
   );
 }

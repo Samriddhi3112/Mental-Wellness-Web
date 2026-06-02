@@ -20,7 +20,7 @@ import flag4 from "../../assets/images/flag4.png";
 import flag5 from "../../assets/images/flag5.png";
 import flag6 from "../../assets/images/flag6.png";
 import flag7 from "../../assets/images/flag7.png";
-import i18n from "../../i18n";
+import i18n from "i18next";
 
 const Step5Language = () => {
   const dispatch = useDispatch();

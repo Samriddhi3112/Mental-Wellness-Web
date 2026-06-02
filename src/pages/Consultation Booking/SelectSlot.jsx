@@ -326,39 +326,47 @@ import {
   resetBookingState,
   getAvailableSlots,
 } from "../../features/booking/bookingSlice";
+import { useTranslation } from "react-i18next";
 
 // Aaj se 4 dates generate karo
-const generateDates = () => {
+const generateDates = (t) => {
   const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
+    t("sunday"),
+    t("monday"),
+    t("tuesday"),
+    t("wednesday"),
+    t("thursday"),
+    t("friday"),
+    t("saturday"),
   ];
   const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+    t("jan"),
+    t("feb"),
+    t("mar"),
+    t("apr"),
+    t("may"),
+    t("jun"),
+    t("jul"),
+    t("aug"),
+    t("sep"),
+    t("oct"),
+    t("nov"),
+    t("dec"),
   ];
+
   const today = new Date();
 
   return Array.from({ length: 4 }, (_, i) => {
     const d = new Date(today);
     d.setDate(today.getDate() + i);
+    // const dayLabel =
+    //   i === 0 ? "Today" : i === 1 ? "Tomorrow" : days[d.getDay()];
     const dayLabel =
-      i === 0 ? "Today" : i === 1 ? "Tomorrow" : days[d.getDay()];
+      i === 0
+        ? t("today")
+        : i === 1
+        ? t("tomorrow")
+        : days[d.getDay()];
     const dateLabel = `${d.getDate()} ${months[d.getMonth()]}`;
     // YYYY-MM-DD format for API
     const yyyy = d.getFullYear();
@@ -369,7 +377,6 @@ const generateDates = () => {
   });
 };
 
-// UTC time string ko local time mein convert karo (display ke liye)
 const utcToLocal = (utcTimeStr, dateUtc) => {
   const [hours, minutes] = utcTimeStr.split(":").map(Number);
   const d = new Date(
@@ -382,7 +389,6 @@ const utcToLocal = (utcTimeStr, dateUtc) => {
   });
 };
 
-// Slots ko morning/afternoon/evening mein categorize karo (local hour se)
 const categorizeSlots = (slots, dateUtc) => {
   const morning = [],
     afternoon = [],
@@ -390,7 +396,6 @@ const categorizeSlots = (slots, dateUtc) => {
 
   slots.forEach((slot) => {
     const [h] = slot.startTimeUtc.split(":").map(Number);
-    // UTC hour ko local mein convert karo for categorization
     const d = new Date(`${dateUtc}T${String(h).padStart(2, "0")}:00:00.000Z`);
     const localHour = d.getHours();
 
@@ -403,6 +408,7 @@ const categorizeSlots = (slots, dateUtc) => {
 };
 
 export default function SelectSlot() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
@@ -413,15 +419,14 @@ export default function SelectSlot() {
     slotsLoading,
   } = useSelector((state) => state.booking);
 
-  const dates = generateDates();
+  const dates = generateDates(t);
   const duration = localStorage.getItem("selectedDuration") || "60";
   const mode = localStorage.getItem("selectedMode") || "video";
 
   const [selectedDate, setSelectedDate] = useState(dates[0]);
-  const [selectedSlot, setSelectedSlot] = useState(null); // poora slot object
+  const [selectedSlot, setSelectedSlot] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  // Date change hone par slots fetch karo
   useEffect(() => {
     dispatch(
       getAvailableSlots({
@@ -429,10 +434,9 @@ export default function SelectSlot() {
         durationMinutes: Number(duration),
       }),
     );
-    setSelectedSlot(null); // slot reset karo date change par
+    setSelectedSlot(null);
   }, [selectedDate, dispatch, duration]);
 
-  // Booking success hone par modal dikhao
   useEffect(() => {
     if (bookingSuccess) {
       setShowModal(true);
@@ -445,41 +449,45 @@ export default function SelectSlot() {
     selectedDate.dateUtc,
   );
 
+  // const displayDate =
+  //   selectedDate.day === "Today"
+  //     ? `Today, ${selectedDate.date} ${new Date().getFullYear()}`
+  //     : `${selectedDate.date} ${new Date().getFullYear()}`;
+
   const displayDate =
-    selectedDate.day === "Today"
-      ? `Today, ${selectedDate.date} ${new Date().getFullYear()}`
-      : `${selectedDate.date} ${new Date().getFullYear()}`;
+  selectedDate.day === t("today")
+    ? `${t("today")}, ${selectedDate.date} ${new Date().getFullYear()}`
+    : `${selectedDate.date} ${new Date().getFullYear()}`;
 
   const handleChange = () => navigate("/therapy-session");
 
   const handleConfirmBooking = () => {
     if (!selectedSlot) return;
-    localStorage.setItem("bookedDate", selectedDate.dateUtc); // "2026-06-02"
+    localStorage.setItem("bookedDate", selectedDate.dateUtc);
     localStorage.setItem(
       "bookedTime",
       utcToLocal(selectedSlot.startTimeUtc, selectedDate.dateUtc),
     );
     dispatch(
       bookSlot({
-        slotId: selectedSlot.slotId, // actual ObjectId ✅
-        dateUtc: selectedDate.dateUtc, // "YYYY-MM-DD" ✅
-        mode, // localStorage se ✅
-        durationMinutes: Number(duration), // localStorage se ✅
+        slotId: selectedSlot.slotId,
+        dateUtc: selectedDate.dateUtc,
+        mode,
+        durationMinutes: Number(duration),
       }),
     );
   };
 
-  // Slot buttons render karne ka helper
   const renderSlots = (slotList) => {
     if (slotsLoading) {
       return (
-        <div style={{ color: "#aaa", fontSize: "13px" }}>Loading slots...</div>
+        <div style={{ color: "#aaa", fontSize: "13px" }}>{t("loadingSlots")}</div>
       );
     }
     if (slotList.length === 0) {
       return (
         <div style={{ color: "#aaa", fontSize: "13px" }}>
-          No slots available
+          {t("noSlotsAvailable")}
         </div>
       );
     }
@@ -519,19 +527,23 @@ export default function SelectSlot() {
                     </svg>
                   </div>
                   <div>
-                    <div className="dur-label">Selected Duration</div>
-                    <div className="dur-title">{duration} Minutes Session</div>
-                    <div className="dur-sub">Standard consultation length</div>
+                    <div className="dur-label">{t("selectedDuration")}</div>
+                    <div className="dur-title">
+                      {t("minutesSession", { duration })}
+                    </div>
+                    <div className="dur-sub">
+                      {t("standardConsultationLength")}
+                    </div>
                   </div>
                 </div>
                 <button className="change-btn" onClick={handleChange}>
-                  Change Duration
+                  {t("changeDuration")}
                 </button>
               </div>
 
               {/* Select Date */}
               <div className="card">
-                <div className="card-title">Select Date</div>
+                <div className="card-title">{t("selectDate")}</div>
                 <div className="date-grid">
                   {dates.map((d) => (
                     <div
@@ -558,7 +570,7 @@ export default function SelectSlot() {
                   >
                     ☀️
                   </span>
-                  <span className="slot-group-title">Morning Slots</span>
+                  <span className="slot-group-title">{t("morningSlots")}</span>
                 </div>
                 <div className="slots-row">{renderSlots(morning)}</div>
               </div>
@@ -575,7 +587,9 @@ export default function SelectSlot() {
                   >
                     🌤️
                   </span>
-                  <span className="slot-group-title">Afternoon Slots</span>
+                  <span className="slot-group-title">
+                    {t("afternoonSlots")}
+                  </span>
                 </div>
                 <div className="slots-row">{renderSlots(afternoon)}</div>
               </div>
@@ -592,7 +606,7 @@ export default function SelectSlot() {
                   >
                     🌙
                   </span>
-                  <span className="slot-group-title">Evening Slots</span>
+                  <span className="slot-group-title">{t("eveningSlots")}</span>
                 </div>
                 <div className="slots-row">{renderSlots(evening)}</div>
               </div>
@@ -601,7 +615,7 @@ export default function SelectSlot() {
             {/* BOOKING SUMMARY */}
             <div className="summary-col">
               <div className="summary-card">
-                <div className="summary-title">Booking Summary</div>
+                <div className="summary-title">{t("bookingSummary")}</div>
 
                 <div className="summary-row">
                   <div className="summary-icon">
@@ -622,7 +636,9 @@ export default function SelectSlot() {
                     </svg>
                   </div>
                   <div>
-                    <div className="summary-field-label">Selected Date</div>
+                    <div className="summary-field-label">
+                      {t("selectedDate")}
+                    </div>
                     <div className="summary-field-val">{displayDate}</div>
                   </div>
                 </div>
@@ -644,7 +660,9 @@ export default function SelectSlot() {
                     </svg>
                   </div>
                   <div>
-                    <div className="summary-field-label">Selected Time</div>
+                    <div className="summary-field-label">
+                      {t("selectedTime")}
+                    </div>
                     <div
                       className={`summary-field-val${!selectedSlot ? " muted" : ""}`}
                     >
@@ -653,7 +671,7 @@ export default function SelectSlot() {
                             selectedSlot.startTimeUtc,
                             selectedDate.dateUtc,
                           )
-                        : "Not selected yet"}
+                        : t("notSelectedYet")}
                     </div>
                   </div>
                 </div>
@@ -676,26 +694,28 @@ export default function SelectSlot() {
                     </svg>
                   </div>
                   <div>
-                    <div className="summary-field-label">Duration</div>
-                    <div className="summary-field-val">{duration} Minutes</div>
+                    <div className="summary-field-label">{t("duration")}</div>
+                    <div className="summary-field-val">
+                      {duration} {t("minutes")}
+                    </div>
                   </div>
                 </div>
 
                 <hr className="divider" />
 
                 <div className="fee-row">
-                  <span className="fee-label">Session Fee</span>
+                  <span className="fee-label">{t("sessionFee")}</span>
                   <span className="fee-val">-</span>
                 </div>
                 <div className="fee-row">
-                  <span className="fee-label">Platform Fee</span>
+                  <span className="fee-label">{t("platformFee")}</span>
                   <span className="fee-val">-</span>
                 </div>
 
                 <hr className="divider" />
 
                 <div className="total-row">
-                  <span className="total-label">Total Amount</span>
+                  <span className="total-label">{t("totalAmount")}</span>
                   <span className="total-val">-</span>
                 </div>
 
@@ -718,10 +738,10 @@ export default function SelectSlot() {
                   onClick={handleConfirmBooking}
                 >
                   {bookingLoading
-                    ? "Booking..."
+                    ? t("booking")
                     : selectedSlot
-                      ? "Confirm Booking"
-                      : "Select a time slot"}
+                      ? t("confirmBooking")
+                      : t("selectTimeSlot")}
                 </button>
 
                 <div className="secure-note">
@@ -739,7 +759,7 @@ export default function SelectSlot() {
                     <line x1="12" y1="8" x2="12" y2="12" />
                     <line x1="12" y1="16" x2="12.01" y2="16" />
                   </svg>
-                  <span>Your booking is secure and protected</span>
+                  <span>{t("bookingSecure")}</span>
                 </div>
               </div>
             </div>

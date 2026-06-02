@@ -182,6 +182,166 @@
   "rescheduleInfo": "ଆପଣ 24 ଘଣ୍ଟା ପୂର୍ବରୁ ମାଗଣାରେ ବାତିଲ୍ କରିପାରିବେ।",
   "freeCancellation": "24 ଘଣ୍ଟା ମଧ୍ୟରେ ମାଗଣା ବାତିଲ୍",
   "secureVideoConsultation": "ସୁରକ୍ଷିତ ଭିଡିଓ ପରାମର୍ଶ",
-  "licensedProfessionals": "କେବଳ ପ୍ରମାଣିତ ବିଶେଷଜ୍ଞ"
+  "licensedProfessionals": "କେବଳ ପ୍ରମାଣିତ ବିଶେଷଜ୍ଞ",
+   "speakWithProfessional": "ଜଣେ ପେଶାଦାରଙ୍କ ସହ କଥା ହୁଅନ୍ତୁ",
+  "professionalDescription": "ଆମର ପ୍ରମାଣିତ ଥେରାପିଷ୍ଟମାନେ ଆପଣଙ୍କ ଯାତ୍ରାରେ ସହଯୋଗ କରିବା ପାଇଁ ଏଠାରେ ଅଛନ୍ତି। ଆପଣଙ୍କ ସମୟ ଏବଂ ଆବଶ୍ୟକତା ଅନୁଯାୟୀ ଏକ ସେସନ୍ ବୁକ୍ କରନ୍ତୁ। ଆପଣଙ୍କ ପରାମର୍ଶ ପାଇଁ ସର୍ବୋତ୍ତମ ସମୟାବଧି ଚୟନ କରନ୍ତୁ।",
+  "selectDuration": "ସମୟାବଧି ବାଛନ୍ତୁ",
+
+  "minutes30": "30 ମିନିଟ୍",
+  "minutes60": "60 ମିନିଟ୍",
+
+  "duration30Description": "ନିୟମିତ ପରାମର୍ଶ ଏବଂ ଦ୍ରୁତ ମୂଲ୍ୟାଙ୍କନ ପାଇଁ ଉପଯୁକ୍ତ ସାଧାରଣ ସେସନ୍।",
+  "duration60Description": "ବିସ୍ତୃତ ଆଲୋଚନା ଏବଂ ଚିକିତ୍ସା ଯୋଜନା ପାଇଁ ଗଭୀର ଥେରାପି ସେସନ୍।",
+
+  "recommendedQuickCheckins": "ପରାମର୍ଶିତ: ଦ୍ରୁତ ଚେକ୍-ଇନ୍",
+  "recommendedInDepthSessions": "ପରାମର୍ଶିତ: ଗଭୀର ସେସନ୍",
+  
+  "importantInformation": "ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ସୂଚନା",
+  "appointmentInfo": "ନିର୍ଦ୍ଧାରିତ ସମୟର 24 ଘଣ୍ଟା ପୂର୍ବରୁ ଆପଣ କୌଣସି ଶୁଳ୍କ ବିନା ଆପଣଙ୍କ ନିଯୁକ୍ତିକୁ ପୁନଃନିର୍ଦ୍ଧାରଣ କିମ୍ବା ବାତିଲ କରିପାରିବେ।",
+  "freeCancellation": "24 ଘଣ୍ଟା ପର୍ଯ୍ୟନ୍ତ ମାଗଣା ବାତିଲ",
+  "secureVideoConsultation": "ସୁରକ୍ଷିତ ଭିଡିଓ ପରାମର୍ଶ",
+  "licensedProfessionalsOnly": "କେବଳ ଲାଇସେନ୍ସପ୍ରାପ୍ତ ବିଶେଷଜ୍ଞ",
+  
+  "cancelBookingTitle": "ବୁକିଂ ବାତିଲ କରିବେ?",
+  "cancelBookingDescription": "ଆପଣ ନିଶ୍ଚିତ କି ଯେ ଆପଣଙ୍କ ସେସନ୍ ବାତିଲ କରିବାକୁ ଚାହୁଁଛନ୍ତି? ଏହି କାର୍ଯ୍ୟକୁ ପୁନର୍ବାର ଫେରାଇ ପାରିବେ ନାହିଁ।",
+
+  "cancellationPolicy": "ବାତିଲ ନୀତି",
+  "cancellationPolicyText": "ସମ୍ପୂର୍ଣ୍ଣ ଟଙ୍କା ଫେରତ ପାଇବା ପାଇଁ ସେସନ୍ ଆରମ୍ଭ ହେବାର 24 ଘଣ୍ଟା ପୂର୍ବରୁ ବାତିଲ କରିବା ଆବଶ୍ୟକ।",
+
+  "reasonForCancellation": "ବାତିଲର କାରଣ",
+  "cancellationPlaceholder": "ଦୟାକରି କୁହନ୍ତୁ ଆପଣ କାହିଁକି ଏହି ବୁକିଂ ବାତିଲ କରୁଛନ୍ତି...",
+
+  "confirmCancellation": "ବାତିଲକୁ ନିଶ୍ଚିତ କରନ୍ତୁ",
+  "cancelling": "ବାତିଲ କରାଯାଉଛି...",
+  "cancelBookingButton": "ବୁକିଂ ବାତିଲ କରନ୍ତୁ",
+  
+  "joinSession": "ସେସନ୍‌ରେ ଯୋଗ ଦିଅନ୍ତୁ",
+  "chooseYourMode": "ଆପଣଙ୍କ ମୋଡ୍ ବାଛନ୍ତୁ",
+  "connectToday": "ଆଜି ଆପଣ କିପରି ସଂଯୋଗ କରିବାକୁ ଚାହାଁନ୍ତି?",
+
+  "voiceCall": "ଭଏସ୍ କଲ୍",
+  "voiceCallDescription": "ବ୍ୟକ୍ତିଗତ ଏବଂ କେବଳ ଅଡିଓ ଆଧାରିତ ଆଲୋଚନା ପାଇଁ ଉପଯୁକ୍ତ।",
+
+  "videoCall": "ଭିଡିଓ କଲ୍",
+  "videoCallDescription": "ଅଧିକ ବ୍ୟକ୍ତିଗତ ଅନୁଭୂତି ପାଇଁ ମୁହାଁମୁହିଁ ସଂଯୋଗ।",
+
+  "sessionSecurityInfo": "ସମସ୍ତ ସେସନ୍ ଏଣ୍ଡ-ଟୁ-ଏଣ୍ଡ ଏନ୍କ୍ରିପ୍ଟେଡ୍ ଏବଂ ବ୍ୟକ୍ତିଗତ ଅଟେ। ଆପଣଙ୍କ ସମ୍ମତି ବିନା ଆପଣଙ୍କ ତଥ୍ୟ କିମ୍ବା କଥୋପକଥନ କେବେ ରେକର୍ଡ କରାଯାଏ ନାହିଁ।",
+
+  "continueToSession": "ସେସନ୍‌କୁ ଜାରି ରଖନ୍ତୁ",
+  
+  "selectedDuration": "ଚୟନିତ ସମୟାବଧି",
+  "minutesSession": "{{duration}} ମିନିଟ୍ ସେସନ୍",
+  "standardConsultationLength": "ସାଧାରଣ ପରାମର୍ଶ ସମୟାବଧି",
+  "changeDuration": "ସମୟାବଧି ପରିବର୍ତ୍ତନ କରନ୍ତୁ",
+
+  "selectDate": "ତାରିଖ ବାଛନ୍ତୁ",
+
+  "morningSlots": "ସକାଳ ସ୍ଲଟ୍",
+  "afternoonSlots": "ଅପରାହ୍ନ ସ୍ଲଟ୍",
+  "eveningSlots": "ସନ୍ଧ୍ୟା ସ୍ଲଟ୍",
+
+  "bookingSummary": "ବୁକିଂ ସାରାଂଶ",
+  "selectedDate": "ଚୟନିତ ତାରିଖ",
+  "selectedTime": "ଚୟନିତ ସମୟ",
+  "duration": "ସମୟାବଧି",
+
+  "sessionFee": "ସେସନ୍ ଶୁଳ୍କ",
+  "platformFee": "ପ୍ଲାଟଫର୍ମ ଶୁଳ୍କ",
+  "totalAmount": "ମୋଟ ରାଶି",
+
+  "bookingSecure": "ଆପଣଙ୍କ ବୁକିଂ ସୁରକ୍ଷିତ ଏବଂ ସଂରକ୍ଷିତ",
+
+  "booking": "ବୁକିଂ କରାଯାଉଛି...",
+  "confirmBooking": "ବୁକିଂ ନିଶ୍ଚିତ କରନ୍ତୁ",
+  "selectTimeSlot": "ଏକ ସମୟ ସ୍ଲଟ୍ ବାଛନ୍ତୁ",
+  
+  "today": "ଆଜି",
+  "tomorrow": "ଆସନ୍ତାକାଲି",
+
+  "sunday": "ରବିବାର",
+  "monday": "ସୋମବାର",
+  "tuesday": "ମଙ୍ଗଳବାର",
+  "wednesday": "ବୁଧବାର",
+  "thursday": "ଗୁରୁବାର",
+  "friday": "ଶୁକ୍ରବାର",
+  "saturday": "ଶନିବାର",
+
+  "jan": "ଜାନୁ",
+  "feb": "ଫେବ୍",
+  "mar": "ମାର୍ଚ୍ଚ",
+  "apr": "ଏପ୍ରି",
+  "may": "ମେ",
+  "jun": "ଜୁନ",
+  "jul": "ଜୁଲାଇ",
+  "aug": "ଅଗଷ୍ଟ",
+  "sep": "ସେପ୍ଟ",
+  "oct": "ଅକ୍ଟୋ",
+  "nov": "ନଭେ",
+  "dec": "ଡିସେ",
+
+  "loadingSlots": "ସ୍ଲଟ ଲୋଡ୍ ହେଉଛି...",
+  "noSlotsAvailable": "କୌଣସି ସ୍ଲଟ ଉପଲବ୍ଧ ନାହିଁ",
+  "notSelectedYet": "ଏପର୍ଯ୍ୟନ୍ତ ଚୟନ ହୋଇନାହିଁ",
+  
+  "bookingConfirmed": "ବୁକିଂ ସଫଳ ହୋଇଛି!",
+  "bookingConfirmedDesc": "ଆପଣଙ୍କ ସେସନ୍ ସଫଳତାର ସହିତ ନିର୍ଦ୍ଧାରିତ ହୋଇଛି। ବିବରଣୀ ଆପଣଙ୍କ ଇମେଲ୍‌କୁ ପଠାଯାଇଛି।",
+  "dateAndTime": "ତାରିଖ ଏବଂ ସମୟ",
+  "upcoming": "ଆସନ୍ତା",
+  "type": "ପ୍ରକାର",
+  "proTip": "ପରାମର୍ଶ",
+  "proTipDescription": "ସେସନ୍ ଆରମ୍ଭ ପୂର୍ବରୁ ୫ ମିନିଟ୍ ଆଗରୁ ଶାନ୍ତ ଏବଂ ସୁବିଧାଜନକ ସ୍ଥାନ ଖୋଜନ୍ତୁ।",
+  "viewMyConsultations": "ମୋର ପରାମର୍ଶଗୁଡ଼ିକ ଦେଖନ୍ତୁ",
+  "backToHome": "ହୋମକୁ ଫେରନ୍ତୁ",
+  
+  "upcomingSessions": "ଆସନ୍ତା ସେସନ",
+  "completedSessions": "ସମ୍ପୂର୍ଣ୍ଣ ସେସନ",
+  "cancelledSessions": "ବାତିଲ୍ ସେସନ",
+  "allSessions": "ସମସ୍ତ ସେସନ",
+  "all": "ସମସ୍ତ",
+  "upcoming": "ଆସନ୍ତା",
+  "completed": "ସମ୍ପୂର୍ଣ୍ଣ",
+  "cancelled": "ବାତିଲ୍",
+  "loadingSessions": "ସେସନ ଲୋଡ୍ ହେଉଛି...",
+  "noSessionsFound": "କୌଣସି ସେସନ ମିଳିଲା ନାହିଁ",
+  "minutes": "ମିନିଟ",
+  "videoCall": "ଭିଡିଓ କଲ୍",
+  "voiceCall": "ଭଏସ୍ କଲ୍",
+  "cancelBooking": "ବୁକିଂ ବାତିଲ୍ କରନ୍ତୁ",
+  "joinSession": "ସେସନରେ ଯୋଗଦିଅନ୍ତୁ",
+  "bookAgain": "ପୁଣିଥରେ ବୁକ୍ କରନ୍ତୁ",
+  
+  "loadingBookingDetails": "ବୁକିଂ ବିବରଣୀ ଲୋଡ୍ ହେଉଛି...",
+  "appointmentDate": "ନିଯୁକ୍ତି ତାରିଖ",
+  "timeSlot": "ସମୟ ସ୍ଲଟ୍",
+  "durationMinutes": "ଅବଧି: {{duration}} ମିନିଟ୍",
+  "sessionType": "ସେସନ୍ ପ୍ରକାର",
+  "secureEncrypted": "ସୁରକ୍ଷିତ ଏଣ୍ଡ-ଟୁ-ଏଣ୍ଡ ଇନ୍କ୍ରିପ୍ଟେଡ୍",
+  "sessionPreparationGuidelines": "ସେସନ୍ ପ୍ରସ୍ତୁତି ନିର୍ଦ୍ଦେଶାବଳୀ",
+  "guideline1": "ଦୟାକରି ନିଶ୍ଚିତ କରନ୍ତୁ ଯେ ଆପଣ ଏକ ଶାନ୍ତ ଓ ବ୍ୟକ୍ତିଗତ ସ୍ଥାନରେ ଅଛନ୍ତି ଏବଂ ଇଣ୍ଟରନେଟ୍ ସଂଯୋଗ ସ୍ଥିର ଅଛି",
+  "guideline2": "ନିର୍ଦ୍ଧାରିତ ସମୟର ୫ ମିନିଟ୍ ପୂର୍ବରୁ ପରାମର୍ଶ କକ୍ଷ ଉପଲବ୍ଧ ହେବ",
+  "guideline3": "ଆଲୋଚନା ପାଇଁ ଆପଣଙ୍କ ନୋଟ୍ ଏବଂ ସମ୍ପର୍କିତ ଦଲିଲଗୁଡ଼ିକ ପ୍ରସ୍ତୁତ ରଖନ୍ତୁ",
+  "guideline4": "ସର୍ବୋତ୍ତମ ଅନୁଭବ ପାଇଁ ପୂର୍ବରୁ କ୍ୟାମେରା ଏବଂ ମାଇକ୍ରୋଫୋନ୍ ପରୀକ୍ଷା କରନ୍ତୁ",
+  "sessionActions": "ସେସନ୍ କାର୍ଯ୍ୟଗୁଡ଼ିକ",
+  "joinSession": "ସେସନ୍‌ରେ ଯୋଗ ଦିଅନ୍ତୁ",
+  "cancelBooking": "ବୁକିଂ ବାତିଲ କରନ୍ତୁ",
+  "status": "ସ୍ଥିତି",
+  
+  "bookingCancelled": "ବୁକିଂ ବାତିଲ୍ ହୋଇଛି",
+  "cancelSessionConfirm": "ଆପଣ ନିଶ୍ଚିତ କି ଏହି ସେସନ୍‌କୁ ବାତିଲ୍ କରିବାକୁ ଚାହୁଁଛନ୍ତି? ଏହି କାର୍ଯ୍ୟକୁ ପୁନର୍ବାର ଫେରାଇ ପାରିବେ ନାହିଁ।",
+  "consultationSummary": "ପରାମର୍ଶ ସାରାଂଶ",
+  "slotAndDuration": "ସ୍ଲଟ୍ ଓ ଅବଧି",
+  "sessionMode": "ସେସନ୍ ମୋଡ୍",
+  "cancellationReason": "ବାତିଲ୍ କରିବାର କାରଣ",
+  "backToMyConsultations": "ମୋର ପରାମର୍ଶଗୁଡ଼ିକୁ ଫେରନ୍ତୁ",
+  "needHelp": "ସହାୟତା ଦରକାର?",
+  "contactSupport": "ସହାୟତା ସହିତ ଯୋଗାଯୋଗ କରନ୍ତୁ"
+
+
+
+
+
+
+
+
 
 }

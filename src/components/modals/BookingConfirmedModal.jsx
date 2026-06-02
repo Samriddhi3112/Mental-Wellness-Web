@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import confirmedImg from "../../assets/images/confirm-tick.png";
 import bulb from "../../assets/images/bulb.png";
+import { useTranslation } from "react-i18next";
 
 const formatDisplayDate = (dateUtc) => {
   if (!dateUtc) return "--";
@@ -24,8 +25,8 @@ const formatDisplayDate = (dateUtc) => {
   return `${months[parseInt(mm) - 1]} ${parseInt(dd)}, ${yyyy}`;
 };
 
-const handleHome = () => navigate("/home");
-const handleViewConsultation = () => navigate("/my-consultation");
+// const handleHome = () => navigate("/home");
+// const handleViewConsultation = () => navigate("/my-consultation");
 
 const getModeLabel = (mode) => {
   if (mode === "video") return "🎥 Video Call";
@@ -35,9 +36,10 @@ const getModeLabel = (mode) => {
 
 export default function BookingConfirmedModal({ onClose }) {
   const navigate = useNavigate();
+  const {t} = useTranslation();
   const bookingDetails = useSelector((state) => state.booking.bookingDetails);
 
-  const bookedDate = localStorage.getItem("bookedDate"); // "2026-06-02"
+  const bookedDate = localStorage.getItem("bookedDate");
   const bookedTime = localStorage.getItem("bookedTime");
 
   const handleHome = () => navigate("/home");
@@ -111,11 +113,10 @@ export default function BookingConfirmedModal({ onClose }) {
 
         {/* Title */}
         <h2 style={{ margin: "16px 0 5px", fontSize: "20px", color: "#fff" }}>
-          Booking Confirmed!
+          {t("bookingConfirmed")}
         </h2>
         <p style={{ fontSize: "13px", color: "#C2C2C2", marginBottom: "15px" }}>
-          Your session is successfully scheduled. <br />
-          We've sent the details to your email.
+          {t("bookingConfirmedDesc")}
         </p>
 
         {/* Details Card */}
@@ -138,7 +139,7 @@ export default function BookingConfirmedModal({ onClose }) {
               marginBottom: "8px",
             }}
           >
-            <span style={{ color: "#64748b" }}>DATE & TIME</span>
+            <span style={{ color: "#64748b" }}>{t("dateAndTime")}</span>
             <span
               style={{
                 background: "rgba(34,197,94,0.12)",
@@ -149,7 +150,7 @@ export default function BookingConfirmedModal({ onClose }) {
                 fontWeight: 500,
               }}
             >
-              UPCOMING
+              {t("upcoming")}
             </span>
           </div>
 
@@ -177,8 +178,8 @@ export default function BookingConfirmedModal({ onClose }) {
               color: "#64748b",
             }}
           >
-            <span>DURATION</span>
-            <span>TYPE</span>
+            <span>{t("duration")}</span>
+            <span>{t("type")}</span>
           </div>
 
           {/* Duration & Mode values */}
@@ -190,7 +191,7 @@ export default function BookingConfirmedModal({ onClose }) {
               color: "#fff",
             }}
           >
-            <span>⏳ {bookingDetails?.durationMinutes ?? "--"} Minutes</span>
+            <span>⏳ {bookingDetails?.durationMinutes ?? "--"} {t("minutes")}</span>
             <span>{getModeLabel(bookingDetails?.mode)}</span>
           </div>
         </div>
@@ -221,11 +222,10 @@ export default function BookingConfirmedModal({ onClose }) {
               alt="Pro Tip"
               style={{ width: "16px", height: "16px", objectFit: "contain" }}
             />
-            <b style={{ color: "#fff", fontSize: "13px" }}>Pro Tip</b>
+            <b style={{ color: "#fff", fontSize: "13px" }}>{t("proTip")}</b>
           </div>
           <div style={{ color: "#94a3b8", lineHeight: "1.5" }}>
-            Find a quiet, comfortable space 5 minutes before your session
-            begins.
+            {t("proTipDescription")}
           </div>
         </div>
 
@@ -245,14 +245,14 @@ export default function BookingConfirmedModal({ onClose }) {
           }}
           onClick={handleViewConsultation}
         >
-          View My Consultations
+          {t("viewMyConsultations")}
         </button>
 
         <div
           style={{ fontSize: "12px", color: "#64748b", cursor: "pointer" }}
           onClick={handleHome}
         >
-          Back to Home
+          {t("backToHome")}
         </div>
       </div>
     </div>
