@@ -352,7 +352,61 @@
   "cancellationReason": "रद्द करने का कारण",
   "backToMyConsultations": "मेरे परामर्शों पर वापस जाएँ",
   "needHelp": "मदद चाहिए?",
-  "contactSupport": "सहायता से संपर्क करें"
+  "contactSupport": "सहायता से संपर्क करें",
+  "myConsultations": "मेरे परामर्श",
+  
+  "yourSecretJournal": "आपकी निजी डायरी",
+  "journalSubtitle": "बिना किसी झिझक के लिखें — आपके विचार यहाँ सुरक्षित हैं।",
+  "addJournal": "डायरी जोड़ें",
+
+  "title": "शीर्षक",
+  "description": "विवरण",
+  "date": "तारीख",
+  "action": "कार्यवाही",
+
+  "enterTitle": "शीर्षक दर्ज करें",
+  "writeHere": "यहाँ लिखें...",
+
+  "cancel": "रद्द करें",
+  "save": "सहेजें",
+
+  "journalDetails": "डायरी विवरण",
+
+  "deleteJournal": "डायरी हटाएँ?",
+  "deleteJournalConfirm": "क्या आप इसे हटाना चाहते हैं",
+  "delete": "हटाएँ",
+  "noDataFound": "कोई डेटा नहीं मिला",
+  
+  "wiseYogi": "वाइज़ योगी",
+  "wiseYogiSubtitle": "आज के व्यक्तिगत अभ्यास के साथ अपने मन और शरीर में संतुलन बनाएं।",
+
+  "preparingPractice": "आपका अभ्यास तैयार किया जा रहा है…",
+   "kaiReadyToListen": "काई बिना किसी निर्णय के आपकी बात सुनने के लिए तैयार है। अभी वह तरीका चुनें जो आपको सबसे अधिक सहज महसूस कराता हो।",
+
+  "couldNotLoadExercises": "अभ्यास लोड नहीं हो सके",
+  "tryAgain": "पुनः प्रयास करें",
+
+  "noPracticeFound": "कोई अभ्यास नहीं मिला",
+  "noPracticeFoundDesc": "आपकी व्यक्तिगत योग योजना तैयार होने के बाद यहाँ दिखाई देगी।",
+
+  "todaysPractice": "आज का अभ्यास",
+  "exercisesCompleted": "{{done}} में से {{total}} अभ्यास पूरे हुए",
+
+  "sessionComplete": "सत्र पूरा हुआ!",
+  "wonderfulPracticeToday": "आज का अभ्यास शानदार रहा!",
+  "practiceCompleteDesc": "आपने अपने सभी योग अभ्यास पूरे कर लिए हैं। आपका शरीर और मन आपका धन्यवाद करते हैं।",
+
+  "astangaIntro": "अष्टांग सूत्र के अनुसार, इस समय आपके लिए सबसे उपयुक्त 3 छोटे अभ्यास ये हैं:",
+
+  "done": "पूर्ण",
+  "steps": "चरण",
+  "doThisNow": "अभी करें",
+  "completed": "पूर्ण",
+
+  "marking": "चिह्नित किया जा रहा है…",
+  "markComplete": "पूर्ण चिह्नित करें"
+
+
 
 
 

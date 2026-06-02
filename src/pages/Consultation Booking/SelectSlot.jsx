@@ -459,7 +459,7 @@ export default function SelectSlot() {
     ? `${t("today")}, ${selectedDate.date} ${new Date().getFullYear()}`
     : `${selectedDate.date} ${new Date().getFullYear()}`;
 
-  const handleChange = () => navigate("/therapy-session");
+  const handleChange = () => navigate("/my-consultation/therapy-session");
 
   const handleConfirmBooking = () => {
     if (!selectedSlot) return;

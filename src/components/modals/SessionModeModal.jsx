@@ -12,7 +12,7 @@ export default function SessionModeModal({ onClose }) {
 
   const handleContinue = () => {
     localStorage.setItem("selectedMode", mode);
-    navigate("/select-slot");
+    navigate("/my-consultation/select-slot");
   };
 
   const cardStyle = (cardMode) => ({

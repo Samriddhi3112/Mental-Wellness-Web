@@ -265,7 +265,7 @@ const SettingOptions = () => {
   const currentLang = i18n.language || "en";
 
   return (
-    <div className="main-content">
+    <div className="main-content" style={{marginTop: "25px"}}>
       <div className="settings-container">
 
         {/* Account Section */}

@@ -118,10 +118,10 @@ const AppRoutes = () => {
           <Route path="/home/secret-journal" element={<SecretJournal />} />
           {/* <Route path="/home/memory-game" element={<MemoryGame />} />
           <Route path="/home/breathing-game" element={<BreathingGame />} /> */}
-          <Route path="/therapy-session" element={<SereneApp />} />
-          <Route path="/select-slot" element={<SelectSlot />} />
+          <Route path="/my-consultation/therapy-session" element={<SereneApp />} />
+          <Route path="/my-consultation/select-slot" element={<SelectSlot />} />
           <Route path="/my-consultation" element={<MyConsultations />} />
-          <Route path="/booking-details/:id" element={<BookingDetails />} />
+          <Route path="/my-consultation/booking-details/:id" element={<BookingDetails />} />
         </Route>
       </Route>
 

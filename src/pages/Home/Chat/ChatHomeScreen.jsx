@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import ChatSidebar from "./ChatSidebar";
-import avatar from "../../../assets/images/bg-Img.png";
+import avatar from "../../../assets/images/Group 2.png";
 import voiceIcon from "../../../assets/images/talk-with-voice.png";
 import textIcon from "../../../assets/images/chat-to-ai.png";
-import settingIcon from "../../../assets/images/setting-two.png";
+// import settingIcon from "../../../assets/images/setting-two.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -86,46 +86,45 @@ const ChatHomeScreen = () => {
           </a> */}
         </div>
 
-        <div className="connection-container">
+        <div className="connection-container" style={{padding:"8%"}}>
           <div className="kai-avatar">
             <img src={avatar} alt="Kai" />
           </div>
 
-          {!chatId ? (
-            <>
-              <h2>{t("howWouldYouLikeToConnect")}</h2>
-              <p>
-                Kai is ready to listen, judgment-free. Choose the way that feels
-                most comfortable for you right now.
-              </p>
+          <div style={{ textAlign: "center", marginBottom: "10%" }}>
+            {!chatId ? (
+              <>
+                <h2>{t("howWouldYouLikeToConnect")}</h2>
+                <p>{t("kaiReadyToListen")}</p>
 
-              <div className="connection-options">
-                <div
-                  className="connection-card"
-                  onClick={() => handleStartChat("voice")}
-                >
-                  <img src={voiceIcon} alt="voice" />
-                  <h4>{t("talkWithVoice")}</h4>
-                </div>
+                <div className="connection-options">
+                  <div
+                    className="connection-card"
+                    onClick={() => handleStartChat("voice")}
+                  >
+                    <img src={voiceIcon} alt="voice" />
+                    <h4>{t("talkWithVoice")}</h4>
+                  </div>
 
-                <div
-                  className="connection-card"
-                  onClick={() => handleStartChat("text")}
-                >
-                  <img src={textIcon} alt="text" />
-                  <h4>{t("chatWithText")}</h4>
+                  <div
+                    className="connection-card"
+                    onClick={() => handleStartChat("text")}
+                  >
+                    <img src={textIcon} alt="text" />
+                    <h4>{t("chatWithText")}</h4>
+                  </div>
                 </div>
+              </>
+            ) : (
+              <div className="chat-messages">
+                {messages.map((msg, i) => (
+                  <div key={i} className={`message ${msg.type}`}>
+                    {msg.text}
+                  </div>
+                ))}
               </div>
-            </>
-          ) : (
-            <div className="chat-messages">
-              {messages.map((msg, i) => (
-                <div key={i} className={`message ${msg.type}`}>
-                  {msg.text}
-                </div>
-              ))}
-            </div>
-          )}
+            )}
+          </div>
 
           {/* <div className="connection-options">
             <div

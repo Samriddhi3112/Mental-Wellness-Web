@@ -7,8 +7,9 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import consultation from "../assets/images/consultation.svg";
 
-const Sidenav = () => {
+  const Sidenav = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -49,9 +50,9 @@ const Sidenav = () => {
         className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
       >
         <span>
-          <span style={{ fontSize: "18px" }}>📅</span>
+          <img src={consultation} alt="Consultation Icon" />
         </span>
-        <span>My Consulations</span>
+        <span>{t("myConsultations")}</span>
       </NavLink>
       {/* <NavLink
         to="/therapy-session"

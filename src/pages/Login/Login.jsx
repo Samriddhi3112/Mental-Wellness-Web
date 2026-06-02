@@ -213,7 +213,7 @@ const Login = () => {
             </button>
 
             <div className="divider">
-              <span style={{ color: "#fff" }}>or</span>
+              <span style={{ color: "#fff", borderTop:"none" }}>or</span>
             </div>
 
             <div className="d-grid gap-3">

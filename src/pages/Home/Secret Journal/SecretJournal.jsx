@@ -6,6 +6,7 @@ import {
   fetchJournals,
 } from "../../../features/home/secret journal/secretjournalSlice";
 import { FaTrash, FaMicrophone } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
 
 const formatDate = (iso) => {
   const d = new Date(iso);
@@ -24,6 +25,7 @@ const EMPTY_FORM = {
 
 export default function SecretJournal() {
   const dispatch = useDispatch();
+  const {t} = useTranslation();
   const [isListening, setIsListening] = useState(false);
 
   const { entries, loading } = useSelector((state) => state.secretJournal);
@@ -246,6 +248,7 @@ export default function SecretJournal() {
   padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
+  width: 38px;
 }
 
 .sj-view-title {
@@ -276,15 +279,15 @@ export default function SecretJournal() {
           }}
         >
           <div className="sj-header-left">
-            <h2>Your Secret Journal</h2>
+            <h2>{t("yourSecretJournal")}</h2>
 
             <p style={{ marginBottom: "0" }}>
-              Write without judgment — your thoughts are safe here.
+             {t("journalSubtitle")}
             </p>
           </div>
 
           <button className="btn-save" onClick={() => setShowAddModal(true)}>
-            + Add Journal
+            {t("addJournal")}
           </button>
         </div>
 
@@ -313,10 +316,10 @@ export default function SecretJournal() {
                     borderBottom: "1px solid #edf0f7",
                   }}
                 >
-                  <th style={thStyle}>Title</th>
-                  <th style={thStyle}>Description</th>
-                  <th style={thStyle}>Date</th>
-                  <th style={thStyleCenter}>Action</th>
+                  <th style={thStyle}>{t("title")}</th>
+                  <th style={thStyle}>{t("description")}</th>
+                  <th style={thStyle}>{t("date")}</th>
+                  <th style={thStyleCenter}>{t("action")}</th>
                 </tr>
               </thead>
 
@@ -376,6 +379,7 @@ export default function SecretJournal() {
                             color: "red",
                             cursor: "pointer",
                             fontSize: "18px",
+                            width: "none",
                           }}
                         >
                           <FaTrash />
@@ -392,7 +396,7 @@ export default function SecretJournal() {
                         padding: "60px 20px",
                       }}
                     >
-                      {loading ? "Loading..." : "No Data Found"}
+                      {loading ? t("loading") : t("noDataFound")}
                     </td>
                   </tr>
                 )}
@@ -406,7 +410,7 @@ export default function SecretJournal() {
         <div className="sj-overlay">
           <div className="sj-modal">
             <div className="sj-modal-header">
-              <h3>Add Journal</h3>
+              <h3>{t("addJournal")}</h3>
 
               <button
                 className="btn-close"
@@ -422,7 +426,7 @@ export default function SecretJournal() {
 
             <div className="sj-modal-body">
               <div className="field">
-                <label>Title</label>
+                <label>{t("title")}</label>
 
                 <input
                   type="text"
@@ -438,14 +442,14 @@ export default function SecretJournal() {
               </div>
 
               <div className="field">
-                <label>Description</label>
+                <label>{t("description")}</label>
 
                 <div className="textarea-wrapper">
                   <textarea
                     name="description"
                     value={form.description}
                     onChange={handleChange}
-                    placeholder="Write here..."
+                    placeholder={t("writeHere")}
                   />
 
                   <button
@@ -487,7 +491,7 @@ export default function SecretJournal() {
                   setErrors({});
                 }}
               >
-                Cancel
+                {t("cancel")}
               </button>
               {/* <button
                 className="btn-cancel"
@@ -497,7 +501,7 @@ export default function SecretJournal() {
               </button> */}
 
               <button className="btn-save" onClick={handleSave}>
-                Save
+                {t("save")}
               </button>
             </div>
           </div>
@@ -508,7 +512,7 @@ export default function SecretJournal() {
         <div className="sj-overlay">
           <div className="sj-modal sj-view-modal">
             <div className="sj-modal-header">
-              <h3>Journal Details</h3>
+              <h3>{t("journalDetails")}</h3>
 
               <button className="btn-close" onClick={() => setViewEntry(null)}>
                 ✕
@@ -528,17 +532,14 @@ export default function SecretJournal() {
         </div>
       )}
 
-      {/* ───────────────────────────────────────── */}
-      {/* DELETE MODAL */}
-      {/* ───────────────────────────────────────── */}
       {deleteConfirm && (
         <div className="sj-overlay">
           <div className="sj-modal sj-delete-modal">
             <div className="sj-modal-body">
-              <h4>Delete Journal?</h4>
+              <h4>{t("deleteJournal")}</h4>
 
               <p>
-                Are you sure you want to delete
+                {t("deleteJournalConfirm")}
                 <b> {deleteConfirm.title}</b> ?
               </p>
             </div>
@@ -553,14 +554,14 @@ export default function SecretJournal() {
                 className="btn-cancel"
                 onClick={() => setDeleteConfirm(null)}
               >
-                Cancel
+                {t("cancel")}
               </button>
 
               <button
                 className="btn-save"
                 onClick={() => handleDelete(deleteConfirm._id)}
               >
-                Delete
+                {t("delete")}
               </button>
             </div>
           </div>

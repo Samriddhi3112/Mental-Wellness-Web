@@ -769,7 +769,7 @@ export default function MyConsultations() {
                       className="session-card"
                       key={booking._id}
                       onClick={() =>
-                        navigate(`/booking-details/${booking._id}`)
+                        navigate(`/my-consultation/booking-details/${booking._id}`)
                       }
                     >
                       {/* Badge */}
@@ -852,8 +852,9 @@ export default function MyConsultations() {
                         <div className="session-actions">
                           <button
                             className="btn-cancel"
+                            style={{width:"100%"}}
                             onClick={(e) => {
-                              e.stopPropagation(); // prevent card click
+                              e.stopPropagation();
                               setCancelModalBookingId(booking._id);
                             }}
                           >
@@ -881,7 +882,7 @@ export default function MyConsultations() {
                             className="btn-join"
                             onClick={(e) => {
                               e.stopPropagation();
-                              navigate("/therapy-session");
+                              navigate("/my-consultation/therapy-session");
                             }}
                           >
                             <IconRefresh /> {t("bookAgain")}

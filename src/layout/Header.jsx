@@ -25,12 +25,12 @@ const Header = () => {
 
   const userName = user?.name;
   console.log(userData);
-  
-  const handleBack = () => {
-  console.log("BACK CLICKED");
 
-  navigate(-1);
-};
+  const handleBack = () => {
+    console.log("BACK CLICKED");
+
+    navigate(-1);
+  };
 
   // const handleBack = () => {
   //   if (
@@ -54,12 +54,13 @@ const Header = () => {
   return (
     <div className="header">
       <div
-  className="d-flex align-items-center gap-2"
-  style={{
-    position: "relative",
-    zIndex: 99999,
-  }}
->
+        className="d-flex align-items-center gap-2"
+        style={{
+          position: "relative",
+          zIndex: 99999,
+          marginLeft:"30px",
+        }}
+      >
         <img
           src={leftBack}
           alt="back"
@@ -79,7 +80,7 @@ const Header = () => {
             height: "45px",
             cursor: "pointer",
           }}
-          onClick={() => navigate("/therapy-session")}
+          onClick={() => navigate("/my-consultation/therapy-session")}
         />
         <div
           className="notification-bell"

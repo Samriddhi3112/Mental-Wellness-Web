@@ -274,7 +274,65 @@
   "cancellationReason": "Cancellation Reason",
   "backToMyConsultations": "Back to My Consultations",
   "needHelp": "Need help?",
-  "contactSupport": "Contact Support"
+  "contactSupport": "Contact Support",
+  "myConsultations": "My Consultations",
+  
+  "yourSecretJournal": "Your Secret Journal",
+  "journalSubtitle": "Write without judgment — your thoughts are safe here.",
+  "addJournal": "Add Journal",
+
+  "title": "Title",
+  "description": "Description",
+  "date": "Date",
+  "action": "Action",
+
+  "enterTitle": "Enter title",
+  "writeHere": "Write here...",
+
+  "cancel": "Cancel",
+  "save": "Save",
+  "howWouldYouLikeToConnect":"How would you like to connect today?",
+  "kaiReadyToListen": "Kai is ready to listen, judgment-free. Choose the way that feels most comfortable for you right now.",
+
+  "journalDetails": "Journal Details",
+  "talkWithVoice": "Talk with Voice",
+  "chatWithText": "Chat with Text",
+  "recommendedActivities":"Recommended Activities",
+
+  "deleteJournal": "Delete Journal?",
+  "deleteJournalConfirm": "Are you sure you want to delete",
+  "delete": "Delete",
+  "noDataFound": "No data found",
+  
+  "wiseYogi": "Wise Yogi",
+  "wiseYogiSubtitle": "Balance your mind & body with today's personalised practice.",
+
+  "preparingPractice": "Preparing your practice…",
+
+  "couldNotLoadExercises": "Could not load exercises",
+  "tryAgain": "Try Again",
+
+  "noPracticeFound": "No practice found",
+  "noPracticeFoundDesc": "Your personalised yoga plan will appear here once generated.",
+
+  "todaysPractice": "Today's Practice",
+  "exercisesCompleted": "{{done}} of {{total}} exercises completed",
+
+  "sessionComplete": "Session Complete!",
+  "wonderfulPracticeToday": "Wonderful practice today!",
+  "practiceCompleteDesc": "You've completed all your yoga exercises. Your body and mind thank you.",
+
+  "astangaIntro": "From the Astanga Sutra, these are the 3 most suitable small practices for you right now:",
+
+  "done": "DONE",
+  "steps": "steps",
+  "doThisNow": "Do this Now",
+  "completed": "Completed",
+
+  "marking": "Marking…",
+  "markComplete": "Mark Complete"
+
+
 
 
 
