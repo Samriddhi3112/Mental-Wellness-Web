@@ -330,11 +330,16 @@
   "completed": "Completed",
 
   "marking": "Marking…",
-  "markComplete": "Mark Complete"
-
-
-
-
-
+  "markComplete": "Mark Complete",
+  "mindfulGames": "Mindful Games",
+  "secretJournal": "Secret Journal",
+  "movies":"Movies",
+  "healthIsWealth":"Health is Wealth",
+  "mindfulGamesDesc": "Play. Relax. Focus.",
+  "secretJournalDesc" : "Write Without Judgment",
+  "moviesDesc" : "Watch and Unwind",
+  "calmMusicDesc":"Relax Through Sound",
+  "wiseYogiDesc":"Balance Mind Body",
+  "healthDesc":"Care For Health"
 }
 
