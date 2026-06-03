@@ -187,6 +187,8 @@ export default function BookingCancelledModal({
 
   const mode = booking?.mode || "-";
 
+  
+
   return (
     <div style={styles.overlay}>
       <div style={styles.modal}>
@@ -199,9 +201,7 @@ export default function BookingCancelledModal({
         <h2 style={styles.title}>{t("bookingCancelled")}</h2>
 
         {/* Description */}
-        <p style={styles.desc}>
-          {t("cancelSessionConfirm")}
-        </p>
+        <p style={styles.desc}>{t("cancelSessionConfirm")}</p>
 
         <div style={styles.summaryCard}>
           <div style={styles.summaryHeading}> {t("consultationSummary")}</div>
@@ -265,14 +265,18 @@ export default function BookingCancelledModal({
         {/* Button */}
         <button
           style={styles.button}
-          onClick={() => navigate("/my-consultation")}
+          onClick={() => {
+            onClose();
+            navigate("/my-consultation");
+          }}
         >
           {t("backToMyConsultations")}
         </button>
 
         {/* Footer */}
         <div style={styles.support}>
-          {t("needHelp")} <span style={styles.supportLink}>{t("contactSupport")}</span>
+          {t("needHelp")}{" "}
+          <span style={styles.supportLink}>{t("contactSupport")}</span>
         </div>
       </div>
     </div>

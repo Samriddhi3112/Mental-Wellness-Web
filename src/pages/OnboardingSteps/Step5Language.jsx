@@ -7,7 +7,7 @@ import {
 } from "../../features/onboarding/onboardingSlice";
 import { toast } from "react-toastify";
 
-import logo from "../../assets/images/logo1.png";
+import logo from "../../assets/images/logo-dark.png";
 import meditationImg from "../../assets/images/meditation-two.png";
 import thanksIcon from "../../assets/images/thnks-for-sharing-icon.svg";
 import rightArrow from "../../assets/images/right-arrow-icon.png";

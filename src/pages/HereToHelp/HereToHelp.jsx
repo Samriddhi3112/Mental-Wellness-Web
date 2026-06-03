@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo-dark.png";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-one.png";
 import talktoai from "../../assets/images/talk-to-ai.svg";
@@ -55,7 +55,7 @@ const HereToHelp = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 d-flex align-items-center justify-content-center">
+          <div className="col-lg-6 d-flex align-items-center justify-content-center" style={{ background: "#030f25" }}>
             <div className="login-right">
               <h2 className="welcome-title">{t("hereToHelp")}</h2>
               <p className="welcome-description">{t("takeMoment")}</p>
@@ -64,7 +64,7 @@ const HereToHelp = () => {
                   <div className="col-6">
                     <div
                       className="feature-card"
-                      onClick={() => setShowTalkAi(true)}
+                      // onClick={() => setShowTalkAi(true)}
                     >
                       <div className="feature-icon">
                         <img src={talktoai} alt />

@@ -11,7 +11,7 @@ const EmergencyModal = ({ show, onClose }) => {
   if (!show) return null;
 
   const handleNext = () => {
-    navigate("/therapy-session");
+    navigate("/my-consultation/therapy-session");
   };
 
   return (

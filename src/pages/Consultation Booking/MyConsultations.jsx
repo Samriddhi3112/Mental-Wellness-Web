@@ -458,6 +458,7 @@ import {
 } from "../../features/booking/bookingSlice";
 import CancelBookingModal from "../../components/modals/CancelBookingModal";
 import { useTranslation } from "react-i18next";
+import BookingCancelledModal from "../../components/modals/BookingCancelledModal";
 
 const IconCal = ({ color = "#1db96a" }) => (
   <svg
@@ -609,7 +610,7 @@ const formatTime = (utcString) => {
   });
 };
 
-const formatDate = (utcString,t) => {
+const formatDate = (utcString, t) => {
   if (!utcString) return "--";
   const d = new Date(utcString);
   const months = [
@@ -644,7 +645,7 @@ const getBadgeClass = (status) => {
 
 const getBadgeLabel = (status, t) => {
   if (status === "pending_assignment" || status === "assigned")
-    return t("upcoming").toUpperCase();;
+    return t("upcoming").toUpperCase();
   if (status === "completed") return t("completed").toUpperCase();
   if (status === "cancelled") return t("cancelled").toUpperCase();
   return status.toUpperCase();
@@ -653,12 +654,14 @@ const getBadgeLabel = (status, t) => {
 export default function MyConsultations() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const { bookings, loading } = useSelector((state) => state.booking?.bookings);
   const { upcoming, completed, cancelled } = useSelector(
     (state) => state.booking.summary,
   );
   const [activeFilter, setActiveFilter] = useState("all");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [successData, setSuccessData] = useState(null);
 
   const filteredBookings =
     bookings?.filter((b) => {
@@ -682,6 +685,15 @@ export default function MyConsultations() {
   //   ) || [];
   // const completed = bookings?.filter((b) => b.status === "completed") || [];
   // const cancelled = bookings?.filter((b) => b.status === "cancelled") || [];
+
+  const handleCancelSuccess = (data) => {
+    setCancelModalBookingId(null); // cancel modal close
+    setSuccessData(data);
+    setShowSuccessModal(true); // success modal open
+
+    dispatch(getMyBookings({ page: 1, limit: 20 }));
+    dispatch(getBookingSummary());
+  };
 
   return (
     <>
@@ -769,7 +781,9 @@ export default function MyConsultations() {
                       className="session-card"
                       key={booking._id}
                       onClick={() =>
-                        navigate(`/my-consultation/booking-details/${booking._id}`)
+                        navigate(
+                          `/my-consultation/booking-details/${booking._id}`,
+                        )
                       }
                     >
                       {/* Badge */}
@@ -818,11 +832,11 @@ export default function MyConsultations() {
                             <line x1="6" y1="6" x2="18" y2="18" />
                           </svg>
                         )}
-                        {getBadgeLabel(booking.status , t)}
+                        {getBadgeLabel(booking.status, t)}
                       </div>
 
                       <div className="session-date">
-                        {formatDate(booking.startAt,t)}
+                        {formatDate(booking.startAt, t)}
                       </div>
                       <div
                         className={`session-time${!(isPending || isAssigned) ? " dark" : ""}`}
@@ -852,7 +866,7 @@ export default function MyConsultations() {
                         <div className="session-actions">
                           <button
                             className="btn-cancel"
-                            style={{width:"100%"}}
+                            style={{ width: "100%" }}
                             onClick={(e) => {
                               e.stopPropagation();
                               setCancelModalBookingId(booking._id);
@@ -923,6 +937,14 @@ export default function MyConsultations() {
         <CancelBookingModal
           bookingId={cancelModalBookingId}
           onClose={() => setCancelModalBookingId(null)}
+          onCancelSuccess={handleCancelSuccess}
+        />
+      )}
+      {showSuccessModal && (
+        <BookingCancelledModal
+          booking={successData?.booking}
+          cancellationReason={successData?.cancellationReason}
+          onClose={() => setShowSuccessModal(false)}
         />
       )}
     </>

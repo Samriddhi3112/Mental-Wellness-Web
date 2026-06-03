@@ -532,13 +532,13 @@ const Screen1 = () => {
         </div>
       )}
       {fetched && !loading && questions.length === 0 ? (
-        <div className="text-center mt-5">
+        <div className="text-center mt-5" style={{color:"#fff"}}>
           <h4>No questions found</h4>
           <p>Please try again later.</p>
 
           <button
             className="btn btn mt-3 "
-            style={{ backgroundColor: "#FF511A" }}
+            style={{ background: "linear-gradient(135deg, #462297, #7631B2)" ,color:"#fff", border:"none"}}
             onClick={() => navigate("/here-to-help")}
           >
             Go to Help

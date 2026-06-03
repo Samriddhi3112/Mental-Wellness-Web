@@ -164,7 +164,7 @@ function CalendarXIcon() {
   );
 }
 
-export default function CancelBookingModal({ onClose, bookingId }) {
+export default function CancelBookingModal({ onClose, bookingId ,onCancelSuccess}) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -179,12 +179,23 @@ export default function CancelBookingModal({ onClose, bookingId }) {
   const [cancellationReason, setCancellationReason] = useState("");
 
   useEffect(() => {
-    if (cancelSuccess) {
-      setShowSuccessModal(true);
+  if (cancelSuccess) {
+    onCancelSuccess?.({
+      booking: bookingDetails,
+      cancellationReason,
+    });
 
-      dispatch(resetBookingState());
-    }
-  }, [cancelSuccess, dispatch]);
+    dispatch(resetBookingState());
+  }
+}, [cancelSuccess]);
+
+  // useEffect(() => {
+  //   if (cancelSuccess) {
+  //     setShowSuccessModal(true);
+
+  //     dispatch(resetBookingState());
+  //   }
+  // }, [cancelSuccess, dispatch]);
 
   const handleCancelBooking = () => {
     if (!cancellationReason.trim()) {
@@ -293,7 +304,7 @@ export default function CancelBookingModal({ onClose, bookingId }) {
           </button>
         </div>
       </div>
-      {showSuccessModal &&
+      {/* {showSuccessModal &&
         (console.log("BOOKING DETAILS IN CANCEL MODAL", bookingDetails),
         (
           <BookingCancelledModal
@@ -301,7 +312,7 @@ export default function CancelBookingModal({ onClose, bookingId }) {
             cancellationReason={cancellationReason}
             onClose={() => setShowSuccessModal(false)}
           />
-        ))}
+        ))} */}
     </>
   );
 }
