@@ -68,7 +68,7 @@ const ChatHomeScreen = () => {
   // }, [dispatch]);
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh" }}>
+    <div className="chat-home-wrapper"style={{ display: "flex", minHeight: "100vh" }}>
       <ChatSidebar
         chatList={chatList}
         onSelectChat={handleOpenChat}

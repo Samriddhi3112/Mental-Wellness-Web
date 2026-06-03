@@ -340,6 +340,8 @@
   "moviesDesc" : "Watch and Unwind",
   "calmMusicDesc":"Relax Through Sound",
   "wiseYogiDesc":"Balance Mind Body",
-  "healthDesc":"Care For Health"
+  "healthDesc":"Care For Health",
+  "startConversationTitle":"Start a Conversation",
+  "startConversationDesc":"Type your message to begin chatting with Kai, your personal companion."
 }
 

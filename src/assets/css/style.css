@@ -1624,6 +1624,12 @@ p.sub-title {
   border-left: 1px solid #ffffff1a;
   border: 1px solid #ffffff1a;
 }
+@media (max-width: 768px) {
+  .header {
+    left: 0;
+    padding: 10px 15px;
+  }
+}
 .header .header-left {
   display: flex;
   align-items: center;
@@ -1783,6 +1789,27 @@ p.sub-title {
   overflow: scroll;
   background: #030f25;
   min-height: 100vh;
+}
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .main-content1 {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .header {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 15px;
+  }
 }
 .main-contentS {
   margin-left: 50px;
@@ -3125,6 +3152,14 @@ p.sub-title {
   z-index: 100;
   border-left: 1px solid #ffffff1a;
 }
+@media (max-width: 768px) {
+  .header {
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    box-sizing: border-box;
+  }
+}
 .header .header-left {
   display: flex;
   align-items: center;
@@ -3193,7 +3228,55 @@ p.sub-title {
   left: 0;
   top: 0;
   z-index: 1000;
+  transition: all 0.3s ease;
 }
+@media (max-width: 768px) {
+  .sidebar {
+    left: -250px;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+}
+
+.mobile-menu-btn {
+  display: none;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+.sidebar {
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+@media (min-width: 769px) {
+  .sidebar-overlay {
+    display: none;
+  }
+}
+/* .sidebar {
+  background-color: #030f25;
+  min-height: 100vh;
+  position: fixed;
+  width: 250px;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+} */
 .sidebar .logo {
   display: flex;
   align-items: center;
@@ -6016,3 +6099,53 @@ background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
       .wy-card-icon { width: 42px; height: 42px; }
       .wy-card-icon svg { width: 26px; height: 26px; }
     }
+    @media (max-width: 768px) {
+  .main-content1 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 15px;
+  }
+
+  .left-col,
+  .actions-col {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .top-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .info-card {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .btn-join,
+  .btn-cancel {
+    width: 100%;
+    justify-content: center;
+  }
+}
+.info-field-val {
+  word-break: break-word;
+}
+@media (min-width: 771px) and (max-width: 1386px) {
+  .main-content1 {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .left-col,
+  .actions-col {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .chat-home-wrapper {
+    display: block !important;
+  }
+}

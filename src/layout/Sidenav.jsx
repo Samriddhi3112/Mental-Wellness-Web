@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import consultation from "../assets/images/consultation.svg";
 
-  const Sidenav = () => {
+const Sidenav = ({ sidebarOpen, setSidebarOpen }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -25,15 +25,19 @@ import consultation from "../assets/images/consultation.svg";
   console.log("Guest", isGuest);
 
   return (
-    <div className="sidebar">
+    // <div className="sidebar">
+    <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
+      <div className="sidebar-close" onClick={() => setSidebarOpen(false)}>
+        ✕
+      </div>
       <div
         style={{
           marginTop: "5px",
-           borderBottom:"1px solid #FFFFFF1A"
+          borderBottom: "1px solid #FFFFFF1A",
           // borderBottom: "1px solid #ffffff21",
         }}
       >
-        <img src={logo} alt="Logo" style={{marginBottom: "10px"}}/>
+        <img src={logo} alt="Logo" style={{ marginBottom: "10px" }} />
       </div>
 
       <NavLink

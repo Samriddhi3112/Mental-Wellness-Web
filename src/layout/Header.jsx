@@ -9,8 +9,9 @@ import { useDispatch } from "react-redux";
 import { clearChat } from "../features/chat/chatSlice";
 import { useTranslation } from "react-i18next";
 import buttonIcon from "../assets/images/button 1.svg";
+import { FiMenu } from "react-icons/fi";
 
-const Header = () => {
+const Header = ({ setSidebarOpen }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -58,9 +59,17 @@ const Header = () => {
         style={{
           position: "relative",
           zIndex: 99999,
-          marginLeft:"30px",
+          marginLeft: "30px",
         }}
       >
+        <div className="mobile-menu-btn">
+          <FiMenu
+            size={24}
+            color="#fff"
+            style={{ cursor: "pointer" }}
+            onClick={() => setSidebarOpen((prev) => !prev)}
+          />
+        </div>
         <img
           src={leftBack}
           alt="back"
