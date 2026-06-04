@@ -377,30 +377,27 @@ const generateDates = (t) => {
   });
 };
 
-const utcToLocal = (utcTimeStr, dateUtc) => {
-  const [hours, minutes] = utcTimeStr.split(":").map(Number);
-  const d = new Date(
-    `${dateUtc}T${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00.000Z`,
-  );
-  return d.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
-  });
-};
+// const utcToLocal = (utcTimeStr, dateUtc) => {
+//   const [hours, minutes] = utcTimeStr.split(":").map(Number);
+//   const d = new Date(
+//     `${dateUtc}T${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00.000Z`,
+//   );
+//   return d.toLocaleTimeString("en-US", {
+//     hour: "2-digit",
+//     minute: "2-digit",
+//     hour12: true,
+//   });
+// };
 
-const categorizeSlots = (slots, dateUtc) => {
-  const morning = [],
-    afternoon = [],
-    evening = [];
+// categorizeSlots — dateUtc parameter hatao, UTC hour se directly categorize karo
+const categorizeSlots = (slots) => {
+  const morning = [], afternoon = [], evening = [];
 
   slots.forEach((slot) => {
     const [h] = slot.startTimeUtc.split(":").map(Number);
-    const d = new Date(`${dateUtc}T${String(h).padStart(2, "0")}:00:00.000Z`);
-    const localHour = d.getHours();
-
-    if (localHour < 12) morning.push(slot);
-    else if (localHour < 17) afternoon.push(slot);
+    // startTimeUtc = "16:10" → h = 16 → afternoon ✓
+    if (h < 12) morning.push(slot);
+    else if (h < 17) afternoon.push(slot);
     else evening.push(slot);
   });
 
@@ -444,10 +441,7 @@ export default function SelectSlot() {
     }
   }, [bookingSuccess, dispatch]);
 
-  const { morning, afternoon, evening } = categorizeSlots(
-    availableSlots || [],
-    selectedDate.dateUtc,
-  );
+  const { morning, afternoon, evening } = categorizeSlots(availableSlots || []);
 
   // const displayDate =
   //   selectedDate.day === "Today"
@@ -477,6 +471,13 @@ export default function SelectSlot() {
       }),
     );
   };
+
+  const utcToLocal = (utcTimeStr) => {
+  const [hours, minutes] = utcTimeStr.split(":").map(Number);
+  const ampm = hours >= 12 ? "PM" : "AM";
+  const h = hours % 12 || 12;
+  return `${String(h).padStart(2, "0")}:${String(minutes).padStart(2, "0")} ${ampm}`;
+};
 
   const renderSlots = (slotList) => {
     if (slotsLoading) {
@@ -667,11 +668,8 @@ export default function SelectSlot() {
                       className={`summary-field-val${!selectedSlot ? " muted" : ""}`}
                     >
                       {selectedSlot
-                        ? utcToLocal(
-                            selectedSlot.startTimeUtc,
-                            selectedDate.dateUtc,
-                          )
-                        : t("notSelectedYet")}
+  ? utcToLocal(selectedSlot.startTimeUtc)
+  : t("notSelectedYet")}
                     </div>
                   </div>
                 </div>

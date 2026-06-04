@@ -342,6 +342,8 @@
   "wiseYogiDesc":"Balance Mind Body",
   "healthDesc":"Care For Health",
   "startConversationTitle":"Start a Conversation",
-  "startConversationDesc":"Type your message to begin chatting with Kai, your personal companion."
+  "startConversationDesc":"Type your message to begin chatting with Kai, your personal companion.",
+  "currentLanguage": "Current Language",
+  "availableLanguages": "Available Languages"
 }
 

@@ -4,7 +4,8 @@ import searchIcon from "../../../assets/images/search-normal.png";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const ChatSidebar = ({ chatList = [], onSelectChat, selectedChatId }) => {
+const ChatSidebar = ({ chatList = [], onSelectChat,  selectedChatId,
+  sidebarOpen }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
@@ -16,8 +17,9 @@ const ChatSidebar = ({ chatList = [], onSelectChat, selectedChatId }) => {
   );
 
   return (
-    <div className="sidebar">
-      {/* ✅ Logo */}
+    <div  className={`sidebar chat-sidebar ${
+      sidebarOpen ? "open" : ""
+    }`}>
       <div
         style={{
           marginTop: "13px",borderBottom: "1px solid #ffffff1a"
@@ -38,11 +40,13 @@ const ChatSidebar = ({ chatList = [], onSelectChat, selectedChatId }) => {
       <div className="search-box" style={{ marginTop: "40px" }}>
         <img src={searchIcon} alt="search" />
         <input
-          type="text"
-          placeholder={t("searchChatPlaceholder")}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+  type="text"
+  placeholder={t("searchChatPlaceholder")}
+  className="search-input"
+  style={{ color: "black" }}
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+/>
       </div>
 
       {/* ✅ Chat List */}

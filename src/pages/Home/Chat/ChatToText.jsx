@@ -346,7 +346,7 @@ const ChatToText = () => {
       />
 
       {/* MAIN CHAT */}
-      <div className="main-content" style={{ padding:'10px', width: "-webkit-fill-available", marginTop:'67px', height:'auto',  minHeight:'calc(100vh - 67px)' }}>
+      <div className="main-content" style={{ padding:'10px', marginTop:'67px', height:'auto',  minHeight:'calc(100vh - 67px)' }}>
         <div
           className="connection-container"
           style={{

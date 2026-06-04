@@ -646,7 +646,7 @@ const Screen1 = () => {
                         display: "flex",
                         alignItems: "center",
                       }}
-                      onClick={() => navigate("/therapy-session")}
+                      onClick={() => navigate("/my-consultation/therapy-session")}
                     >
                       <img
                         src={helpButton}

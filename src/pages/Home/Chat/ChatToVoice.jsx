@@ -690,7 +690,7 @@ const ChatToVoice = () => {
   };
 
   return (
-    <div>
+    <div className="chat-page">
       <ChatSidebar
         chatList={chatList}
         onSelectChat={handleOpenChat}

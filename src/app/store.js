@@ -13,6 +13,7 @@ import chatReducer from "../features/chat/chatSlice";
 import gamesReducer from "../features/home/games/gamesSlice";
 import secretJournalReducer from "../features/home/secret journal/secretjournalSlice";
 import bookingReducer from "../features/booking/bookingSlice";
+import callReducer from "../features/call/callSlice";
 
 const store = configureStore({
   reducer: {
@@ -30,6 +31,7 @@ const store = configureStore({
      games: gamesReducer,
      secretJournal: secretJournalReducer,
      booking: bookingReducer,
+     call: callReducer,
   },
 });
 

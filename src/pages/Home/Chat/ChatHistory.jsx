@@ -53,20 +53,17 @@ const ChatHistory = () => {
 
   return (
     <div style={{ display: "flex" }}>
-      {/* ================= SIDEBAR ================= */}
       <ChatSidebar
         chatList={chatList}
         onSelectChat={handleOpenChat}
         selectedChatId={selectedChatId}
       />
 
-      {/* ================= MAIN CONTENT ================= */}
       <div className="main-content">
         <div
           className="connection-container"
           style={{ backgroundImage: "url(/images/chat-bg.png)" }}
         >
-          {/* ================= MESSAGES ================= */}
           <div className="chat-messages" style={{ width: "77rem" }}>
             {messages.length === 0 ? (
               <div className="empty-chat-state">

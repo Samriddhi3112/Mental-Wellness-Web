@@ -8,6 +8,8 @@
 
 // export default ProtectedRoutes;
 
+//-------------------------------------------------------------
+
 import { Outlet, Navigate } from "react-router-dom";
 
 const ProtectedRoutes = () => {
@@ -17,6 +19,7 @@ const ProtectedRoutes = () => {
   const isAuthenticated = token || isGuest;
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
+  
 };
 
 export default ProtectedRoutes;
