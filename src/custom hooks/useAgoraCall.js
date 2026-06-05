@@ -47,21 +47,34 @@ export function useAgoraCall({ bookingId, isAdmin = false, localVideoRef, remote
 
     // Remote user joined → subscribe karo
     client.on("user-published", async (user, mediaType) => {
-      await client.subscribe(user, mediaType);
+  await client.subscribe(user, mediaType);
 
-      if (mediaType === "video" && remoteVideoRef?.current) {
+  if (mediaType === "video") {
+    // Ref null hai to wait karke retry karo
+    const playVideo = (attempts = 0) => {
+      if (remoteVideoRef?.current) {
         user.videoTrack?.play(remoteVideoRef.current);
+        console.log("[Agora] Playing remote video ✓");
+      } else if (attempts < 10) {
+        console.log("[Agora] remoteVideoRef null, retry", attempts + 1);
+        setTimeout(() => playVideo(attempts + 1), 300);
+      } else {
+        console.error("[Agora] remoteVideoRef never became available");
       }
-      if (mediaType === "audio") {
-        user.audioTrack?.play();
-      }
+    };
+    playVideo();
+  }
 
-      dispatch(addRemoteUser({
-        uid: user.uid,
-        hasVideo: mediaType === "video",
-        hasAudio: mediaType === "audio",
-      }));
-    });
+  if (mediaType === "audio") {
+    user.audioTrack?.play();
+  }
+
+  dispatch(addRemoteUser({
+    uid: user.uid,
+    hasVideo: mediaType === "video",
+    hasAudio: mediaType === "audio",
+  }));
+});
 
     // Remote user left
     client.on("user-unpublished", (user, mediaType) => {

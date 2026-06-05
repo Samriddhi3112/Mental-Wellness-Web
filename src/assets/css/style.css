@@ -288,6 +288,28 @@ input[type="number"]::-webkit-inner-spin-button {
   font-weight: 600;
   margin: 0;
 }
+.row {
+  flex-wrap: wrap !important;
+}
+
+.login-left,
+.login-right {
+  display: block !important;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .login-left,
+  .login-right {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+.login-right {
+  display: block !important;
+  min-height: 100vh !important;
+}
 
 .loader-overlay {
   position: fixed;
@@ -315,6 +337,9 @@ input[type="number"]::-webkit-inner-spin-button {
   100% {
     transform: rotate(360deg);
   }
+}
+.row {
+  flex-wrap: wrap !important;
 }
 
 .container {
@@ -1292,7 +1317,7 @@ background:#e84b20;
 }
 .container-fluid .login-left .meditation-illustration img {
   max-width: 65%;
-  width: 60%;
+  /* width: 60%; */
 }
 .container-fluid .login-left .copyright {
   font-size: 12px;
@@ -2824,6 +2849,13 @@ body {
   position: absolute;
   left: 15%;
   bottom: 0px;
+}
+@media (max-width: 991px) {
+  .login-left,
+  .login-right {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
 }
 
 .container-fluid .login-right {
@@ -6217,3 +6249,11 @@ background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
   overflow-wrap: break-word;
 }
 
+.login-right {
+  min-height: 100vh;
+}
+@media (max-width: 991px) {
+  .login-left, .login-right {
+    width: 100%;
+  }
+}

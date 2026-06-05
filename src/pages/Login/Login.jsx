@@ -153,8 +153,8 @@ const Login = () => {
 
   return (
     <div className="container-fluid" >
-      <div className="row">
-        <div className="col-lg-6 a" >
+      <div className="row g-0" style={{ minHeight: "100vh" }}>
+        <div className="col-12 col-md-6 col-lg-6 a" >
           <div className="login-left">
             <div className="logo-container">
               <div className="logo-icon">
@@ -179,7 +179,7 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="col-lg-6 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#030F25" }}>
+        <div className="col-12 col-md-6 col-lg-6 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#030F25" }}>
           <div className="login-right">
             <h2 className="welcome-title">Welcome back</h2>
             <p className="welcome-description">

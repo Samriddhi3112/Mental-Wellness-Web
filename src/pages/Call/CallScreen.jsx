@@ -2,13 +2,26 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAgoraCall } from "../../custom hooks/useAgoraCall";
-import { generateCallToken, getCallInfo, toggleMute, toggleVideo } from "../../features/call/callSlice";
+import {
+  generateCallToken,
+  getCallInfo,
+  toggleMute,
+  toggleVideo,
+} from "../../features/call/callSlice";
 import { useTranslation } from "react-i18next";
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 const MicIcon = ({ muted }) => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-    stroke={muted ? "#ef4444" : "#fff"} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={muted ? "#ef4444" : "#fff"}
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     {muted ? (
       <>
         <line x1="1" y1="1" x2="23" y2="23" />
@@ -29,8 +42,16 @@ const MicIcon = ({ muted }) => (
 );
 
 const CamIcon = ({ off }) => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-    stroke={off ? "#ef4444" : "#fff"} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={off ? "#ef4444" : "#fff"}
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     {off ? (
       <>
         <line x1="1" y1="1" x2="23" y2="23" />
@@ -47,16 +68,32 @@ const CamIcon = ({ off }) => (
 );
 
 const PhoneOffIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-    stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#fff"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 1 3.18 2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72c.13.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.68 8.91" />
     <line x1="1" y1="1" x2="23" y2="23" />
   </svg>
 );
 
 const UserIcon = () => (
-  <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
-    stroke="#94a3b8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="48"
+    height="48"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#94a3b8"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
     <circle cx="12" cy="7" r="4" />
   </svg>
@@ -75,7 +112,9 @@ function CallTimer({ startedAt }) {
   }, [startedAt]);
 
   const h = Math.floor(elapsed / 3600);
-  const m = Math.floor((elapsed % 3600) / 60).toString().padStart(2, "0");
+  const m = Math.floor((elapsed % 3600) / 60)
+    .toString()
+    .padStart(2, "0");
   const s = (elapsed % 60).toString().padStart(2, "0");
   return (
     <span style={{ fontVariantNumeric: "tabular-nums" }}>
@@ -89,8 +128,16 @@ export default function CallScreen({ bookingId, isAdmin = false, onCallEnd }) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const { tokenData, callInfo, tokenLoading, tokenError, isMuted, isVideoOff, remoteUsers, isInCall } =
-    useSelector((state) => state.call);
+  const {
+    tokenData,
+    callInfo,
+    tokenLoading,
+    tokenError,
+    isMuted,
+    isVideoOff,
+    remoteUsers,
+    isInCall,
+  } = useSelector((state) => state.call);
 
   const localVideoRef = useRef(null);
   const remoteVideoRef = useRef(null);
@@ -114,8 +161,18 @@ export default function CallScreen({ bookingId, isAdmin = false, onCallEnd }) {
     const init = async () => {
       setJoining(true);
       try {
-        const result = await dispatch(generateCallToken({ bookingId, isAdmin })).unwrap();
+        const result = await dispatch(
+          generateCallToken({ bookingId, isAdmin }),
+        ).unwrap();
+
         const td = result.data || result;
+        // generateCallToken ke baad log karo
+        console.log(
+          "[Token] channelNameiiiiiiiiiiiiiiiiiiiiiiiiiii:",
+          td.channelName,
+        );
+        console.log("[Token] uidiiiiiiiiiiiiiiii:", td.uid);
+        console.log("[Token] appIdiiiiiiiiiiiiiiiiiiiiiiiii:", td.appId);
         await joinCall(td);
       } catch (err) {
         console.error("[CallScreen] Init failed:", err);
@@ -149,17 +206,16 @@ export default function CallScreen({ bookingId, isAdmin = false, onCallEnd }) {
   return (
     <div style={styles.overlay}>
       <div style={styles.container}>
-
         {/* Header */}
         <div style={styles.header}>
           <div style={styles.headerLeft}>
             <div style={styles.liveDot} />
             <span style={styles.liveText}>
               {joining
-                ? (t("connecting") || "Connecting...")
+                ? t("connecting") || "Connecting..."
                 : isInCall
-                ? (t("liveSession") || "Live Session")
-                : (t("callEnded") || "Call Ended")}
+                  ? t("liveSession") || "Live Session"
+                  : t("callEnded") || "Call Ended"}
             </span>
           </div>
           {isInCall && (
@@ -170,47 +226,56 @@ export default function CallScreen({ bookingId, isAdmin = false, onCallEnd }) {
         </div>
 
         {/* Error */}
-        {tokenError && (
-          <div style={styles.errorBanner}>
-            {tokenError}
-          </div>
-        )}
+        {tokenError && <div style={styles.errorBanner}>{tokenError}</div>}
 
         {/* Video Area */}
         <div style={styles.videoArea}>
-
           {/* Remote video / avatar */}
           <div style={styles.remoteContainer}>
-            {isVoiceOnly || !hasRemote ? (
-              <div style={styles.avatarContainer}>
-                <div style={styles.avatar}>
-                  <UserIcon />
-                </div>
-                <p style={styles.waitingText}>
-                  {isVoiceOnly
-                    ? (t("voiceCallActive") || "Voice Call Active")
-                    : (t("waitingForCounselor") || "Waiting for Counselor...")}
-                </p>
-                {isVoiceOnly && hasRemote && (
-                  <div style={styles.audioIndicator}>
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} style={{ ...styles.audioBar, animationDelay: `${i * 0.15}s` }} />
-                    ))}
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div ref={remoteVideoRef} style={styles.remoteVideo} />
-            )}
-          </div>
+  {/* remoteVideoRef hamesha render karo */}
+  <div 
+    ref={remoteVideoRef} 
+    style={{
+      ...styles.remoteVideo,
+      display: isVoiceOnly ? "none" : "block"  // voice mode mein hide karo
+    }} 
+  />
+  
+  {/* Avatar sirf tab dikhao jab remote user nahi hai */}
+  {(!hasRemote || isVoiceOnly) && (
+    <div style={{...styles.avatarContainer, position: "absolute"}}>
+      <div style={styles.avatar}>
+        <UserIcon />
+      </div>
+      <p style={styles.waitingText}>
+        {isVoiceOnly ? "Voice Call Active" : "Waiting for Counselor..."}
+      </p>
+      {isVoiceOnly && hasRemote && (
+        <div style={styles.audioIndicator}>
+          {[1, 2, 3].map((i) => (
+            <div key={i} style={{ ...styles.audioBar, animationDelay: `${i * 0.15}s` }} />
+          ))}
+        </div>
+      )}
+    </div>
+  )}
+</div>
 
           {/* Local video (video mode only) */}
           {!isVoiceOnly && (
             <div style={styles.localVideoWrapper}>
               {isVideoOff ? (
                 <div style={styles.localVideoOff}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                    stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#94a3b8"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                     <circle cx="9" cy="7" r="4" />
                   </svg>
@@ -228,24 +293,33 @@ export default function CallScreen({ bookingId, isAdmin = false, onCallEnd }) {
           <button
             style={{ ...styles.ctrlBtn, ...(isMuted ? styles.ctrlBtnOff : {}) }}
             onClick={handleMicToggle}
-            title={isMuted ? (t("unmute") || "Unmute") : (t("mute") || "Mute")}
+            title={isMuted ? t("unmute") || "Unmute" : t("mute") || "Mute"}
           >
             <MicIcon muted={isMuted} />
             <span style={styles.ctrlLabel}>
-              {isMuted ? (t("unmute") || "Unmute") : (t("mute") || "Mute")}
+              {isMuted ? t("unmute") || "Unmute" : t("mute") || "Mute"}
             </span>
           </button>
 
           {/* Camera (only for video mode) */}
           {!isVoiceOnly && (
             <button
-              style={{ ...styles.ctrlBtn, ...(isVideoOff ? styles.ctrlBtnOff : {}) }}
+              style={{
+                ...styles.ctrlBtn,
+                ...(isVideoOff ? styles.ctrlBtnOff : {}),
+              }}
               onClick={handleCamToggle}
-              title={isVideoOff ? (t("startVideo") || "Start Video") : (t("stopVideo") || "Stop Video")}
+              title={
+                isVideoOff
+                  ? t("startVideo") || "Start Video"
+                  : t("stopVideo") || "Stop Video"
+              }
             >
               <CamIcon off={isVideoOff} />
               <span style={styles.ctrlLabel}>
-                {isVideoOff ? (t("startVideo") || "Camera") : (t("stopVideo") || "Camera")}
+                {isVideoOff
+                  ? t("startVideo") || "Camera"
+                  : t("stopVideo") || "Camera"}
               </span>
             </button>
           )}
@@ -256,7 +330,6 @@ export default function CallScreen({ bookingId, isAdmin = false, onCallEnd }) {
             <span style={styles.ctrlLabel}>{t("endCall") || "End Call"}</span>
           </button>
         </div>
-
       </div>
 
       {/* Audio wave animation (voice mode) */}
@@ -342,21 +415,29 @@ const styles = {
     backgroundColor: "#0a0f1e",
     minHeight: 340,
   },
-  remoteContainer: {
-    width: "100%",
-    height: "100%",
-    minHeight: 340,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  remoteVideo: {
-    width: "100%",
-    height: "100%",
-    minHeight: 340,
-    objectFit: "cover",
-    backgroundColor: "#000",
-  },
+// remoteVideo div ka style ye karo
+remoteVideo: {
+  width: "100%",
+  height: "100%",
+  minHeight: 340,
+  objectFit: "cover",
+  backgroundColor: "#000",
+  position: "absolute",
+  top: 0,
+  left: 0,
+},
+
+// remoteContainer ka style ye karo  
+remoteContainer: {
+  width: "100%",
+  height: "100%",
+  minHeight: 340,
+  position: "relative",   // ← ye add karo
+  backgroundColor: "#000",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+},
   avatarContainer: {
     display: "flex",
     flexDirection: "column",
