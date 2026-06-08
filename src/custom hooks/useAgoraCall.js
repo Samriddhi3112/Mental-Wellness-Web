@@ -245,6 +245,7 @@ export function useAgoraCall({ bookingId, isAdmin = false, localVideoRef, remote
     leaveCall,
     toggleMicMute,
     toggleCameraOff,
+    localTracksRef, clientRef,
     isJoined: isJoinedRef.current,
   };
 }

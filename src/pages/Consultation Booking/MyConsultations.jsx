@@ -973,6 +973,7 @@ import CancelBookingModal from "../../components/modals/CancelBookingModal";
 import BookingCancelledModal from "../../components/modals/BookingCancelledModal";
 import CallScreen from "../Call/CallScreen"; // ← NEW
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 // ... (apne saare Icon components waise hi rakhein) ...
 
@@ -1177,17 +1178,17 @@ export default function MyConsultations() {
   };
 
   // IST to UTC convert
-  const istToUtc = (timeStr) => {
-    const [h, m] = timeStr.split(":").map(Number);
-    let utcH = h - 5;
-    let utcM = m - 30;
-    if (utcM < 0) {
-      utcM += 60;
-      utcH -= 1;
-    }
-    if (utcH < 0) utcH += 24;
-    return `${String(utcH).padStart(2, "0")}:${String(utcM).padStart(2, "0")}`;
-  };
+  // const istToUtc = (timeStr) => {
+  //   const [h, m] = timeStr.split(":").map(Number);
+  //   let utcH = h - 5;
+  //   let utcM = m - 30;
+  //   if (utcM < 0) {
+  //     utcM += 60;
+  //     utcH -= 1;
+  //   }
+  //   if (utcH < 0) utcH += 24;
+  //   return `${String(utcH).padStart(2, "0")}:${String(utcM).padStart(2, "0")}`;
+  // };
   // "16:40" IST → "11:10" UTC
   // ── NEW: call state ──────────────────────────────────────────────────────
   const { callInfo, callInfoLoading } = useSelector((state) => state.call);
@@ -1224,10 +1225,13 @@ export default function MyConsultations() {
   };
 
   // ── NEW: Join Session handler ─────────────────────────────────────────────
+  // MyConsultations.jsx mein sirf handleJoinSession replace karo
+  // react-toastify import bhi add karo file ke top pe:
+  // import { toast } from "react-toastify";
+
   const handleJoinSession = async (e, bookingId) => {
     e.stopPropagation();
     setJoiningBookingId(bookingId);
-
     try {
       const result = await dispatch(
         getCallInfo({ bookingId, isAdmin: false }),
@@ -1235,45 +1239,126 @@ export default function MyConsultations() {
       const info = result.data || result;
 
       if (!info.canJoin) {
-        console.log("Current time UTC:", new Date().toISOString());
-        console.log("canJoin:", info.canJoin);
-        console.log("joinWindow:", info.joinWindow);
+        // joinWindow.from UTC se time nikalo
         const d = new Date(info.joinWindow?.from);
         const h = d.getUTCHours();
         const m = d.getUTCMinutes();
         const ampm = h >= 12 ? "PM" : "AM";
         const hour = h % 12 || 12;
-        const from = `${String(hour).padStart(2, "0")}:${String(m).padStart(2, "0")} ${ampm}`;
-        alert(
-          `Session abhi join nahi ho sakta. Join window starts at: ${from}`,
-        );
+        const fromTime = `${String(hour).padStart(2, "0")}:${String(m).padStart(2, "0")} ${ampm}`;
+
+        // Kitni der baad open hoga — user-friendly message
+        const nowUTC = Date.now();
+        const windowStartUTC = new Date(info.joinWindow?.from).getTime();
+        const diffMs = windowStartUTC - nowUTC;
+        const diffMins = Math.ceil(diffMs / 60000);
+
+        if (diffMins > 0) {
+          toast.warning(
+            `Session ${diffMins} minute${diffMins > 1 ? "s" : ""} mein available hogi. Join window: ${fromTime}`,
+            { position: "top-center", autoClose: 4000 },
+          );
+        } else {
+          toast.info(
+            `Join window closes at ${fromTime}. Session already ended.`,
+            { position: "top-center", autoClose: 4000 },
+          );
+        }
         return;
       }
 
+      // canJoin true — CallScreen open karo
       dispatch(setActiveBooking(bookingId));
       setActiveCallBookingId(bookingId);
     } catch (err) {
       const msg = err?.message || "Call join karne mein error aayi";
-      // Error handling:
-      if (msg?.toLowerCase().includes("not assigned")) {
-        alert(t("waitingForCounselor") || "Counselor abhi assign nahi hua");
+
+      if (
+        msg?.toLowerCase().includes("not assigned") ||
+        msg?.toLowerCase().includes("expert not assigned")
+      ) {
+        toast.warning(
+          "Counselor abhi assign nahi hua. Thodi der mein try karein.",
+          {
+            position: "top-center",
+            autoClose: 4000,
+          },
+        );
       } else if (msg?.toLowerCase().includes("cancelled")) {
-        alert(t("bookingCancelled") || "Ye booking cancel ho chuki hai");
+        toast.error("Ye booking cancel ho chuki hai.", {
+          position: "top-center",
+          autoClose: 4000,
+        });
+      } else if (msg?.toLowerCase().includes("already ended")) {
+        toast.info("Ye session already khatam ho chuka hai.", {
+          position: "top-center",
+          autoClose: 4000,
+        });
       } else {
-        alert(msg);
+        toast.error(msg, { position: "top-center", autoClose: 4000 });
       }
     } finally {
       setJoiningBookingId(null);
     }
   };
 
-  // ── NEW: Call end handler ─────────────────────────────────────────────────
+  // handleCallEnd same rahega:
   const handleCallEnd = () => {
     setActiveCallBookingId(null);
     dispatch(resetCallState());
     dispatch(getMyBookings({ page: 1, limit: 20 }));
     dispatch(getBookingSummary());
   };
+  // const handleJoinSession = async (e, bookingId) => {
+  //   e.stopPropagation();
+  //   setJoiningBookingId(bookingId);
+
+  //   try {
+  //     const result = await dispatch(
+  //       getCallInfo({ bookingId, isAdmin: false }),
+  //     ).unwrap();
+  //     const info = result.data || result;
+
+  //     if (!info.canJoin) {
+  //       console.log("Current time UTC:", new Date().toISOString());
+  //       console.log("canJoin:", info.canJoin);
+  //       console.log("joinWindow:", info.joinWindow);
+  //       const d = new Date(info.joinWindow?.from);
+  //       const h = d.getUTCHours();
+  //       const m = d.getUTCMinutes();
+  //       const ampm = h >= 12 ? "PM" : "AM";
+  //       const hour = h % 12 || 12;
+  //       const from = `${String(hour).padStart(2, "0")}:${String(m).padStart(2, "0")} ${ampm}`;
+  //       alert(
+  //         `Session abhi join nahi ho sakta. Join window starts at: ${from}`,
+  //       );
+  //       return;
+  //     }
+
+  //     dispatch(setActiveBooking(bookingId));
+  //     setActiveCallBookingId(bookingId);
+  //   } catch (err) {
+  //     const msg = err?.message || "Call join karne mein error aayi";
+  //     // Error handling:
+  //     if (msg?.toLowerCase().includes("not assigned")) {
+  //       alert(t("waitingForCounselor") || "Counselor abhi assign nahi hua");
+  //     } else if (msg?.toLowerCase().includes("cancelled")) {
+  //       alert(t("bookingCancelled") || "Ye booking cancel ho chuki hai");
+  //     } else {
+  //       alert(msg);
+  //     }
+  //   } finally {
+  //     setJoiningBookingId(null);
+  //   }
+  // };
+
+  // ── NEW: Call end handler ─────────────────────────────────────────────────
+  // const handleCallEnd = () => {
+  //   setActiveCallBookingId(null);
+  //   dispatch(resetCallState());
+  //   dispatch(getMyBookings({ page: 1, limit: 20 }));
+  //   dispatch(getBookingSummary());
+  // };
   // ─────────────────────────────────────────────────────────────────────────
 
   return (
