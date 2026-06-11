@@ -951,12 +951,6 @@
 //   );
 // }
 
-//-----------------------
-// Updated MyConsultations.jsx — sirf relevant changes dikhaye hain
-// Apni existing file mein ye changes karo:
-
-// ── 1. Imports mein add karo ─────────────────────────────────────────────────
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -968,21 +962,19 @@ import {
   getCallInfo,
   setActiveBooking,
   resetCallState,
-} from "../../features/call/callSlice"; // ← NEW
+} from "../../features/call/callSlice";
 import CancelBookingModal from "../../components/modals/CancelBookingModal";
 import BookingCancelledModal from "../../components/modals/BookingCancelledModal";
-import CallScreen from "../Call/CallScreen"; // ← NEW
+import CallScreen from "../Call/CallScreen";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-
-// ... (apne saare Icon components waise hi rakhein) ...
 
 export default function MyConsultations() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const { bookings, loading } = useSelector((state) => state.booking?.bookings);
-  const { upcoming, completed, cancelled } = useSelector(
+  const { upcoming, ended, cancelled } = useSelector(
     (state) => state.booking.summary,
   );
 
@@ -1126,20 +1118,29 @@ export default function MyConsultations() {
     </svg>
   );
 
-  const getBadgeClass = (status) => {
-    if (status === "pending_assignment" || status === "assigned")
+  const getEffectiveStatus = (booking) => {
+    if (booking.status === "cancelled") return "cancelled";
+    if (booking.callStatus === "ended") return "completed";
+    if (
+      booking.status === "pending_assignment" ||
+      booking.status === "assigned"
+    )
       return "upcoming";
-    if (status === "completed") return "completed";
-    if (status === "cancelled") return "cancelled";
     return "upcoming";
   };
 
-  const getBadgeLabel = (status, t) => {
-    if (status === "pending_assignment" || status === "assigned")
-      return t("upcoming").toUpperCase();
-    if (status === "completed") return t("completed").toUpperCase();
-    if (status === "cancelled") return t("cancelled").toUpperCase();
-    return status.toUpperCase();
+  const getBadgeClass = (booking) => {
+    const eff = getEffectiveStatus(booking);
+    if (eff === "completed") return "completed";
+    if (eff === "cancelled") return "cancelled";
+    return "upcoming";
+  };
+
+  const getBadgeLabel = (booking, t) => {
+    const eff = getEffectiveStatus(booking);
+    if (eff === "completed") return t("completed").toUpperCase();
+    if (eff === "cancelled") return t("cancelled").toUpperCase();
+    return t("upcoming").toUpperCase();
   };
 
   const formatTime = (utcString) => {
@@ -1189,11 +1190,10 @@ export default function MyConsultations() {
   //   if (utcH < 0) utcH += 24;
   //   return `${String(utcH).padStart(2, "0")}:${String(utcM).padStart(2, "0")}`;
   // };
-  // "16:40" IST → "11:10" UTC
-  // ── NEW: call state ──────────────────────────────────────────────────────
+
   const { callInfo, callInfoLoading } = useSelector((state) => state.call);
-  const [activeCallBookingId, setActiveCallBookingId] = useState(null); // call screen show karne ke liye
-  const [joiningBookingId, setJoiningBookingId] = useState(null); // loading state per card
+  const [activeCallBookingId, setActiveCallBookingId] = useState(null);
+  const [joiningBookingId, setJoiningBookingId] = useState(null);
   // ─────────────────────────────────────────────────────────────────────────
 
   const [activeFilter, setActiveFilter] = useState("all");
@@ -1203,11 +1203,11 @@ export default function MyConsultations() {
 
   const filteredBookings =
     bookings?.filter((b) => {
+      const eff = getEffectiveStatus(b);
       if (activeFilter === "all") return true;
-      if (activeFilter === "upcoming")
-        return b.status === "pending_assignment" || b.status === "assigned";
-      if (activeFilter === "completed") return b.status === "completed";
-      if (activeFilter === "cancelled") return b.status === "cancelled";
+      if (activeFilter === "upcoming") return eff === "upcoming";
+      if (activeFilter === "ended") return eff === "completed";
+      if (activeFilter === "cancelled") return eff === "cancelled";
       return true;
     }) || [];
 
@@ -1224,11 +1224,6 @@ export default function MyConsultations() {
     dispatch(getBookingSummary());
   };
 
-  // ── NEW: Join Session handler ─────────────────────────────────────────────
-  // MyConsultations.jsx mein sirf handleJoinSession replace karo
-  // react-toastify import bhi add karo file ke top pe:
-  // import { toast } from "react-toastify";
-
   const handleJoinSession = async (e, bookingId) => {
     e.stopPropagation();
     setJoiningBookingId(bookingId);
@@ -1239,7 +1234,6 @@ export default function MyConsultations() {
       const info = result.data || result;
 
       if (!info.canJoin) {
-        // joinWindow.from UTC se time nikalo
         const d = new Date(info.joinWindow?.from);
         const h = d.getUTCHours();
         const m = d.getUTCMinutes();
@@ -1247,7 +1241,6 @@ export default function MyConsultations() {
         const hour = h % 12 || 12;
         const fromTime = `${String(hour).padStart(2, "0")}:${String(m).padStart(2, "0")} ${ampm}`;
 
-        // Kitni der baad open hoga — user-friendly message
         const nowUTC = Date.now();
         const windowStartUTC = new Date(info.joinWindow?.from).getTime();
         const diffMs = windowStartUTC - nowUTC;
@@ -1267,7 +1260,6 @@ export default function MyConsultations() {
         return;
       }
 
-      // canJoin true — CallScreen open karo
       dispatch(setActiveBooking(bookingId));
       setActiveCallBookingId(bookingId);
     } catch (err) {
@@ -1302,7 +1294,6 @@ export default function MyConsultations() {
     }
   };
 
-  // handleCallEnd same rahega:
   const handleCallEnd = () => {
     setActiveCallBookingId(null);
     dispatch(resetCallState());
@@ -1379,7 +1370,7 @@ export default function MyConsultations() {
                 <div className="stat-icon dark">
                   <IconCheck />
                 </div>
-                <div className="stat-num">{completed}</div>
+                <div className="stat-num">{ended}</div>
                 <div className="stat-label">{t("completedSessions")}</div>
               </div>
               <div className="stat-card">
@@ -1398,7 +1389,7 @@ export default function MyConsultations() {
                 {[
                   { key: "all", label: t("all") },
                   { key: "upcoming", label: t("upcoming") },
-                  { key: "completed", label: t("completed") },
+                  { key: "ended", label: t("completed") },
                   { key: "cancelled", label: t("cancelled") },
                 ].map(({ key, label }) => (
                   <button
@@ -1435,11 +1426,15 @@ export default function MyConsultations() {
             ) : (
               <div className="sessions-grid">
                 {filteredBookings?.map((booking) => {
-                  const isPending = booking.status === "pending_assignment";
-                  const isAssigned = booking.status === "assigned";
-                  const isCompleted = booking.status === "completed";
-                  const isCancelled = booking.status === "cancelled";
-                  const isJoiningThis = joiningBookingId === booking._id; // ← NEW
+                  const eff = getEffectiveStatus(booking);
+                  const isPending =
+                    eff === "upcoming" &&
+                    booking.status === "pending_assignment";
+                  const isAssigned =
+                    eff === "upcoming" && booking.status === "assigned";
+                  const isCompleted = eff === "completed";
+                  const isCancelled = eff === "cancelled";
+                  const isJoiningThis = joiningBookingId === booking._id;
 
                   return (
                     <div
@@ -1452,9 +1447,8 @@ export default function MyConsultations() {
                       }
                     >
                       {/* Badge */}
-                      <div className={`badge ${getBadgeClass(booking.status)}`}>
-                        {/* ... same SVG icons as before ... */}
-                        {getBadgeLabel(booking.status, t)}
+                      <div className={`badge ${getBadgeClass(booking)}`}>
+                        {getBadgeLabel(booking, t)}
                       </div>
 
                       <div className="session-date">
@@ -1499,7 +1493,7 @@ export default function MyConsultations() {
                         </div>
                       )}
 
-                      {/* ── UPDATED: assigned → Join Session (ab functional!) ── */}
+                      {/* assigned & not yet ended: Join Session */}
                       {isAssigned && (
                         <div className="session-actions">
                           <button
