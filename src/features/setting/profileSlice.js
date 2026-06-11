@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { credAndUrl } from "../../utils/config";
+import { logoutUser } from "../auth/authSlice";
 
 // Thunk to fetch user profile
 export const fetchUserProfile = createAsyncThunk(
@@ -80,6 +81,9 @@ const profileSlice = createSlice({
       state.error = null;
       state.loading = false;
     },
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -113,10 +117,16 @@ const profileSlice = createSlice({
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.user = null;
+      })
+      .addCase(logoutUser.rejected, (state) => {
+        state.user = null;
       });
   },
 });
 
-export const { clearProfile } = profileSlice.actions;
+export const { clearProfile, setUser } = profileSlice.actions;
 
 export default profileSlice.reducer;

@@ -296,7 +296,7 @@ const Step2 = () => {
               </form>
             </div>
 
-            <p className="text-center english">English (US)</p>
+            {/* <p className="text-center english">English (US)</p> */}
           </div>
         </div>
       </div>

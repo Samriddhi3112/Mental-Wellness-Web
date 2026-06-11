@@ -5,6 +5,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* html, body {
+  overflow-x: hidden;
+  width: 0%;
+} */
 .form-control {
   cursor: pointer;
   transition: all 0.2s ease;
@@ -6064,12 +6068,12 @@ background: linear-gradient(180deg, #ffffff 0%, #fffdfb 100%);
       padding: 0.55rem 1.2rem; border-radius: 30px;
       font-size: 0.82rem; font-weight: 600; cursor: pointer;
       /* font-family: 'DM Sans', sans-serif; */
-      box-shadow: 0 3px 10px rgba(242,101,34,0.28);
+      box-shadow: 0 3px 10px #462297;
       transition: background .2s, transform .15s, box-shadow .2s;
     }
     .btn-complete:hover:not(:disabled) {
       background: linear-gradient(135deg, #462297, #7631B2); transform: translateY(-1px);
-      box-shadow: 0 5px 16px rgba(242,101,34,0.35);
+      box-shadow: 0 5px 16px #462297;
     }
     .btn-complete:disabled { opacity: 0.65; cursor: not-allowed; }
     .btn-complete:active:not(:disabled) { transform: scale(0.97); }

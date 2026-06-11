@@ -11,7 +11,8 @@ import logo from "../../assets/images/logo-dark.png";
 import backIcon from "../../assets/images/back-icon.svg";
 import meditation from "../../assets/images/meditation-two.png";
 import otpIcon from "../../assets/images/otp-icon.svg";
-import {getFCMToken} from "../../utils/firebase";
+import { getFCMToken } from "../../utils/firebase";
+import { fetchUserProfile, setUser } from "../../features/setting/profileSlice";
 
 const OTPVerify = () => {
   const location = useLocation();
@@ -52,7 +53,7 @@ const OTPVerify = () => {
       document.getElementById(`otp-${index - 1}`).focus();
     }
   };
-  
+
   const handleVerifyOtp = async () => {
     const otpValue = otp.join("");
 
@@ -61,11 +62,11 @@ const OTPVerify = () => {
       return;
     }
 
-     const fcmToken = await getFCMToken();
+    const fcmToken = await getFCMToken();
 
     const payload = emailOrPhone.includes("@")
-      ? { email: emailOrPhone, otp: otpValue,deviceToken: fcmToken, }
-      : { phone: emailOrPhone, otp: otpValue,deviceToken: fcmToken,};
+      ? { email: emailOrPhone, otp: otpValue, deviceToken: fcmToken }
+      : { phone: emailOrPhone, otp: otpValue, deviceToken: fcmToken };
 
     try {
       const res = isNewUser
@@ -79,6 +80,9 @@ const OTPVerify = () => {
 
       // Scenario 1: User does not exist → onboarding1
       if (res?.message === "User does not exist") {
+        if (res?.data?.user) {
+          dispatch(setUser(res.data.user));
+        }
         toast.info("Please complete registration");
         navigate("/onboarding1");
         return;
@@ -100,6 +104,13 @@ const OTPVerify = () => {
         localStorage.setItem("token", token);
         localStorage.setItem("userData", JSON.stringify(user));
         localStorage.removeItem("isGuest");
+        console.log(
+          "USER FROM LOGIN APIIIIIIIIIIIIIIII:",
+          JSON.stringify(user, null, 2),
+        );
+        console.log("Before dispatch, user:", user);
+        dispatch(setUser(user));
+        dispatch(fetchUserProfile());
 
         toast.success(res?.message);
 
@@ -120,6 +131,10 @@ const OTPVerify = () => {
         localStorage.setItem("token", token);
         localStorage.setItem("userData", JSON.stringify(user));
         localStorage.removeItem("isGuest");
+        console.log("USER FROM LOGIN API:", JSON.stringify(user, null, 2));
+
+        dispatch(setUser(user));
+        dispatch(fetchUserProfile());
 
         toast.success(res?.message || "Login successful");
 
@@ -302,7 +317,10 @@ const OTPVerify = () => {
           </div>
         </div>
 
-        <div className="col-12 col-md-6 col-lg-6 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#030F25" }}>
+        <div
+          className="col-12 col-md-6 col-lg-6 d-flex align-items-center justify-content-center"
+          style={{ backgroundColor: "#030F25" }}
+        >
           <div className="login-right">
             <div className="text-center mb-4">
               <div className="d-inline-flex align-items-center justify-content-center">

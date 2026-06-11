@@ -19,13 +19,14 @@ const Header = ({ setSidebarOpen }) => {
   const userData = JSON.parse(localStorage.getItem("userData")) || {};
   const reduxUser = useSelector((state) => state.profile.user);
   console.log(window.history.length);
+  console.log("REDUX USER:", reduxUser);
 
   const localUser = JSON.parse(localStorage.getItem("userData")) || {};
   const user = reduxUser && reduxUser.name ? reduxUser : localUser;
   // const user = reduxUser || localUser;
 
   const userName = user?.name;
-  console.log(userData);
+  console.log(userName);
 
   const handleBack = () => {
     console.log("BACK CLICKED");

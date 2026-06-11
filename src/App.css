@@ -1,5 +1,6 @@
 /* @import url('../src/assets/css/responsive.css'); */
 @import url('../src/assets/css/style.css');
+
 .form-control {
   cursor: pointer;
   transition: all 0.2s ease;

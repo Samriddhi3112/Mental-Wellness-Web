@@ -293,7 +293,7 @@
   "save": "Save",
   "howWouldYouLikeToConnect":"How would you like to connect today?",
   "kaiReadyToListen": "Kai is ready to listen, judgment-free. Choose the way that feels most comfortable for you right now.",
-
+"startActivity":"Start Activity", 
   "journalDetails": "Journal Details",
   "talkWithVoice": "Talk with Voice",
   "chatWithText": "Chat with Text",

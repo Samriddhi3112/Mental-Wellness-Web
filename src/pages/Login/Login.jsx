@@ -10,7 +10,7 @@ import google from "../../assets/images/google.svg";
 import apple from "../../assets/images/apple.svg";
 import facebook from "../../assets/images/facebook.svg";
 import {getFCMToken} from "../../utils/firebase";
-
+import { setUser } from "../../features/setting/profileSlice";
 import { checkUserExists } from "../../features/auth/authSlice";
 import useDisableNavigation from "../../custom hooks/useDisableNavigation";
 
@@ -152,7 +152,7 @@ const Login = () => {
   // });
 
   return (
-    <div className="container-fluid" >
+    <div className="container-fluid" style={{paddingLeft:"none", paddingRight:"none"}}>
       <div className="row g-0" style={{ minHeight: "100vh" }}>
         <div className="col-12 col-md-6 col-lg-6 a" >
           <div className="login-left">
