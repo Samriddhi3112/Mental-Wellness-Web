@@ -387,7 +387,25 @@
   "completed": "ସମାପ୍ତ",
 
   "marking": "ଚିହ୍ନିତ କରାଯାଉଛି…",
-  "markComplete": "ସମାପ୍ତ ବୋଲି ଚିହ୍ନିତ କରନ୍ତୁ"
+  "markComplete": "ସମାପ୍ତ ବୋଲି ଚିହ୍ନିତ କରନ୍ତୁ",
+  "aFewQuestions": "କିଛି ପ୍ରଶ୍ନ",
+  "step": "ପଦକ୍ଷେପ",
+  "of": "ମଧ୍ୟରୁ",
+  "describeYourself": "ନିଜ ବିଷୟରେ କୁହନ୍ତୁ",
+  "back": "ପଛକୁ",
+  "skipForNow": "ଏବେ ଛାଡନ୍ତୁ",
+  "next": "ପରବର୍ତ୍ତୀ",
+  "submitting": "ଦାଖଲ କରାଯାଉଛି...",
+  "noQuestionsFound": "କୌଣସି ପ୍ରଶ୍ନ ମିଳିଲା ନାହିଁ",
+  "pleaseTryAgainLater": "ଦୟାକରି ପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
+  "goToHelp": "ସହାୟତାକୁ ଯାଆନ୍ତୁ",
+  "pleaseEnterAnswer": "ଦୟାକରି ଆଗକୁ ବଢିବା ପୂର୍ବରୁ ଉତ୍ତର ଦିଅନ୍ତୁ",
+  "answersSubmittedSuccessfully": "ଉତ୍ତର ସଫଳତାର ସହ ଦାଖଲ ହେଲା",
+  "speechRecognitionNotSupported": "ଭଏସ୍ ଚିହ୍ନଟ ସମର୍ଥିତ ନୁହେଁ",
+  "microphonePermissionDenied": "ମାଇକ୍ରୋଫୋନ୍ ଅନୁମତି ଅସ୍ୱୀକୃତ",
+  "somethingWentWrong": "କିଛି ଭୁଲ୍ ହୋଇଗଲା",
+  "copyrightText": "© 2026 ସେରିନ୍ ୱେଲନେସ୍ ଆପ୍। ସମସ୍ତ ଅଧିକାର ସଂରକ୍ଷିତ।",
+  "selectedLanguage": "ଓଡ଼ିଆ"
 
 
 

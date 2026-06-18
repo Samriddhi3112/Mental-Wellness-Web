@@ -404,7 +404,25 @@
   "completed": "पूर्ण",
 
   "marking": "चिह्नित किया जा रहा है…",
-  "markComplete": "पूर्ण चिह्नित करें"
+  "markComplete": "पूर्ण चिह्नित करें",
+  "aFewQuestions": "कुछ प्रश्न",
+  "step": "चरण",
+  "of": "में से",
+  "describeYourself": "अपने बारे में बताएं",
+  "back": "वापस",
+  "skipForNow": "अभी छोड़ें",
+  "next": "आगे",
+  "submitting": "जमा किया जा रहा है...",
+  "noQuestionsFound": "कोई प्रश्न नहीं मिला",
+  "pleaseTryAgainLater": "कृपया बाद में पुनः प्रयास करें।",
+  "goToHelp": "सहायता पर जाएं",
+  "pleaseEnterAnswer": "कृपया आगे बढ़ने से पहले अपना उत्तर दर्ज करें",
+  "answersSubmittedSuccessfully": "उत्तर सफलतापूर्वक जमा किए गए",
+  "speechRecognitionNotSupported": "वॉइस पहचान समर्थित नहीं है",
+  "microphonePermissionDenied": "माइक्रोफ़ोन अनुमति अस्वीकृत",
+  "somethingWentWrong": "कुछ गलत हो गया",
+  "copyrightText": "© 2026 सेरीन वेलनेस ऐप। सर्वाधिकार सुरक्षित।",
+  "selectedLanguage": "हिन्दी"
 
 
 

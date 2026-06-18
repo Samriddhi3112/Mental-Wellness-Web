@@ -388,7 +388,25 @@
   "completed": "সম্পূৰ্ণ",
 
   "marking": "চিহ্নিত কৰা হৈছে…",
-  "markComplete": "সম্পূৰ্ণ বুলি চিহ্নিত কৰক"
+  "markComplete": "সম্পূৰ্ণ বুলি চিহ্নিত কৰক",
+  "aFewQuestions": "কিছু প্ৰশ্ন",
+  "step": "পদক্ষেপ",
+  "of": "ৰ ভিতৰত",
+  "describeYourself": "নিজৰ বিষয়ে কওক",
+  "back": "উভতি যাওক",
+  "skipForNow": "এতিয়া এৰি দিয়ক",
+  "next": "পৰৱৰ্তী",
+  "submitting": "জমা দিয়া হৈছে...",
+  "noQuestionsFound": "কোনো প্ৰশ্ন পোৱা নগ'ল",
+  "pleaseTryAgainLater": "অনুগ্ৰহ কৰি পিছত পুনৰ চেষ্টা কৰক।",
+  "goToHelp": "সহায়তালৈ যাওক",
+  "pleaseEnterAnswer": "অনুগ্ৰহ কৰি আগবাঢ়াৰ আগতে আপোনাৰ উত্তৰ লিখক",
+  "answersSubmittedSuccessfully": "উত্তৰ সফলভাৱে জমা দিয়া হৈছে",
+  "speechRecognitionNotSupported": "ভয়েচ চিনাক্তকৰণ সমৰ্থিত নহয়",
+  "microphonePermissionDenied": "মাইক্ৰোফোন অনুমতি নাকচ কৰা হৈছে",
+  "somethingWentWrong": "কিবা ভুল হৈছে",
+  "copyrightText": "© 2026 Serene Wellness App. সকলো অধিকাৰ সংৰক্ষিত।",
+  "selectedLanguage": "অসমীয়া"
 
 
 

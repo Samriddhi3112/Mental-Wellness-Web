@@ -26,7 +26,6 @@
 
   "logoutTitle": "Confirm Logout",
   "logoutDesc": "Are you sure you want to logout from your account?",
-  "cancel": "Cancel",
 
   "faqs": "FAQs",
   "loadingFaqs": "Loading FAQs...",
@@ -136,7 +135,7 @@
   "freeCancellation": "Free cancellation up to 24h",
   "secureVideoConsultation": "Secure video consultation",
   "licensedProfessionalsOnly": "Licensed professionals only",
-  
+
   "cancelBookingTitle": "Cancel Booking?",
   "cancelBookingDescription": "Are you sure you want to cancel your session? This action cannot be undone.",
 
@@ -149,7 +148,7 @@
   "confirmCancellation": "Confirm Cancellation",
   "cancelling": "Cancelling...",
   "cancelBookingButton": "Cancel Booking",
-  
+
   "joinSession": "Join Session",
   "chooseYourMode": "Choose your mode",
   "connectToday": "How would you like to connect today?",
@@ -163,7 +162,7 @@
   "sessionSecurityInfo": "All sessions are end-to-end encrypted and private. Your data and conversations are never recorded without consent.",
 
   "continueToSession": "Continue to Session",
-  
+
   "selectedDuration": "Selected Duration",
   "minutesSession": "{{duration}} Minutes Session",
   "standardConsultationLength": "Standard consultation length",
@@ -189,7 +188,7 @@
   "booking": "Booking...",
   "confirmBooking": "Confirm Booking",
   "selectTimeSlot": "Select a time slot",
-  
+
   "today": "Today",
   "tomorrow": "Tomorrow",
 
@@ -217,7 +216,7 @@
   "loadingSlots": "Loading slots...",
   "noSlotsAvailable": "No slots available",
   "notSelectedYet": "Not selected yet",
-  
+
   "bookingConfirmed": "Booking Confirmed!",
   "bookingConfirmedDesc": "Your session is successfully scheduled. We've sent the details to your email.",
   "dateAndTime": "DATE & TIME",
@@ -227,7 +226,7 @@
   "proTipDescription": "Find a quiet, comfortable space 5 minutes before your session begins.",
   "viewMyConsultations": "View My Consultations",
   "backToHome": "Back to Home",
-  
+
   "upcomingSessions": "Upcoming Sessions",
   "completedSessions": "Completed Sessions",
   "cancelledSessions": "Cancelled Sessions",
@@ -250,7 +249,7 @@
   "cancelBooking": "Cancel Booking",
   "joinSession": "Join Session",
   "bookAgain": "Book Again",
-  
+
   "loadingBookingDetails": "Loading booking details...",
   "appointmentDate": "Appointment Date",
   "timeSlot": "Time Slot",
@@ -276,7 +275,7 @@
   "needHelp": "Need help?",
   "contactSupport": "Contact Support",
   "myConsultations": "My Consultations",
-  
+
   "yourSecretJournal": "Your Secret Journal",
   "journalSubtitle": "Write without judgment — your thoughts are safe here.",
   "addJournal": "Add Journal",
@@ -291,19 +290,20 @@
 
   "cancel": "Cancel",
   "save": "Save",
-  "howWouldYouLikeToConnect":"How would you like to connect today?",
+  "howWouldYouLikeToConnect": "How would you like to connect today?",
   "kaiReadyToListen": "Kai is ready to listen, judgment-free. Choose the way that feels most comfortable for you right now.",
-"startActivity":"Start Activity", 
+  "startActivity": "Start Activity",
   "journalDetails": "Journal Details",
   "talkWithVoice": "Talk with Voice",
   "chatWithText": "Chat with Text",
-  "recommendedActivities":"Recommended Activities",
+  "recommendedActivities": "Recommended Activities",
+  "nameNickname":"Name",
 
   "deleteJournal": "Delete Journal?",
   "deleteJournalConfirm": "Are you sure you want to delete",
   "delete": "Delete",
   "noDataFound": "No data found",
-  
+
   "wiseYogi": "Wise Yogi",
   "wiseYogiSubtitle": "Balance your mind & body with today's personalised practice.",
 
@@ -333,17 +333,34 @@
   "markComplete": "Mark Complete",
   "mindfulGames": "Mindful Games",
   "secretJournal": "Secret Journal",
-  "movies":"Movies",
-  "healthIsWealth":"Health is Wealth",
+  "movies": "Movies",
+  "healthIsWealth": "Health is Wealth",
   "mindfulGamesDesc": "Play. Relax. Focus.",
-  "secretJournalDesc" : "Write Without Judgment",
-  "moviesDesc" : "Watch and Unwind",
-  "calmMusicDesc":"Relax Through Sound",
-  "wiseYogiDesc":"Balance Mind Body",
-  "healthDesc":"Care For Health",
-  "startConversationTitle":"Start a Conversation",
-  "startConversationDesc":"Type your message to begin chatting with Kai, your personal companion.",
+  "secretJournalDesc": "Write Without Judgment",
+  "moviesDesc": "Watch and Unwind",
+  "calmMusicDesc": "Relax Through Sound",
+  "wiseYogiDesc": "Balance Mind Body",
+  "healthDesc": "Care For Health",
+  "startConversationTitle": "Start a Conversation",
+  "startConversationDesc": "Type your message to begin chatting with Kai, your personal companion.",
   "currentLanguage": "Current Language",
-  "availableLanguages": "Available Languages"
+  "availableLanguages": "Available Languages",
+  "aFewQuestions": "A few questions",
+  "step": "Step",
+  "of": "of",
+  "describeYourself": "Describe yourself",
+  "back": "Back",
+  "skipForNow": "Skip for Now",
+  "next": "Next",
+  "submitting": "Submitting...",
+  "noQuestionsFound": "No questions found",
+  "pleaseTryAgainLater": "Please try again later.",
+  "goToHelp": "Go to Help",
+  "pleaseEnterAnswer": "Please enter your answer before continuing",
+  "answersSubmittedSuccessfully": "Answers submitted successfully",
+  "speechRecognitionNotSupported": "Speech recognition not supported",
+  "microphonePermissionDenied": "Microphone permission denied",
+  "somethingWentWrong": "Something went wrong",
+  "copyrightText": "© 2026 Serene Wellness App. All rights reserved.",
+  "selectedLanguage": "English (US)"
 }
-

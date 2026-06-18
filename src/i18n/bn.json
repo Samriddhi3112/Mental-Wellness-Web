@@ -390,7 +390,25 @@
   "completed": "সম্পন্ন",
 
   "marking": "চিহ্নিত করা হচ্ছে…",
-  "markComplete": "সম্পূর্ণ হিসেবে চিহ্নিত করুন"
+  "markComplete": "সম্পূর্ণ হিসেবে চিহ্নিত করুন",
+   "aFewQuestions": "কিছু প্রশ্ন",
+  "step": "ধাপ",
+  "of": "এর মধ্যে",
+  "describeYourself": "নিজের সম্পর্কে লিখুন",
+  "back": "পেছনে",
+  "skipForNow": "এখন এড়িয়ে যান",
+  "next": "পরবর্তী",
+  "submitting": "জমা দেওয়া হচ্ছে...",
+  "noQuestionsFound": "কোন প্রশ্ন পাওয়া যায়নি",
+  "pleaseTryAgainLater": "অনুগ্রহ করে পরে আবার চেষ্টা করুন।",
+  "goToHelp": "সহায়তায় যান",
+  "pleaseEnterAnswer": "অনুগ্রহ করে এগিয়ে যাওয়ার আগে আপনার উত্তর লিখুন",
+  "answersSubmittedSuccessfully": "উত্তর সফলভাবে জমা হয়েছে",
+  "speechRecognitionNotSupported": "ভয়েস শনাক্তকরণ সমর্থিত নয়",
+  "microphonePermissionDenied": "মাইক্রোফোন অনুমতি প্রত্যাখ্যাত",
+  "somethingWentWrong": "কিছু ভুল হয়েছে",
+  "copyrightText": "© 2026 সেরিন ওয়েলনেস অ্যাপ। সর্বস্বত্ব সংরক্ষিত।",
+  "selectedLanguage": "বাংলা"
 
 
 

@@ -401,7 +401,25 @@
   "completed": "പൂർത്തിയായി",
 
   "marking": "അടയാളപ്പെടുത്തുന്നു…",
-  "markComplete": "പൂർത്തിയായി അടയാളപ്പെടുത്തുക"
+  "markComplete": "പൂർത്തിയായി അടയാളപ്പെടുത്തുക",
+   "aFewQuestions": "കുറച്ച് ചോദ്യങ്ങൾ",
+  "step": "ഘട്ടം",
+  "of": "ൽ",
+  "describeYourself": "നിങ്ങളെക്കുറിച്ച് വിവരിക്കുക",
+  "back": "പിന്നിലേക്ക്",
+  "skipForNow": "ഇപ്പോൾ ഒഴിവാക്കുക",
+  "next": "അടുത്തത്",
+  "submitting": "സമർപ്പിക്കുന്നു...",
+  "noQuestionsFound": "ചോദ്യങ്ങളൊന്നും കണ്ടെത്തിയില്ല",
+  "pleaseTryAgainLater": "ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.",
+  "goToHelp": "സഹായത്തിലേക്ക് പോകുക",
+  "pleaseEnterAnswer": "തുടരുന്നതിന് മുമ്പ് നിങ്ങളുടെ ഉത്തരം നൽകുക",
+  "answersSubmittedSuccessfully": "ഉത്തരങ്ങൾ വിജയകരമായി സമർപ്പിച്ചു",
+  "speechRecognitionNotSupported": "വോയ്സ് തിരിച്ചറിയൽ പിന്തുണയ്ക്കുന്നില്ല",
+  "microphonePermissionDenied": "മൈക്രോഫോൺ അനുമതി നിഷേധിച്ചു",
+  "somethingWentWrong": "എന്തോ പിഴച്ചു",
+  "copyrightText": "© 2026 സെറീൻ വെൽനെസ് ആപ്പ്. എല്ലാ അവകാശങ്ങളും സംരക്ഷിച്ചിരിക്കുന്നു.",
+  "selectedLanguage": "മലയാളം"
 
 
 

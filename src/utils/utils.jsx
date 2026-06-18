@@ -1,5 +1,5 @@
-export function isLoggedIn(AdminData) {
-  let session = getObject(AdminData) || "{}";
+export function isLoggedIn(webData) {
+  let session = getObject(webData) || "{}";
   // console.log("Raw session string ", session);
 
   try {

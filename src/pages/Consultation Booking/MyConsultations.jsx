@@ -951,6 +951,8 @@
 //   );
 // }
 
+//---------------------------------------------------------------
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -974,7 +976,7 @@ export default function MyConsultations() {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const { bookings, loading } = useSelector((state) => state.booking?.bookings);
-  const { upcoming, ended, cancelled } = useSelector(
+  const { upcoming, completed, cancelled } = useSelector(
     (state) => state.booking.summary,
   );
 
@@ -1071,6 +1073,7 @@ export default function MyConsultations() {
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.35 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
     </svg>
   );
+
   const IconRefresh = () => (
     <svg
       width="13"
@@ -1191,11 +1194,8 @@ export default function MyConsultations() {
   //   return `${String(utcH).padStart(2, "0")}:${String(utcM).padStart(2, "0")}`;
   // };
 
-  const { callInfo, callInfoLoading } = useSelector((state) => state.call);
   const [activeCallBookingId, setActiveCallBookingId] = useState(null);
   const [joiningBookingId, setJoiningBookingId] = useState(null);
-  // ─────────────────────────────────────────────────────────────────────────
-
   const [activeFilter, setActiveFilter] = useState("all");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [successData, setSuccessData] = useState(null);
@@ -1343,21 +1343,18 @@ export default function MyConsultations() {
   //   }
   // };
 
-  // ── NEW: Call end handler ─────────────────────────────────────────────────
   // const handleCallEnd = () => {
   //   setActiveCallBookingId(null);
   //   dispatch(resetCallState());
   //   dispatch(getMyBookings({ page: 1, limit: 20 }));
   //   dispatch(getBookingSummary());
   // };
-  // ─────────────────────────────────────────────────────────────────────────
 
   return (
     <>
       <div className="serene-app">
         <div className="body">
           <main className="main-content1" style={{ display: "block" }}>
-            {/* Stats — same as before */}
             <div className="stats-grid">
               <div className="stat-card">
                 <div className="stat-icon green">
@@ -1370,7 +1367,7 @@ export default function MyConsultations() {
                 <div className="stat-icon dark">
                   <IconCheck />
                 </div>
-                <div className="stat-num">{ended}</div>
+                <div className="stat-num">{completed}</div>
                 <div className="stat-label">{t("completedSessions")}</div>
               </div>
               <div className="stat-card">
@@ -1382,7 +1379,6 @@ export default function MyConsultations() {
               </div>
             </div>
 
-            {/* All Sessions header */}
             <div className="sessions-header">
               <div className="sessions-title">{t("allSessions")}</div>
               <div className="filter-tabs">
@@ -1446,7 +1442,6 @@ export default function MyConsultations() {
                         )
                       }
                     >
-                      {/* Badge */}
                       <div className={`badge ${getBadgeClass(booking)}`}>
                         {getBadgeLabel(booking, t)}
                       </div>
@@ -1477,7 +1472,6 @@ export default function MyConsultations() {
                         </div>
                       </div>
 
-                      {/* pending: Cancel */}
                       {isPending && (
                         <div className="session-actions">
                           <button
@@ -1493,7 +1487,6 @@ export default function MyConsultations() {
                         </div>
                       )}
 
-                      {/* assigned & not yet ended: Join Session */}
                       {isAssigned && (
                         <div className="session-actions">
                           <button
@@ -1552,7 +1545,6 @@ export default function MyConsultations() {
                         </div>
                       )}
 
-                      {/* completed: Book Again */}
                       {isCompleted && (
                         <div className="session-actions">
                           <button
@@ -1567,7 +1559,6 @@ export default function MyConsultations() {
                         </div>
                       )}
 
-                      {/* cancelled: reason */}
                       {isCancelled && booking.cancellationReason && (
                         <div className="cancelled-note">
                           <svg
@@ -1596,7 +1587,6 @@ export default function MyConsultations() {
         </div>
       </div>
 
-      {/* Modals */}
       {cancelModalBookingId && (
         <CancelBookingModal
           bookingId={cancelModalBookingId}
@@ -1612,7 +1602,6 @@ export default function MyConsultations() {
         />
       )}
 
-      {/* ── NEW: Call Screen overlay ── */}
       {activeCallBookingId && (
         <CallScreen
           bookingId={activeCallBookingId}

@@ -8,6 +8,7 @@ import {
   submitAnswers,
 } from "../../features/onboardingQuestions/questionsSlice";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
 import logo from "../../assets/images/logo1.png";
@@ -22,6 +23,7 @@ import { FaMicrophone } from "react-icons/fa6";
 const Screen1 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [fetched, setFetched] = useState(false);
   const [responses, setResponses] = useState([]);
   const [isListening, setIsListening] = useState(false);
@@ -167,8 +169,7 @@ const Screen1 = () => {
     e.preventDefault();
 
     if (!answer.trim()) {
-      return toast.error("Please enter your answer before continuing");
-    }
+      return toast.error(t("pleaseEnterAnswer"));}
 
     if (!question?._id) return;
 
@@ -214,7 +215,10 @@ const Screen1 = () => {
         if (res?.success) {
           localStorage.setItem("onboarding_last_shown", Date.now());
 
-          toast.success(res?.message || "Answers submitted successfully");
+          toast.success(
+  res?.message || t("answersSubmittedSuccessfully")
+);
+
 
           if (res?.success) {
             localStorage.setItem("onboarding_last_shown", Date.now());
@@ -407,7 +411,7 @@ const Screen1 = () => {
 
   useEffect(() => {
     if (fetched && !loading && questions.length === 0) {
-      toast.info("No questions found");
+      toast.info(t("noQuestionsFound"));
     }
   }, [fetched, loading, questions]);
 
@@ -421,7 +425,7 @@ const Screen1 = () => {
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
-      toast.error("Speech recognition not supported");
+      toast.error(t("speechRecognitionNotSupported"));
       return;
     }
 
@@ -453,7 +457,7 @@ const Screen1 = () => {
         // toast.info("No speech detected. Please try again.");
         return;
       } else if (event.error === "not-allowed") {
-        toast.error("Microphone permission denied");
+        toast.error(t("microphonePermissionDenied"));
       } else {
         toast.error(event.error || "Voice error");
       }
@@ -533,15 +537,15 @@ const Screen1 = () => {
       )}
       {fetched && !loading && questions.length === 0 ? (
         <div className="text-center mt-5" style={{color:"#fff"}}>
-          <h4>No questions found</h4>
-          <p>Please try again later.</p>
+          <h4>{t("noQuestionsFound")}</h4>
+          <p>{t("pleaseTryAgainLater")}</p>
 
           <button
             className="btn btn mt-3 "
             style={{ background: "linear-gradient(135deg, #462297, #7631B2)" ,color:"#fff", border:"none"}}
             onClick={() => navigate("/here-to-help")}
           >
-            Go to Help
+             {t("goToHelp")}
           </button>
         </div>
       ) : (
@@ -555,11 +559,11 @@ const Screen1 = () => {
           <div className="row justify-content-center min-vh-80">
             <div className="col-12 col-lg-8 fade-in">
               <div className="text-center mb-4">
-                <p className="mb-2 mini-title">A few questions</p>
+                <p className="mb-2 mini-title"> {t("aFewQuestions")}</p>
 
                 <div className="mb-3">
                   <p className="form-label">
-                    Step {currentQuestionIndex + 1} of {questions.length}
+                    {t("step")} {currentQuestionIndex + 1} {t("of")} {questions.length}
                   </p>
 
                   <div
@@ -582,7 +586,7 @@ const Screen1 = () => {
                   <textarea
                     className="form-control border rounded-3"
                     rows="4"
-                    placeholder="Describe yourself"
+                    placeholder={t("describeYourself")}
                     value={answer}
                     onChange={(e) => setAnswer(e.target.value)}
                   ></textarea>
@@ -677,7 +681,7 @@ const Screen1 = () => {
                       width: "100%",
                     }}
                   >
-                    Back
+                     {t("back")}
                   </button>
 
                   {/* Skip */}
@@ -696,7 +700,7 @@ const Screen1 = () => {
                       width: "100%",
                     }}
                   >
-                    Skip for Now
+                     {t("skipForNow")}
                   </button>
 
                   {/* Next */}
@@ -721,10 +725,10 @@ const Screen1 = () => {
                     }}
                   >
                     {loading ? (
-                      "Submitting..."
+                      t("submitting")
                     ) : (
                       <>
-                        Next
+                         {t("next")}
                         <img src={rightArrow} alt="" />
                       </>
                     )}
@@ -736,11 +740,11 @@ const Screen1 = () => {
             <div className="col-12 col-lg-8">
               <div className="row onboarding-footer">
                 <div className="col-lg-8">
-                  <p>© 2026 Serene Wellness App. All rights reserved.</p>
+                  <p>{t("copyrightText")}</p>
                 </div>
 
                 <div className="col-lg-4">
-                  <p className="text-center">English (US)</p>
+                  <p className="text-center">{t("selectedLanguage")}</p>
                 </div>
               </div>
             </div>
@@ -758,5 +762,4 @@ const Screen1 = () => {
     </div>
   );
 };
-
 export default Screen1;
