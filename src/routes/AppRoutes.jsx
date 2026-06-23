@@ -38,6 +38,7 @@ import SelectSlot from "../pages/Consultation Booking/SelectSlot";
 import MyConsultations from "../pages/Consultation Booking/MyConsultations";
 import BookingDetails from "../pages/Consultation Booking/BookingDetails";
 import SecretJournal from "../pages/Home/Secret Journal/SecretJournal";
+import PreChatPage from "../pages/Home/Chat/Pre Chat Page/preChatPage";
 // import MemoryGame from "../pages/Home/Mindful Games/MemoryGame";
 // import BreathingGame from "../pages/Home/Mindful Games/BreathingGames";
 
@@ -122,6 +123,7 @@ const AppRoutes = () => {
           <Route path="/my-consultation/select-slot" element={<SelectSlot />} />
           <Route path="/my-consultation" element={<MyConsultations />} />
           <Route path="/my-consultation/booking-details/:id" element={<BookingDetails />} />
+          <Route path="/chat/pre-chat" element={<PreChatPage />} />
         </Route>
       </Route>
 

@@ -84,7 +84,7 @@ const Sidenav = ({ sidebarOpen, setSidebarOpen }) => {
         <p>{t("kaiDescription")}</p>
         <a
           className="btn no-hover start-chat-btn"
-          onClick={() => navigate("/chat")}
+          onClick={() => navigate("/chat/pre-chat")}
           style={{ cursor: "pointer" }}
         >
           {t("startConversation")}

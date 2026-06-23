@@ -10,7 +10,7 @@ export function isLoggedIn(webData) {
   }
 
   let accessToken = session?.data?.[0]?.jwtToken || "";
-  // console.log("Extracted Token ", accessToken);
+  console.log("Extracted Token ", accessToken);
   return accessToken;
 }
 

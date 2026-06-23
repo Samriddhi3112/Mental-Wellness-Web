@@ -953,7 +953,7 @@
 
 //---------------------------------------------------------------
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -970,11 +970,33 @@ import BookingCancelledModal from "../../components/modals/BookingCancelledModal
 import CallScreen from "../Call/CallScreen";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+import JoinCountdownModal from "../../custom hooks/JoinCountdownModal";
+import SessionExpiredModal from "../../components/modals/SessionExpiredModal"
+
+function SessionTimer() {
+  const [elapsed, setElapsed] = useState(0);
+  const startRef = useRef(Date.now());
+  useEffect(() => {
+    const id = setInterval(() => {
+      setElapsed(Math.floor((Date.now() - startRef.current) / 1000));
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+  const m = String(Math.floor(elapsed / 60)).padStart(2, "0");
+  const s = String(elapsed % 60).padStart(2, "0");
+  return (
+    <span>
+      {m}:{s}
+    </span>
+  );
+}
 
 export default function MyConsultations() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const [countdownModal, setCountdownModal] = useState(null);
+  const [expiredModal, setExpiredModal] = useState(null);
   const { bookings, loading } = useSelector((state) => state.booking?.bookings);
   const { upcoming, completed, cancelled } = useSelector(
     (state) => state.booking.summary,
@@ -1227,72 +1249,114 @@ export default function MyConsultations() {
   const handleJoinSession = async (e, bookingId) => {
     e.stopPropagation();
     setJoiningBookingId(bookingId);
+
     try {
-      const result = await dispatch(
-        getCallInfo({ bookingId, isAdmin: false }),
-      ).unwrap();
-      const info = result.data || result;
+      const booking = bookings?.find((b) => b._id === bookingId);
+      const startTime = new Date(booking?.startAt?.replace("Z", "")).getTime();
+      const endTime = new Date(booking?.endAt?.replace("Z", "")).getTime();
+      const now = Date.now();
+      const diffMs = startTime - now;
+      const FIVE_MINS = 5 * 60 * 1000;
 
-      if (!info.canJoin) {
-        const d = new Date(info.joinWindow?.from);
-        const h = d.getUTCHours();
-        const m = d.getUTCMinutes();
-        const ampm = h >= 12 ? "PM" : "AM";
-        const hour = h % 12 || 12;
-        const fromTime = `${String(hour).padStart(2, "0")}:${String(m).padStart(2, "0")} ${ampm}`;
+      // Session khatam ho gaya
+    if (now > endTime) {
+      setExpiredModal({
+        startAt: booking?.startAt,
+        endAt: booking?.endAt,
+      });
+      return;
+    }
 
-        const nowUTC = Date.now();
-        const windowStartUTC = new Date(info.joinWindow?.from).getTime();
-        const diffMs = windowStartUTC - nowUTC;
-        const diffMins = Math.ceil(diffMs / 60000);
-
-        if (diffMins > 0) {
-          toast.warning(
-            `Session ${diffMins} minute${diffMins > 1 ? "s" : ""} mein available hogi. Join window: ${fromTime}`,
-            { position: "top-center", autoClose: 4000 },
-          );
-        } else {
-          toast.info(
-            `Join window closes at ${fromTime}. Session already ended.`,
-            { position: "top-center", autoClose: 4000 },
-          );
-        }
+      if (diffMs > FIVE_MINS) {
+        setCountdownModal({
+          bookingId,
+          joinFrom: new Date(startTime - FIVE_MINS).toISOString(),
+          joinTo: booking?.endAt,
+        });
         return;
       }
 
+      // window ke andar — direct join
       dispatch(setActiveBooking(bookingId));
       setActiveCallBookingId(bookingId);
     } catch (err) {
-      const msg = err?.message || "Call join karne mein error aayi";
-
-      if (
-        msg?.toLowerCase().includes("not assigned") ||
-        msg?.toLowerCase().includes("expert not assigned")
-      ) {
-        toast.warning(
-          "Counselor abhi assign nahi hua. Thodi der mein try karein.",
-          {
-            position: "top-center",
-            autoClose: 4000,
-          },
-        );
-      } else if (msg?.toLowerCase().includes("cancelled")) {
-        toast.error("Ye booking cancel ho chuki hai.", {
-          position: "top-center",
-          autoClose: 4000,
-        });
-      } else if (msg?.toLowerCase().includes("already ended")) {
-        toast.info("Ye session already khatam ho chuka hai.", {
-          position: "top-center",
-          autoClose: 4000,
-        });
-      } else {
-        toast.error(msg, { position: "top-center", autoClose: 4000 });
-      }
+      toast.error(err?.message || "Join karne mein error aayi", {
+        position: "top-center",
+        autoClose: 4000,
+      });
     } finally {
       setJoiningBookingId(null);
     }
   };
+  // const handleJoinSession = async (e, bookingId) => {
+  //   e.stopPropagation();
+  //   setJoiningBookingId(bookingId);
+  //   try {
+  //     const result = await dispatch(
+  //       getCallInfo({ bookingId, isAdmin: false }),
+  //     ).unwrap();
+  //     const info = result.data || result;
+
+  //     if (!info.canJoin) {
+  //       const d = new Date(info.joinWindow?.from);
+  //       const h = d.getUTCHours();
+  //       const m = d.getUTCMinutes();
+  //       const ampm = h >= 12 ? "PM" : "AM";
+  //       const hour = h % 12 || 12;
+  //       const fromTime = `${String(hour).padStart(2, "0")}:${String(m).padStart(2, "0")} ${ampm}`;
+
+  //       const nowUTC = Date.now();
+  //       const windowStartUTC = new Date(info.joinWindow?.from).getTime();
+  //       const diffMs = windowStartUTC - nowUTC;
+  //       const diffMins = Math.ceil(diffMs / 60000);
+
+  //       if (diffMins > 0) {
+  //         toast.warning(
+  //           `Session ${diffMins} minute${diffMins > 1 ? "s" : ""} mein available hogi. Join window: ${fromTime}`,
+  //           { position: "top-center", autoClose: 4000 },
+  //         );
+  //       } else {
+  //         toast.info(
+  //           `Join window closes at ${fromTime}. Session already ended.`,
+  //           { position: "top-center", autoClose: 4000 },
+  //         );
+  //       }
+  //       return;
+  //     }
+
+  //     dispatch(setActiveBooking(bookingId));
+  //     setActiveCallBookingId(bookingId);
+  //   } catch (err) {
+  //     const msg = err?.message || "Call join karne mein error aayi";
+
+  //     if (
+  //       msg?.toLowerCase().includes("not assigned") ||
+  //       msg?.toLowerCase().includes("expert not assigned")
+  //     ) {
+  //       toast.warning(
+  //         "Counselor abhi assign nahi hua. Thodi der mein try karein.",
+  //         {
+  //           position: "top-center",
+  //           autoClose: 4000,
+  //         },
+  //       );
+  //     } else if (msg?.toLowerCase().includes("cancelled")) {
+  //       toast.error("Ye booking cancel ho chuki hai.", {
+  //         position: "top-center",
+  //         autoClose: 4000,
+  //       });
+  //     } else if (msg?.toLowerCase().includes("already ended")) {
+  //       toast.info("Ye session already khatam ho chuka hai.", {
+  //         position: "top-center",
+  //         autoClose: 4000,
+  //       });
+  //     } else {
+  //       toast.error(msg, { position: "top-center", autoClose: 4000 });
+  //     }
+  //   } finally {
+  //     setJoiningBookingId(null);
+  //   }
+  // };
 
   const handleCallEnd = () => {
     setActiveCallBookingId(null);
@@ -1489,7 +1553,65 @@ export default function MyConsultations() {
 
                       {isAssigned && (
                         <div className="session-actions">
-                          <button
+                          {isAssigned && (
+                            <div className="session-actions">
+                              {/* Active call ka timer */}
+                              {activeCallBookingId === booking._id && (
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: 6,
+                                    background: "rgba(52,168,83,0.1)",
+                                    border: "1px solid rgba(52,168,83,0.25)",
+                                    borderRadius: 8,
+                                    padding: "6px 12px",
+                                    marginBottom: 8,
+                                  }}
+                                >
+                                  <div
+                                    style={{
+                                      width: 6,
+                                      height: 6,
+                                      borderRadius: "50%",
+                                      background: "#34a853",
+                                      animation:
+                                        "livePulse 1.4s ease-in-out infinite",
+                                    }}
+                                  />
+                                  <span
+                                    style={{
+                                      fontSize: 13,
+                                      color: "#34a853",
+                                      fontVariantNumeric: "tabular-nums",
+                                    }}
+                                  >
+                                    <SessionTimer />
+                                  </span>
+                                </div>
+                              )}
+                              <button
+                                className="btn-join"
+                                disabled={
+                                  isJoiningThis || !!activeCallBookingId
+                                }
+                                onClick={(e) =>
+                                  handleJoinSession(e, booking._id)
+                                }
+                              >
+                                {isJoiningThis ? (
+                                  "Connecting..."
+                                ) : activeCallBookingId === booking._id ? (
+                                  "In Call"
+                                ) : (
+                                  <>
+                                    <IconCam /> {t("joinSession")}
+                                  </>
+                                )}
+                              </button>
+                            </div>
+                          )}
+                          {/* <button
                             className="btn-join"
                             disabled={isJoiningThis}
                             onClick={(e) => handleJoinSession(e, booking._id)}
@@ -1541,7 +1663,7 @@ export default function MyConsultations() {
                                 <IconCam /> {t("joinSession")}
                               </>
                             )}
-                          </button>
+                          </button> */}
                         </div>
                       )}
 
@@ -1605,10 +1727,33 @@ export default function MyConsultations() {
       {activeCallBookingId && (
         <CallScreen
           bookingId={activeCallBookingId}
+          bookingEndAt={
+            bookings?.find((b) => b._id === activeCallBookingId)?.endAt
+          }
           isAdmin={false}
           onCallEnd={handleCallEnd}
         />
       )}
+
+      {countdownModal && (
+        <JoinCountdownModal
+          joinFrom={countdownModal.joinFrom}
+          joinTo={countdownModal.joinTo}
+          onClose={() => setCountdownModal(null)}
+          onJoin={() => {
+            setCountdownModal(null);
+            dispatch(setActiveBooking(countdownModal.bookingId));
+            setActiveCallBookingId(countdownModal.bookingId);
+          }}
+        />
+      )}
+      {expiredModal && (
+  <SessionExpiredModal
+    startAt={expiredModal.startAt}
+    endAt={expiredModal.endAt}
+    onClose={() => setExpiredModal(null)}
+  />
+)}
     </>
   );
 }

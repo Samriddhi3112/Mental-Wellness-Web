@@ -105,34 +105,34 @@ const Screen1 = () => {
   // };
 
   const playQuestionAudio = (audioObj) => {
-  if (!audioObj?.data) return;
+    if (!audioObj?.data) return;
 
-  try {
-    // stop previous audio
-    if (window.currentAudio) {
-      window.currentAudio.pause();
-      window.currentAudio.currentTime = 0;
+    try {
+      // stop previous audio
+      if (window.currentAudio) {
+        window.currentAudio.pause();
+        window.currentAudio.currentTime = 0;
+      }
+
+      const mimeType = audioObj?.contentType || "audio/mpeg";
+
+      // remove spaces/new lines from base64
+      const cleanBase64 = audioObj.data.replace(/\s/g, "");
+
+      // base64 -> playable url
+      const audioSrc = `data:${mimeType};base64,${cleanBase64}`;
+
+      const audio = new Audio(audioSrc);
+
+      window.currentAudio = audio;
+
+      audio.play().catch((err) => {
+        console.log("Audio play error:", err);
+      });
+    } catch (err) {
+      console.log("Audio error:", err);
     }
-
-    const mimeType = audioObj?.contentType || "audio/mpeg";
-
-    // remove spaces/new lines from base64
-    const cleanBase64 = audioObj.data.replace(/\s/g, "");
-
-    // base64 -> playable url
-    const audioSrc = `data:${mimeType};base64,${cleanBase64}`;
-
-    const audio = new Audio(audioSrc);
-
-    window.currentAudio = audio;
-
-    audio.play().catch((err) => {
-      console.log("Audio play error:", err);
-    });
-  } catch (err) {
-    console.log("Audio error:", err);
-  }
-};
+  };
 
   const {
     data,
@@ -169,7 +169,8 @@ const Screen1 = () => {
     e.preventDefault();
 
     if (!answer.trim()) {
-      return toast.error(t("pleaseEnterAnswer"));}
+      return toast.error(t("pleaseEnterAnswer"));
+    }
 
     if (!question?._id) return;
 
@@ -215,10 +216,7 @@ const Screen1 = () => {
         if (res?.success) {
           localStorage.setItem("onboarding_last_shown", Date.now());
 
-          toast.success(
-  res?.message || t("answersSubmittedSuccessfully")
-);
-
+          toast.success(res?.message || t("answersSubmittedSuccessfully"));
 
           if (res?.success) {
             localStorage.setItem("onboarding_last_shown", Date.now());
@@ -235,7 +233,7 @@ const Screen1 = () => {
             navigate("/step-4");
           }
           // if (res?.immediateHelp) {
-          //   setShowModal(true); 
+          //   setShowModal(true);
           // } else {
           //   navigate("/step-4");
           // }
@@ -509,6 +507,7 @@ const Screen1 = () => {
 
   const selectedLang = localStorage.getItem("lang") || "en";
   const speechLang = languageMap[selectedLang] || "en-US";
+  
   // useEffect(() => {
   //   window.speechSynthesis.onvoiceschanged = () => {
   //     window.speechSynthesis.getVoices();
@@ -529,23 +528,30 @@ const Screen1 = () => {
   // };
 
   return (
-    <div className="container-fluid onboarding-screen" style={{background: "#030f25" , minHeight:"100vh"}}>
+    <div
+      className="container-fluid onboarding-screen"
+      style={{ background: "#030f25", minHeight: "100vh" }}
+    >
       {loading && (
         <div className="loader-overlay">
           <div className="loader"></div>
         </div>
       )}
       {fetched && !loading && questions.length === 0 ? (
-        <div className="text-center mt-5" style={{color:"#fff"}}>
+        <div className="text-center mt-5" style={{ color: "#fff" }}>
           <h4>{t("noQuestionsFound")}</h4>
           <p>{t("pleaseTryAgainLater")}</p>
 
           <button
             className="btn btn mt-3 "
-            style={{ background: "linear-gradient(135deg, #462297, #7631B2)" ,color:"#fff", border:"none"}}
+            style={{
+              background: "linear-gradient(135deg, #462297, #7631B2)",
+              color: "#fff",
+              border: "none",
+            }}
             onClick={() => navigate("/here-to-help")}
           >
-             {t("goToHelp")}
+            {t("goToHelp")}
           </button>
         </div>
       ) : (
@@ -563,7 +569,8 @@ const Screen1 = () => {
 
                 <div className="mb-3">
                   <p className="form-label">
-                    {t("step")} {currentQuestionIndex + 1} {t("of")} {questions.length}
+                    {t("step")} {currentQuestionIndex + 1} {t("of")}{" "}
+                    {questions.length}
                   </p>
 
                   <div
@@ -578,7 +585,9 @@ const Screen1 = () => {
                 </div>
               </div>
 
-              <h2 className="mb-3 title" style={{color:"#fff"}}>{question?.questionText || "N/A"}</h2>
+              <h2 className="mb-3 title" style={{ color: "#fff" }}>
+                {question?.questionText || "N/A"}
+              </h2>
               {/* <p>{question?.questionText || "N/A"}</p> */}
 
               <form style={{ margin: "0 auto" }}>
@@ -650,7 +659,9 @@ const Screen1 = () => {
                         display: "flex",
                         alignItems: "center",
                       }}
-                      onClick={() => navigate("/my-consultation/therapy-session")}
+                      onClick={() =>
+                        navigate("/my-consultation/therapy-session")
+                      }
                     >
                       <img
                         src={helpButton}
@@ -681,7 +692,7 @@ const Screen1 = () => {
                       width: "100%",
                     }}
                   >
-                     {t("back")}
+                    {t("back")}
                   </button>
 
                   {/* Skip */}
@@ -700,7 +711,7 @@ const Screen1 = () => {
                       width: "100%",
                     }}
                   >
-                     {t("skipForNow")}
+                    {t("skipForNow")}
                   </button>
 
                   {/* Next */}
@@ -728,7 +739,7 @@ const Screen1 = () => {
                       t("submitting")
                     ) : (
                       <>
-                         {t("next")}
+                        {t("next")}
                         <img src={rightArrow} alt="" />
                       </>
                     )}
