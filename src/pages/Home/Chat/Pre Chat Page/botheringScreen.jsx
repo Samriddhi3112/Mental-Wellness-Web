@@ -97,7 +97,7 @@ export default function BotheringScreen() {
           </div>
         ) : (
           <div className="bothering-grid">
-            {botheringOptions?.data?.options?.map((opt) => (
+            {botheringOptions?.map((opt) => (
               <button
                 key={opt.code}
                 className={`bothering-card ${

@@ -7,6 +7,7 @@ import {
 } from "../../../../features/chat/preChatSlice/preChatSlice";
 import img1 from "../../../../assets/images/pre-chat.png";
 
+
 const EMOTION_OPTIONS = [
   { emoji: "😨", label: "Scared" },
   { emoji: "😢", label: "Sad" },
@@ -29,7 +30,6 @@ export default function QuestionsScreen() {
     answers,
     loading,
   } = useSelector((s) => s.preChat);
-  console.log("qf",questionFlow)
 
   const handleAnswer = (questionId, answer) => {
     dispatch(setAnswer({ questionId, answer }));
@@ -38,12 +38,6 @@ export default function QuestionsScreen() {
   const handleContinue = () => {
     dispatch(showThankYouModal());
   };
-
-  const questions = questionFlow?.questions || [];
-
-const allAnswered =
-  questions.length > 0 &&
-  questions.every((q) => answers[q.id] !== undefined);
 
   return (
     <div className="prechat-wrapper">
@@ -101,7 +95,7 @@ const allAnswered =
           </div>
         ) : (
           <div className="questions-list">
-            {questions.map((question, index) => (
+            {(Array.isArray(questionFlow) ? questionFlow : []).map((question, index) => (
               <QuestionItem
                 key={question.id}
                 question={question}
@@ -122,7 +116,6 @@ const allAnswered =
           <button
             className="btn-continue"
             onClick={handleContinue}
-            disabled={!allAnswered}
           >
             Continue →
           </button>
